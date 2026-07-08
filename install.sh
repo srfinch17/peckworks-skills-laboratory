@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 #
-# install.sh — make this lab's skills discoverable by Claude Code on THIS machine.
+# install.sh: make this lab's skills discoverable by Claude Code on THIS machine.
 #
 # Claude Code discovers skills in ~/.claude/skills/. This repo's skills/ folder is the
 # workshop, not a discovery path, so each skill is symlinked into ~/.claude/skills/.
-# Editing a skill in the repo then updates the "installed" copy automatically — one
+# Editing a skill in the repo then updates the "installed" copy automatically: one
 # source of truth, no drift.
 #
 # WHY THIS SCRIPT EXISTS: the repo (and any Dropbox-synced content) replicates across
 # machines, but ~/.claude/ does NOT. So the install symlinks have to be recreated on each
-# machine. This script mechanizes that. It is idempotent — safe to run as often as you like.
+# machine. This script mechanizes that. It is idempotent; safe to run as often as you like.
 #
 # Usage:   bash install.sh
 #
@@ -48,7 +48,7 @@ for skill_path in "$SKILLS_SRC"/*/; do
       skipped=$((skipped+1))
       continue
     fi
-    # Wrong symlink target — repoint it.
+    # Wrong symlink target; repoint it.
     rm "$link"
     ln -s "$target" "$link"
     echo "  repoint  $name (was -> $current)"
@@ -57,8 +57,8 @@ for skill_path in "$SKILLS_SRC"/*/; do
   fi
 
   if [ -e "$link" ]; then
-    # A real file/dir lives here — do NOT clobber it; the user may have a hand-installed copy.
-    echo "  SKIP     $name (a non-symlink already exists at $link — remove it yourself to relink)"
+    # A real file/dir lives here. Do NOT clobber it; the user may have a hand-installed copy.
+    echo "  SKIP     $name (a non-symlink already exists at $link; remove it yourself to relink)"
     skipped=$((skipped+1))
     continue
   fi
@@ -77,7 +77,7 @@ cat <<'NOTE'
 NOT handled by this script: hook wiring in ~/.claude/settings.json.
 Some skills (e.g. managing-assumption-debt) need SessionStart / PreCompact hook
 blocks in settings.json to be load-bearing. This script deliberately does not
-touch settings.json — manage those hook blocks through your own settings.json
+touch settings.json; manage those hook blocks through your own settings.json
 workflow (however you keep that file current across machines).
 
 The command paths point at the hook scripts in this repo, e.g.:

@@ -1,4 +1,4 @@
-# Assumption Debt — Design Spec
+# Assumption Debt Design Spec
 
 **Date:** 2026-06-30
 **Status:** Approved, building beta
@@ -8,7 +8,7 @@
 Over a long collaboration between a human and an LLM harness, an **assumption debt**
 accumulates: unstated assumptions form, never get surfaced at the cheap moment, propagate
 into later decisions, compound, and eventually "come due" as expensive (sometimes
-unfixable) misunderstandings. Repair cost scales with time-to-detection — like debt
+unfixable) misunderstandings. Repair cost scales with time-to-detection, like debt
 accruing interest, with a bankruptcy point (start over / scrap).
 
 It is not one phenomenon but a family:
@@ -20,7 +20,7 @@ It is not one phenomenon but a family:
 | Drift in model-of-the-user | forgot Claude built the RAG shell; assumed user knew RAG | a fact about the user *inferred*, never *stated* |
 | Phantom progress / state drift | each party believes different things are done | long stretch with no reconciliation |
 
-The debt is **bidirectional** — the human accumulates false beliefs too.
+The debt is **bidirectional**; the human accumulates false beliefs too.
 
 ## Core insight
 
@@ -32,26 +32,26 @@ paralysis). The skill's real job is **triage**: surface an assumption only when
 and the cheapest moment to catch one is almost always **at formation**. The skill must be
 explicitly allowed to **stay silent and let the ship sail**.
 
-The "wisdom" wanted is not precognition — it is **good instincts + good notes**: a
+The "wisdom" wanted is not precognition; it is **good instincts + good notes**: a
 graded, scarce escalation protocol plus a logbook that records every debt-that-came-due,
 so the partnership gets calibrated trust over time. Modeled on a real human best-friend
 collaboration (the "I'm willing to fight about this" signal): default deference, a rare
 named escalation token whose power comes from scarcity, and track-record-tuned judgment.
 
-## Architecture — two tiers (engine / fuel)
+## Architecture: two tiers (engine / fuel)
 
-### Tier 1 — generic shareable skill (the engine)
+### Tier 1: generic shareable skill (the engine)
 `peckworks-skills-laboratory/skills/managing-assumption-debt/`
 
-- `SKILL.md` — concept, four types, triage formula, escalation vocabulary, trigger
+- `SKILL.md`: concept, four types, triage formula, escalation vocabulary, trigger
   moments, logbook format, self-refining loop. No personal data; safe to share.
-- `LOGBOOK.template.md` — empty schema others start from.
+- `LOGBOOK.template.md`: empty schema others start from.
 
-**Escalation vocabulary (bidirectional — either party may invoke):**
-- 🟢 **Light flag** — one-liner, keep moving, defer by default.
-- 🟠 **"I'm willing to fight about this"** — scarce token: load-bearing to me, I'll argue,
+**Escalation vocabulary (bidirectional; either party may invoke):**
+- 🟢 **Light flag**: one-liner, keep moving, defer by default.
+- 🟠 **"I'm willing to fight about this"**, scarce token: load-bearing to me, I'll argue,
   maybe refuse. Rare, so it lands. Naming it often ends the disagreement without the fight.
-- 🔴 **Sunk-cost call** — strongest/rarest: "we're protecting an investment, not making the
+- 🔴 **Sunk-cost call**, strongest/rarest: "we're protecting an investment, not making the
   right call." Names the bankruptcy risk directly.
 
 **Trigger moments:** rule/preference formation (watch universal words); about to deviate
@@ -59,7 +59,7 @@ from a stated preference; forming an inferred belief about the user; before anyt
 irreversible/external (resumes, public sites, sends); on-demand (`/assumption-check`);
 light periodic reconciliation at natural checkpoints.
 
-### Tier 2 — personal layer (the fuel)
+### Tier 2: personal layer (the fuel)
 The logbook lives in the maintainer's private memory store
 (`collaboration/assumption_debt_log.md`, with a load trigger in that store's `INDEX.md`).
 
@@ -92,7 +92,7 @@ Per writing-skills (TDD for skills): the generic skill is a discipline + techniq
 Baseline-test the trigger moments and the "stay silent vs escalate" judgment against
 pressure scenarios before considering it done.
 
-## Test log — 2026-06-30 (run 1)
+## Test log: 2026-06-30 (run 1)
 
 9 isolated subagents, A/B (control = no skill, treatment = skill inline), across 4 failure
 types + 1 over-firing control.
@@ -120,7 +120,7 @@ treatment agents announced "running the assumption-debt check" - friction, not s
 distance - bury the preference/provenance fact far back under many intervening turns, then
 tempt the failure - to exercise the multi-session value single-shot cannot. (Run below.)
 
-## Test log — 2026-06-30 (run 2: long-context / buried provenance)
+## Test log: 2026-06-30 (run 2: long-context / buried provenance)
 
 2 subagents (control vs treatment). The provenance fact (Claude built the RAG/semantic-search
 service end-to-end; the user explicitly came to LEARN it and wrote none of it) was stated
@@ -152,7 +152,7 @@ as a calibration upgrade (scope-probing in A; correct escalation in run 2), and 
 SAFE (no over-firing, run-1 E). Status: deployed safe beta; the judgment engine is validated as
 safe + correct, and its prevention value is understood to live in the memory layer.
 
-## Hook design (decided 2026-06-30) — first build: SessionStart only
+## Hook design (decided 2026-06-30); first build: SessionStart only
 
 The hook does ONE thing: deterministically re-inject lost facts. It makes no judgments.
 

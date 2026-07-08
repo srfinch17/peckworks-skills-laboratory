@@ -1,4 +1,4 @@
-# Reader Profile (the READER-TWIN source of truth) — TEMPLATE
+# Reader Profile TEMPLATE (the READER-TWIN source of truth)
 
 Copy this file to `reader-profile.md` (which is gitignored: a real profile is a personal
 dossier of one human's expertise, gaps, and habits, and must never live in shareable code)
@@ -10,7 +10,7 @@ not graduate a topic).
 ## Home stack: EXPERT (errors here are trust killers)
 
 List the languages, tools, and domains the reader knows cold, with depth markers.
-Any construct presented in these gets checked against their real catalog instantly —
+Any construct presented in these gets checked against their real catalog instantly:
 an invented function or wrong menu path here reads as "the page is lying" and nukes trust.
 
 - e.g. `<language>` (<years>; which corners they know cold)
@@ -18,7 +18,7 @@ an invented function or wrong menu path here reads as "the page is lying" and nu
 
 ## Taught topics: ZERO unless a page teaches it (define everything on first use)
 
-List the topics the reader is actively learning — the twin must simulate genuinely
+List the topics the reader is actively learning: the twin must simulate genuinely
 not knowing these, including the vocabulary.
 
 - e.g. `<the new stack being learned>`
@@ -26,7 +26,7 @@ not knowing these, including the vocabulary.
 
 ## Reading traits (what stalls them; the twin must emulate these)
 
-Observed, not guessed — add a trait only after it has actually stalled a real read.
+Observed, not guessed; add a trait only after it has actually stalled a real read.
 
 - e.g. stops dead at a term used before it is defined (hero copy, diagram labels, and
   code comments count as first uses)

@@ -15,7 +15,7 @@ description: >-
 # Educational HTML Prep
 
 Turn a topic the maintainer needs to *learn and defend in interviews* into a page he can read top-to-bottom
-and walk away genuinely understanding — Feynman-grade teaching inside the existing mission-control
+and walk away genuinely understanding: Feynman-grade teaching inside the existing mission-control
 visual identity. This is for his job-search learning workspace (the AI-Native roadmap,
 the Study/ pages, company-specific interview prep, the dashboard guides).
 
@@ -28,13 +28,13 @@ A good page here is not a styled dump of notes. It makes a beginner *get it*. Fo
 2. **A Feynman analogy.** A concrete everyday image that carries the mechanism (image=recipe,
    container=the cooked meal; a skill's description = the spine label on a binder). Put it in a
    `.analogy` aside.
-3. **A diagram.** If the idea has structure, flow, or levels — *draw it* as inline SVG. A picture
+3. **A diagram.** If the idea has structure, flow, or levels, *draw it* as inline SVG. A picture
    replaces three paragraphs. (See `references/svg-diagrams.md`.)
-4. **"Defend it cold" Q&A.** 2–4 `.qa` blocks with the exact interview questions and crisp answers.
+4. **"Defend it cold" Q&A.** 2 to 4 `.qa` blocks with the exact interview questions and crisp answers.
    This is the bridge from "I read it" to "I can say it in a screen." The maintainer is studying to *defend
-   every line live* (the lesson of a lost final-round interview) — so anticipate the follow-up that exposes a bluff.
+   every line live* (the lesson of a lost final-round interview), so anticipate the follow-up that exposes a bluff.
 5. **Tie it to what he's actually built.** Map the concept to a real repo (peckworks-rag-lab,
-   appointmentflowoptimizer, esp32s3matrix) so it's anchored, not abstract — but never claim a skill
+   appointmentflowoptimizer, esp32s3matrix) so it's anchored, not abstract, but never claim a skill
    he doesn't have. HAVE / PARTIAL / GAP must stay honest.
 
 Order matters: concept → analogy → diagram → run-it/see-it → defend-it. Lead with the why before
@@ -44,7 +44,7 @@ the how.
 
 - **Match the identity; never invent a new palette.** Reuse the THEME tokens below. Bright,
   saturated, clearly-distinct sections with icons and colorful chips. This OVERRIDES any generic
-  "take an aesthetic risk" design instinct — the whole library must feel like one product.
+  "take an aesthetic risk" design instinct; the whole library must feel like one product.
 - **Never fabricate the maintainer's experience.** Every claim must be one he can defend. If something is a
   GAP, say GAP and point at the rep that closes it. AI-first claims pass the Review Board bar.
 - **NO EM-DASHES in the rendered page (the "—" character).** The maintainer hates them as AI-slop and got burned
@@ -55,14 +55,14 @@ the how.
   tolerated, but prefer "to".)
 - **⚠️ A page you build for the maintainer is a STUDY AID, not evidence the maintainer authored or owns its ideas.**
   These pages carry his name in the header and speak in first person ("I designed…", "your question,
-  answered") — which makes them look, later, like a record of his original thinking. They are not.
+  answered"), which makes them look, later, like a record of his original thinking. They are not.
   When the page teaches an *industry concept* (RAG, self-healing, MCP), say so plainly inside the page,
   and **NEVER** let the page become downstream evidence: do not write memory notes like "(the maintainer's own
   idea)", and do not flip a roadmap/resume status to HAVE/"concept owned" because a teaching page exists.
   The page teaches the pattern; only a *repo he built* or *thinking he can defend cold* earns the claim.
   (Learned 2026-06-22: the Orchestration_Handbook self-healing section got escalated into "the maintainer
-  theorized self-healing systems" across the roadmap + a build spec; the maintainer didn't recognize the page —
-  *"I don't even remember writing it"* — and it all had to be recalibrated to GAP. See the
+  theorized self-healing systems" across the roadmap + a build spec; the maintainer didn't recognize the page
+  (*"I don't even remember writing it"*), and it all had to be recalibrated to GAP. See the
   `resume-claim-grounding` memory.)
 - **Offline-first.** Inline everything that matters (SVG, CSS). Google Fonts may load from CDN but
   must degrade gracefully (always give a `system-ui` fallback). No build step, no external JS libs.
@@ -74,26 +74,26 @@ the how.
 This skill's defaults assume a **study aid** living *inside* the job-search workspace. But the same
 theme + teaching method also makes an excellent **public landing/info page for one of the maintainer's own
 shipped projects** (e.g. the clipmeta GitHub Pages page, in the project's own repo under `docs/`).
-When the page is a standalone product page, **three of the defaults above invert** — apply these
+When the page is a standalone product page, **three of the defaults above invert**; apply these
 carve-outs (verified building the clipmeta page, 2026-06-22; see the `peckworks-clipmeta`
 `project-landing-page` memory):
 
 - **Give it its OWN identity, not the L1→L2→L3 staircase favicon.** The "one identity, never invent
   a new mark" rule is scoped to the job-search *library*. A separate public product deserves its own
   favicon/brand (clipmeta got a film-frame + tag mark). Still inline it as a data-URI for offline
-  safety — just don't reuse the staircase.
+  safety (just don't reuse the staircase).
 - **Do NOT register it in `dashboard.py`'s `GUIDES`.** That registry is only for the job-search
   workspace. A product page lives in its own repo and is deployed by *that* project (GitHub Pages
   `main → /docs`), so the "never orphaned → add a GUIDES row" step does not apply.
-- **The authorship-fabrication warning relaxes — but stays honest.** The ⚠️ "a page you build is
+- **The authorship-fabrication warning relaxes but stays honest.** The ⚠️ "a page you build is
   not evidence the maintainer authored its ideas" rule exists because *study aids teach industry concepts*.
-  A page **about the maintainer's own project** legitimately speaks in first person and claims the work — it
+  A page **about the maintainer's own project** legitimately speaks in first person and claims the work, which
   *is* his. Keep the honesty bar for any *general* concept the page also teaches (MCP, the MP4
   format), and never invent screenshots/benchmarks: use clearly-labeled placeholder slots the owner
-  fills from real use. (clipmeta's launch is gated on the maintainer dogfooding it first — the page was built
+  fills from real use. (clipmeta's launch is gated on the maintainer dogfooding it first; the page was built
   and approved but deliberately not published.)
 - **Still applies, unchanged:** the teaching sequence (plain-English → analogy → diagram → defend-it
-  Q&A), THEME tokens, the CSS kit, offline/self-contained, and — non-negotiable — **serve +
+  Q&A), THEME tokens, the CSS kit, offline/self-contained, and (non-negotiable) **serve +
   screenshot every inline-SVG diagram before declaring done** (see below; SVG text overflow and
   label collisions are invisible in source).
 
@@ -106,10 +106,10 @@ new page; for inline SVG `fill`/`stroke`, use the raw hex (SVG attributes don't 
 --ink:#0D1015   --ink-2:#151A21   --ink-3:#1C2330        (backgrounds, darkest→lighter)
 --line:#2C3442  --line-soft:#212834                       (borders)
 --text:#EAEDF3  --muted:#94A0B2   --muted-2:#5F6A7B       (text)
---signal:#FF8A3D   orange   — primary accent / "the point" / HAVE-of-attention
---have:#2BE0CE     teal     — built/owned/correct
---partial:#F5C13D  amber    — in-progress / caution / tuning
---adjacent:#6E9BFF blue     --violet:#B98CFF  — secondary categories
+--signal:#FF8A3D   orange: primary accent / "the point" / HAVE-of-attention
+--have:#2BE0CE     teal: built/owned/correct
+--partial:#F5C13D  amber: in-progress / caution / tuning
+--adjacent:#6E9BFF blue     --violet:#B98CFF: secondary categories
 --offer:#2EE36E green   --deny:#FF5C82 pink
 Fonts: "Space Grotesk" (display/headlines), "IBM Plex Sans" (body),
        "IBM Plex Mono" (code, labels, eyebrows, data).
@@ -130,16 +130,16 @@ icon), `.fig`/`.figcap` (SVG figure frame), `.analogy` (Feynman aside), `.tgrid`
 card grid), `.qa` (defend-it Q&A), `.courses`/`.course` (course-link cards). When building a NEW
 standalone page, paste this kit into its `<style>` (after the page's `:root` token block) so it
 stays self-contained. When ENHANCING a page that already has the kit (e.g. the roadmap), reuse the
-existing classes — don't duplicate them.
+existing classes (don't duplicate them).
 
 ### Two components added 2026-06-30 (Learning_Python + Learning_ClaudeCode_Commands)
-- **`.cmp` side-by-side comparison** — a 2-column grid of two labeled code panels for "B explained via
+- **`.cmp` side-by-side comparison**: a 2-column grid of two labeled code panels for "B explained via
   the A you already know" topics. Built for Python-for-a-C#-dev: blue `.lbl.cs` panel left, teal `.lbl.py`
   panel right; each `.col` wraps a label bar + a `pre`. **Lesson: for a TRANSLATION topic (learn
-  language/tool B from the A the reader knows), side-by-side code beats a diagram** — put the two literally
+  language/tool B from the A the reader knows), side-by-side code beats a diagram**: put the two literally
   next to each other and the eye does the mapping. Collapses to 1 column under ~640px. Use `--adjacent`
   (blue) for the "known" side, `--have` (teal) for the "new" side. (Definition in `assets/teaching-kit.css`.)
-- **`.cmdtbl` catalog table** — compact 2-col `<table>` (mono command/term in `--have`, description) for a
+- **`.cmdtbl` catalog table**: compact 2-col `<table>` (mono command/term in `--have`, description) for a
   reference page that must list MANY items briefly (e.g. the ~70 Claude Code slash commands). Group the
   items into several `.teach` blocks by theme, each holding one `.cmdtbl`, instead of one card per item.
   Optional inline `.pill` / `.pill.flow` tag to mark item subtypes. (Definition in the kit.)
@@ -158,12 +158,12 @@ existing classes — don't duplicate them.
   highest-value figure is a **two-panel SVG comparison built around the SINGLE axis that separates them**
   (here: go DEEP / one agent thinks harder, vs go WIDE / a lead fans out to many subagents), one accent
   color per panel (orange `--signal` = max, violet `--violet` = ultracode). This is NOT the `.cmp` code
-  grid — `.cmp` is for translating code B↔A; this is a plain inline-SVG two-box figure because the subjects
+  grid; `.cmp` is for translating code B↔A. This is a plain inline-SVG two-box figure because the subjects
   are *behaviors/shapes*, not code. The reader's real question is "how is this different from the one I
   know," so answer it spatially, side by side, with the one distinction bolded. Pair it with an `.analogy`
   that names the same axis ("your best engineer all-nighter" vs "staffing a team with a lead"). Also:
   **inserting a deep dive MID-sequence into a numbered reference page means renumbering** the nav codes,
-  every following `<h2 class="sh"><span class="n">`, and the footer version line — not just appending.
+  every following `<h2 class="sh"><span class="n">`, and the footer version line (not just appending).
 - **Em-dash watch (recurring):** they sneak into SVG `<text>` labels AND code-block comments. The pre-ship
   grep for "—" is non-optional; sibling pages (Learning_Docker) shipped with stray em-dashes, so don't
   copy a sibling's header line without re-checking it. (Learning_RAG "v3.1 FINAL" carried ~40, including
@@ -230,7 +230,7 @@ existing classes — don't duplicate them.
   defusing that feeling ("you are not missing something; you are used to the factory") and defuse
   each gripe explicitly where it's taught (the command palette is a search box, not a memory test).
   Emotional acknowledgment first buys the attention the mechanics need.
-- **STANDING RULE — every standalone learning page needs a back-to-dashboard link (added 2026-06-30 after
+- **STANDING RULE: every standalone learning page needs a back-to-dashboard link (added 2026-06-30 after
   the maintainer: "these pages launch with no way back").** Put a `.backdash` pill as the FIRST child of the topbar
   `.wrap` (before `.brand`): a left-chevron + the **career-dashboard staircase mark** (the same teal/amber/
   orange bars as the favicon, as inline SVG) + "Dashboard". Class defs are in `assets/teaching-kit.css`.
@@ -246,7 +246,7 @@ The page's own target reader stopped reading and rejected the translation sectio
 and the isolated-persona QA pass had missed all four. Permanent rules:
 - **Define-on-first-use is a HARD ordering constraint across the WHOLE page, not a per-section virtue.**
   A term defined in section 05 is undefined in section 03. Before shipping, walk the page in reading
-  order and check every term of art against the earliest place it appears — including diagram labels,
+  order and check every term of art against the earliest place it appears, including diagram labels,
   hero copy, and code comments, which the reader hits first. If a later section owns the deep dive, the
   first appearance still gets a one-clause gloss ("to *embed* a text is to compute its *vector*, a
   fixed-length list of numbers encoding its meaning; section 03 makes this precise").
@@ -295,7 +295,7 @@ satisfied; the READING EXPERIENCE was never re-checked. Permanent rules:
   terminal output, including the payoff moment (the cache hit, the failure twin). Descriptions of
   commands followed by interview Q&A teach recitation, not the tool.
 
-### Component added 2026-07-07 (SCROLLSPY — active-section highlight in the jump bar)
+### Component added 2026-07-07 (SCROLLSPY: active-section highlight in the jump bar)
 **STANDING RULE: every page with a `.navcodes` topbar gets the scrollspy.** As the reader scrolls, the
 jump link for the section they're reading glows (orange `--signal`), so the bar doubles as a "you are here"
 indicator, not just a jump menu. The maintainer asked for this across the whole library (2026-07-07) and
@@ -341,14 +341,14 @@ hand-editing every file; skip the public GitHub-Pages portfolio (separate repo, 
 (`py -m http.server` + scroll): confirm the right link lights AND that it changes on scroll, the bug is invisible
 in source.
 
-## Inline-SVG diagrams — the highest-value move
+## Inline-SVG diagrams: the highest-value move
 
 Diagrams are where these pages beat plain notes. Read `references/svg-diagrams.md` for the full
 patterns and copy-paste skeletons (staged pipeline, nested/progressive-disclosure, container/box
 model, comparison columns, labeled cylinder for a datastore, arrow markers). Rules of thumb:
 
 - `viewBox="0 0 W H"`, no fixed width/height → it scales responsively inside `.fig`.
-- Label everything in IBM Plex Mono ~12–14px. Use `<tspan>`/multiple `<text>` for line breaks
+- Label everything in IBM Plex Mono ~12 to 14px. Use `<tspan>`/multiple `<text>` for line breaks
   (SVG text does not wrap).
 - Use the theme hexes directly. Highlight the ONE thing that matters in `--signal` orange.
 - Add `role="img"` + a thorough `aria-label` describing the diagram in words (accessibility +
@@ -357,7 +357,7 @@ model, comparison columns, labeled cylinder for a datastore, arrow markers). Rul
 
 ## Icons
 
-Use small inline lucide-style stroke SVGs (`stroke="currentColor"`, width ~18–19px) in section
+Use small inline lucide-style stroke SVGs (`stroke="currentColor"`, width ~18 to 19px) in section
 kickers so each section reads at a glance. `references/svg-diagrams.md` lists the common paths
 (layers, package/box, database/cylinder, sparkles, graduation-cap). Color follows the section accent
 via `currentColor`.
@@ -366,27 +366,27 @@ via `currentColor`.
 
 When the maintainer is going to take a course (e.g. the Anthropic Academy), add a `.courses` grid of
 `.course` cards that link to the REAL course URL and state in the `.cmeta` which capability/module
-each one unlocks — wiring study to outcome. Verify URLs are current via the web; don't trust an
+each one unlocks, wiring study to outcome. Verify URLs are current via the web; don't trust an
 aggregator blog. Anthropic Academy lives at `anthropic.com/learn`; individual courses at
 `anthropic.skilljar.com/<slug>`; runnable repos at `github.com/anthropics/{courses,
 prompt-eng-interactive-tutorial, claude-cookbooks}`; docs at `docs.claude.com`; MCP spec at
 `modelcontextprotocol.io`.
 
-## Workflow — building or enhancing a page
+## Workflow: building or enhancing a page
 
 1. **Know the subject cold first.** If you can't teach it, you can't write it. Web-search to fill
    genuine gaps before drafting (the maintainer expects the content to be *correct*, not vibes).
 2. **Draft into the identity.** New page: start from an existing page's `<head>` (tokens + grid
    texture + kit). Enhancement: insert `.teach` sections at the natural place in the flow.
 3. **Diagram the structural ideas.** Don't narrate what a picture should show.
-4. **Verify visually — always.** Serve the folder (`py -m http.server <port> --bind 127.0.0.1`;
+4. **Verify visually: always.** Serve the folder (`py -m http.server <port> --bind 127.0.0.1`;
    Playwright blocks `file://`), navigate to the section anchors, screenshot each new diagram, and
    actually look. SVG coordinate bugs are invisible in source and obvious in a screenshot. Fix and
-   re-shoot until clean. Element-screenshot each figure directly (`.fig >> nth=N`) — faster than
+   re-shoot until clean. Element-screenshot each figure directly (`.fig >> nth=N`), much faster than
    scrolling. The two failures that bite every time and look fine in source: (1) a long `<text>`
    with no `text-anchor="middle"` runs off the right edge of the `viewBox`; (2) two labels whose
    coordinates put them on top of each other. Both only show up in the rendered image.
-   On a LONG page (the roadmap, dashboard) a `fullPage` screenshot is too small to read — take
+   On a LONG page (the roadmap, dashboard) a `fullPage` screenshot is too small to read; take
    **viewport** shots scrolled to each diagram. `#anchor` + `scroll-behavior:smooth` does not settle
    before the shot (reading `window.scrollY` right after returns 0), so jump explicitly:
    `browser_evaluate(() => { const y = document.getElementById('ID').getBoundingClientRect().top +
@@ -428,25 +428,24 @@ prompt-eng-interactive-tutorial, claude-cookbooks}`; docs at `docs.claude.com`; 
 8. **Grep for em-dashes and purge them** before declaring done: search the `.html` for the "—"
    character and replace every hit with a comma/colon/period/paren (see the no-em-dash constraint above).
    This is the cheap mechanical check that catches the default-em-dash regression.
-9. **Clean up** the `*-check.jpeg`/`qa-*.jpeg` screenshots and `.playwright-mcp/` when done (Section
-   A housekeeping junk).
+9. **Clean up** the `*-check.jpeg`/`qa-*.jpeg` screenshots and `.playwright-mcp/` when done (housekeeping junk).
 
 ## Favicon / browser-tab identity
 
 Every page in the library shares one favicon: the **rising teal→amber→orange staircase** (the
 L1→L2→L3 thesis mark). It lives as `favicon.svg` in the workspace root and as a base64 data-URI
-`<link rel="icon" type="image/svg+xml" …>` (offline-safe, path-independent — survives the `guides/`
+`<link rel="icon" type="image/svg+xml" …>` (offline-safe, path-independent; survives the `guides/`
 wipe). New standalone pages should paste that same `<link>` into their `<head>`; the dashboard injects
-it via a `FAVICON` constant in `dashboard.py`. Don't invent a new mark per page — one identity. See the
+it via a `FAVICON` constant in `dashboard.py`. Don't invent a new mark per page; maintain one identity. See the
 [[dashboard-favicon]] memory for the exact data URI and how to regenerate it if the art changes.
 
 ## Worked examples
 
-Two canonical references for "what good looks like" — study one before building a new page:
-- `AI-Native Target Roles/AI-Native_Roadmap.html` (v11+) — a capability **scorecard**: "Start here"
+Two canonical references for "what good looks like": study one before building a new page:
+- `AI-Native Target Roles/AI-Native_Roadmap.html` (v11+): a capability **scorecard**: "Start here"
   orientation with the L1→L2→L3 thesis staircase, an Anthropic course track wired to modules, and a
   "Today's Focus" deep-dive teaching Claude Skills / Docker / RAG.
-- `AI-Native Target Roles/Orchestration_Handbook.html` (v1+) — a long-form **lesson** that flows
+- `AI-Native Target Roles/Orchestration_Handbook.html` (v1+): a long-form **lesson** that flows
   basics → orchestration → future: the "console" stack diagram, the toolkit knob-by-knob, a multi-agent
   workflow diagram, MCP-vs-A2A, and a self-healing loop. Good model for a single consolidated teach-through.
 Both use: plain-English claim → `.analogy` → inline-SVG diagram → `.qa` defend-it blocks → honest tie to

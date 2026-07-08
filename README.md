@@ -16,7 +16,7 @@ bash install.sh        # symlinks every skills/* into ~/.claude/skills (idempote
 ```
 
 Skills load at session start, so open a new Claude Code session to pick them up. Because
-they are symlinks, editing a skill in the repo updates the installed copy — one source of
+they are symlinks, editing a skill in the repo updates the installed copy: one source of
 truth, no drift. The skills are also portable to any runtime that reads the
 [agentskills.io](https://agentskills.io) `SKILL.md` format: copying a skill folder into
 that runtime's skills directory is enough.
@@ -38,7 +38,7 @@ One skill (`managing-assumption-debt`) is optionally hook-powered; `install.sh` 
   candidate. `tools/skill_usage_report.py` sweeps the local Claude Code transcripts to
   report fire-rates and flag never-invoked skills.
 - **Two-tier privacy: engine vs. fuel.** This repo holds the shareable *engine* of each
-  skill; the maintainer's personal context — logbooks, run logs, reader profiles, identity —
+  skill; the maintainer's personal context (logbooks, run logs, reader profiles, identity)
   is the *fuel*, and it stays out of git. The mechanism is structural, not disciplinary:
   only `*.template.md` schemas are tracked, the real files are gitignored, and the skills
   read the untracked local copies. A skill that needs personal state says "if one exists,
@@ -58,8 +58,8 @@ One skill (`managing-assumption-debt`) is optionally hook-powered; `install.sh` 
 A note on flavor: these are **live production copies, not genericized forks.** Some skills
 reference the maintainer's own workspace (a study-page dashboard, specific repos, a private
 reader profile) because that specificity is what makes them work daily. Treat those parts
-as a worked example of the pattern and swap in your own equivalents; the mechanisms —
-the personas, the gates, the checklists, the rationalization tables — are the portable part.
+as a worked example of the pattern and swap in your own equivalents; the mechanisms
+(the personas, the gates, the checklists, the rationalization tables) are the portable part.
 
 ## What is a skill?
 
@@ -95,7 +95,7 @@ peckworks-skills-laboratory/
 
 ## Contributing
 
-Start from `_template/SKILL.md`, but read [CONTRIBUTING.md](CONTRIBUTING.md) first — the
+Start from `_template/SKILL.md`, but read [CONTRIBUTING.md](CONTRIBUTING.md) first: the
 iron law is *no skill without a failing test first*, and that applies to edits too.
 
 ## License

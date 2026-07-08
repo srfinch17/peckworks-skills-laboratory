@@ -23,7 +23,7 @@ teaches the right thing. This applies to edits too, not just new skills.
 
 - **One skill per folder** under `skills/`, named in active voice (`creating-x`, not `x-creation`).
 - **`SKILL.md` frontmatter:** `name` (hyphens only) and `description` (third person,
-  "Use when…", triggers/symptoms only — no workflow summary). Max 1024 chars.
+  "Use when…", triggers/symptoms only; no workflow summary). Max 1024 chars.
 - **Keep it scannable:** overview with the core principle, a quick-reference table, a
   common-mistakes section. Use a small flowchart only for non-obvious decision points.
 - **One excellent example** beats five mediocre ones in different languages.
@@ -33,10 +33,10 @@ teaches the right thing. This applies to edits too, not just new skills.
 
 ## Skill types
 
-- **Technique** — a concrete method with steps (e.g. condition-based-waiting)
-- **Pattern** — a way of thinking about a class of problems
-- **Reference** — API docs, syntax guides, tool documentation
-- **Discipline** — enforces a rule under pressure (needs rationalization tables + red flags)
+- **Technique**: a concrete method with steps (e.g. condition-based-waiting)
+- **Pattern**: a way of thinking about a class of problems
+- **Reference**: API docs, syntax guides, tool documentation
+- **Discipline**: enforces a rule under pressure (needs rationalization tables + red flags)
 
 ## Starting a new skill
 
@@ -49,7 +49,7 @@ section, and the standing rule is:
 
 > When a skill visibly earns its keep in the field (catches a defect, prevents a bad commit,
 > saves a rework cycle), append a dated one-line win to its Provenance section **in the same
-> session** — the moment is the signal, and it does not survive until "later."
+> session**: the moment is the signal, and it does not survive until "later."
 
 - Keep entries scrubbed (this repo is public): what was caught and why the skill's mechanism
   caught it, never the maintainer's personal details.

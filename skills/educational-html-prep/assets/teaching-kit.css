@@ -1,5 +1,5 @@
 /* ============================================================================
-   teaching-kit.css — reusable educational layer for the maintainer's mission-control pages
+   teaching-kit.css: reusable educational layer for the maintainer's mission-control pages
    Paste into a new page's <style> AFTER its :root token block. Requires the THEME
    tokens (--ink, --signal, --have, etc.) to be defined. See SKILL.md for the tokens.
    ============================================================================ */

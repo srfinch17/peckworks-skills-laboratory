@@ -1,14 +1,14 @@
-# peckworks-skills-laboratory — Project Brief (read me first)
+# peckworks-skills-laboratory: Project Brief (read me first)
 
 A workshop for developing, testing, and refining **skills** for Claude and other LLM agents.
 Each skill is a self-contained `SKILL.md` (plus supporting files) in a flat `skills/` namespace.
 
 > **Privacy: this repo is PUBLIC** (github.com/srfinch17/peckworks-skills-laboratory, since
-> 2026-07-08 — every push ships to the world). NEVER write the maintainer's real name into any
+> 2026-07-08; every push ships to the world). NEVER write the maintainer's real name into any
 > file here (code, comments, docs, skills). Refer to "the user" / "the maintainer". Personal,
 > identity-specific content (a personal logbook, a real reader profile, named companies from
 > the job search, private-memory-store paths) lives in the maintainer's PRIVATE memory or in
-> gitignored local files — only `*.template.md` schemas are tracked. The full pre-public
+> gitignored local files; only `*.template.md` schemas are tracked. The full pre-public
 > history lives ONLY in the local `private-history` branch: NEVER push it anywhere.
 
 ## Layout
@@ -27,7 +27,7 @@ README.md · CONTRIBUTING.md    # what a skill is · the test-first workflow + c
   WITHOUT it (baseline), then verifying the skill changes that behavior. RED → GREEN →
   REFACTOR. Full process in `CONTRIBUTING.md`. This applies to edits too, not just new skills.
 - **Frontmatter rules:** `name` (letters/numbers/hyphens only); `description` third-person,
-  starts with "Use when...", describes ONLY triggering conditions — never summarize the
+  starts with "Use when...", describes ONLY triggering conditions; never summarize the
   workflow (agents follow the summary and skip the skill body if you do).
 - **Match the form to the failure:** prohibitions + rationalization tables for discipline
   failures; positive recipes/contracts for wrong-shaped output.
@@ -38,12 +38,12 @@ README.md · CONTRIBUTING.md    # what a skill is · the test-first workflow + c
 
 The `skills/` folder is the *workshop*, not a discovery path. Claude Code loads skills from
 `~/.claude/skills/`, so each skill is **symlinked** there (edit in the repo → the installed
-copy updates; one source of truth). Run `bash install.sh` to (re)create the symlinks — it is
+copy updates; one source of truth). Run `bash install.sh` to (re)create the symlinks: it is
 idempotent, auto-discovers every `skills/*/SKILL.md`, and won't clobber a real non-symlink.
 
 **Per-machine, and not synced by Dropbox:** `~/.claude/` lives outside Dropbox, so the install
 symlinks (and any hook wiring in `~/.claude/settings.json`) must be reconstituted on each
-machine — `install.sh` handles the symlink half. Skills load at session start, so restart to
+machine; `install.sh` handles the symlink half. Skills load at session start, so restart to
 pick up changes. (`.gitattributes` pins `*.sh` to LF so the script can't get CRLF-mangled.)
 
 ## Skills here
@@ -83,21 +83,21 @@ workspace. Provenance: 3 topics, 6+ passes, documented RED baseline (a clean-rea
 10/10 on recall while hiding real holes) and GREEN results in the skill's Provenance section.
 **Single source of truth (2026-07-05):** the maintainer's former personal copy was archived
 to private memory and replaced with the `install.sh` symlink, so this lab copy IS the live
-skill. Future "fold the lesson back into the skill" steps edit THIS file — which lands in a
+skill. Future "fold the lesson back into the skill" steps edit THIS file, which lands in a
 public repo, so each added lesson must stay generalizable and scrubbed (the skill already
 mandates recording only generalizable lessons, never learner-specific facts).
 
 ### `nemesis-review`  (status: field-proven; deployed)
 An adversarial review run by a fictional **expert who wants you to fail** but whose ego depends on
-being **unassailable**, so he will not fabricate, inflate, or cry wolf — and concedes (through
+being **unassailable**, so he will not fabricate, inflate, or cry wolf. He concedes (through
 gritted teeth) whatever is genuinely sound. The hostility is a lens for candor and effort; the
 honesty gate keeps the output signal. Three load-bearing elements: motivated (professional, not
 personal) hostility, the honesty gate, and a mandatory concession section (the trust anchor and
 highest-value signal). Skill: `skills/nemesis-review/SKILL.md`, with the reusable dispatch charter
 inline.
-- **Orchestration rules:** run the nemesis as an ISOLATED subagent beside 2–4 dispassionate domain
-  skeptics (breadth), then verify every finding yourself before acting — hostility's failure mode is
-  false positives.
+- **Orchestration rules:** run the nemesis as an ISOLATED subagent beside 2 to 4 dispassionate domain
+  skeptics (breadth), then verify every finding yourself before acting; hostility's failure
+  mode is false positives.
 - **Provenance:** first proven 2026-07-01 on the peckworks-bonsai trunk-engine plan (found net-new
   issues the polite reviewers missed; its concessions independently validated the architecture).
   Full episode lives in the maintainer's PRIVATE memory (`nemesis-review-works`), not this repo.
@@ -108,7 +108,7 @@ the mission-control THEME tokens, the reusable `assets/teaching-kit.css` compone
 inline-SVG patterns (`references/svg-diagrams.md`), and the serve+screenshot visual-verify
 workflow. The maintainer's most-used homegrown skill (11 invocations at port time). Scrubbed
 port of a personal skill that accreted rules across ~15 pages; some content is specific to the
-maintainer's career workspace (dashboard registration, back-link) — kept because this is the
+maintainer's career workspace (dashboard registration, back-link): kept because this is the
 live skill (symlinked), not a genericized fork.
 
 ### `emoting-on-8x8`  (status: field-proven; ported from personal 2026-07-05)

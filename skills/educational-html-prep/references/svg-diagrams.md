@@ -16,7 +16,7 @@ teal-tinted fill #102a28 · orange-tinted fill #17120a · amber-tinted fill #141
 ```
 
 Label font: `font-family="'IBM Plex Mono',monospace"` for codes/labels, `'IBM Plex Sans',sans-serif`
-for descriptive sub-text. SVG `<text>` does NOT wrap — use multiple `<text>` lines or `<tspan>`.
+for descriptive sub-text. SVG `<text>` does NOT wrap: use multiple `<text>` lines or `<tspan>`.
 
 ## Arrow marker (define once per SVG, reuse)
 
@@ -53,7 +53,7 @@ Perfect for: Claude Skill levels, scope/permission layers, context-window framin
 
 An outer "host" frame containing a horizontal row of isolated boxes sitting on a shared "engine" bar
 at the bottom. Optionally a small "blueprint → instance" flow above it (`docker run`). The teaching
-point — shared substrate (one OS) vs. per-box isolation — is carried by the layout itself.
+point: shared substrate (one OS) vs. per-box isolation, is carried by the layout itself.
 (See `#focus-docker` in the roadmap.)
 
 ## Pattern: comparison columns (A vs B, before/after, L2 vs L3)
@@ -80,7 +80,7 @@ doubles as a "levels of maturity" visual. (See the L1→L2→L3 staircase at `#s
       font-weight="700" fill="#2BE0CE">Qdrant</text>
 ```
 
-## Section kicker icons (lucide-style, ~18–19px, stroke=currentColor)
+## Section kicker icons (lucide-style, ~18 to 19px, stroke=currentColor)
 
 Drop inside a `.kicker`; color follows the section accent via `currentColor`.
 `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">…</svg>`
