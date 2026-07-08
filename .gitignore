@@ -1,0 +1,22 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Skill testing scratch / rendered output
+*.svg
+scratch/
+node_modules/
+
+# Private assumption-debt episodes must never live in this shareable repo.
+# Only LOGBOOK.template.md (the schema) is tracked; real episodes are private
+# and live in the maintainer's private memory store. Ignore any real LOGBOOK.md
+# so it cannot be committed by accident.
+LOGBOOK.md
+
+# A real reader profile is a personal dossier (one human's expertise, gaps,
+# habits). Only reader-profile.template.md is tracked; the live skill reads
+# the untracked local copy.
+reader-profile.md

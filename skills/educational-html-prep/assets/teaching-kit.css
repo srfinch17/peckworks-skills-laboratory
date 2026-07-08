@@ -1,0 +1,124 @@
+/* ============================================================================
+   teaching-kit.css — reusable educational layer for the maintainer's mission-control pages
+   Paste into a new page's <style> AFTER its :root token block. Requires the THEME
+   tokens (--ink, --signal, --have, etc.) to be defined. See SKILL.md for the tokens.
+   ============================================================================ */
+
+/* accent-barred teaching panel; pick ONE accent per section */
+.teach{border:1px solid var(--line); border-left:4px solid var(--signal); border-radius:14px; background:var(--ink-2); padding:22px 24px; margin-top:18px;}
+.teach.cyan{border-left-color:var(--have);} .teach.violet{border-left-color:var(--violet);} .teach.amber{border-left-color:var(--partial);}
+.teach .kicker{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--signal); margin:0 0 13px; display:flex; align-items:center; gap:9px;}
+.teach.cyan .kicker{color:var(--have);} .teach.violet .kicker{color:var(--violet);} .teach.amber .kicker{color:var(--partial);}
+.teach .kicker svg{width:19px; height:19px; flex:none;}
+.teach h3.tt{font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:1.32rem; letter-spacing:-.01em; margin:0 0 10px; color:#fff;}
+.teach p{margin:0 0 13px; color:#C7CEDA; font-size:.96rem; max-width:86ch;}
+.teach p strong{color:#fff; font-weight:600;}
+.teach p.lead{color:#EAEDF3; font-size:1.05rem;}
+.teach .mono{font-family:"IBM Plex Mono",monospace; color:var(--have);}
+.teach ul{margin:0 0 13px; padding-left:0; list-style:none;}
+.teach ul li{position:relative; padding-left:22px; margin-bottom:7px; font-size:.93rem; color:#C7CEDA;}
+.teach ul li::before{content:"▸"; position:absolute; left:4px; color:var(--signal);}
+.teach.cyan ul li::before{color:var(--have);} .teach.violet ul li::before{color:var(--violet);}
+
+/* figure + inline-SVG diagram frame (dotted-grid background = mission-control texture) */
+.fig{margin:6px 0 16px; border:1px solid var(--line); border-radius:12px; background:var(--ink);
+     background-image:radial-gradient(circle at 1px 1px, var(--line-soft) 1px, transparent 0); background-size:22px 22px;
+     padding:18px; overflow:auto;}
+.fig svg{display:block; margin:0 auto; max-width:100%; height:auto;}
+.figcap{font-family:"IBM Plex Mono",monospace; font-size:.7rem; color:var(--muted); text-align:center; margin-top:11px; letter-spacing:.05em;}
+.figcap b{color:var(--signal);}
+
+/* Feynman analogy aside */
+.analogy{border-left:3px solid var(--partial); background:#14110a; border-radius:0 10px 10px 0; padding:11px 16px; margin:0 0 15px; font-size:.94rem; color:#E7DCC4;}
+.analogy b{color:var(--partial); font-weight:600;}
+
+/* mini info grid */
+.tgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin:0 0 15px;}
+.tcard{background:var(--ink); border:1px solid var(--line); border-radius:10px; padding:12px 14px;}
+.tcard .th{font-family:"IBM Plex Mono",monospace; font-size:.67rem; letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px; color:var(--signal);}
+.tcard.c .th{color:var(--have);} .tcard.a .th{color:var(--partial);} .tcard.v .th{color:var(--violet);}
+.tcard .td{font-size:.85rem; color:#C7CEDA;}
+
+/* "defend it cold" interview Q&A */
+.qa{border:1px solid var(--line); border-radius:9px; padding:10px 14px; background:var(--ink); font-size:.88rem; color:#C7CEDA; margin-bottom:8px;}
+.qa .q{color:var(--signal); font-family:"IBM Plex Mono",monospace; font-size:.8em; font-weight:600; letter-spacing:.04em; margin-right:7px;}
+.qa b{color:#fff;}
+
+/* course / resource cards */
+.courses{display:grid; grid-template-columns:repeat(auto-fit,minmax(252px,1fr)); gap:12px; margin-top:16px;}
+.course{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:12px; background:var(--ink); padding:15px 16px; text-decoration:none; transition:border-color .15s ease, transform .15s ease;}
+.course:hover{border-color:var(--signal); transform:translateY(-2px);}
+.course .cn{font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:1.02rem; color:var(--text); margin:0 0 5px; line-height:1.2;}
+.course .cd{font-size:.84rem; color:#AEB6C4; flex:1; line-height:1.45;}
+.course .cmeta{font-family:"IBM Plex Mono",monospace; font-size:.65rem; color:var(--muted); margin-top:11px; display:flex; justify-content:space-between; align-items:center; gap:8px;}
+.course .cmeta .maps{color:var(--have);}
+.course .go{color:var(--signal); font-weight:600;}
+.course.feature{border-color:color-mix(in srgb,var(--signal) 60%, transparent); background:linear-gradient(180deg,#17120a,var(--ink));}
+.course.feature .cn{color:#fff;}
+
+/* ---- .cmp side-by-side comparison (added 2026-06-30) ----
+   "B explained via the A you already know" topics: two labeled code panels.
+   Use --adjacent for the known side (.cs), --have for the new side (.py). */
+.cmp{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:0 0 14px;}
+.cmp .col{display:flex; flex-direction:column; min-width:0;}
+.cmp .lbl{font-family:"IBM Plex Mono",monospace; font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:5px 10px; border-radius:8px 8px 0 0; border:1px solid; border-bottom:none;}
+.cmp .lbl.cs{color:var(--adjacent); background:#0e1422; border-color:var(--adjacent);}
+.cmp .lbl.py{color:var(--have); background:#0a1f1d; border-color:var(--have);}
+.cmp pre{margin:0; border-radius:0 0 10px 10px; height:100%;}
+.cmp .col.cs pre{border-left:3px solid var(--adjacent);}
+.cmp .col.py pre{border-left:3px solid var(--have);}
+@media(max-width:640px){.cmp{grid-template-columns:1fr;}}
+
+/* ---- .cmdtbl catalog table (added 2026-06-30) ----
+   compact list of many reference items; group several into themed .teach blocks. */
+.cmdtbl{width:100%; border-collapse:collapse; margin:2px 0 6px; font-size:.88rem;}
+.cmdtbl td{padding:7px 10px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+.cmdtbl tr:last-child td{border-bottom:none;}
+.cmdtbl .c{font-family:"IBM Plex Mono",monospace; color:var(--have); white-space:nowrap; width:1%; padding-right:18px;}
+.cmdtbl .d{color:#C7CEDA; line-height:1.45;}
+.pill{font-family:"IBM Plex Mono",monospace; font-size:.58rem; font-weight:600; letter-spacing:.05em; padding:1px 6px; border-radius:5px; margin-left:7px; vertical-align:middle; color:var(--violet); border:1px solid color-mix(in srgb,var(--violet) 50%,transparent); background:color-mix(in srgb,var(--violet) 12%,transparent);}
+.pill.flow{color:var(--partial); border-color:color-mix(in srgb,var(--partial) 50%,transparent); background:color-mix(in srgb,var(--partial) 12%,transparent);}
+
+/* ---- .step + .chunk worked-trace components (added 2026-07-05, Learning_RAG v4) ----
+   For a WORKED TRACE: one real input walked through every pipeline stage. .step labels the
+   stages; .chunk renders a retrieved/intermediate item as a card with a score chip. Watermark
+   any invented numbers ("sim 0.78") per the simulated-output rule in SKILL.md. */
+.step{font-family:"IBM Plex Mono",monospace; font-size:.78rem; font-weight:600; color:var(--signal); letter-spacing:.08em; text-transform:uppercase; margin:16px 0 8px;}
+.chunk{background:var(--ink); border:1px solid var(--line); border-radius:10px; padding:11px 14px; margin-bottom:8px;}
+.chunk .ch{display:flex; align-items:baseline; gap:10px; margin-bottom:5px; flex-wrap:wrap;}
+.chunk .cn{font-family:"IBM Plex Mono",monospace; font-size:.75rem; font-weight:600; color:var(--signal);}
+.chunk .cs{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--muted);}
+.chunk .cscore{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600; color:var(--have); background:#102a28; border:1px solid var(--have); border-radius:20px; padding:1px 9px;}
+.chunk .cscore.low{color:var(--muted); background:var(--ink-3); border-color:var(--gap);}
+.chunk .ct{font-size:.85rem; color:#AEB7C6; font-style:italic;}
+
+/* ---- .evtbl starter-eval / expectation table (added 2026-07-05) ----
+   Question → expected-source pairs the learner can run verbatim; mark a refusal/negative
+   probe row with class="probe" (expected answer = NO answer). */
+table.evtbl{width:100%; border-collapse:collapse; margin:0 0 13px; font-size:.88rem;}
+.evtbl th{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:6px 10px; border-bottom:1px solid var(--line);}
+.evtbl td{border-top:1px solid var(--line-soft); padding:8px 10px; vertical-align:top; color:#C7CEDA;}
+.evtbl td:last-child{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--have);}
+.evtbl tr.probe td:last-child{color:var(--deny);}
+
+/* ---- .backdash back-to-dashboard topbar pill (added 2026-06-30) ----
+   First child of the topbar .wrap. href is per-file: "../"*depth + "CareerDashboard.html".
+   Pair with the staircase mark SVG (favicon bars) + a chevron + "Dashboard". */
+.backdash{display:inline-flex; align-items:center; gap:7px; text-decoration:none; flex:none;
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:600; letter-spacing:.02em;
+  color:var(--muted); padding:5px 11px 5px 8px; border:1px solid var(--line); border-radius:20px;
+  background:var(--ink-2); transition:color .14s, border-color .14s, background .14s; white-space:nowrap;}
+.backdash:hover{color:var(--text); border-color:color-mix(in srgb,var(--signal) 50%,var(--line)); background:var(--ink-3);}
+.backdash .bchev{width:13px; height:13px; color:var(--signal); flex:none;}
+.backdash .bmark{width:17px; height:17px; flex:none;}
+.backdash span{margin-top:1px;}
+@media(max-width:560px){.backdash span{display:none;}}
+
+/* ---- .mtbl translation-mapping table (added 2026-07-05, Learning_VSCode) ----
+   The .cmp counterpart for TOOL/UI translation topics: known thing (blue) -> new twin (teal)
+   -> plain "how you get there". Code-to-code translation uses .cmp; feature-to-feature uses this. */
+.mtbl{width:100%; border-collapse:collapse; margin:0 0 14px; font-size:.88rem;}
+.mtbl th{font-family:"IBM Plex Mono",monospace; font-size:.67rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:6px 10px; border-bottom:1px solid var(--line);}
+.mtbl td{padding:7px 10px; border-bottom:1px solid var(--line-soft); color:#C7CEDA; vertical-align:top;}
+.mtbl td.k{font-family:"IBM Plex Mono",monospace; color:var(--adjacent); white-space:nowrap; font-size:.82rem;}
+.mtbl td.v{font-family:"IBM Plex Mono",monospace; color:var(--have); white-space:nowrap; font-size:.82rem;}
