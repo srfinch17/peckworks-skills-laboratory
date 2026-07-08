@@ -33,6 +33,10 @@ README.md · CONTRIBUTING.md    # what a skill is · the test-first workflow + c
   failures; positive recipes/contracts for wrong-shaped output.
 - One excellent example beats five mediocre ones. Separate files only for heavy reference or
   reusable tools.
+- **Cost discipline:** low-judgment work (bulk mechanical edits, sweeps, memory/notes
+  housekeeping, CLAUDE.md touch-ups) goes to cheap subagent models (haiku); the main model
+  writes the rules, reviews the output (cheap models introduce real defects), and owns
+  anything committed or pushed.
 
 ## Installing these skills
 
