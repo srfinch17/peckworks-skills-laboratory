@@ -3,10 +3,13 @@
 A workshop for developing, testing, and refining **skills** for Claude and other LLM agents.
 Each skill is a self-contained `SKILL.md` (plus supporting files) in a flat `skills/` namespace.
 
-> **Privacy:** this repo is distributable. NEVER write the maintainer's real name into any
+> **Privacy: this repo is PUBLIC** (github.com/srfinch17/peckworks-skills-laboratory, since
+> 2026-07-08 — every push ships to the world). NEVER write the maintainer's real name into any
 > file here (code, comments, docs, skills). Refer to "the user" / "the maintainer". Personal,
-> identity-specific content (e.g. a personal logbook) lives in the maintainer's PRIVATE memory,
-> never in this repo.
+> identity-specific content (a personal logbook, a real reader profile, named companies from
+> the job search, private-memory-store paths) lives in the maintainer's PRIVATE memory or in
+> gitignored local files — only `*.template.md` schemas are tracked. The full pre-public
+> history lives ONLY in the local `private-history` branch: NEVER push it anywhere.
 
 ## Layout
 
