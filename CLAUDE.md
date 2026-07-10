@@ -125,3 +125,24 @@ One canonical VERSION file stamped into every independently-deployed artifact, e
 self-reporting, plus a drift check and the "a bump is not live until its artifact redeploys"
 rule. Distilled from the esp32s3matrix/expression-studio repo split; also the pattern behind
 clipmeta's release flow.
+
+### `feynman-explanation`  (status: born here 2026-07-10; scrubbed; RED/GREEN tested)
+The plain-language explanation discipline: one idea at a time, a real-world analogy before the
+code, define the SYMBOL (not just the logic) and spell out the acronym the FIRST time each
+appears, kill "obviously", open the real code instead of quizzing memory, and proofread output
+for jargon density + length at write-time. Includes the field-proven techniques (map-first and
+"I'll hold it", explain with actual values not abstractions, collapse overwhelm to one next
+action, the whole-tiny-TDD-loop unit of progress, explain-back checkpoints) and the
+training-wheels protocol (a per-project "mastered" list; once the learner owns an item, stop
+re-glossing it, per item). Two-tier like the others:
+- **Engine (here, shareable):** `skills/feynman-explanation/SKILL.md` + `MASTERED.template.md`
+  (the mastered-list schema). Scrubbed to "the learner"/"the user".
+- **Fuel (per-project, local):** the real `MASTERED.md` lives in whatever project is being
+  worked in and is gitignored; only the template is tracked here.
+- Scrubbed public port of the maintainer's private, high-priority communication rule
+  (`preferences.md`, Communication, 2026-07-09: ADD + new-to-a-language + Feynman duty,
+  training-wheels-off-on-request, spell-out-acronyms). Seeded from field notes taken during the
+  2026-07-09/10 codebase-rag eval + CI build, where the method demonstrably kept an overwhelmed
+  learner engaged and able to defend the result. **Testability note:** unlike the memory-type
+  skills, most of this one is write-time output shaping and so is genuinely testable in a single
+  isolated run; only the mastered-list persistence is the un-testable cross-session layer.

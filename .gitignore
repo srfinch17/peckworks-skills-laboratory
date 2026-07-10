@@ -20,3 +20,8 @@ LOGBOOK.md
 # habits). Only reader-profile.template.md is tracked; the live skill reads
 # the untracked local copy.
 reader-profile.md
+
+# A real feynman "mastered" list records one learner's confirmed knowledge, so
+# it is personal and per-project. Only MASTERED.template.md (the schema) is
+# tracked; ignore any real MASTERED.md so it cannot be committed by accident.
+MASTERED.md
