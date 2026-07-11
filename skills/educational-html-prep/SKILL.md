@@ -295,6 +295,37 @@ satisfied; the READING EXPERIENCE was never re-checked. Permanent rules:
   terminal output, including the payoff moment (the cache hit, the failure twin). Descriptions of
   commands followed by interview Q&A teach recitation, not the tool.
 
+### Rules added 2026-07-10 (Learning_CodebaseRAG, a defend-cold build log of the maintainer's OWN measured project)
+A project build-log page (a diary of real changes + measured results, not a concept primer) has failure
+modes a concept page does not. An armed nemesis caught three claims that would each have detonated on the
+first interview follow-up; all three passed the reader-twin, which checks clarity, not truth. Permanent rules:
+- **Verify every measured number against the repo's own source-of-truth, not the conversation.** On a page
+  that reports the maintainer's own results, a figure written from memory or a session summary is a
+  provenance trap: a fabricated "5 of 18 answers lost" contradicted his own `DECISIONS.md` ("7 of 18"), the
+  exact number an interviewer who skims the public repo catches. ARM the nemesis panel with the ground-truth
+  files (the decisions log, the results JSON, the actual handler) and instruct it to diff every quantitative
+  claim against them. A number that disagrees with the maintainer's own repo is worse than an unmotivated
+  one (the 2026-07-06 origin rule): it reads as a bluff, which is his #1 high-stakes hazard.
+- **When a build-log narrates several sequential changes, check whether a later one NULLIFIES an earlier
+  one, and make the page own the interaction.** Two individually-good changes shown as two clean wins is a
+  trap: here, raising the refusal floor (change 1) was silently retired by the embedding swap (change 2),
+  which lifted every score above the floor so it now catches zero of the fakes it was tuned to catch. The
+  nemesis asks "didn't your second change undo your first?", and the honest answer ("yes, and that is why
+  refusal now rests on the other layer") is MORE sophisticated than either win alone. Trace change-order
+  effects explicitly.
+- **Scope every absolute privacy/security negative to the exact stage; they are almost always false at some
+  boundary.** "No code leaves the machine" was true for ingest/embed/retrieve but false at answer time (the
+  retrieved passages go to the cloud model). Rewrite absolute negatives ("never", "fully offline", "nothing
+  leaves") as stage-scoped claims. And when the maintainer's OWN public repo makes the same loose claim
+  (this one did, in README + DECISIONS), FLAG it to him as a public-repo accuracy bug; do not silently copy
+  it onto the study page. External-boundary claims are his hard-stop territory.
+- **Both SVG failure modes from the workflow step-4 list bit again on the first render**, confirming the
+  serve+screenshot gate is non-optional: a long ceiling label ran off the `viewBox` right edge, and the
+  angle-labels plus their arc collided into garbled text at a shared origin. Both looked fine in source. Fixes
+  were to left-anchor / shorten the overflowing label, and to delete the redundant label and spread the rest
+  into the empty wedges around the origin. (Windows note: `Start-Process python -m http.server` with a
+  spaces-path `--directory` arg silently exits; pass `-WorkingDirectory` instead.)
+
 ### Component added 2026-07-07 (SCROLLSPY: active-section highlight in the jump bar)
 **STANDING RULE: every page with a `.navcodes` topbar gets the scrollspy.** As the reader scrolls, the
 jump link for the section they're reading glows (orange `--signal`), so the bar doubles as a "you are here"

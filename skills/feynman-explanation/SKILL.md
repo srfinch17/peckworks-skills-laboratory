@@ -123,6 +123,14 @@ Keep defining the ones that are not yet on the list.
   together; do not test their recall of their own codebase.
 - **Re-glossing a mastered item.** Once it is on the mastered list, defining it again is friction,
   not help.
+- **An analogy whose vehicle is less familiar than the concept.** An analogy exists to lower the
+  mental load, so its everyday image must be MORE familiar to THIS reader than the thing it explains.
+  Explaining "a model's output dimension is fixed" with "like a SHA-256 hash is always 256 bits"
+  teaches the known via the unknown for anyone who does not already know hashing: backwards. Pick a
+  vehicle from the reader's world (for a general learner, "every US ZIP code has five digits"; for a
+  developer audience the hash is fine). Calibrate the analogy to the audience, not to yourself.
+  (Field case 2026-07-10: a cold reader-twin flagged exactly the SHA-256-for-dimension analogy as a
+  stall; swapped to ZIP-code and it landed.)
 
 ## Red Flags
 
