@@ -326,6 +326,42 @@ first interview follow-up; all three passed the reader-twin, which checks clarit
   into the empty wedges around the origin. (Windows note: `Start-Process python -m http.server` with a
   spaces-path `--directory` arg silently exits; pass `-WorkingDirectory` instead.)
 
+### Rules added 2026-07-11 (Learning_RAG v5: flight-plan-to-diary refresh + the interactive vector globe)
+A page written as a mission FLIGHT PLAN got refreshed into a DIARY after the mission actually ran, then a
+library-free interactive 3-D widget was added. New rules, all field-proven this run:
+- **Refresh to a diary, but never fabricate the diary.** Flip "you will" to past tense ONLY for events the
+  record supports. A prediction with no receipt ("you will hit this chunking hazard") becomes a present-tense
+  hazard note, not a fake memory; converting it to "you hit this" invents an observation, the exact
+  provenance trap the maintainer got burned by.
+- **Arm the nemesis with the per-item RESULT files, not just the decision log.** This run's two best catches
+  lived in per-question eval JSON that no prose summary mentioned: a guardrail whose measured score at the
+  shipped config was 0-of-4 while the page said "refusals measured ✓", and two interventions that both hit
+  the same 61% headline while sharing only 7 of their 11 item-level hits. Two rules fall out: when two
+  aggregate numbers "match," diff the per-item records before the page says "confirmed"; and when a page
+  says "measured," make it state the number, especially when the number is 0. The honest, caveated version
+  of both reads MORE senior than the clean version, not less.
+- **Reviewers race your fixes.** Agents dispatched before or during a fix batch report findings against the
+  file as it was when they read it; three of four reviewers this run flagged at least one already-fixed
+  item. Triage every finding against the CURRENT file before re-fixing, or you will churn.
+- **An interactive canvas widget fits the offline-first constraints.** ~150 lines of hand-rolled vanilla-JS
+  3-D on a `<canvas>` (rotation matrix, orthographic projection with mild perspective, painter-sort) runs
+  inline with no libraries and works from `file://`. Design lessons: (a) find the picture where an invariant
+  becomes physical: length-1 normalized vectors mean every chunk lives ON one unit sphere, so meaning IS
+  direction and cosine IS closeness on the globe (analogy: cities on a globe, angle from the core = near);
+  (b) place stand-in points at REAL angles matching the page's quoted scores so the rendered geometry is
+  honest, and watermark where the scores came from; (c) give every point a fixed per-label dy offset:
+  an interactive view collides at SOME rotation, and the INITIAL frame is the one to screenshot-verify
+  (it is also all a prefers-reduced-motion user ever sees, so gate auto-rotate on that media query);
+  (d) auto-rotate until first pointerdown, wheel-zoom clamped with preventDefault only over the canvas.
+- **Verify an interactive beyond a screenshot.** A static shot proves one frame. Also: wrap init in
+  try/catch setting `window.__ok` / `window.__err` and read them via browser evaluate; dispatch synthetic
+  PointerEvents to exercise drag and click; count non-transparent pixels via `getImageData` to prove the
+  canvas painted; and check one interaction's readout against the math (a clicked cos 0.45 must report
+  acos = 63 degrees). All four caught nothing this run only because they existed.
+- **An un-numbered "Interlude ·" card beats inserting a numbered section.** A new mid-page teaching block
+  as a `.teach` card inside an existing section avoids renumbering nav codes AND every "section NN"
+  cross-reference in prose, which is where renumbering errors breed.
+
 ### Component added 2026-07-07 (SCROLLSPY: active-section highlight in the jump bar)
 **STANDING RULE: every page with a `.navcodes` topbar gets the scrollspy.** As the reader scrolls, the
 jump link for the section they're reading glows (orange `--signal`), so the bar doubles as a "you are here"
