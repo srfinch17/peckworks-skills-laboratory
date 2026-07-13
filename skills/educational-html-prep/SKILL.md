@@ -30,9 +30,12 @@ A good page here is not a styled dump of notes. It makes a beginner *get it*. Fo
    `.analogy` aside.
 3. **A diagram.** If the idea has structure, flow, or levels, *draw it* as inline SVG. A picture
    replaces three paragraphs. (See `references/svg-diagrams.md`.)
-4. **"Defend it cold" Q&A.** 2 to 4 `.qa` blocks with the exact interview questions and crisp answers.
-   This is the bridge from "I read it" to "I can say it in a screen." The maintainer is studying to *defend
-   every line live* (the lesson of a lost final-round interview), so anticipate the follow-up that exposes a bluff.
+4. **"Defend it cold" Q&A.** 2 to 4 `.qa` blocks: the hard questions the topic invites, answered so the
+   reader can CHECK whether he truly understands (could he re-derive this answer, closed-book, in his own
+   words?). Defend-cold means UNDERSTANDING deep enough that any question gets a real answer; it does NOT
+   mean rehearsing lines. The maintainer is studying to genuinely know the thing (the lesson of a lost
+   final-round interview was shallow ownership, and a scripted answer is shallow ownership in nicer
+   clothes), so anticipate the follow-up that exposes a bluff, and answer it by teaching the mechanism.
 5. **Tie it to what he's actually built.** Map the concept to a real repo (peckworks-rag-lab,
    appointmentflowoptimizer, esp32s3matrix) so it's anchored, not abstract, but never claim a skill
    he doesn't have. HAVE / PARTIAL / GAP must stay honest.
@@ -42,6 +45,19 @@ the how.
 
 ## Non-negotiable constraints (these are the maintainer's standing rules)
 
+- **PRIVATE TEACHING TOOL, understanding-first (recalibrated 2026-07-13, the maintainer's explicit
+  correction).** A learner page exists to TEACH the maintainer, full stop. It is never shown to anyone
+  else and is not a showcase; the interview matters only as the place understanding gets tested, never as
+  the thing the page optimizes. Concretely BANNED in any learner page: scripted first-person answers in
+  quotes for the reader to recite; impression-management coaching ("what to volunteer", "how to sound",
+  "what to say in a screen"); framing any section as interview strategy. `.qa` blocks are comprehension
+  self-tests answerable in the reader's own words. Honesty bookkeeping (HAVE/PARTIAL/GAP, provenance
+  lines) STAYS, phrased as facts about his current knowledge, not tactics. When a QA panel uses an
+  interviewer persona, apply its findings about TRUTH (overclaims, contradictions, terms used but never
+  taught) and translate its findings about PERFORMANCE (a better line to say) into teaching the
+  underlying mechanism, or drop them. (Origin: Learning_React v1.1 drifted into scripted answers and
+  volunteering tactics; the maintainer caught it: these pages "are not a resume showcase, they are
+  supposed to be a feynman like tool to teach me something.")
 - **Match the identity; never invent a new palette.** Reuse the THEME tokens below. Bright,
   saturated, clearly-distinct sections with icons and colorful chips. This OVERRIDES any generic
   "take an aesthetic risk" design instinct; the whole library must feel like one product.
