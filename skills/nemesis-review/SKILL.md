@@ -21,6 +21,12 @@ the work validating a design is strong evidence it is sound.
   architecture, a demo, an AI/Claude claim to be defended live.
 - When self-review keeps passing but something feels unexamined. Self-review catches typos
   and contradictions; nemesis review catches load-bearing wrong assumptions.
+- After an autonomous or self-judged build, BEFORE reporting it done. The author-as-judge
+  loop drifts and cannot see itself doing it: safety thresholds get loosened step-by-step,
+  each time to clear the author's own verification, each step feeling locally principled.
+  Gate or threshold changes made during the run to pass the run's own checks are the panel's
+  prime hunting ground (field case 2026-07-11: three loosenings in one pass, final threshold
+  6x past the measured evidence, caught only by the hostile lens).
 - **When NOT to use:** exploratory/early ideation where you want breadth, not a takedown; or
   as the ONLY review (one hostile lens is narrow, pair it with domain-diverse reviewers).
 
@@ -187,4 +193,32 @@ analytic to measured surfaced real effects the clean math hid, and one finding w
 directionally right but 2x too pessimistic, so verify a finding's MAGNITUDE empirically
 before redesigning around it.
 
-See [[nemesis-review-works]] in memory for all three full episodes.
+Fourth success 2026-07-11 on the peckworks-bonsai trunk+limb perfection pass, run AFTER a
+fully autonomous self-judged build as the gate before reporting done (nemesis on opus +
+FDM-physics and geometry skeptics on sonnet, repo access, told "the suite is green - hunt
+what tests don't cover"). New lessons baked in above: (1) the panel is the antidote to
+author-as-judge drift - it caught a hard safety gate loosened three times in one pass, each
+time to clear the author's own sweep, with the final threshold 6x past the measured
+evidence; no self-review had flagged it because each step felt locally principled. (2) Both
+hand-provable BLOCKERs sat in parameter corners the test suite never visited (slider
+extremes) - point at least one skeptic explicitly at the reachable-input corners, not the
+defaults. (3) Re-derive disputed numbers, third confirmation: a nemesis bound (13 azimuth
+placements) was refuted by re-derivation (only 8 reachable) while its adjacent qualitative
+point survived - one finding dropped, its neighbor banked.
+
+Fifth success 2026-07-12 on a public GitHub Pages portfolio page (codebase-rag repo tour), run
+as the pre-push gate: nemesis on the main model, hiring-manager reader-twin + IR-domain skeptic
+on a cheaper tier, all isolated, one up-front batch. Division of labor held exactly: the
+sympathetic lenses caught clarity and precision defects; only the nemesis, instructed to follow
+the page's own directions to its evidence, found both publish-blockers: (1) the "receipts
+committed in this repo" were gitignored - present on disk, absent from the public tree
+(`git ls-files`, not the filesystem, is the check); (2) one number copied faithfully from the
+project's own decision log was refuted by the rawest committed record (recomputed 6, the log
+said 7). New refinement: arm the nemesis with the RAW per-item records and license it to attack
+the curated ground truth itself - a decision log is a summary, not a source; when layers
+disagree, the rawest record wins and both the artifact and the log get corrected. The
+concession cross-check also paid again: the domain skeptic verified a figure's numbers as
+CORRECT while the nemesis proved the same figure's framing asserted geometry that did not
+exist - numbers-true and framing-true are separate verifications.
+
+See [[nemesis-review-works]] in memory for the full episodes.

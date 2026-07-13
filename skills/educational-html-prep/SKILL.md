@@ -362,6 +362,50 @@ library-free interactive 3-D widget was added. New rules, all field-proven this 
   as a `.teach` card inside an existing section avoids renumbering nav codes AND every "section NN"
   cross-reference in prose, which is where renumbering errors breed.
 
+### Rules added 2026-07-12 (the codebase-rag public Pages tour: a product page that cites its own repo as receipts)
+A public repo-tour page (portfolio angle, hiring-manager reader, served by GitHub Pages from the repo
+root) shipped after a three-lens panel (reader-twin + IR-domain skeptic + armed nemesis). New rules:
+- **"Committed in this repository" is a claim to verify with `git ls-files`, never the local disk.**
+  The page's whole thesis was receipts; the receipts (eval result JSONs) were GITIGNORED: present
+  locally, absent from the public repo. The reader-twin and domain skeptic both sailed past it (they
+  read the artifact); only the nemesis, told to follow the page's own directions to the evidence,
+  checked what was tracked. Prefer fixing by COMMITTING the receipts (rescope the ignore) over
+  softening the claim; committing preserves the page's thesis.
+- **The project's own ground-truth docs are reviewable claims, not ground truth.** A number copied
+  faithfully from the decision log ("7 of 18") was refuted by the rawest committed record (per-item
+  eval JSON computes 6). Layering: raw result records > summary/decision docs > prose. Instruct the
+  nemesis to RECOMPUTE load-bearing numbers from the raw layer, not cross-reference the summary; a
+  page can be 100% faithful to a wrong source. When layers disagree, correct the artifact AND the
+  mid-layer doc in the same change, and hunt the wrong number in SIBLING artifacts (it had already
+  propagated to two learner pages).
+- **When a viz composites disparate measurements onto one shared axis, the caption must split real
+  from staged.** Plotting five different questions' top-chunk cosines against a single "reference
+  question" axis reads as real geometry; the honest caption is "real measured cosines, staged
+  layout," naming the arbitrary dimension (azimuth, chosen for label spacing). Interactive readouts
+  must not re-state the fiction ("from its question," not "from the question"). Numbers-true and
+  framing-true are separate checks: the domain skeptic verified every cosine CORRECT while the
+  nemesis correctly attacked the same figure's geometry claim.
+- **Real clustered data breaks canvas labels; split label from readout.** Honest scores all landed
+  within ~52° of the pole, and long labels collided at the initial frame. Fix: short on-canvas
+  labels ("hit · 0.85") + the full name in the click readout. Related layout traps, both bit this
+  run: 9+ navcodes escape a FIXED-height 54px topbar (use min-height + vertical padding so the
+  second row stays inside the bar), and under ~720px wide the page needs a media block (nav as a
+  single scrollable row, wide tables display:block overflow-x) or mobile gets a 300px sticky bar
+  plus horizontal body scroll.
+- **Don't self-label honesty.** The reader-twin counted "honest" as self-description 8+ times;
+  repeated trust-narration reads as the exact tell it tries to prevent. Disclose the ugly number
+  plainly where it matters and let the receipts do the trust work. Same family: never narrate the
+  epistemic strategy ("this is stated deliberately because...") - just state the fact.
+- **Product-page voice, confirmed again:** no interview/defend framing on a public product page even
+  when its content was born from interview-prep material (the commissioner said so explicitly);
+  repo-tour voice, decision-fork cards instead of Q&A drills, and glosses still at FIRST use in
+  reading order including hero chips and stat-tile cells (MCP, MRR, and the target repo's name were
+  the misses this run).
+- Tooling note: the Playwright MCP screenshot tool writes only inside the served repo's
+  `.playwright-mcp/` (its allowed root); save shots there by absolute path, and DELETE the folder
+  plus any stray QA files before committing - the nemesis flagged the debris as a publish tripwire
+  one `git add .` away from shipping.
+
 ### Component added 2026-07-07 (SCROLLSPY: active-section highlight in the jump bar)
 **STANDING RULE: every page with a `.navcodes` topbar gets the scrollspy.** As the reader scrolls, the
 jump link for the section they're reading glows (orange `--signal`), so the bar doubles as a "you are here"
