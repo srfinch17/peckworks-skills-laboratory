@@ -54,6 +54,8 @@ One skill (`managing-assumption-debt`) is optionally hook-powered; `install.sh` 
 | `educational-html-prep` | The Feynman teaching-page craft: plain claim, analogy, inline-SVG diagram, defend-cold Q&A, plus a reusable CSS component kit and visual-verify workflow | ~15 study pages of accreted rules and repeat mistakes |
 | `versioning` | One canonical VERSION stamped into every independently-deployed artifact, each self-reporting, with a drift check | Multi-artifact repos where "is the fix actually deployed?" had no answer |
 | `emoting-on-8x8` | Making expressions legible on a 64-pixel LED matrix at low brightness: silhouette test, brightness-band color math, motion-carries-meaning | An ESP32-S3 matrix that kept rendering mud |
+| `feynman-explanation` | Explaining to someone working cold: map first, analogy before code, every symbol and acronym defined at first use, a per-learner mastered list so training wheels come off per item | A sharp learner who kept getting buried under unglossed jargon and walls of text |
+| `avoid-sycophantic-blowback` | Kills the hype-then-crash cycle when reporting news to a human: calibration before interpretation, a signal-strength taxonomy, mood counterweighting, and a one-word recalibration codeword | A staffing firm's templated shortlist email that got amplified into an emotional crash |
 
 A note on flavor: these are **live production copies, not genericized forks.** Some skills
 reference the maintainer's own workspace (a study-page dashboard, specific repos, a private
