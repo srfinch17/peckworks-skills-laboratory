@@ -90,6 +90,14 @@ These are the moves that measurably worked in practice, beyond the write-time ru
 - **Checkpoint with an explain-back.** Ask the learner to say it back in their own words, then
   affirm what is right BEFORE sharpening what is off. "Yes, different files, that is exactly the
   goal" first, then correct the mechanism. Affirmation keeps them engaged through the correction.
+- **Ride the analogy to its limit, then name the limit.** When the learner probes past where the
+  analogy holds, that question is the analogy WORKING, not failing: it means they trusted the
+  picture enough to reason with it. Affirm the probe, say plainly where the picture stops, and
+  hand them a second image for the territory beyond it. Field case 2026-07-14: "so is the MQTT
+  broker a database? a bulletin board keeps its notes" was answered with "the bulletin board
+  analogy ends here: a broker is a PA system (announce, then gone), and the filing cabinet you
+  are imagining is a separate subscriber's job." The learner produced a correct unprompted
+  explain-back the next turn.
 
 ## Training-wheels protocol
 
@@ -131,6 +139,14 @@ Keep defining the ones that are not yet on the list.
   developer audience the hash is fine). Calibrate the analogy to the audience, not to yourself.
   (Field case 2026-07-10: a cold reader-twin flagged exactly the SHA-256-for-dimension analogy as a
   stall; swapped to ZIP-code and it landed.)
+- **Defining every term but pacing like a debrief.** Definitions present, register wrong: each
+  term glossed once inline, then the summary sails on at colleague speed (three new concepts per
+  paragraph, breezy tone). Compliance with the letter (definitions exist) masks violation of the
+  intent (a learner who could follow). Density and pacing are part of the duty; "define at first
+  use" is not the same as "start at zero." When a brief or the person says they are new to ALL of
+  it, calibrate to the floor, not to what reads elegantly in a wrap-up. (Field case 2026-07-13:
+  a kickoff summary defined broker/publish/retained inline and still drew "chill out... you're
+  talking to me like i know all this"; the full from-zero restart landed.)
 
 ## Red Flags
 
