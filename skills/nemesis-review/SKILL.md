@@ -221,4 +221,18 @@ concession cross-check also paid again: the domain skeptic verified a figure's n
 CORRECT while the nemesis proved the same figure's framing asserted geometry that did not
 exist - numbers-true and framing-true are separate verifications.
 
+Sixth success 2026-07-13 on a pre-build teaching page for a phased IoT pipeline (nemesis +
+reader-twin + spec-level domain skeptic, all on a cheaper tier, one up-front batch, dispatched
+only after the visual/diagram gate so reviewers read the final layout). Division of labor held
+a sixth time: the domain skeptic verified ~30 protocol claims (0 critical) and the reader-twin
+passed the page's own closed-book self-test, while only the nemesis found the BLOCKER - a
+mechanism (MQTT last-will offline detection) narrated generically that is only true in phase 2
+of the project's own two-phase plan, because in phase 1 a bridge process, not the device, holds
+the broker connection. The sympathetic lenses verified the mechanism correct IN ISOLATION and
+sailed past; the nemesis asked whose connection it is per phase. Two refinements: (1) when the
+artifact teaches a PHASED build, arm the nemesis with the project's plan doc and instruct it to
+test every mechanism against EACH phase, not the end state; (2) when a finding forces an
+artifact fix, hunt the same claim in the plan doc the artifact derives from - the ungated
+version was there too, and fixing one document leaves the pair reinforcing the same false floor.
+
 See [[nemesis-review-works]] in memory for the full episodes.

@@ -422,6 +422,31 @@ root) shipped after a three-lens panel (reader-twin + IR-domain skeptic + armed 
   plus any stray QA files before committing - the nemesis flagged the debris as a publish tripwire
   one `git add .` away from shipping.
 
+### Rules added 2026-07-13 (Learning_PlantFloor: a PRE-BUILD primer for a phased, two-lane architecture)
+A learner page teaching a system that will be BUILT IN PHASES (phase 1: a bridge process relays device
+data into the pipeline; phase 2: the device speaks the protocol itself) went through the standard
+three-lens gate. New rules, all field-proven this run:
+- **Gate every mechanism claim to the PHASE where it actually holds.** The page narrated MQTT's last-will
+  offline detection as a generic "the device vanishes" story; in the phase-1 architecture the BRIDGE, not
+  the device, holds the broker connection, so a device drop fires no last-will at all: the mechanism is
+  only true in phase 2. Both sympathetic lenses verified the mechanism as CORRECT in isolation and sailed
+  past; only the nemesis asked "whose connection is it in phase 1?" On any staged architecture, test each
+  taught mechanism against the stage that owns the connection/resource, tag the claim with its phase in
+  the artifact, and add an explicit phase-1 caveat card. Then propagate the same gate into the project's
+  plan doc: the ungated version was there too, and fixing only the page leaves the two documents
+  reinforcing the same false floor.
+- **Passing the page's own self-test does not clear the definitions gate.** The reader-twin answered all
+  the closed-book self-tests cold yet stalled hard on three tool proper nouns used but never defined; the
+  quiz only tests what it tests, and the untaught names were not in it. Treat the twin's STALL LIST as the
+  definitions signal and the quiz score as the comprehension signal; they are different instruments.
+- **Pre-build honesty needs a "planned" watermark on size estimates too.** "~100 lines" and "ours" for
+  code that does not exist yet read as measured and owned; write "planned: ~100 lines." Cousin of the
+  numbers-origin rule: a line count for unwritten code is invented precision.
+- **A named-sibling disambiguation is worth one parenthetical, not a paragraph.** When a taught feature
+  collides with a formally-named sibling the reader may meet later (classic subscriptions vs a spec part
+  literally named "PubSub"), one clause that names it and says "not what this project uses" arms the
+  reader; anything longer reads as a footnote-tangent and the twin flags it as pure processing cost.
+
 ### Component added 2026-07-07 (SCROLLSPY: active-section highlight in the jump bar)
 **STANDING RULE: every page with a `.navcodes` topbar gets the scrollspy.** As the reader scrolls, the
 jump link for the section they're reading glows (orange `--signal`), so the bar doubles as a "you are here"
