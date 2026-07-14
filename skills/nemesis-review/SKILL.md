@@ -57,6 +57,31 @@ behavior change; an internal contradiction between two sections), the domain ske
 the domain-precise ones (an off-by-N byte calculation, a test invariant that a malformed
 input satisfies).
 
+**When the artifact DESCRIBES work the author actually did (a portfolio page, an interview-prep
+doc, a resume bullet, a case study, a README), hunt FLATTENING, not just fabrication.** This is a
+distinct failure mode and it is easy to miss because every individual word is true. A nuanced,
+multi-step result gets compressed into a single-cause slogan: "I improved retrieval from 11% to
+61%" is defensible right up until the reader opens the raw result files and sees that an earlier
+*diagnostic* had already reached 61%, and the change being credited actually bought a different
+metric entirely. Nothing was invented. The causal story was simply flattened, and the first
+follow-up question destroys it. Two rules fall out:
+- **Diff the artifact against the source it describes.** Read the raw records, then ask "does the
+  artifact's story survive them?" A summary can be 100% faithful to a *mid-layer doc* that is
+  itself a simplification. Layering: raw result records > decision log / README > prose > memory.
+- **The honest version is almost always the stronger one.** "Measured a bad baseline, diagnosed it
+  with a probe, predicted a ceiling, hit it, and here is the limit that remains" reads as senior.
+  The slogan reads as a number the author cannot reconcile. Recover the real narrative; do not
+  merely soften the claim.
+
+**A claim about AUTOMATION is a claim about a config file. Go open the file.** "Gated in CI," "runs
+on every push," "automatically validated," "enforced by the pipeline": each of these is trivially
+checkable and almost never checked, because it *sounds* like engineering rigor. Read the actual
+workflow YAML, and use `git ls-files` rather than the local disk to confirm that the evidence an
+artifact points to is actually committed and public. (Field case 2026-07-14: a prep document claimed
+an evaluation harness was CI-gated; the project's own workflow ran only a type-check and unit tests,
+and the eval could not run in CI at all because it needed a live service the pipeline never starts.
+The claim was two clicks from being disproven by anyone reading the public repo.)
+
 The three load-bearing design elements (do not drop any):
 1. **Motivated hostility (professional grudge).** He bet his reputation the approach would
    fail and lost something to the author. This channels animosity into rigorous scrutiny of
@@ -234,5 +259,20 @@ artifact teaches a PHASED build, arm the nemesis with the project's plan doc and
 test every mechanism against EACH phase, not the end state; (2) when a finding forces an
 artifact fix, hunt the same claim in the plan doc the artifact derives from - the ungated
 version was there too, and fixing one document leaves the pair reinforcing the same false floor.
+
+Seventh success 2026-07-14 on an interview-prep page written for the maintainer, run as the gate
+before he ever read it (nemesis + a domain-accuracy skeptic + a reader-twin, isolated, one up-front
+batch, nemesis given read access to the project repo the page made claims about). The division of
+labor held a seventh time, and this run produced the two rules added above. The reader-twin passed
+the page's own closed-book self-tests and reported only clarity gaps. The domain skeptic verified
+roughly forty technical claims by *executing* them and found real precision errors. But only the
+nemesis, told to follow the page's own directions to its evidence, opened the repository and found
+the two blockers: a claim that an eval was "CI-gated" that the project's own workflow file refuted,
+and a headline metric whose causal story the project's own raw result files contradicted. It also
+caught a mechanism the page taught BACKWARDS (an idempotency key stored after the work instead of
+claimed before it, leaving open the exact crash window the page warned about), which the sympathetic
+reviewer had confidently paraphrased back as correct. Sharpest lesson of the run, now a rule above:
+**the artifact was less honest than the repository it described**, and no amount of clarity review
+would ever have found that, because the prose was clear. It was just flattened.
 
 See [[nemesis-review-works]] in memory for the full episodes.

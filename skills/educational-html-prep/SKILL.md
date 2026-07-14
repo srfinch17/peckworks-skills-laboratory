@@ -447,6 +447,37 @@ three-lens gate. New rules, all field-proven this run:
   literally named "PubSub"), one clause that names it and says "not what this project uses" arms the
   reader; anything longer reads as a footnote-tangent and the twin flags it as pure processing cost.
 
+### Rules added 2026-07-14 (a company interview-prep page: source tiers, retract-in-place, and the flattening trap)
+A prep page for a real upcoming conversation went through the full three-lens gate and produced rules that apply to
+ANY page whose content is researched rather than invented. All four are field-proven this run:
+- **RANK YOUR SOURCES BEFORE THEY SET THE PAGE'S PLAN, AND ESPECIALLY BEFORE THEY SET ITS TONE.** The tiers, worst
+  to best: (4) SEO-generated "guide" sites are machine-written, cite nothing, hedge every sentence, and get REFUTED
+  under verification; never build on one. (3) Public review/forum aggregates are WEAK: their per-company summary
+  statistics are pooled across every role at the company, so a "difficulty 2 out of 5" can be computed from a sample
+  containing zero people in the reader's actual field. (2) A message from the person actually running the process is
+  PRIMARY: read it like a spec. (1) The organization's own structured record (its ATS/API/config, whatever the
+  machine-readable source of truth is) is TRUSTED, because it IS the record rather than a memory of it.
+  Field case: a page confidently told its reader the upcoming conversation would be "conversational, difficulty 2 of
+  5, coding is light." Adversarial verification killed fourteen of fourteen such claims (they traced to tiers 3 and
+  4), and the tier-2 source then stated in writing that it was a rigorous technical assessment. **A page that
+  soothes a reader into under-preparing is worse than no page.** When the format is ambiguous, teach to the HARDER
+  reading; over-preparation costs an evening, under-preparation costs the thing itself.
+- **RETRACT IN PLACE; never quietly rewrite.** If a page has to reverse a claim, assume the reader already read the
+  old version. Say what the page previously told them, say it was wrong, name the source that failed, and say what
+  replaced it. A silent edit leaves the reader carrying the old belief with no idea it was withdrawn.
+- **When the page describes the reader's OWN measured work, diff it against the raw records before they study from
+  it.** Not the summary, not the decision log, not your notes: the rawest committed artifact. A study page will
+  cheerfully flatten a nuanced multi-step result ("measured a bad baseline, diagnosed it with a probe, predicted a
+  ceiling, hit it") into a single-cause slogan ("improved X from 11% to 61%"), and then hand the reader a number they
+  cannot reconcile under one follow-up question. **The page can end up LESS honest than the repo it describes**, and
+  the reader-twin is structurally blind to it (it checks clarity, not truth). See `nemesis-review`.
+- **Teaching a mechanism BACKWARDS is the failure a sympathetic reviewer cannot catch.** A page taught an idempotency
+  key as "do the work, then record the key, then respond," which leaves open the exact crash window it had just
+  warned about; the correct mechanism claims the key FIRST, atomically, before doing the work. The reader-twin
+  paraphrased the wrong version back confidently and scored itself SOLID. Only an armed domain skeptic and the
+  nemesis caught it. **For any mechanism with a failure mode, make one reviewer prove the mechanism actually closes
+  the hole it claims to close**, rather than checking that the explanation is clear.
+
 ### Component added 2026-07-07 (SCROLLSPY: active-section highlight in the jump bar)
 **STANDING RULE: every page with a `.navcodes` topbar gets the scrollspy.** As the reader scrolls, the
 jump link for the section they're reading glows (orange `--signal`), so the bar doubles as a "you are here"
