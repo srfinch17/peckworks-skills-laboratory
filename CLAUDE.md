@@ -125,6 +125,20 @@ two-sided failure mode. Skill: `skills/paladin-review/SKILL.md`, dispatch charte
   blast radius, while visibly refusing to flatter or cry wolf. Design spec:
   `docs/specs/2026-07-19-paladin-review-design.md`.
 
+### `review-court`  (status: born here 2026-07-19)
+The review-time half of the "holy spirit," completing the trinity: nemesis and paladin are
+JUDGES; the court is the HARNESS that guarantees the whole ceremony runs instead of a
+hand-rolled partial one (the founding failure: 2026-07-07, seven hand-rolled reviews silently
+dropped the pairing rule). The ceremony: (0) intent packet first — the author's verbatim ask,
+the artifact's purpose, the irreversible boundary in play, handed to EVERY reviewer so
+action-vs-intent is reviewable; (1) invoke BOTH sibling skills freshly, never from memory;
+(2) fit 2-4 domain skeptics; (3) one isolated parallel batch; (4) orchestrator verify-pass
+(verify findings, re-derive numbers, cross-check concessions, DISCOUNT paladin praise);
+(5) archive receipts BEFORE any cleanup; (6) converged-first report + same-session provenance.
+Orchestrates only, never judges; complements (never replaces) the mechanical tripwire.
+Cross-session discipline skill — value lives in reading the checklist at convening time, same
+testability class as the memory-type skills. Skill: `skills/review-court/SKILL.md`.
+
 ### `deletion-tripwire`  (status: born here 2026-07-19; TDD'd; wired live same day)
 The MECHANICAL third member beside the review pair: a PreToolUse hook that blocks destructive
 shell commands (`rm -r*`, `Remove-Item -Recurse`, `robocopy /MIR`, `git reset --hard`, ...)

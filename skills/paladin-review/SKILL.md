@@ -67,7 +67,9 @@ under-claimed here" — an empty under-sell section is a PASSING result, never a
 
 Dispatch the paladin as an **isolated subagent** (no shared context, so he reaches conclusions
 independently), hand him the artifact plus the charter below, then synthesize. Run him alongside
-`nemesis-review` and 2 to 4 dispassionate domain skeptics for breadth. He is the one who asks
+`nemesis-review` and 2 to 4 dispassionate domain skeptics for breadth — and convene the whole
+panel through the `review-court` ceremony, which guarantees the steps below run instead of
+being reconstructed from memory. He is the one who asks
 "what will hurt *this person* / cost them the win," not "is the artifact abstractly sound."
 
 The three load-bearing elements (do not drop any — each mirrors a nemesis element):
