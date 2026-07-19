@@ -106,6 +106,24 @@ inline.
   issues the polite reviewers missed; its concessions independently validated the architecture).
   Full episode lives in the maintainer's PRIVATE memory (`nemesis-review-works`), not this repo.
 
+### `paladin-review`  (status: born here 2026-07-19; RED/GREEN tested)
+The supportive mirror of `nemesis-review`: a reviewer who owes you an unpayable life-debt (you
+saved his child) and repays it only by making you WIN and keeping you from harm. Same rigor,
+opposite motive — the nemesis attacks whether the work is *sound*; the paladin protects your
+*outcome*, hunting the two things a soundness reviewer structurally can't: where you're about to
+**hurt yourself** (a destructive / irreversible / secret-leaking footgun) and where you're
+**under-selling a real win**. The whole safety lives in a *dual* honesty gate — comfort-is-betrayal
+(no flattery) AND a-false-alarm-gets-you-tuned-out (no crying wolf) — guarding both sides of its
+two-sided failure mode. Skill: `skills/paladin-review/SKILL.md`, dispatch charter inline.
+- **Orchestration:** run it ISOLATED beside `nemesis-review` + domain skeptics; as orchestrator,
+  verify every alarm (paranoia over-reports, the mirror of the nemesis's false positives) and
+  DISCOUNT its praise (motivated), weighting its warnings. Never substitute it for a correctness
+  review — a capable neutral reviewer already catches most defects and secret leaks.
+- **Provenance:** RED/GREEN at authoring (2026-07-19). Two neutral baselines caught the planted
+  secret leak but MISSED and inverted the under-sell; the charter surfaced it plus the fixed bug's
+  blast radius, while visibly refusing to flatter or cry wolf. Design spec:
+  `docs/specs/2026-07-19-paladin-review-design.md`.
+
 ### `educational-html-prep`  (status: field-proven; ported from personal 2026-07-05)
 The Feynman teaching-page craft: plain-claim → analogy → inline-SVG diagram → defend-cold Q&A,
 the mission-control THEME tokens, the reusable `assets/teaching-kit.css` component kit, the
