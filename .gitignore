@@ -25,3 +25,7 @@ reader-profile.md
 # it is personal and per-project. Only MASTERED.template.md (the schema) is
 # tracked; ignore any real MASTERED.md so it cannot be committed by accident.
 MASTERED.md
+
+# python bytecode
+__pycache__/
+*.pyc

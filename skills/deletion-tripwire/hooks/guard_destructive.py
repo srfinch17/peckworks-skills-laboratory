@@ -25,7 +25,9 @@ EPHEMERAL_TARGETS = ("node_modules", "__pycache__")
 # under-blocking is the disaster. Each entry: (compiled regex, short reason).
 # ponytail: pattern-based with named ceilings (see SKILL.md); grows with incidents.
 PATTERNS = [
-    (re.compile(r"(?<![\w/-])rm\s+[^;&|]*?(-\w*[rR]\w*|--recursive)"), "recursive rm"),
+    # the flag must be a whitespace-preceded TOKEN, or a hyphenated filename ("my-report.txt",
+    # "deletion-tripwire/") false-matches as a flag
+    (re.compile(r"(?<![\w/-])rm\s[^;&|]*?(?<=\s)(-\w*[rR]\w*|--recursive)\b"), "recursive rm"),
     (re.compile(r"(?i)\b(remove-item|ri|rmdir|rd|del|erase)\b[^;|]*\s-r(e\w*)?\b"), "Remove-Item -Recurse"),
     (re.compile(r"(?i)\b(rd|rmdir|del)\b[^;|]*\s/s\b"), "cmd-style /s delete"),
     (re.compile(r"(?i)\brobocopy\b[^;|]*\s/(mir|purge)\b"), "robocopy /MIR|/PURGE (deletes at destination)"),

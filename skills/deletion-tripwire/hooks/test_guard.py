@@ -45,6 +45,8 @@ def main():
 
     # --- benign: allow (the tripwire must stay quiet or it gets tuned out) ---
     check("rm single file", decide("Bash", "rm notes.txt", ledger), "allow")
+    check("rm hyphen-r filename", decide("Bash", "rm my-report.txt", ledger), "allow")
+    check("git rm --cached hyphen-r path", decide("Bash", 'git rm --cached "skills/deletion-tripwire/x.pyc"', ledger), "allow")
     check("grep -r", decide("Bash", "grep -r foo .", ledger), "allow")
     check("git status", decide("Bash", "git status", ledger), "allow")
     check("git commit hard msg", decide("Bash", 'git commit -m "hard reset lesson"', ledger), "allow")
