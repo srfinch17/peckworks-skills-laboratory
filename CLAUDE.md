@@ -125,6 +125,21 @@ two-sided failure mode. Skill: `skills/paladin-review/SKILL.md`, dispatch charte
   blast radius, while visibly refusing to flatter or cry wolf. Design spec:
   `docs/specs/2026-07-19-paladin-review-design.md`.
 
+### `deletion-tripwire`  (status: born here 2026-07-19; TDD'd; wired live same day)
+The MECHANICAL third member beside the review pair: a PreToolUse hook that blocks destructive
+shell commands (`rm -r*`, `Remove-Item -Recurse`, `robocopy /MIR`, `git reset --hard`, ...)
+until the enumerate → confirm → ledger → approve protocol runs. Born from a public field
+disaster (a `Windows.old` cleanup that followed junctions into live Documents/Pictures after
+the agent predicted "safe") and a same-day local miniature ("clean up any junk" deleted a
+skill's test receipts). Two rules it enforces: blast radius = everything REACHABLE (links
+included), and safety comes from ENUMERATION, never prediction. Personas can't catch this
+class - no court is in session during a casual cleanup - so it is a hook, not a prompt.
+Engine: `skills/deletion-tripwire/` (SKILL.md + `hooks/guard_destructive.py` + assert-based
+test suite). Wiring is per-machine in `~/.claude/settings.json` (PreToolUse, `Bash|PowerShell`,
+ledger default `~/.claude/deletion-ledger/`); install.sh handles only the symlink. Proof at
+wiring: the hook blocked the author's own harmless `rm -rf` probe live in-session. Spec:
+`docs/specs/2026-07-19-deletion-tripwire-design.md`.
+
 ### `educational-html-prep`  (status: field-proven; ported from personal 2026-07-05)
 The Feynman teaching-page craft: plain-claim → analogy → inline-SVG diagram → defend-cold Q&A,
 the mission-control THEME tokens, the reusable `assets/teaching-kit.css` component kit, the
