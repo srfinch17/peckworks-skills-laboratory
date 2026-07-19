@@ -19,6 +19,24 @@ teaches the right thing. This applies to edits too, not just new skills.
 | GREEN | Write minimal code to pass | Write the minimal skill that addresses those specific failures; re-run and confirm the agent now complies |
 | REFACTOR | Clean up | Close loopholes the agent found; re-test until bulletproof |
 
+## When the baseline already passes
+
+A capable model often already does much of what a **persona or lens skill** would do when the
+artifact is small and fully in context — it has the judgment and the facts are right there. So a
+RED that *doesn't fail* means one of two things, and you must tell them apart: the test is too
+easy, or the skill is redundant. Distinguish them by **hardening the artifact** (make the target
+subtle, not sign-posted; use a realistic quick-look ask, not a plea for a maximally-thorough
+review; sample more than one baseline) and **isolating the differential** — the specific thing the
+skill adds that a good neutral reviewer misses — instead of measuring raw capability. If a
+hardened, differential-isolating test still shows no gap, the skill isn't earning its keep.
+
+This is the sibling of the memory-skill caveat in `CLAUDE.md`: single-shot tests can't reproduce
+cross-session context loss, but they *can* test a lens skill — only if the artifact is hard enough
+to separate the lens from baseline competence. Proven authoring `paladin-review` (2026-07-19): the
+naive RED caught the planted footgun *and* the under-sell, so it looked like the skill added
+nothing; only a subtle, quick-look artifact run against two baselines isolated the under-sell +
+blast-radius lens the neutral reviewers missed (and inverted).
+
 ## Authoring conventions
 
 - **One skill per folder** under `skills/`, named in active voice (`creating-x`, not `x-creation`).

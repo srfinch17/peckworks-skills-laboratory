@@ -101,7 +101,8 @@ highest-value signal). Skill: `skills/nemesis-review/SKILL.md`, with the reusabl
 inline.
 - **Orchestration rules:** run the nemesis as an ISOLATED subagent beside 2 to 4 dispassionate domain
   skeptics (breadth), then verify every finding yourself before acting; hostility's failure
-  mode is false positives.
+  mode is false positives. Convene its sibling `paladin-review` (below) alongside it — the pair
+  is run together.
 - **Provenance:** first proven 2026-07-01 on the peckworks-bonsai trunk-engine plan (found net-new
   issues the polite reviewers missed; its concessions independently validated the architecture).
   Full episode lives in the maintainer's PRIVATE memory (`nemesis-review-works`), not this repo.
