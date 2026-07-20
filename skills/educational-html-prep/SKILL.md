@@ -218,7 +218,12 @@ existing classes (don't duplicate them).
   learner has actually run it; a study page that scripts past-tense accomplishment is a provenance trap.
 - **Verify-step gotcha:** after editing a served page, Playwright can screenshot a STALE cached copy
   (re-navigating to the same URL or a #hash does not re-fetch). Hard-reload with a cache-buster query
-  (`?v=N`) and glance for one of your new strings in the shot before trusting it.
+  (`?v=N`) and glance for one of your new strings in the shot before trusting it. Sibling gotcha
+  (2026-07-15): on a page with `scroll-behavior:smooth`, `scrollIntoView()` + an immediate screenshot
+  captures MID-ANIMATION (the shot shows the wrong section while your evaluate call returns the right
+  element). Scroll with `behavior:'instant'` (`window.scrollTo({top: el.getBoundingClientRect().top +
+  window.scrollY - navOffset, behavior:'instant'})`) before shooting. Also: the Playwright MCP blocks
+  `file://` URLs, so a local page must be served over http (`py -m http.server`) to verify at all.
 
 ### Components + rules added 2026-07-05 (Learning_VSCode, the Visual-Studio-to-VS-Code page)
 - **`.mtbl` translation-mapping table (defs in the kit):** the `.cmp` counterpart for TOOL/UI
@@ -523,6 +528,13 @@ clears the 54px sticky bar with headroom; retain-nothing-when-above-first leaves
 hand-editing every file; skip the public GitHub-Pages portfolio (separate repo, not a learner). VERIFY it live
 (`py -m http.server` + scroll): confirm the right link lights AND that it changes on scroll, the bug is invisible
 in source.
+
+### Rules added 2026-07-20 (a 50-question interview Q&A study page, an 18-subagent single-page build)
+- **Scale rule for a many-card page: cap diagram proposals up front.** When drafting a large multi-section page with one subagent per section, tell each to propose a diagram ONLY for its anchor / highest-value item, not every item. A 50-card build had the drafters propose 40 diagrams; 12 were used and 28 stripped, a wasted pass. Diagrams are the highest-value move, but one per section is the practical ceiling for a Q&A-style page.
+- **Delegate the mechanical bulk; keep verification and the final edits.** For a big teaching page, delegate to subagents: per-section answer drafting (web-verified, written to files), HTML assembly (draft files to cards, editing the page in place), SVG generation, and fix application, so the 50-card bulk and the raw drafts never enter the orchestrator's context. The orchestrator keeps the scaffold, the diagram VISUAL verification, the QA synthesis, and the final surgical edits. Proven on an 18-subagent, roughly 3M-token single-page build.
+- **A dedicated Q&A card component.** A many-question page wants a `.qacard` (question, one-line claim, answer) with a distinct `.fu` follow-up inset (an amber "defend-it" block) as the structural heart, plus per-theme accent variants so sections stay visually distinct across 50 cards.
+- **Cheap deterministic diagram gate (complements the screenshot pass).** One browser_evaluate over every `.fig svg` that estimates each `<text>` element's right edge (x plus length times a per-anchor factor) against the viewBox width flags the number-one failure (text running past the edge) across all figures in a single call. Use it as a fast pre-filter; still do the visual pass for label collisions, which this does not catch.
+- **At scale, the whole-page re-read finding is CROSS-CARD inconsistency, not just within-card roughness.** The post-patch reader-twin caught a card whose opening sentence contradicted the NEXT card and its own diagram (latency: it listed queue and time-to-first-token as peer clocks while the diagram and the next card folded queue INTO time-to-first-token). Additive glosses also bolt awkwardly (a definition nested inside another definition reads three times before the verb). Reconfirms the patch-pass-ends-with-a-whole-page-reader-twin rule, and adds: at scale, hunt contradictions BETWEEN adjacent cards and between a card and its own figure, not only sentence-level clumsiness.
 
 ## Inline-SVG diagrams: the highest-value move
 

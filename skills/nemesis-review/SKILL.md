@@ -379,3 +379,23 @@ arc-bias fix was re-simulated 200 seeds before adoption); (3) prefer law-bounded
 assertions (bounds that hold for ALL draws) over seed-lottery statistics - they are immune to
 the draw-order shifts that later TDD tasks introduce, which otherwise flip green tests red
 mid-plan and invite mid-run test edits.
+
+Thirteenth success 2026-07-20 on a 50-question AI-engineering interview Q&A STUDY page written for
+the maintainer, run as the pre-read gate in one up-front batch (nemesis + a domain-accuracy skeptic
++ an interviewer-follow-up skeptic + a reader-twin, all isolated, nemesis given read access to the
+repos the page grounds claims to). Division of labor held a thirteenth time. The domain skeptic
+verified the technical content sound (zero blockers across sampling, eval/MRR, security, MCP). Only
+the nemesis, armed with the repos, caught the provenance slips: a tool COUNT the page asserted
+("about 18 tools") that the repo's own README contradicted ("Seventeen tools", hand-count 17), and a
+capability grounded to a repo that had been SPLIT weeks earlier (now firmware-only; the real server
+had moved to a different repo). Generalize the "open the file" rules: a claim about a COUNT or a
+REPO LOCATION is checkable against the README and git log, and artifact/tool counts plus split-repo
+moves are prime drift; on a study aid, DROP the brittle number and keep the true anchor. Two
+refinements: (1) for an interview-prep / Q&A page, add an INTERVIEWER-FOLLOW-UP skeptic as a
+distinct lens ("what is the NEXT question, and does this answer survive it?") separate from the
+domain skeptic (is it correct) and the reader-twin (is it clear); on a page whose thesis WAS the
+follow-up, that lens alone found the eight weakest cards (follow-ups that restated instead of
+deepened) that the other three passed. (2) The nemesis also re-caught a headline number cited bare
+in three cards as single-cause while its honest multi-step story sat correctly in a fourth card
+(classic flattening); the fix, drilling the flattened number as its own follow-up, made the page
+stronger, not just longer.
