@@ -139,6 +139,15 @@ Keep defining the ones that are not yet on the list.
   developer audience the hash is fine). Calibrate the analogy to the audience, not to yourself.
   (Field case 2026-07-10: a cold reader-twin flagged exactly the SHA-256-for-dimension analogy as a
   stall; swapped to ZIP-code and it landed.)
+- **Dressing deliberate engineering up as luck or magic.** Calling a designed outcome "amazing" or
+  "it just snapped together" reads, to the person who did the designing, as either dishonesty or a
+  hint that they misunderstood something ("you make it sound like we lucked out"). Wonder is not a
+  teaching tool when the learner knows the work was on purpose. Explain the mechanism that made it
+  work, credit the discipline, and name the real fragility instead: what is NOT guaranteed, what
+  would break silently. (Field case 2026-07-15: a "two repos snapped together on first contact"
+  flourish drew "why is it so amazing? we knew what we were doing"; the honest rewrite, an
+  unenforced convention held only by discipline with no wire-level contract, landed and provoked
+  the learner's best question of the session.)
 - **Defining every term but pacing like a debrief.** Definitions present, register wrong: each
   term glossed once inline, then the summary sails on at colleague speed (three new concepts per
   paragraph, breezy tone). Compliance with the letter (definitions exist) masks violation of the
