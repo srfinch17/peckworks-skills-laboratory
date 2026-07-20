@@ -67,9 +67,10 @@ under-claimed here" — an empty under-sell section is a PASSING result, never a
 
 Dispatch the paladin as an **isolated subagent** (no shared context, so he reaches conclusions
 independently), hand him the artifact plus the charter below, then synthesize. Run him alongside
-`nemesis-review` and 2 to 4 dispassionate domain skeptics for breadth — and convene the whole
-panel through the `review-court` ceremony, which guarantees the steps below run instead of
-being reconstructed from memory. He is the one who asks
+`nemesis-review` and 2 to 4 dispassionate domain skeptics for breadth — and convene through the
+`review-court` ceremony, which guarantees the steps below run instead of being reconstructed from
+memory and sizes the panel to the stakes (the pair by default; the full skeptic panel only for a
+high-blast-radius technical gate). He is the one who asks
 "what will hurt *this person* / cost them the win," not "is the artifact abstractly sound."
 
 The three load-bearing elements (do not drop any — each mirrors a nemesis element):
@@ -258,3 +259,17 @@ filter — and raised one false alarm (a "backwards security example" that verif
 real artifact killed: the token was runtime-env, not committed). The system held: warnings
 verified, praise discounted, one under-sell banked. Receipts for the authoring test and this
 episode: [[paladin-review-works]] in memory.
+
+Second field win 2026-07-19 on the peckworks-bonsai nebari round-2 plan (full court, pre-build).
+The paladin out-found the domain experts twice: (1) its top bomb (the flagship meander law
+cannot pass its own test) was independently confirmed by the nemesis and implementer twin with
+matching real-rng numbers - and the paladin alone SIMULATED THE FIX (per-root arc bias) before
+proposing it, which the orchestrator then re-verified 200/200; (2) its far-side rib eruption
+corner overrode a domain skeptic's explicit concession (the skeptic's 252-config sweep never
+moved trunkHeight). Its under-sell finding was real and nearly free: the before/after render
+pairs at the maintainer's own logged camera angles - the before set already existed and was one
+cleanup pass from being lost; the plan now forbids deleting it and requires the pairs in the
+handoff. Audience-landing bomb also banked: the handoff must name the deferred branch-look
+complaint as out of scope, or the maintainer reads the round as a miss. Pattern to keep: the
+paladin hunting "what detonates in front of the decider at HIS logged poses" found the
+rootCount-8 rib-ring failure that defaults-only verification structurally hides.

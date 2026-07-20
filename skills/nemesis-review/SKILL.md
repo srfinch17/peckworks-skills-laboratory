@@ -37,6 +37,15 @@ independently), hand it only the artifact plus the persona charter below, then s
 Run it alongside 2 to 4 dispassionate domain skeptics for breadth; the nemesis is the one
 that digs for systemic, foundational, cross-cutting problems the polite reviewers soften.
 
+**Always convene its sibling `paladin-review` alongside it — they are a matched pair, stronger
+together, so if you invoke one you invoke the other.** The nemesis attacks whether the work is
+*sound*; the paladin protects the *author's outcome* — the self-sabotage footguns (a destructive
+or irreversible action, a secret about to leak) and the *under-selling* the nemesis structurally
+cannot see, because he wants the work to fail. Run both isolated; verify every finding; discount
+the paladin's praise and weight its warnings. Convene through the `review-court` ceremony, which
+guarantees these steps run instead of being reconstructed from memory and sizes the panel to the
+stakes (the pair by default; the full skeptic panel only for a high-blast-radius technical gate).
+
 **When the artifact is written FOR a specific audience (a teaching page, a resume, a pitch,
 docs for a known team), give the adversary that audience's expertise, not just the artifact's
 domain.** An artifact dies in front of its reader, and the deadliest flaws are stale or wrong
@@ -275,4 +284,98 @@ reviewer had confidently paraphrased back as correct. Sharpest lesson of the run
 **the artifact was less honest than the repository it described**, and no amount of clarity review
 would ever have found that, because the prose was clear. It was just flattened.
 
+Eighth success 2026-07-15, the SAME interview-prep page one day later, re-reviewed as a VERIFICATION
+pass after its first-round findings were fixed (nemesis + domain-accuracy skeptic, isolated, repo
+access). It confirmed the prior blockers dead and a firmware fix correct, then found a NET-NEW BLOCKER
+the first full three-reviewer round had entirely missed: a Q&A self-test answer taught a bridge-side
+offline-detection mechanism that does not exist in the code. The tell: the change under review touched
+the firmware, so every reviewer read the firmware; nobody had opened the FALLBACK component the answer
+described. The domain skeptic and reader-twin sailed past a second time; only the nemesis opened the
+untouched file. Two refinements: (1) a re-review after fixes is NOT redundant, it routinely surfaces
+pre-existing overclaims the first round's scope never reached, so gate the FIXED artifact, not just the
+original. (2) When the artifact describes a MULTI-COMPONENT system, point a reviewer at EACH component's
+real code, especially the ones this change did not touch, an overclaim hides most safely in the
+description of the part nobody is currently editing. Same root as the seventh run (less honest than the
+code), one layer deeper: less honest than the code of a component the review was not even looking at.
+The false claim was also upstream in the project brief the page derived from, and fixing both documents
+(the sixth run's rule) held again.
+
+Ninth success 2026-07-17 on the esp32-matrix `idle-random-settings` firmware branch, run as the
+pre-flash gate AFTER four reviews had already passed (per-task gates plus a whole-branch final
+review). Panel: nemesis on the top model + a reachable-input-corners skeptic + an API/contract
+skeptic, isolated, both repos readable. Division of labor held a ninth time: the skeptics found a
+brightness-strobe path on stale rotation names and a firmware/web-skew UI state that lied about a
+feature the firmware did not have; only the nemesis ran the branch's own numeric justifications
+through the LED-visibility formula printed in the same codebase and proved a shipped, documented
+parameter (frostbite mist, rolled 2-8) was 100% invisible - every possible roll rendered below the
+panel's on-threshold, so the "needs brightness 7-8 to read" rationale written into three documents
+was never true. It also caught the branch RE-ASSERTING a cross-repo "keep aligned with idle.ts"
+comment against a file the partner repo had deleted (verify a file exists before strengthening a
+claim about it). Orchestrator filters paid both ways: one skeptic finding died on re-derivation
+(a "runs every tick" cost that actually runs once per rotation) and one was deferred to
+measurement instead of a speculative rewrite - the hardware soak then showed zero heap drift,
+vindicating the deferral. Refinement: when the artifact is firmware and no reviewer has a compiler
+or the hardware, aim the nemesis at the SENTENCES (comments, docs, numeric rationales); in that
+environment the sentences are the load-bearing artifacts, and they are exactly what a code-shaped
+review never falsifies.
+
+Tenth success 2026-07-18 on the esp32-matrix `baked-frames-player` firmware branch (nemesis on the
+top model + a binary-decoder/corner skeptic + a system/pipeline skeptic, isolated, both repos + the
+shipped binary assets readable), run as the pre-flash gate after four task reviews and a whole-branch
+review had passed. The blocker only the nemesis found, and only because he BUILT THE REAL ARTIFACT:
+the feature shipped a LittleFS image the spike had sized at "142 KB, 29% of budget" (logical bytes),
+which everyone relaxed on. He ran the actual `mklittlefs` on the actual `data/` and measured the
+image at 224 of 224 blocks, ZERO free, because the filesystem charges a 4 KB block per file and the
+87 loose frame files wasted most of theirs. He then added one 700-byte file and reproduced "File
+system is full." Two refinements: (1) a claim about capacity/size/timing is a claim you can often
+BUILD and MEASURE rather than reason about; for the deadliest ones, build the real artifact (image,
+bundle, binary) with the real tool and read the number off it. (2) The concession cross-check paid
+its sharpest dividend yet: the dispassionate system skeptic had CONCEDED "comfortable headroom" from
+the same byte sum, at the wrong granularity (bytes, not blocks); the nemesis's measured 0-free-blocks
+overrode that concession. A concession computed from a digest is only as good as the digest, so when
+a concession and a finding target the same quantity, re-derive it at the granularity that actually
+governs the failure. The decoder skeptic separately re-decoded all shipped binary files with its own
+parser (0 mismatches), which is the same "build/measure the real thing" move applied to the payload.
+The fixes shipped a mechanical guard (`check-fs.mjs` builds the image and asserts block headroom in
+CI) and it was deliberately left RED until the real fix landed; a later re-reviewer proposed loosening
+the threshold to make the run green and was refused, the author-as-judge-drift antibody working as
+designed.
+
+Eleventh success 2026-07-17 on the studio `settings-catchup` PR, a 22-line whitelist fix, run at the
+author's request BEFORE merge (nemesis on the top model + a firmware-contract skeptic + a repo-drift
+skeptic on a cheaper tier, isolated, BOTH repos readable). Proof that a tiny diff still earns a panel:
+the sharpest convergence yet had the contract skeptic and the nemesis independently find the same MAJOR
+(a boolean coercion that strict-compared, so `mqtt_enabled: 1` was CONVERTED TO FALSE and posted, an
+intent INVERSION worse than the silent drop the PR existed to fix), while only the nemesis saw the
+systemic shape: the drift fix was itself expanding the drift surface (the key list hand-mirrored in
+three intra-repo copies; fix = derive two from the one), and the fix's own commit message was a
+reviewable claim that was half-wrong (the "silent no-op" it described was actually a loud refusal for
+solo-key patches, silent only for mixed ones). All three verified the transcription itself correct
+against firmware source, and that concession survived. Refinements: (1) when the artifact under review
+is ITSELF a drift/catchup fix, aim the panel at the drift mechanism, ask "how many hand-synced copies
+exist AFTER this change?", not just whether the transcription is accurate; (2) review a
+coercion/normalization layer at a trust boundary by feeding it hostile spellings (1, "1", "yes", "",
+"abc"), and the correct behavior is refuse-loudly, naming the refused key in the reply; both guessing
+and silent dropping fail, and inversion is the worst guess.
+
 See [[nemesis-review-works]] in memory for the full episodes.
+
+Twelfth success 2026-07-19 on the peckworks-bonsai nebari round-2 spec + plan, run pre-build
+through the full review-court (nemesis + paladin on the top model, FDM-corners + geometry/SDF +
+implementer-twin skeptics on a cheaper tier, isolated, one batch, repo access). Sharpest run yet
+for one reason: THREE of five reviewers independently executed the plan's literal code against
+the repo's real modules and rng instead of reading it, and every blocker came from execution,
+not prose: an unpassable flagship test (zero-mean meander cancels against the chord; 3/200
+seeds pass - triple-convergent real-rng replays with matching numbers), a NaN radius from float
+overshoot feeding pow(negative, 0.7) (17 percent of root draws, reproduced on the plan's own
+default test case), and a burial test measured from the world origin that trunk sway breaks in
+1584/1584 swept configs. The concession cross-check paid again at MAJOR level: the geometry
+skeptic CONCEDED far-side rib safety from a sweep that never moved trunkHeight; the paladin's
+short/fat/high-taper counterexample survived orchestrator re-derivation and overrode it
+(corners are SIZES, third confirmation). New refinements: (1) when a plan contains literal
+code, tell at least two reviewers to RUN it - transcribe-and-execute finds what four readers
+miss; (2) the orchestrator must re-derive the REPLACEMENT law too, not just the findings (the
+arc-bias fix was re-simulated 200 seeds before adoption); (3) prefer law-bounded test
+assertions (bounds that hold for ALL draws) over seed-lottery statistics - they are immune to
+the draw-order shifts that later TDD tasks introduce, which otherwise flip green tests red
+mid-plan and invite mid-run test edits.
