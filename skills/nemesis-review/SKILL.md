@@ -37,14 +37,14 @@ independently), hand it only the artifact plus the persona charter below, then s
 Run it alongside 2 to 4 dispassionate domain skeptics for breadth; the nemesis is the one
 that digs for systemic, foundational, cross-cutting problems the polite reviewers soften.
 
-**Always convene its sibling `paladin-review` alongside it — they are a matched pair, stronger
-together, so if you invoke one you invoke the other.** The nemesis attacks whether the work is
-*sound*; the paladin protects the *author's outcome* — the self-sabotage footguns (a destructive
-or irreversible action, a secret about to leak) and the *under-selling* the nemesis structurally
-cannot see, because he wants the work to fail. Run both isolated; verify every finding; discount
-the paladin's praise and weight its warnings. Convene through the `review-court` ceremony, which
-guarantees these steps run instead of being reconstructed from memory and sizes the panel to the
-stakes (the pair by default; the full skeptic panel only for a high-blast-radius technical gate).
+**Consider its sibling `paladin-review` — but run it only when the artifact carries author-outcome
+risk (a footgun, a secret about to leak, an under-sold win, an irreversible/public step), not by
+default.** The nemesis attacks whether the work is *sound*; the paladin protects the *author's
+outcome*, a lens the nemesis structurally lacks because he wants the work to fail. They run
+INDEPENDENTLY — pick by the risk, and pair them only when both soundness AND author-outcome are
+live. When you do run a panel, convene through the `review-court` ceremony, which sizes it to the
+stakes (default: nemesis + one reviewer, single pass) and keeps the steps from being reconstructed
+from memory.
 
 **When the artifact is written FOR a specific audience (a teaching page, a resume, a pitch,
 docs for a known team), give the adversary that audience's expertise, not just the artifact's

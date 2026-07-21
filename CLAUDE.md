@@ -101,8 +101,9 @@ highest-value signal). Skill: `skills/nemesis-review/SKILL.md`, with the reusabl
 inline.
 - **Orchestration rules:** run the nemesis as an ISOLATED subagent beside 2 to 4 dispassionate domain
   skeptics (breadth), then verify every finding yourself before acting; hostility's failure
-  mode is false positives. Convene its sibling `paladin-review` (below) alongside it — the pair
-  is run together.
+  mode is false positives. Its sibling `paladin-review` (below) runs INDEPENDENTLY — convene it
+  by risk (author-outcome / footgun / under-sell), not automatically; default review = nemesis +
+  one (mandatory-pairing rule reversed 2026-07-21 after a token audit).
 - **Provenance:** first proven 2026-07-01 on the peckworks-bonsai trunk-engine plan (found net-new
   issues the polite reviewers missed; its concessions independently validated the architecture).
   Full episode lives in the maintainer's PRIVATE memory (`nemesis-review-works`), not this repo.
@@ -131,11 +132,13 @@ JUDGES; the court is the HARNESS that guarantees the whole ceremony runs instead
 hand-rolled partial one (the founding failure: 2026-07-07, seven hand-rolled reviews silently
 dropped the pairing rule). The ceremony: (0) intent packet first — the author's verbatim ask,
 the artifact's purpose, the irreversible boundary in play, handed to EVERY reviewer so
-action-vs-intent is reviewable; (1) invoke BOTH sibling skills freshly, never from memory;
-(2) fit 2-4 domain skeptics; (3) one isolated parallel batch; (4) orchestrator verify-pass
-(verify findings, re-derive numbers, cross-check concessions, DISCOUNT paladin praise);
-(5) archive receipts BEFORE any cleanup; (6) converged-first report + same-session provenance.
-Orchestrates only, never judges; complements (never replaces) the mechanical tripwire.
+action-vs-intent is reviewable; (1) invoke each CHOSEN reviewer skill freshly, never from memory;
+(2) size the panel to the risk (default nemesis + one; full court ≤4, no auto re-run); (3) one
+isolated parallel batch; (4) orchestrator verify-pass (verify findings, re-derive numbers,
+cross-check concessions, DISCOUNT paladin praise); (5) archive receipts BEFORE any cleanup;
+(6) converged-first report + same-session provenance. Orchestrates only, never judges; complements
+(never replaces) the mechanical tripwire. Dialed down 2026-07-21 (token audit): no mandatory
+pairing, court capped at 4 reviewers, the automatic second re-verify round removed.
 Cross-session discipline skill — value lives in reading the checklist at convening time, same
 testability class as the memory-type skills. Skill: `skills/review-court/SKILL.md`.
 

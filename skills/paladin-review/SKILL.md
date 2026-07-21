@@ -1,6 +1,6 @@
 ---
 name: paladin-review
-description: Use when the author is about to ship, merge, push, publish, send, or delete something and wants a reviewer on their side — one who checks whether they are about to hurt themselves (delete the wrong thing, leak a secret, expose something irreversibly), whether they are underselling a real win, and how the work will land with whoever decides their outcome. Also use when asked to "watch my back", "am I about to shoot myself in the foot", "am I underselling this", "protect me from myself", "defuse this before I blow up", or to run a "paladin" review — and whenever nemesis-review is convened, since the two always run as a pair.
+description: Use when the author is about to ship, merge, push, publish, send, or delete something and wants a reviewer on their side — one who checks whether they are about to hurt themselves (delete the wrong thing, leak a secret, expose something irreversibly), whether they are underselling a real win, and how the work will land with whoever decides their outcome. Also use when asked to "watch my back", "am I about to shoot myself in the foot", "am I underselling this", "protect me from myself", "defuse this before I blow up", or to run a "paladin" review. Runs INDEPENDENTLY of its sibling nemesis-review — reach for the paladin when the risk is to YOUR outcome (a footgun, an under-sell, an irreversible or public step); there is no mandatory pairing, pick by the risk.
 ---
 
 # Paladin Review
@@ -56,8 +56,8 @@ under-claimed here" — an empty under-sell section is a PASSING result, never a
 - Alongside `nemesis-review` on any expensive/hard-to-reverse commitment: the nemesis hunts
   whether it is sound, the paladin hunts whether it will hurt or short-change *you*.
 - When a hostile pile of findings would make you disengage. Same rigor, a register you can
-  actually receive and act on — read the paladin's report FIRST, but the nemesis still runs;
-  the pairing is not optional in either direction.
+  actually receive and act on — read the paladin's report FIRST; run the nemesis too if
+  soundness is also at stake.
 - **When NOT to use:** as your *only* correctness check (a capable neutral reviewer already
   catches most technical defects and secret leaks — see Provenance; the paladin's value is the
   author-facing lens, not out-finding a good reviewer on bugs). And never as a "hype me up" tool
@@ -67,10 +67,11 @@ under-claimed here" — an empty under-sell section is a PASSING result, never a
 
 Dispatch the paladin as an **isolated subagent** (no shared context, so he reaches conclusions
 independently), hand him the artifact plus the charter below, then synthesize. Run him alongside
-`nemesis-review` and 2 to 4 dispassionate domain skeptics for breadth — and convene through the
-`review-court` ceremony, which guarantees the steps below run instead of being reconstructed from
-memory and sizes the panel to the stakes (the pair by default; the full skeptic panel only for a
-high-blast-radius technical gate). He is the one who asks
+`nemesis-review` when BOTH soundness and author-outcome are at stake, or on his own when the risk
+is purely to your outcome — there is no mandatory pairing. When you run a panel, convene through
+the `review-court` ceremony, which sizes it to the stakes (default: two reviewers, single pass;
+the full court only for a high-blast-radius irreversible gate) and keeps the steps from being
+reconstructed from memory. He is the one who asks
 "what will hurt *this person* / cost them the win," not "is the artifact abstractly sound."
 
 The three load-bearing elements (do not drop any — each mirrors a nemesis element):

@@ -1,6 +1,6 @@
 ---
 name: review-court
-description: Use before an expensive or IRREVERSIBLE technical commitment (pre-build architecture, pre-merge, pre-migration, pre-release, pre-push/publish/send) whose outcome is decided by something a reviewer can actually judge — correctness, safety, reversibility, spec-fidelity — AND whose direction is already approved. Triggers: "convene the court", "review court", "full panel review". This is the FULL ceremony (5-6 isolated reviewers + two-round re-verify, ~1-3M tokens); do NOT auto-convene it just because the nemesis or paladin pair is running. Do NOT convene when the outcome is decided by human taste or a look/design not yet signed off — put a cheap render or prototype in front of the decider FIRST, and convene only once the direction is locked. For a quick adversarial read on a bounded artifact, run the nemesis+paladin pair directly instead.
+description: Use to convene the adversarial-review panel before an expensive or irreversible commitment whose fate a reviewer can judge — correctness, safety, reversibility, spec-fidelity — and whose direction is already approved. The DEFAULT is lean: nemesis + ONE reviewer chosen at run time (paladin for outcome/footgun/under-sell/irreversible-public risk; a domain skeptic for pure correctness), single pass, ~150-350k. The FULL COURT (up to 4 reviewers; a second re-derive only for a disputed, decision-changing blocker) is reserved for a high-blast-radius irreversible technical gate. Triggers: "convene the court", "review court", "review this", "red team this". Do NOT convene on taste/look-driven work not yet signed off — cheap render first. The siblings run INDEPENDENTLY; there is no mandatory pairing — pick by the risk.
 ---
 
 # Review Court
@@ -11,9 +11,9 @@ The **harness** for the review pair — the third member of the trinity, alongsi
 sibling `deletion-tripwire`. The nemesis and paladin are *judges*; this skill is the *court*
 that guarantees the ceremony happens whole. Its reason to exist is one documented failure
 class: **orchestrators hand-roll the ceremony from memory and silently drop steps** — the
-pairing rule, the verify pass, the receipts, the intent packet. Each drop feels harmless;
-each is where a disaster or a discredited review comes from. The court makes the ceremony a
-checklist you execute, not a ritual you remember.
+verify pass, the receipts, the intent packet, the discount-the-praise filter. Each drop feels
+harmless; each is where a disaster or a discredited review comes from. The court makes the
+ceremony a checklist you execute, not a ritual you remember.
 
 One rule above all: **this skill orchestrates; it does not judge.** Every judgment lives in
 the invoked skills and the dispatched reviewers. The court's job is that nobody is missing,
@@ -21,8 +21,9 @@ nobody is contaminated, nothing is trusted unverified, and nothing is destroyed 
 
 ## When to convene: AFTER the binding gate, not before it
 
-The court is a full ceremony that costs 1 to 3M tokens (six-plus isolated reviewers, a
-two-round re-verify, an orchestrator verify pass). Spend that ONLY when the constraint the
+The full court costs ~700k-1M+ tokens (up to four isolated reviewers, an orchestrator verify
+pass, a targeted re-derive only when a blocker's magnitude is disputed); the everyday default is
+far leaner (~150-350k, see "Choosing the panel"). Spend EITHER only when the constraint the
 court can actually judge — technical soundness, safety, correctness, spec fidelity, an
 irreversible/external boundary — is the constraint that decides the artifact's fate.
 
@@ -48,29 +49,36 @@ The court gates SHIPPING, not EXPLORING. Running it to harden something the auth
 validated on its binding axis burns its whole cost for zero movement on the thing that decides
 the outcome.
 
-## Two tiers: the pair by default, the full court by exception
+## Choosing the panel: lean by default, full court by exception
 
-Convening is NOT all-or-nothing, and the full ceremony is not the default. Both siblings ALWAYS
-run together — the pairing is not optional — but what scales with the stakes is how many
-skeptics ride along and how many verify rounds you pay for.
+There is NO mandatory pairing and NO fixed panel. Pick reviewers by the risk the artifact
+actually carries, and default SMALL — each reviewer costs ~80-130k, and the 5th/6th reviewer
+and an automatic second verify round rarely change the verdict (measured across the bonsai and
+job-search transcripts, 2026-07-21).
 
-- **The pair (default, ~300-500k tokens).** nemesis + paladin, at most one fitted skeptic, a
-  single isolated batch, one orchestrator verify-pass. Use for an adversarial read on a bounded
-  artifact: a diff, a single-file change, a plan section, a resume, a page. Reach for this first.
-- **The full court (~1-3M tokens).** The pair + 2-4 fitted skeptics + a two-round re-verify
-  (re-derive disputed numbers AND re-simulate the proposed FIX, not just the findings). Reserve
-  it for a high-blast-radius technical gate where a missed defect costs a full build-and-fail
-  cycle or an irreversible exposure: a pre-build architecture, a migration, a release, a
-  push/publish/send. The Jul-19 nebari run earned its full cost this way (8 execution-only
-  defects caught pre-build); the Jul-20 run did not (the deciding constraint was the eye).
+- **Default (~150-350k): nemesis + ONE other, single pass.** Nemesis always anchors soundness;
+  the second reviewer is a run-time judgment call by the risk in play:
+  - **paladin** — when the risk is to the AUTHOR's outcome: a destructive/irreversible/public
+    step, a secret about to leak, an under-sold win, something a decider will judge on sight.
+  - **a fitted domain skeptic** — when the risk is pure correctness: an algorithm, a byte
+    layout, a numeric law, reachable-input corners, a specific reader's home turf.
+  - **nemesis solo (~30-130k)** — a quick soundness check where neither extra lens applies.
+- **Full court (rare, ~700k-1M+): up to 4 reviewers, single pass.** Nemesis + at most two fitted
+  skeptics (+ paladin if the outcome axis is ALSO live). Cap at 4 total — more reviewers buy
+  convergence you can usually get by re-reading the artifact yourself. Reserve it for a genuinely
+  irreversible, high-blast-radius technical gate: a migration, a release, a push/publish, a
+  print-and-ship where a miss costs a physical build cycle.
 
-Default to the pair; escalate to the full court only when the blast radius of a missed technical
-defect justifies the extra ~1M+ tokens. Never auto-escalate just because the pair was invoked.
+**The second re-verify round is OFF by default — do NOT re-run the panel.** Run a single targeted
+re-derivation ONLY when one specific blocker's MAGNITUDE is both disputed between reviewers AND
+changes the decision; then re-derive that one number end-to-end, not the panel. That lone
+judgment call is the only thing that ever costs a "second round."
 
 ## The Ceremony
 
-Steps 0, 1, 3, 4, and 6 run in BOTH tiers. The skeptic panel in step 2 (2-4 skeptics vs at most
-one) and the second re-verify round in step 4 are what the full court adds over the pair.
+Pick the reviewer set FIRST (see "Choosing the panel"), then run these steps for whoever you
+chose. Step 2 (skeptics) scales with the tier; the second re-verify round in step 4 stays off
+unless the judgment call above fires. The other steps run the same at any panel size.
 
 
 Execute in order. Every step is load-bearing; the Common Mistakes section names what each
@@ -84,17 +92,17 @@ only judge the artifact against itself — intent-fidelity ("does what was DONE 
 MEANT?") becomes unreviewable, and that gap is where a "clean up any junk" becomes deleted
 evidence.
 
-**1. Invoke BOTH sibling skills, freshly.** `nemesis-review` AND `paladin-review`, via the
-Skill tool, every time — even if used an hour ago, even if the charter feels memorized. The
-skills accrete refinements; memory reproduces the well-formed parts and silently drops the
-newest rules. (Field failure 2026-07-07: seven hand-rolled reviews, pairing rule dropped,
-caught by the human in one line.)
+**1. Invoke each reviewer skill you are using, freshly.** Whichever of `nemesis-review` /
+`paladin-review` the chosen panel calls for, via the Skill tool, every time — even if used an
+hour ago, even if the charter feels memorized. The skills accrete refinements; memory reproduces
+the well-formed parts and silently drops the newest rules. (Field failure 2026-07-07: seven
+hand-rolled reviews silently dropped a load-bearing rule, caught by the human in one line.)
 
-**2. Fit 2 to 4 dispassionate domain skeptics to the artifact.** Apply the sibling skills'
-fitting rules: arm at least one with the AUDIENCE's expertise when the artifact has a known
-reader; point one at reachable-input corners; cover EACH component of a multi-component
-system, especially ones the change did not touch; give everyone the raw records when the
-artifact summarizes data.
+**2. Fit the reviewers to the risk (default: nemesis + one; full court: at most two extra
+skeptics, capped at 4 total).** Apply the sibling skills' fitting rules: arm one with the
+AUDIENCE's expertise when the artifact has a known reader; point one at reachable-input corners;
+cover EACH component of a multi-component system, especially ones the change did not touch; give
+everyone the raw records when the artifact summarizes data.
 
 **3. Dispatch all reviewers as isolated subagents in ONE parallel batch.** Each receives: the
 intent packet verbatim + its charter + read access to the repo/raw records. No shared context
@@ -124,11 +132,12 @@ does not survive until later.
 
 | Situation | Do this |
 |-----------|---------|
-| Adversarial read on a bounded artifact (diff, page, plan section, resume) | Run the PAIR (tier 1): both siblings + at most one skeptic, single pass |
-| High-blast-radius technical gate (pre-build architecture, migration, release, push) | Run the FULL COURT (tier 2): steps 0-6, skeptic panel + two-round re-verify |
+| Everyday review | nemesis + ONE other (paladin if the risk is to your outcome, else a fitted skeptic), single pass, ~150-350k |
+| Only correctness matters, quick check | nemesis SOLO (~30-130k); add no one |
+| High-blast-radius irreversible technical gate | FULL COURT: up to 4 reviewers, single pass; a second re-derive ONLY for a disputed, decision-changing blocker |
+| Which second reviewer? | Judgment call at run time: outcome / footgun / under-sell → paladin; algorithm / bytes / corners / a reader's home turf → skeptic |
 | Outcome decided by human taste / a look not yet signed off | Do NOT convene; put a cheap render or prototype in front of the decider FIRST |
-| Tempted to skip a step within a convened ceremony | That is the exact failure this skill exists for; run every step of the chosen tier |
-| Only one sibling seems relevant | Convene both anyway; the pairing is not optional in either direction |
+| Tempted to skip a step within a convened review | That is the exact failure this skill exists for; run every step for the panel you chose |
 | Reviewer output arrives | Step 4 before ANY finding reaches the author |
 | Run produced test artifacts / evidence | Step 5 before any cleanup command touches them |
 | A deletion is part of acting on findings | The `deletion-tripwire` protocol governs it; the court does not bypass the tripwire |
@@ -136,9 +145,13 @@ does not survive until later.
 ## Common Mistakes
 
 - **Hand-rolling the ceremony from memory.** The founding failure. Invoke this skill, then
-  invoke both siblings through it, every time.
-- **Convening one sibling.** The nemesis alone leaves the author's outcome unguarded; the
-  paladin alone leaves soundness unattacked and (worse) its praise unopposed.
+  invoke each reviewer skill you are using through it, every time.
+- **Over-paneling — adding a reviewer with no risk to find.** Paladin on a pure-correctness
+  spec, or a third and fourth skeptic on a bounded artifact, pays ~80-130k each for a lens with
+  nothing to catch. Pick reviewers by the risk the artifact actually carries; default to two.
+- **Under-paneling a real outcome risk.** The mirror mistake: shipping something irreversible or
+  author-facing with nemesis alone leaves the footgun/under-sell lens (paladin's) unrun. Match
+  the panel to the risks that are actually live — neither more nor less.
 - **Skipping the intent packet.** Reviewers then judge the artifact in a vacuum; the
   action-vs-intent gap — the quiet interpreter drift between what was said and what was done —
   goes unreviewed.
@@ -182,6 +195,18 @@ was validated by a throwaway spike (one standalone script + 4 renders, zero core
 court, NO build) shown to the maintainer's eye first. The cheap render answered the binding
 question (does the blend kill the seam) that the entire court could not. The court did its job
 correctly both times; the lesson is purely WHEN to spend it. See the "When to convene" section.
+
+Dial-down 2026-07-21 (token audit of the bonsai + job-search transcripts). Measured: individual
+reviewers cost ~80-130k each; a full pre-paladin panel (nemesis + 4 skeptics + reader-twin) ran
+~560k; and the biggest spends by far were TDD BUILD swarms (1-2.3M per session), NOT reviews.
+Two rules changed as a result: (1) **mandatory pairing dropped** — nemesis and paladin run
+independently, chosen by the risk (soundness vs author-outcome); the default is nemesis + one.
+(2) **the full court is capped at 4 reviewers and the automatic second re-verify round is
+removed** — now a single targeted re-derive, only for a disputed, decision-changing blocker. The
+ceremony's discipline value (intent packet, verify-pass, receipts, invoke-fresh) is unchanged;
+only the default panel SIZE and the auto-escalation were cut. The mandatory-pairing rule was a
+same-session over-correction (added 2026-07-19, measured too costly 2026-07-21); the lesson is
+that a "never forget the other lens" rule should route through a risk check, not fire unconditionally.
 
 Field win 2026-07-19 (same day as authoring), peckworks-bonsai nebari round-2 plan: first full
 ceremony run. All six steps executed from the checklist; the steps proved individually
