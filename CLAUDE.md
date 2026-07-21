@@ -37,6 +37,15 @@ README.md · CONTRIBUTING.md    # what a skill is · the test-first workflow + c
   housekeeping, CLAUDE.md touch-ups) goes to cheap subagent models (haiku); the main model
   writes the rules, reviews the output (cheap models introduce real defects), and owns
   anything committed or pushed.
+- **Build-subagent model policy** (the biggest token lever — a plan build fans out to 15-20
+  subagents; a token audit 2026-07-21 measured ~1-2.3M/build, dominated by premium-model
+  reviewers, not implementation): implement/transcribe subagents and **per-task reviews run on
+  `haiku`** (a light regression check); `sonnet` only for a genuinely hard implement; **`fable`/
+  `opus` reserved for the ONE final whole-branch review and the adversarial panel.** Never let
+  bulk build subagents inherit the premium main-model tier. The thorough pass is the single final
+  review, not a premium review after every task. No duplicate review rounds (same discipline as
+  `review-court`). Right-size decomposition too: fewer, coherent tasks beat 20 tiny ones, since
+  each subagent re-pays context-read overhead.
 
 ## Installing these skills
 
