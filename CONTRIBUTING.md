@@ -37,6 +37,26 @@ naive RED caught the planted footgun *and* the under-sell, so it looked like the
 nothing; only a subtle, quick-look artifact run against two baselines isolated the under-sell +
 blast-radius lens the neutral reviewers missed (and inverted).
 
+## A rule that always fires has a cost — gate it
+
+A safety or coverage rule stated as an absolute ("always convene both siblings," "review after
+every task," "run the full ceremony") over-fires: it pays its full price on the many cases where
+it has nothing to catch. Three such rules were added and walked back within days in this lab's own
+history — mandatory nemesis+paladin pairing, the full-court default, and premium per-task build
+reviews — each measured (2026-07-21 token audit) as costing far more than the failure it prevented
+(a review's real driver was the ceremony, not the ~83k paladin; builds ran ~1-2.3M, dominated by
+premium per-task reviews). The fix is never to drop the safety; it is to **route the rule through a
+cheap triage gate** — fire it by the RISK actually present (author-outcome? irreversible?
+correctness-only?), not unconditionally. Same shape as the assumption-debt "scope of a rule" trap,
+and a sibling of "When the baseline already passes": both are a skill spending effort where the
+stakes don't warrant it.
+
+**Measure before you scrap.** Before retiring or blaming a skill for cost, read the real numbers:
+every subagent stamps `subagent_tokens: N` in its result, so a transcript grep buckets true
+per-skill / per-model cost in one cheap pass. Fire-rate (`tools/skill_usage_report.py`) tells you
+IF a skill runs; the `subagent_tokens` stamps tell you what it COSTS — and the two answer different
+questions.
+
 ## Authoring conventions
 
 - **One skill per folder** under `skills/`, named in active voice (`creating-x`, not `x-creation`).
