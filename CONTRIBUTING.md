@@ -19,6 +19,14 @@ teaches the right thing. This applies to edits too, not just new skills.
 | GREEN | Write minimal code to pass | Write the minimal skill that addresses those specific failures; re-run and confirm the agent now complies |
 | REFACTOR | Clean up | Close loopholes the agent found; re-test until bulletproof |
 
+**REFACTOR re-runs cover the edited rule's whole blast radius.** When a REFACTOR edits a
+rule, re-run the scenario that failed AND every other scenario that rule governs — a fix
+validated only on the case that exposed it can silently open an escape hatch in a sibling
+case. Motivating case (2026-07-22, `sandwich-test`): the rewritten tier-calibration rule
+passed its version-bump re-run but shipped untested against the destructive cleanup
+scenario — the skill's flagship case; the final whole-branch review caught the gap and a
+fresh regression run closed it.
+
 ## When the baseline already passes
 
 A capable model often already does much of what a **persona or lens skill** would do when the
