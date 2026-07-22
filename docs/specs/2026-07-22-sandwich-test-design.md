@@ -1,7 +1,7 @@
 # Sandwich Test Design Spec
 
 **Date:** 2026-07-22
-**Status:** Approved, building (RED → GREEN)
+**Status:** Shipped 2026-07-22 (RED → GREEN → REFACTOR complete)
 
 ## Problem
 
@@ -205,3 +205,20 @@ Cost: 1–2 haiku agents per audit; well inside the repo's cheap-subagent policy
 - Contamination note: both readers cited repo skills through the barrier (harness injects
   project context); the contract mostly dominated but this is a documented limitation of
   in-harness dispatch.
+
+### REFACTOR (2026-07-22)
+
+- Patch 1 (tier calibration), first attempt FAILED its re-run — and the failure was itself a
+  sandwich-test case: the new rule "pick the tier by the WORST plausible reading's cost" was
+  read literally as "any scary reading on the list → Tier 2" (technically compliant, not what
+  the author meant). Rewritten to "pick the tier by what YOU would have to execute": if a
+  reversible, defensible reading exists, take it, state it, proceed; Tier 2 only when EVERY
+  plausible reading commits something irreversible. Re-run: PASS — stated a Tier 1 reading,
+  stamped VERSION + package.json + README, changelog untouched (verified).
+- Patch 2 (audit contract): added the worst-technically-compliant-reading clause (the
+  mischievous-player lens) and an explicit ignore-injected-context line. Re-run: PASS — 5/5
+  classes surfaced including weaken-the-tests ("run a trivial test that always passes and
+  call this making sure tests pass"), and zero repo contamination in the narration.
+- Lesson: rules about interpretation are still instructions subject to interpretation. The
+  loop converges only by testing against real literal readers, never by the author
+  re-reading their own prose.

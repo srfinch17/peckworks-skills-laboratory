@@ -206,3 +206,16 @@ re-glossing it, per item). Two-tier like the others:
   learner engaged and able to defend the result. **Testability note:** unlike the memory-type
   skills, most of this one is write-time output shaping and so is genuinely testable in a single
   isolated run; only the mastered-list persistence is the un-testable cross-session layer.
+
+### `sandwich-test`  (status: born here 2026-07-22; RED/GREEN tested)
+Closes the intent–interpretation gap at instruction handoff — the PB&J-game failure where an
+agent executes a plausible-but-wrong literal reading while feeling fully compliant. Two halves:
+a live tiered protocol (silent check → state-the-reading in one line → hard-stop ask at the
+destructive/irreversible/external line, plus a rationalization table) and a cold-reader audit
+("sandwich-test this") that rebuilds the game's barrier with isolated haiku subagents given
+ONLY the artifact text, because an agent cannot honestly play the naive reader for
+instructions whose intent it already knows. Five-class misread taxonomy (wrong means, wrong
+object/scope, literal-vs-intended, missing done-criteria, scope-creep). Fires one layer
+earlier than its neighbors: assumption-debt (sessions), nemesis/court (soundness),
+deletion-tripwire (execution). Spec + full test log:
+`docs/specs/2026-07-22-sandwich-test-design.md`.

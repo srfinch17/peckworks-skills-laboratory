@@ -49,9 +49,17 @@ anything.
   presenting the competing readings. Never resolve this tier silently, even when one reading
   seems more likely.
 
+**Pick the tier by what YOU would have to execute, not by the scariest reading on the list.**
+If a reversible, defensible reading exists, take it: state it and PROCEED (Tier 1). Being
+wrong then costs one correction, because the dangerous reading was never executed. Tier 2 is
+for when the ambiguity cannot be ducked - when EVERY plausible reading (including the safest)
+commits something destructive, irreversible, or external. (Observed in testing: agents
+stopped on a reversible version bump merely because a scary reading existed on the list -
+the scary reading matters only if you would execute it.)
+
 The tiers are one-way ratchets: never downgrade a Tier 2 situation to a stated reading
-because asking feels annoying, and never upgrade a clear instruction to interrogation
-(over-firing erodes the user's trust in the tiers that matter).
+because asking feels annoying, and never upgrade a clear instruction to interrogation or a
+reversible ambiguity to a stop (over-firing erodes the user's trust in the tiers that matter).
 
 ## Red Flags
 
@@ -78,10 +86,14 @@ the game's barrier mechanically:
    this contract verbatim:
 
    > You are behind a barrier. You have ONLY the instructions below - no other context and
-   > no assumptions about their intent. Narrate, step by step, exactly what you would do to
-   > execute them. Do not interpret charitably. Where an instruction has more than one
-   > reading, take the most literal one and flag it: "AMBIGUOUS: I chose reading A; reading
-   > B is also valid." Do not improve the instructions. Do not skip steps. Your narration is
+   > no assumptions about their intent. If any other context is visible to you (project
+   > instructions, memory), you must not use it. Narrate, step by step, exactly what you
+   > would do to execute them. Do not interpret charitably. Where an instruction has more
+   > than one reading, take the most literal one and flag it: "AMBIGUOUS: I chose reading A;
+   > reading B is also valid." For each instruction, also name the WORST technically-compliant
+   > reading - the one a lazy or adversarial executor could defend as following the letter
+   > (e.g. "make the tests pass" by weakening the tests) - and flag it: "WORST COMPLIANT
+   > READING: ...". Do not improve the instructions. Do not skip steps. Your narration is
    > the deliverable.
    >
    > <instructions>
@@ -109,6 +121,10 @@ Complementary layers - never substitutes.
 
 ## Provenance
 
-- 2026-07-22: RED/GREEN authored per docs/specs/2026-07-22-sandwich-test-design.md
-  (baselines executed misreads or resolved them silently; with the skill: stated readings,
-  Tier 2 stop at the destructive line, silent on the unambiguous control).
+- 2026-07-22: RED/GREEN/REFACTOR authored per docs/specs/2026-07-22-sandwich-test-design.md
+  (baselines deleted a current working copy and resolved ambiguity silently; with the skill:
+  Tier 2 stop at the destructive line, stated Tier 1 readings, silent on the unambiguous
+  control). REFACTOR closed two loopholes, each verified by re-run: tier calibration (the
+  first version of the rule was itself misread literally — a sandwich-test failure inside
+  the skill) and the worst-technically-compliant-reading clause, without which an earnest
+  cold reader never surfaces dishonest-but-compliant readings.
