@@ -536,6 +536,23 @@ in source.
 - **Cheap deterministic diagram gate (complements the screenshot pass).** One browser_evaluate over every `.fig svg` that estimates each `<text>` element's right edge (x plus length times a per-anchor factor) against the viewBox width flags the number-one failure (text running past the edge) across all figures in a single call. Use it as a fast pre-filter; still do the visual pass for label collisions, which this does not catch.
 - **At scale, the whole-page re-read finding is CROSS-CARD inconsistency, not just within-card roughness.** The post-patch reader-twin caught a card whose opening sentence contradicted the NEXT card and its own diagram (latency: it listed queue and time-to-first-token as peer clocks while the diagram and the next card folded queue INTO time-to-first-token). Additive glosses also bolt awkwardly (a definition nested inside another definition reads three times before the verb). Reconfirms the patch-pass-ends-with-a-whole-page-reader-twin rule, and adds: at scale, hunt contradictions BETWEEN adjacent cards and between a card and its own figure, not only sentence-level clumsiness.
 
+### Rules added 2026-07-22 (Learning_ClaudeHarness: a fast-moving-tooling primer)
+- **Context-constrained build chain.** When the orchestrator's own context is degraded, build the page via
+  subagents instead of drafting inline: research-to-disk (facts written to a file) -> plan-to-disk (structure
+  written to a file) -> an author subagent that reads those two files and writes the HTML -> the standard
+  QA-gate subagents (reader-twin + technical-accuracy skeptic) -> a fix subagent that applies findings, so the
+  page content itself never has to enter the orchestrator's context. Note: read-only agents such as
+  `claude-code-guide` cannot Write the research file (they carry no Write/Bash tool); use a `general-purpose`
+  agent for any step that must persist a file to disk.
+- **Fast-moving tooling goes stale even in a fresh research pass.** For a page about rapidly-changing tooling,
+  the technical-accuracy skeptic MUST verify against LIVE primary docs (WebFetch), not just re-check the
+  research file, because the research itself can already be months stale. Field case: a harness page claimed a
+  LiteLLM proxy was REQUIRED to run a local model; the doc-verifying skeptic found that Ollama, llama.cpp, and
+  vLLM had shipped native Anthropic-Messages-API endpoints roughly six months earlier, making the proxy
+  optional, not required. The reader-twin (a clarity lens, not a currency lens) was blind to the staleness;
+  only the live-doc skeptic caught it. On any page about tooling that changes fast, treat "verified against the
+  research file" and "verified against the live docs today" as two different, both-required checks.
+
 ## Inline-SVG diagrams: the highest-value move
 
 Diagrams are where these pages beat plain notes. Read `references/svg-diagrams.md` for the full
