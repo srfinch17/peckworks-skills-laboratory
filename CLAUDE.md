@@ -207,7 +207,7 @@ re-glossing it, per item). Two-tier like the others:
   skills, most of this one is write-time output shaping and so is genuinely testable in a single
   isolated run; only the mastered-list persistence is the un-testable cross-session layer.
 
-### `sandwich-test`  (status: born here 2026-07-22; RED/GREEN tested)
+### `sandwich-test`  (status: born here 2026-07-22; RED/GREEN/REFACTOR tested; shipped + first field win same day)
 Closes the intent–interpretation gap at instruction handoff — the PB&J-game failure where an
 agent executes a plausible-but-wrong literal reading while feeling fully compliant. Two halves:
 a live tiered protocol (silent check → state-the-reading in one line → hard-stop ask at the
