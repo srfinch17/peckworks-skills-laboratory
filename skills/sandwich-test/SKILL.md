@@ -121,6 +121,12 @@ Complementary layers - never substitutes.
 
 ## Provenance
 
+- 2026-07-22 (first live fire, same day as authoring): an "incorporate this into the appropriate
+  doc" ask arrived with an unresolved referent (which doc?) and a divergent means-reading (append
+  verbatim? extract into study material? feed a pipeline with side effects?). The Tier 0 check
+  held action until a fact-gather surfaced the target workspace's documented ingestion path, which
+  resolved the referent; the Tier 1 stated reading was then confirmed correct and the
+  plausible-wrong readings (a different doc, the side-effect pipeline) were never executed.
 - 2026-07-22: RED/GREEN/REFACTOR authored per docs/specs/2026-07-22-sandwich-test-design.md
   (baselines deleted a current working copy and resolved ambiguity silently; with the skill:
   Tier 2 stop at the destructive line, stated Tier 1 readings, silent on the unambiguous
