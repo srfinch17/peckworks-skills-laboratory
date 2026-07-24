@@ -399,3 +399,20 @@ deepened) that the other three passed. (2) The nemesis also re-caught a headline
 in three cards as single-cause while its honest multi-step story sat correctly in a fourth card
 (classic flattening); the fix, drilling the flattened number as its own follow-up, made the page
 stronger, not just longer.
+
+Fourteenth success 2026-07-24 on a recruiter-screen prep page built the same hour it was reviewed
+(lean court: nemesis + reader-twin, both on a cheaper tier; nemesis armed with the application's
+ENTIRE folder, not just the page). Its BLOCKER inverted the page's central reassurance: the page
+said "the paper already says exactly what is true," and the nemesis, diffing the job description's
+requirement list against the AS-SENT document, found the JD's first-listed language appears ZERO
+times on the paper the screener read. It also caught that the page's "three wobble points" were an
+undercount: the application folder's own build-time notes file listed five gaps plus a
+time-sensitive pre-interview task (a tool the JD names, learnable in one evening) that the prep
+author had never read. The reader-twin, in parallel, flagged five honest facts packaged as
+recite-lines, validating the sibling teaching skill's study-aid-not-script rule. New refinement,
+now standing: **when the artifact is prep for a specific application, arm the nemesis with the
+whole application folder (the build-time notes, the captured posting, and the exact as-sent
+artifact), and instruct it to diff the requirement list against the as-sent document hunting for
+requirements the document never mentions** - the deadliest gap is the one invisible until the
+reader holds both papers, and the orchestrator's own draft had missed it by reading only the
+files it remembered writing.
