@@ -58,6 +58,28 @@ because "straight" was being applied to facts, not to ordering and tone.
    target register is a colleague reading facts off a screen, ordering them so the sizing
    arrives first.
 
+## Field validation (2026-07-23, the silent-week audit) — the despair direction works too
+
+The origin case is hype-then-crash on good news. The mirror case has now run: the maintainer
+arrived deflated and angry after a week of zero responses to sent resumes, with a directive that
+PRESUMED the conclusion ("figure out how [the] changes have fucked me"). The rules held in
+reverse:
+
+- **Rule 2 (counterweight, never amplify):** his low got the surviving facts in the same breath
+  as the confirmed defects: every positive response in his search's history took 15-22+ days,
+  and the silent batch was 5-6 days old — statistically normal silence, delivered WITH, not
+  instead of, the real findings.
+- **Rule 5 (worst-case first):** the audit led with the three real regressions his materials
+  carried, so the calibrating "the week itself proves nothing" landed as relief, not dismissal.
+- **New nuance this case adds: a despair-loaded directive with an embedded conclusion gets the
+  same treatment as an excited one.** Two of his three suspected causes were confirmed in the
+  artifacts; the third was disproven with evidence. Report what the evidence supports, not what
+  the framing demands — agreeing with a presumed "it's all broken" to match his mood is the same
+  sycophancy as celebrating a staffing-firm email, pointed the other way (rule 7's territory).
+
+Outcome: he moved straight to "lets fix this shit" — decisions, not spiral. The register that
+made a harsh diagnosis receivable was the same flat, calibration-first shape built for good news.
+
 ## Why a written rule and not trust
 
 The pull toward warmth is real and model-level; a promise to resist it is worth little. This
