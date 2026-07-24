@@ -274,3 +274,21 @@ handoff. Audience-landing bomb also banked: the handoff must name the deferred b
 complaint as out of scope, or the maintainer reads the round as a miss. Pattern to keep: the
 paladin hunting "what detonates in front of the decider at HIS logged poses" found the
 rootCount-8 rib-ring failure that defaults-only verification structurally hides.
+
+Third field win 2026-07-23, on a 41-document pre-send sweep (the maintainer's staged resumes +
+cover letters, about to go to employers), run alongside SIX parallel line-level proofreaders. The
+paladin out-found the entire proofreader pool on every highest-severity class: a tailoring
+annotation about the employer left verbatim in the candidate's own skills section (the literal
+screenshot-and-mock scenario the maintainer had named as his fear); fabricated stack claims with
+zero baseline support, verified by grepping the source-of-truth files; a banned not-yet-built
+capability claim that had survived earlier greps because it was HYPHEN-SPLIT across a line wrap
+(the paladin's own note: "do not assume a grep that missed it means an interviewer will" — now a
+standing rule: normalize whitespace before grepping for banned phrases); and true metrics pinned
+to the wrong system, indefensible under "walk me through that bullet." Its single under-sell
+survived verification (publicly inspectable repos uncited in exactly the applications whose
+readers would check) and cost ~14 characters per file to bank. Both orchestrator filters earned
+their keep in the same run: one proofreader-pool alarm was rejected because the "fix" would have
+fabricated a number the source of truth never contained, and reviewer quotes proved unreliable
+enough (3 of 82 fix pairs misquoted or mis-attributed the file) that count-asserted
+verify-before-edit was load-bearing, not ceremony. Division of labor confirmed: proofreaders find
+typos; the paladin finds what gets you mocked or caught.
