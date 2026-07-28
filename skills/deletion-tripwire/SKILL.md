@@ -31,6 +31,22 @@ directions, leaving the machine (can't recall) and leaving existence (can't reco
    Hunt links/junctions resolving OUTSIDE the target
    (PowerShell: `Get-ChildItem <target> -Recurse -Force -Attributes ReparsePoint`;
    bash: `find <target> -type l`). Anything escaping the target is a hard stop to report.
+
+   ⚠️ **The `-Attributes ReparsePoint` check FALSE-POSITIVES on cloud-sync folders.** Dropbox,
+   OneDrive and iCloud mark synced/placeholder files with the reparse-point bit, so inside those
+   folders *nearly every file* trips this test. Observed 2026-07-27 in a Dropbox workspace:
+   **25 of 36 files flagged, including plain `CLAUDE.md`** — taken literally, the hard stop would
+   block every deletion forever, which trains people to ignore the guard.
+
+   **Disambiguate before treating it as an escape: a real link populates `LinkType` AND `Target`;
+   a cloud-sync placeholder leaves both EMPTY.**
+   ```powershell
+   Get-ChildItem <target> -Recurse -Force -Attributes ReparsePoint |
+     Where-Object { $_.LinkType } |          # genuine symlink/junction only
+     Select-Object FullName, LinkType, Target
+   ```
+   Only entries surviving that filter are real escapes and a genuine hard stop. On bash,
+   `find <target> -type l` does not have this problem.
 2. **CONFIRM.** Show the user the manifest and anything outside-target; get an explicit yes.
    If the user never asked for a deletion, stop and surface instead of proceeding.
 3. **LEDGER.** Write `<ledger>/<id>.md` BEFORE deleting: the user's verbatim ask, the command,
