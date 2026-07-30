@@ -103,6 +103,7 @@ Every entry, written atomically, one click:
 | **Full state, verbatim as consumed** | Must replay EXACTLY. Serialize what the generator eats, not a summary |
 | **Vantage point** | Camera / scroll / zoom / which screen. "It's wrong on the left" is meaningless without it |
 | **The artifact itself** | A screenshot or capture. The one field people skip and regret |
+| **Their marks ON the artifact** | A ring around the thing beats any adjective. See Annotation below |
 | **Instrument state** | Quality, resolution, sample rate, WHICH RENDERING MODE. See below |
 | **Code version** | Commit hash. Params alone do not reproduce anything a year later |
 
@@ -114,6 +115,23 @@ defect* and rebuilt geometry twice. One boolean in the record would have ended i
 
 The general form: **record the settings of the thing doing the showing, not just the thing being
 shown.** Whatever could make the same output look different is part of the record.
+
+### Give them a pen, and agree what the colours mean
+
+A comment box describes; a drawing points. Add a toggle that lets them draw over the output, and
+composite those marks INTO the logged capture. It is cheap (a canvas overlay) and it was the single
+biggest jump in signal quality on the project this came from - "on this side, the front chest part"
+had cost several rounds of reconstructing which feature was meant.
+
+Two details that matter more than they look:
+
+- **Agree colour semantics, and include a colour for the TARGET.** What settled out was: red = this is
+  wrong, worst first; yellow = secondary, or cut-here markers; **green = the shape it SHOULD have,
+  drawn over the output**. Green is worth more than the rest combined. "Smoother" is unbuildable; a
+  drawn contour is a spec. Ask for it explicitly.
+- **Clear the marks per subject.** After a log lands, and whenever a new case loads, wipe the marks and
+  leave draw mode. A mark belongs to one subject and one comment; carrying it forward annotates the
+  wrong thing, and leaving draw mode on silently steals the drag from the camera.
 
 ### Code version is what makes it survive
 
@@ -140,6 +158,68 @@ utterances against a thin one, and costs a third as much of them.
 it should fall over the life of a project. If round five needs as much of them as round one, the
 capture is not compounding - the records are not being harvested, or you are asking them things you
 could have screened. Most projects will not reach zero. Every project should be heading there.
+
+## The rate limiter is instrument correctness, not iteration speed
+
+Once you have a proxy, you will be tempted to iterate against it. Do - but the proxy is now the thing
+most likely to waste your time, and it fails quietly. On the project this came from, progress stalled
+for several rounds not because tweaking was slow but because the detector was wrong three separate
+times: wrong node set, wrong denominator, and no encoded standard. Each time the number moved while
+the human saw nothing, or sat still while they saw plenty.
+
+**Five rules, each from a real failure:**
+
+1. **A detector that never reports clean is measuring an intended behaviour.** Two of three flagged
+   every configuration on every axis; both were measuring a deliberate taper. Suspect the instrument
+   before the artifact.
+2. **A detector that reports clean while they see the defect has the wrong denominator or node set.**
+   Ask what the HUMAN compares the flaw to. They compare a lump to the surface beside it - so
+   normalise by that surface, not by the lump's own size.
+3. **Never build a detector on the code you are changing.** One called the very function being
+   modified; changing its normalisation changed the detector's units, and a unit change read as a
+   regression. Any cross-change comparison needs an instrument the change cannot touch.
+4. **Sample multiple viewpoints.** A single-ray probe read clean on the exact case a five-ray sweep
+   flagged. Defects visible from one angle are the norm, not the exception.
+5. **Calibrate the instrument against them, once.** The endgame move, and the only one that compounds:
+   ask them to mark in RED only what is genuinely wrong and in GREEN what is acceptable, then re-aim
+   the detector at exactly those cases. Some flagged cases will be correct behaviour - a feature that
+   is SUPPOSED to stand out - and no amount of thinking will tell you which. One calibration pass
+   beats three rounds of guessing at their threshold.
+
+## Hunt brackets; do not wait to be handed one
+
+A **bracket** is a present case and an absent case of the same defect under the same code. The
+difference between them contains the cause and everything else can be discarded.
+
+This came from the human noticing, in passing, that one output lacked a defect every other output had.
+That single observation localised in one measurement what had already survived two wrong fixes. So do
+not wait for it:
+
+- **Sweep every axis to its EXTREMES**, not around the defaults. Defaults are where you already looked.
+- **Remove whole subsystems.** "With the roots switched off, is it still there?" is the cheapest and
+  most decisive question available, and the human can answer it in one sentence.
+- **When a defect count scales with a knob, that IS the mechanism.** If artifacts get MORE numerous as
+  you add samples, it is a per-sample step, not under-sampling - and those have OPPOSITE fixes. Adding
+  samples to a per-sample step makes it worse. Check the direction before choosing a fix.
+
+## Screen your own work before spending their attention
+
+Render every candidate and LOOK at it before it reaches them. This sounds obvious and was the single
+most deserved criticism on the source project: a round shipped twelve cases of which one had been
+looked at, and most were visibly bad. "You don't need a human to see that."
+
+Screening also lets you CUT cases. Two were dropped on the next round purely because rendering them
+first revealed they asked questions the human had already answered.
+
+## Predict their verdict, sealed, before they look
+
+Write down what you expect them to say, per case, with a confidence, in a file they do not read. After
+their verdicts land, compare. The gap is its own dataset and it is worth more than either half.
+
+It works because it catches overreach in one round rather than three. A prediction of "this defect is
+gone" met a verdict of "it moved" - which is a materially different claim, and the protocol forced the
+distinction into the open. Predicting mostly PARTIAL is usually the honest position; each fix tends to
+remove one mechanism and reveal the next.
 
 ## The harvest
 
