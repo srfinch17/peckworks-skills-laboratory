@@ -92,8 +92,16 @@ Each episode records:
 Over time this becomes a personalized profile of *this* collaborator's recurring blind
 spots - earned the way real familiarity is earned, through a history of surprises, not a
 declared list of traits. **If a personal logbook exists for this collaborator, consult it at
-the trigger moments above** and append a new episode whenever a fresh debt comes due. See
+the trigger moments above** and record a new episode whenever a fresh debt comes due. See
 `LOGBOOK.template.md` for the schema.
+
+**Write new episodes at the TOP of the Episodes section, and take the id from the SessionStart
+hook's status line rather than reading either end of the file.** "Append" is the wrong verb for
+a newest-first log and caused a real failure: one logbook drifted into two independently
+numbered regions, the tail one silently grew past the top one in date, and ten ids collided
+while the newest episode sat last, so every session-start read of the top missed three weeks.
+The `inject_standing_layer.py` hook now publishes the next free id and warns on duplicates or
+broken ordering, because the collisions happened for want of a knowable next number.
 
 The durable fix is often **mechanical, not memory**: where a debt recurs, build a guard
 (a sanitizer at generation time, a structural rule like "the human writes the core logic,
