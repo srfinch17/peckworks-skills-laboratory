@@ -185,6 +185,31 @@ the human saw nothing, or sat still while they saw plenty.
    the detector at exactly those cases. Some flagged cases will be correct behaviour - a feature that
    is SUPPOSED to stand out - and no amount of thinking will tell you which. One calibration pass
    beats three rounds of guessing at their threshold.
+6. **Anything that SETS experiment state is an instrument too, and it can lie.** On the source
+   project a slider clamp silently rewrote every "unseen" input to the same value for four rounds,
+   and a test-rig default overrode the human's own recorded preference for four more. Both were
+   caught only because the record logs what was USED, not what was asked. A rig must pin what it
+   claims to pin, and anything it sets should be diffed against the human's own defaults - a silent
+   disagreement there means every verdict judged a tree the human never chose.
+7. **A local-defect loop without a target metric is a random walk.** Fixing exactly what they
+   circle, round after round, can leave the overall shape wrong forever - each fix reveals the wrong
+   shape more clearly and produces a fresh circle. If the target has a name (a reference photo, a
+   one-word shape like "starfish"), lead every round with a distance-to-target view and demote the
+   circles to second place. Corollary: render the viewpoint the target is DEFINED in, first - the
+   source project produced hundreds of side views of a shape whose definition ("a starfish") only
+   reads from above.
+8. **Their metadata is evidence, not packaging.** The camera pose logged with each verdict cracked
+   a defect four rounds of pixel-staring could not: every bad verdict came from high elevation,
+   every self-screen from low. Screen at the elevations THEY actually judge from, and when verdicts
+   seem inconsistent, diff the view metadata before doubting the person.
+9. **Their sentences often contain the algorithm.** "It needs to get so thin that it doesn't have to
+   cause any math issues when they merge - maybe they don't even have to meet" specified a
+   fade-instead-of-collide mechanism implementable nearly verbatim, after the invented alternative
+   had failed. Before designing a mechanism for a complaint, re-read their words as pseudocode.
+10. **A hunt may end in a decision, not a fix.** One defect resolved to "the geometry is clean at a
+   finer resolution; sampling it costs 3x the time" - a product trade-off only the human can make.
+   Recognise that ending: package the A/B evidence and hand over the call instead of forcing a
+   code change that quietly picks for them.
 
 ## Hunt brackets; do not wait to be handed one
 
