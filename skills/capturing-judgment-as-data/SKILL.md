@@ -236,6 +236,26 @@ looked at, and most were visibly bad. "You don't need a human to see that."
 Screening also lets you CUT cases. Two were dropped on the next round purely because rendering them
 first revealed they asked questions the human had already answered.
 
+Screening has a failure mode of its own, and it cost a full round on the source project: looking FOR
+your fixes instead of AT the work. Three defects were fixed, their absence was confirmed, and three
+NEW defects sitting in the same screenshots shipped unseen - the human's verdict opened with "it
+shocks me that you didn't see this." Two rules close it:
+
+- **Diff against the last version they approved, at their logged viewpoints.** A new defect is
+  invisible to a checklist of old defects and obvious in a before/after comparison. A numeric
+  profile of the thing their eye reads (on the source project: the silhouette outline per unit
+  height) diffs across builds and catches what your eye grades past.
+- **Enumerate everything you can see FIRST, hostile, as if marking it up for them - then consult
+  your fix list.** The fix list is the last thing you check, not the lens you look through.
+
+## Their marks are the spec; your observations are questions
+
+Fix only what they marked. A defect you notice that they never marked is a genuine observation - and
+it ships as a QUESTION in the next round, never as changed output. On the source project a fix was
+built for a texture defect the agent judged in its own screening crops; the human had never marked
+it, and the fix manufactured a defect he immediately did mark. The inversion to remember: their
+example is not a spec (the classic scope lesson), and symmetrically, your eye is not their bar.
+
 ## Predict their verdict, sealed, before they look
 
 Write down what you expect them to say, per case, with a confidence, in a file they do not read. After
