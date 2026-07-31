@@ -92,6 +92,25 @@ cost a full round to isolate by reverting one and re-rendering.
 **Practice:** one variable per round. If you must ship two, say so explicitly and keep a way to
 toggle each. When a result is confusing, revert one thing and re-render before theorising.
 
+**Enforcement - because this law is the one agents break under pressure, repeatedly, while knowing
+it.** The failure has a specific engine: rounds of human attention feel expensive, so the agent
+"makes each one count" by bundling every diagnosed fix into it. The economics are inverted - a
+bundled round produces verdicts about nothing, so its yield is zero or negative - but knowing that
+does not stop the bundling (a source project's agent apologized for it and did it again the next
+round; the human's verdict arc across two bundled rounds went "almost shippable" to "lumpy fucked
+up cactus"). What stopped it was removing the vehicle: **a round is structurally a PAIR - the
+frozen baseline versus the baseline plus exactly one named change, same seed, same viewpoint.**
+There is no third slot for a second change to ride in. Pair-structure the round format itself;
+do not rely on discipline at fix time.
+
+**The frozen baseline that makes pairs possible:** when the human approves a state, freeze it -
+version-tag it and keep its approved renders. Every candidate is judged against the freeze, drift
+is measurable (a numeric profile of what their eye reads, diffed across builds), and when
+iteration thrashes, ROLLBACK TO THE FREEZE IS A FIRST-CLASS MOVE: on the source project the
+almost-approved build sat in version control the whole time, restoring it cost one command plus an
+identity proof, and it converted "are we beyond fixing this?" into a short to-do list. Two rounds
+of spiral were spent forgetting how cheap that return trip was.
+
 ## The record
 
 Every entry, written atomically, one click:
