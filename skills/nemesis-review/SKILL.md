@@ -167,6 +167,20 @@ the reassurance of a concession suppress a live finding. (This is the mirror ima
 false-positive filter: hostility over-reports, concession under-reports, and you correct
 both by verifying against the code yourself.)
 
+**When the artifact TEACHES something, attack the motivating claim, not just the facts.** A
+teaching artifact makes two very different kinds of assertion, and they fail at wildly different
+rates. The FACTUAL claims ("the header is named X", "the enum value is Y") are checkable, so an
+accuracy reviewer checks them and they are usually right. The MOTIVATING claims ("and this is why
+it matters", "the whole point is", "this solves the following problem") read as framing rather
+than as claims, so nobody verifies them, and they are where an author's enthusiasm quietly
+overstates what a source actually guarantees. Field case 2026-07-31: a domain skeptic verified 58
+factual claims on a protocol page with zero errors, while the nemesis found the blocker in the
+page's own "why this matters" paragraph, which asserted a capability the specification only
+partially granted (the spec's requirement bound one party, and the page described it as though it
+bound the system). **Instruct at least one reviewer to list every "why this matters" sentence and
+verify each one against the primary source as if it were a factual claim.** The tell is a sentence
+that explains a benefit rather than stating a mechanism.
+
 ## Common Mistakes
 
 - **Dropping the honesty gate.** Pure hostility produces an unrankable pile of manufactured
@@ -175,6 +189,14 @@ both by verifying against the code yourself.)
   not the work, and burns effort on persona-performance.
 - **Trusting findings unfiltered.** Hostility's failure mode is false positives. The
   orchestrator must verify before acting.
+- **Adjudicating findings against the checklist that armed the reviewer instead of the primary
+  source.** The arming checklist is itself a document, and documents drift. Field case 2026-08-05:
+  a verifier reported a HIGH finding ("the resume says 600+, the page says 800+") that was FALSE,
+  because the orchestrator's ground-truth checklist carried a number from the current baseline
+  while the as-sent copy, the actual source, said 800+. The page was right, the checklist was
+  wrong, and only an independent read of the source file killed the false positive. A reviewer is
+  only as accurate as its arming; the orchestrator's final check runs against the primary source
+  every time, including for findings the orchestrator's own prompt predicted.
 - **Using it alone.** One hostile lens is narrow. Pair with domain-diverse reviewers.
 - **Hand-rolling it from memory instead of invoking this skill.** If you used it recently and
   think you remember the charter, you will reproduce the parts you remember and SILENTLY DROP

@@ -80,6 +80,20 @@ the how.
   theorized self-healing systems" across the roadmap + a build spec; the maintainer didn't recognize the page
   (*"I don't even remember writing it"*), and it all had to be recalibrated to GAP. See the
   `resume-claim-grounding` memory.)
+- **⚠️ KNOWLEDGE FRAMING DEFAULTS DOWN, and it leaks through ANALOGIES.** When you describe what the
+  maintainer already knows, the safe default is "might know a little of this, better review" or "did
+  this a long time ago, definitely review." Never "this is your wheelhouse" unless a baseline file or
+  a repo literally supports it. **The specific tell to grep your own drafts for: an analogy that
+  morphs into an experience claim.** "Same shape as the X you built" is fine and useful. "…which is
+  20 years of your life" is a fabricated competence claim wearing a rhetorical flourish, and it is
+  the exact seam where inflation hides, because the surrounding paragraph is usually honest.
+  This rule covers the CHAT PROSE around a page, not only the page: the artifact can be clean while
+  the conversation delivering it inflates him. (Learned 2026-08-01, four days before a hiring-manager
+  interview: "MCP servers run in containers behind a gateway, which is 20 years of your life." True
+  for the *service* patterns he owns, false for containers, which he first touched that same year on
+  two local projects and has never deployed. He caught it himself and asked for the rule. His
+  articulation is worth keeping: *"The better I know stuff, the easier it is to explain it to experts
+  who can tell if I'm bullshitting."* Logged as EP-047 in the assumption-debt log.)
 - **Offline-first.** Inline everything that matters (SVG, CSS). Google Fonts may load from CDN but
   must degrade gracefully (always give a `system-ui` fallback). No build step, no external JS libs.
 - **Self-contained pages.** One `.html` file, internal `<style>`, internal SVG. It must open from
@@ -553,6 +567,43 @@ in source.
   only the live-doc skeptic caught it. On any page about tooling that changes fast, treat "verified against the
   research file" and "verified against the live docs today" as two different, both-required checks.
 
+### Rules added 2026-07-31 (a two-protocol page where a spec revision landed 2 days before the build)
+
+A page teaching two fast-moving open protocols, gated by a nemesis + live-doc accuracy skeptic +
+reader-twin panel, then re-gated by a SECOND fresh reader-twin after the fixes. Four durable rules:
+
+- **The most likely place for a confident-but-wrong claim is the MOTIVATING claim, not the factual
+  ones.** The accuracy skeptic verified 58 factual claims (0 wrong). The nemesis found the blocker
+  in the page's own "and here is WHY this matters" paragraph, which overstated what the spec
+  guaranteed. Facts get verified because they are checkable; motivation gets asserted because it
+  feels like framing rather than a claim. **Point one reviewer explicitly at every "why this
+  matters" and "the whole point is" sentence and make them check it against the source.**
+- **The cheap deterministic diagram gate is blind to two whole classes of defect.** A
+  browser-side pass over every `.fig svg` comparing each `<text>` bbox against the viewBox and
+  against sibling text bboxes catches overflow and label collisions, and it is worth running. It
+  CANNOT see (a) a leader line or curve passing THROUGH a box it does not belong to, or (b) a
+  paint-order defect where a later element covers an earlier label (an animated pulse circle
+  declared after its text will grow over that text). Both shipped past a clean gate and were
+  obvious in the first screenshot. **The gate is a pre-filter; the visual look is still mandatory,
+  and z-order is a thing to look for by eye specifically.**
+- **New post-patch failure signature: prose that pre-emptively defends its own additions.** When a
+  fix batch adds explanation, the additions tend to arrive wearing an apology: "You may never have
+  used any of these, so briefly...", "Three more are worth naming so they do not read as noise."
+  The reader-twin flagged both as a tell that made it start reading those paragraphs as padding.
+  Related and worse: **a section that announces its own apparent contradiction and then resolves
+  it** ("these two facts need reconciling, because at first glance they disagree"). That is the
+  page arguing with itself in front of the reader. **Say the distinction once, cleanly, the first
+  time.** If a correction genuinely needs to be set apart from the confident claim it qualifies,
+  give it its OWN accent panel with its own kicker rather than burying it mid-flow; the same page
+  did this well in one section and badly in another, and the twin named the difference unprompted.
+- **Retract-in-place scales better than a sweep on a page you did not author.** A sibling page was
+  found to teach a superseded naming convention in roughly 50 places, all individually harmless.
+  Rewriting 50 strings in someone else's page is 50 chances to introduce a NEW error for zero new
+  understanding. **A dated correction banner at the top, giving the old-to-new mapping and pointing
+  at the current page, is the better trade.** Reserve in-place edits for claims that are outright
+  WRONG (that sweep also turned up a governance claim that contradicted its own page two lines
+  later, which absolutely did need fixing in place).
+
 ## Inline-SVG diagrams: the highest-value move
 
 Diagrams are where these pages beat plain notes. Read `references/svg-diagrams.md` for the full
@@ -611,6 +662,82 @@ prompt-eng-interactive-tutorial, claude-cookbooks}`; docs at `docs.claude.com`; 
    `references/reader-profile.md`) and fix what it finds. A page that skips this gate is not done,
    regardless of how clean it reads to its author. (Origin: the 2026-07-06 RAG §03 stall, where
    the maintainer lost a study session to defects three generic QA passes had blessed.)
+
+   ⚠️⚠️ **ACCURACY REVIEW IS NOT PEDAGOGY REVIEW, AND ONLY RUNNING THE FIRST IS THE #1 WAY THIS
+   SKILL FAILS (2026-08-04, the worst delivery failure on record).** A page can be fully accurate,
+   well-sourced, honestly caveated, self-tested, and still be UNLEARNABLE, because the failure lives
+   in ORDER and REGISTER rather than content. The maintainer read exactly such a page the night
+   before a decisive interview and stopped at section 3 of 11: *"LLM bullshit word salad... impossible
+   to learn from... using terms before they're defined."* Every fact in it was true. **Before shipping
+   any teaching page, run these four checks; all are countable, so none of them require judgment:**
+   - **Motive-last.** Does any section list consequences and then reveal, at the bottom, the single
+     idea that makes the list re-derivable? That section is upside down. Invert it: something breaks,
+     why, the fix (which the reader should be able to GUESS by the time it arrives), what falls out.
+     The target sensation is the heading "the fix, which you can now guess" being literally true.
+   - **Self-tests that restate.** Grep each answer's content against the section body above it. An
+     answer whose substance already appears verbatim above is a third paragraph wearing a quiz
+     costume. A real answer adds an angle, a number, or a sharper framing.
+   - **Term-before-definition.** Build the table: every load-bearing term, its first use, its
+     definition. Any gap larger than zero sections is a defect, including inside SVG labels, code
+     comments and captions. Watch for the same word carrying two meanings in one page (a gateway
+     "front desk" and the context-window "desk" will collide).
+   - **The antithesis couplet.** Count `is not X, it is Y` and its variants. One is rhetoric; thirty
+     is the machine cadence a human hears as inhuman. Test each: *did anyone actually believe the
+     negated half?* If not, delete the negation and keep the assertion.
+
+   **And for any page making claims about the reader's own code or own long-held tools, the
+   reader-twin is not enough: add a hostile reviewer with repo access.** In the same 2026-08-04 case
+   the rebuild's panel found four claims about the maintainer's own public repos that were
+   falsifiable in a browser (a negotiation that "refuses" what it actually declines to advertise, a
+   tool count off by one, a "no SDK" claim true of one repo and stated over two, and a history claim
+   about the IDE he had used for 25 years). **Zero of those were catchable by an accuracy pass or a
+   sympathetic reader.** See `nemesis-review` and `paladin-review`; the adversary finds what is
+   false, the guardian finds what is buried.
+
+   **Three more rules measured in that same run (2026-08-04, 7 reviewers over 2 pages, and the
+   blockers did not overlap AT ALL between lenses):**
+   - **THE FIX PASS CREATES DEFECTS. Budget the re-review as part of the fix, never as a bonus.**
+     About forty edits produced four broken "section NN" pointers (from inserting one new section),
+     a hero count that no longer matched the page, and a live self-contradiction where one section
+     said "18 questions" while another said 22 and explicitly warned that saying 18 breaks the
+     arithmetic. Every one was introduced BY the fixes. After any substantial fix batch, re-run a
+     fresh reader-twin over the WHOLE artifact and grep specifically for: cross-references to
+     renumbered sections, counts stated about the page's own contents, and the same fact stated
+     differently in two places.
+   - **A DISTINCTIVE claim is still a claim, and it is the least likely to be checked.** "The only
+     one that...", "the first...", "unusually..." read as enthusiasm rather than assertion, so
+     nobody verifies them. One page's entire headline ("the only requisition in the search that
+     requires Claude by name") was refuted in thirty seconds by the maintainer's own archive, which
+     contained at least eight counter-examples including one he had annotated himself. **If a
+     sentence claims uniqueness or rarity, grep the corpus that would disprove it before shipping.**
+   - **Hedging a credential the source states plainly is a defect in the other direction.** A page
+     marked his degree PARTIAL and coached him toward the requisition's "or equivalent experience"
+     escape hatch, while his resume asserts a named BS from a named university, unhedged. That is not
+     caution, it is inventing a weakness on the one item a recruiter screen actually verifies.
+     **Check what the source document asserts before softening anything.**
+
+   **Three more, from the 2026-08-05 follow-up run (a design-story page, lean twin+nemesis panel;
+   zero blocker overlap between the lenses for the third measured time):**
+   - **THE SCAR RULE: when the maintainer's own project MEASURED a mechanism failing, never cite
+     that project as clean support for the mechanism.** A page taught a similarity-floor refusal
+     gate and cited his RAG repo as the receipt; the repo's own README documents that exact gate
+     failing (0 of 4, score bands overlap). The fix is promotion, not concealment: lead WITH the
+     negative result and derive the design from it ("I built this, measured it, it failed, which is
+     why the design does X instead"). A quoted negative result of your own is the most credible
+     sentence available; a counterexample cited as support is the least. Corollary: teaching the
+     TEXTBOOK idealization of a mechanism his measurements contradict ("unrelated text scores near
+     zero" versus his measured floors of 0.25 and 0.57) is the same defect in prose form.
+   - **BUILD FROM THE LEARNER'S OWN QUESTIONS WHEN YOU CAN.** The strongest sections of that page
+     were the ones the maintainer asked for mid-conversation ("who computes the confidence
+     number?", "how does the agent reach the databases?"). A page grown from a live design dialogue
+     answers questions a research-grown page never thinks to ask, and the learner already owns half
+     the material because he co-derived it. When the maintainer is narrating a problem, treat every
+     question he asks as a section request.
+   - **IN THE LAST HOURS BEFORE THE EVENT, THE FORMAT IS CHAT PARAGRAPHS, NOT NEW PAGES.** Short
+     primers in conversation, each grounded by opening the actual source first (own-repo claims
+     especially; the write-safety primer surfaced hard-assert and concurrency details memory would
+     have flattened), each ending with a one-liner the maintainer can say aloud. Let his follow-up
+     questions drive depth instead of pre-building it.
    **For an interview-prep / "defend-cold" page, the reader-twin is NOT sufficient on its own:**
    it is sympathetic and catches confusion, not confident-but-wrong claims or unarmed follow-ups.
    Also run a `nemesis-review` adversarial panel (nemesis armed with the audience's expertise, an
