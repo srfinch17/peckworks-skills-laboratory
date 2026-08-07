@@ -114,3 +114,15 @@ get re-read every session, the way the em-dash rule finally held once it stopped
 memory and became enforcement. Written rules still leak occasionally; the codeword exists for
 exactly those leaks. Expect to use it, and expect the recalibration to be immediate and
 undramatic when you do.
+
+## Field validation (2026-08-07, the refreshed-posting scare)
+
+Two days after a hiring-manager round the maintainer felt good about, he noticed both of the
+company's postings refreshed on LinkedIn and read it as evidence he was being passed over. The
+calibrating fact: recruiters keep reqs live and re-boost them until an offer is signed, and boards
+auto-relist on their own schedule, so a posting refresh mid-loop carries zero information about any
+candidate. The assessment ran worst-case first (a refresh means they are still sourcing, which he
+already knew from the round being called "initial") and named the only two events that count as
+signal: an invite or a disposition. Generalized rule: job-board relist cadence is never
+candidate-status signal, in either direction. Do not let a refresh deflate him, and do not let a
+posting disappearing inflate him (postings also vanish for budget freezes and req rewrites).
