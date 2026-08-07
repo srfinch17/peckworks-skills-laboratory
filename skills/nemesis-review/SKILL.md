@@ -480,3 +480,24 @@ feature, so the honest version was also the stronger story. All three fixes ship
 push; the nemesis's gritted-teeth verdict ("survives a repo-checking reader better than roughly
 95% of portfolio pages") and the reader-twin's "more likely to interview than a plain README"
 went live the same day.
+
+Seventeenth success 2026-08-07 on an interview-prep teaching page containing real, runnable code
+(nemesis + a dedicated code-accuracy skeptic + two reader-twins, isolated, one up-front batch).
+Two refinements, both generalizable beyond this artifact: (1) **when a teaching or prep page
+contains real code, arm a reviewer to COMPILE AND RUN every snippet, not trace it by hand.** Both
+the code-accuracy skeptic and the nemesis independently spun up real projects and executed every
+snippet (the nemesis also ran 20,000 randomized trials against a brute-force oracle). Compile-and-
+run is cheap and definitive, and it caught an empty-input bug (a function returning a sentinel
+max-int on an empty array) that the page's OWN hand-written edge-case walkthrough had listed
+around but missed. Same move as the tenth success's "build and measure the real thing," applied
+to a teaching page's code: the snippet IS the artifact, run it. (2) **A prep page's REASSURANCE
+sentences are motivating claims, and they fail toward UNDER-preparation.** The nemesis's top prose
+findings were an over-reassurance layer: a "downlevel rather than reject" failure-floor stated
+four times, a company-wide difficulty aggregate mis-scoped to size one specific hard round, and a
+"designed to be soft" framing built from a single anecdote. Each would license the reader to
+prepare less for the hardest gate. Both reader-twins were blind to all of it, they check clarity,
+not honesty of reassurance. Point one reviewer explicitly at every sentence that reassures the
+reader about difficulty or outcome, and verify it against the source tier exactly as you would a
+factual "why this matters" claim (see the motivating-claim rule above). Also reconfirmed: the fix
+pass creates defects, the post-fix reader-twin caught a residual term-before-definition and a
+gloss wedged mid-clause, so re-run a reader-twin over the whole artifact after fixing.

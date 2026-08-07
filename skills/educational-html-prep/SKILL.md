@@ -604,6 +604,34 @@ reader-twin panel, then re-gated by a SECOND fresh reader-twin after the fixes. 
   WRONG (that sweep also turned up a governance claim that contradicted its own page two lines
   later, which absolutely did need fixing in place).
 
+### Rules added 2026-08-07 (a coding/DS&A interview-prep page: a compile-and-run code gate, and reassurance as under-preparation)
+
+A page teaching real code (worked snippets meant to run) went through a panel of a nemesis, a
+dedicated code-accuracy skeptic, and two reader-twins, isolated. Two rules, both field-proven:
+
+- **For a page teaching real CODE, the code-accuracy gate is COMPILE-AND-RUN every snippet in a
+  real project, not a hand-trace.** It is cheap and definitive, and it finds input-edge bugs a
+  hand-traced "edge-case list" misses. Field case: the code-accuracy skeptic built a small project
+  and ran every snippet; the nemesis independently did the same AND ran 20,000 randomized trials
+  against a brute-force oracle. Both caught an empty-input bug (a function returning a sentinel
+  max-int on an empty array) that the page's OWN hand-written edge-case walkthrough had listed
+  around without catching. Stage the walkthrough over the edges of EVERY input the code takes, not
+  just the one the worked example varies (an empty SECOND array was the miss while the example
+  only varied the first). This is the "build and measure the real thing" rule (see
+  `nemesis-review`'s tenth success) applied to a teaching page's code: the snippet IS the artifact,
+  run it.
+- **Reassurance-into-under-preparation is the coding-prep analog of grounding-overclaim.** A prep
+  page can blow smoke AT the reader, not just overclaim ABOUT him: an over-reassuring sentence (a
+  stated failure floor, a difficulty statistic scoped to the wrong population, a "this is designed
+  to be easy" framing built from one anecdote) licenses him to prepare less for the hardest gate.
+  Both reader-twins were BLIND to this class entirely, they check clarity, not honesty of
+  reassurance. Hunt it with a nemesis, and treat every reassuring sentence like a "why this
+  matters" claim, checked against its source tier before it ships. Cross-reference the
+  `avoid-sycophantic-blowback` discipline: a page that soothes the reader into under-preparing is
+  worse than no page. Reconfirms the fix-pass-creates-defects rule above: the post-fix reader-twin
+  still caught a residual term-before-definition and a gloss wedged mid-clause, so re-run a
+  reader-twin over the whole artifact after any fix batch, even a small one.
+
 ## Inline-SVG diagrams: the highest-value move
 
 Diagrams are where these pages beat plain notes. Read `references/svg-diagrams.md` for the full
