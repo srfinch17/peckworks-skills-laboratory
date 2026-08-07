@@ -218,3 +218,15 @@ verify pass re-simulated the proposed FIX before adoption, not just the findings
 cleanup could touch them. Result: 3 blockers + 5 majors fixed in spec and plan before a line
 of build code existed. Verdict doc: peckworks-bonsai
 docs/superpowers/reviews/2026-07-19-nebari2-panel-verdict.md.
+
+Field win 2026-08-04 (JobKit pre-ship, peckworks-jobdashboard): three-reviewer panel (nemesis +
+paladin + corners skeptic, ~300k), every step from the checklist. The intent packet earned its
+step-0 position: quoting the author's verbatim frustrations ("I literally can't follow anything
+you're doing") and naming the two deciders (a non-technical Mac user, then the author) is what
+let reviewers find audience-landing blockers (bare `python` fails on every clean Mac; a README
+with no install command) that artifact-only review cannot see. Convergence worked as designed
+(all three independently found the same unreachable-code blocker), and the verify-pass dropped
+nothing but re-reproduced every finding before the author saw any. One miss worth keeping: the
+provenance-win appends to the earning skills were owed "in the same session" and were only
+written two days later during closeout - the step is easy to drop once fixes start landing;
+treat it as part of step 6, not an afterthought.

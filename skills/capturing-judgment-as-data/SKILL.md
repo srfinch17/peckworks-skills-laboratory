@@ -266,6 +266,17 @@ shocks me that you didn't see this." Two rules close it:
   height) diffs across builds and catches what your eye grades past.
 - **Enumerate everything you can see FIRST, hostile, as if marking it up for them - then consult
   your fix list.** The fix list is the last thing you check, not the lens you look through.
+- **The two rules above are discipline, and discipline loses to cadence - so keep a structural
+  guard: candidates that change the artifact's MASS or overall shape go through a blind judge
+  (fresh context, told the instrument's quirks, never told what the change was supposed to do)
+  before they reach the human.** Field recurrence (2026-08-07, with this skill loaded): in a
+  fast one-pair-per-round loop, the author screened a candidate at the human's own camera,
+  confirmed the intended ridges, wrote "no junction seam" - and a flank blister in the SAME
+  screenshot shipped to the human, who caught it next round with a four-colour markup. The
+  author's enumeration was not hostile; it was a fix list wearing a hostile costume. The blind
+  gate exists precisely because the author cannot reliably see past their own intent, and
+  "the pair cadence is too fast for a gate" is the rationalization to refuse: one gate run
+  costs less than the round it saves.
 
 ## Their marks are the spec; your observations are questions
 
@@ -353,4 +364,22 @@ This skill was written from an observed baseline rather than staged pressure sce
 in laws 1, 3 and 4 are verbatim from a session where an agent without this guidance committed all
 three. Subagent pressure-testing was not run because the maintainer has a standing instruction
 against dispatching agents. Treat the rationalization coverage as unvalidated and tighten it the next
-time one of these failures recurs.
+time one of these failures recurs. First recurrence-tightening applied 2026-08-07: the
+screening-for-your-fixes failure recurred WITH the skill loaded (the blister case, above), which
+showed the two screening rules alone are discipline and lose to cadence pressure; the structural
+blind-gate rule was added in response. Next recurrence should tighten again.
+
+## Field addition (2026-08-01): the defect taxonomy + observation gate
+
+When enough verdicts accumulate, distill them into a DEFECT TAXONOMY: one class per recurring
+complaint, each carrying the human's exact words and where it shows (including which viewing
+angles reveal it). The taxonomy then primes an OBSERVATION GATE: before any candidate reaches
+the human, fresh-context agents - told the instrument's known artifacts but NEVER what the
+change was supposed to do - judge it ABSOLUTELY against the taxonomy at the human's own logged
+cameras. Any hit = a fix round first. Two calibrations proved necessary in practice: (1) a hit
+present identically in the already-approved baseline is backlog, not a blocker - verify by
+rendering the baseline, never from memory; (2) the gate's value is exactly that its judges do
+not know what improved, so never leak the intent into their prompts. In its first week the
+gate blocked one regression the author's own before/after framing had graded as an improvement,
+and its taxonomy doubled as the training corpus for a future standing look-judge agent - the
+log compounds twice.

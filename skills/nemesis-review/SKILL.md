@@ -438,3 +438,45 @@ artifact), and instruct it to diff the requirement list against the as-sent docu
 requirements the document never mentions** - the deadliest gap is the one invisible until the
 reader holds both papers, and the orchestrator's own draft had missed it by reading only the
 files it remembered writing.
+
+Fifteenth success 2026-08-04 on the JobKit plugin (peckworks-jobdashboard), run pre-ship via the
+review court (nemesis + paladin + a corners skeptic, isolated, intent packet quoting the author
+verbatim, nemesis given BOTH the repo and the private workspace it was ported from). Three
+refinements proven: (1) **when the artifact is a PORT, arm the nemesis with the ORIGINAL and ask
+"did the substance transfer or just the shape?"** - its cleanest catch was a byte-identical line
+(the `[8:]` URL slice) that is correct in the original (Windows-only) and dead on the port's
+target platform (macOS), invisible to 161 passing tests because they generate platform-local
+inputs; hardcode both platforms' literal inputs in tests. (2) **"Assume hole N+1 of the same
+species and go find it" is a chartered instruction that works**: told that counts() had been
+fixed four times for lane-vs-status conflation, the corners skeptic found the fifth (a
+skipped-lane job counting as a rejection) by building the full lane x status matrix instead of
+probing reported cells. (3) **Prose skills are claims about code - grep them**: the
+highest-severity finding (set_status had ZERO callers while the help skill promised three
+workflows built on it) came from checking every command a SKILL.md instructs against what
+exists; tested-but-dead code is not a feature. Convergence signal at full strength: all three
+reviewers independently found the unreachable status half; the verify-pass reproduced every
+banked finding before any reached the author.
+
+Sixteenth success 2026-08-05 on the appointmentflowoptimizer GitHub Pages product page, run as
+the pre-push gate (nemesis on the top model with full repo access + a hiring-manager reader-twin
+on a cheaper tier, isolated, one batch, dispatched only after the visual/mobile/character-ban
+gates had passed). Division of labor held a sixteenth time: the reader-twin passed the page's
+comprehension check and flagged tone (a metrics tile claiming "~597x faster than ~3 min by hand"
+with an unstated baseline); the nemesis, told to follow the page's own directions to its
+evidence, found all three majors, and every one was FLATTENING, not fabrication: (1) a security
+absolute one field-width wider than the schema ("cannot smuggle free text" while two patient
+contact fields are uncapped z.string() from the model, with the repo's own llmSafety test
+demonstrating the pass-through); (2) a footer slogan ("every number re-runs on a fresh clone")
+that flattened the page's own nine careful per-stat labels and was false for the live-session
+captures those labels correctly scoped; (3) the signature hero demo omitting a UI step (a
+procedure-picker prompt) that the page's own "same run" screenshot exposed via a "type: checkup"
+chip the demo lacked. Two refinements: (1) when a page imposes a style ban on its own copy (this
+one banned a punctuation character), diff every "verbatim"/"real" quote against the actual
+program output - the ban had silently forced edits inside the very section whose thesis was
+faithfulness, and the fix was to quote a substring that IS verbatim rather than to launder the
+whole string; (2) when a demo claims to be "the same run" as an embedded screenshot, field-diff
+the demo against the screenshot's pixels (chips, values, steps) - the omitted step was a safety
+feature, so the honest version was also the stronger story. All three fixes shipped before the
+push; the nemesis's gritted-teeth verdict ("survives a repo-checking reader better than roughly
+95% of portfolio pages") and the reader-twin's "more likely to interview than a plain README"
+went live the same day.

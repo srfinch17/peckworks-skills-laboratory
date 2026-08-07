@@ -292,3 +292,18 @@ fabricated a number the source of truth never contained, and reviewer quotes pro
 enough (3 of 82 fix pairs misquoted or mis-attributed the file) that count-asserted
 verify-before-edit was load-bearing, not ceremony. Division of labor confirmed: proofreaders find
 typos; the paladin finds what gets you mocked or caught.
+
+Fourth field win 2026-08-04, JobKit pre-ship (full court, repo already PUBLIC - the boundary was
+crossed, so the hunt was detect-and-defuse). The paladin's #1 bomb was one no code review could
+see: the repo's own doctrine docs said browser-history mining was a "HARD NO... not something you
+ship to someone else" while the shipped default was ON - a public self-contradiction with the
+author's name on it, fixed by dated in-place reversal (keep the original judgment, date the
+change, explain the narrowing) rather than deletion. Its #2 (bare `python` in every skill; the
+first command fails on 100% of clean Macs, the target platform) and its audience-landing findings
+(a marketplace README with no install command; a real first name characterized as
+"non-technical, never consulted" in a public doc) were all verified real. The under-sell section
+survived the discount-the-praise filter at 4-for-4, each with the exact buried line (the
+never-fabricate-a-date mechanism, the rejection/no-response split, the vocabulary-as-data design,
+the folder-keying fix the original had written off as permanent). Division of labor held: the
+nemesis proved what was broken; only the paladin read the DOCS AGAINST THE PRODUCT and the
+product against its audience.
