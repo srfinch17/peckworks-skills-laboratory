@@ -5,7 +5,7 @@ description: Write and debug CadQuery/OpenCASCADE parametric CAD models in Pytho
 
 # CadQuery modeling
 
-Shared venv (outside Dropbox to avoid sync churn): `C:\Users\srfin\.venvs\peckworks-cad\Scripts\python`
+Shared venv, deliberately placed **outside** the cloud-synced tree to avoid sync churn — `~/.venvs/peckworks-cad/` (on Windows, `%USERPROFILE%\.venvs\peckworks-cad\Scripts\python`). A venv inside Dropbox/OneDrive gets thousands of files re-uploaded on every install.
 
 ## Picking the right edge (the second-biggest time sink)
 

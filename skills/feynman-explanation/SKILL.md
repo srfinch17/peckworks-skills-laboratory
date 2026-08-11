@@ -139,6 +139,18 @@ Keep defining the ones that are not yet on the list.
   developer audience the hash is fine). Calibrate the analogy to the audience, not to yourself.
   (Field case 2026-07-10: a cold reader-twin flagged exactly the SHA-256-for-dimension analogy as a
   stall; swapped to ZIP-code and it landed.)
+  - **Corollary — the best vehicle is not an everyday image, it is the thing they learned an hour
+    ago.** When a new topic is structurally related to one the learner *verifiably* just understood,
+    teach it as a delta: name the identity first ("same shape as X — both are a request/response
+    pair over a child process"), then isolate the single real difference and spend the lesson
+    there, because that is where the genuine engineering tradeoff lives. An everyday analogy
+    transfers *approximately*; a topic they already own transfers *exactly*. This is worth
+    planning for — when two upcoming topics are related, sequence them deliberately so the second
+    one is nearly free. Caveat: such translation sections date fastest precisely where the learner
+    is most expert, so re-check the "you already know" half against its CURRENT state before
+    reusing the page (see `iterative-lesson-refinement`, teaching lesson 13).
+    (Field case 2026-08-10: two protocols taught hours apart; the second cost a fraction of the
+    first once the page led with the identity and taught only the one-thing-that-differs.)
 - **Dressing deliberate engineering up as luck or magic.** Calling a designed outcome "amazing" or
   "it just snapped together" reads, to the person who did the designing, as either dishonesty or a
   hint that they misunderstood something ("you make it sound like we lucked out"). Wonder is not a

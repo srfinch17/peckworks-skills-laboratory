@@ -162,6 +162,29 @@ with audience seasoning; only the twin catches invented constructs in language A
 18. **Home-turf falsehoods are the fastest trust killers.** A wrong claim about the reader's OWN
     tool ("your IDE refuses to start without X") outranks any topic error, because it is the one
     claim the reader can check instantly. The READER-TWIN slot exists to hunt exactly these.
+19. **Fact-check the ANSWERS harder than the prose, and hunt them as their own pass.** A wrong
+    explanation inside a defend-cold answer is strictly worse than the same error in the body,
+    because the format instructs the reader to rehearse it and say it out loud under pressure.
+    Prose gets skimmed; an answer gets memorized. Reviewers reading for clarity glide past a
+    confidently-wrong answer exactly as fast as a correct one, so accuracy review of the Q&A
+    cards cannot ride along with the readability pass — give it its own sweep, and treat every
+    answer as a load-bearing factual claim. (Field case 2026-08-10: a hostile reviewer found a
+    mechanically wrong protocol-framing explanation that had been written into a closed-book
+    answer; the honest replacement was also the better answer, the recurring pattern here.)
+20. **Resolve any contradiction the artifact manufactures, on the artifact.** Two claims that are
+    each true and look mutually exclusive several sections apart are a trap the page built and
+    never disarmed — and when both sit in defend-cold cards, the reader has been instructed to
+    say both halves aloud. Sweep a finished artifact for pairs of confident claims a hostile
+    reader would put side by side, then reconcile them in place or cut one. Anticipating the
+    collision is cheap; meeting it live is not. (Field case 2026-08-10: a rule forbidding a null
+    identifier and a case that legitimately sends one; the resolution was one sentence — the two
+    rules govern different message directions.)
+
+**Answer-visibility note:** past ~4 questions in one block, stacked question-above-answer pairs
+stop being a test — a reader-twin scored such a section 1/10 and reported skimming it, *"the
+answer sitting right under the question... I'm not testing myself, I'm reading a FAQ."* When the
+artifact is HTML, `educational-html-prep` carries the collapsed-answer component (`.qz`) and the
+"say it out loud first, then open the row" instruction line.
 
 ## Subagent Prompt Skeleton
 

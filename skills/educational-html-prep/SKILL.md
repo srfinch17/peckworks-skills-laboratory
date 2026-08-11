@@ -817,3 +817,46 @@ Two canonical references for "what good looks like": study one before building a
   workflow diagram, MCP-vs-A2A, and a self-healing loop. Good model for a single consolidated teach-through.
 Both use: plain-English claim → `.analogy` → inline-SVG diagram → `.qa` defend-it blocks → honest tie to
 real repos. That sequence is the skill in one line.
+
+### Rules added 2026-08-10 (an MCP-internals page, a panel-prep page, and two library upgrades in one run)
+
+Four durable additions, all field-proven. The panel this run prepared for was a technical one, and the
+reviewers were a repo-armed nemesis plus two isolated reader-twins.
+
+- **⭐ NEW COMPONENT: the self-test whose answers are actually hidden.** A reader-twin scored a
+  thirteen-question closed-book section **1 out of 5** and reported skimming it: *"the answer sitting
+  right under the question... I'm not testing myself, I'm reading a FAQ."* Stacked question-and-answer
+  pairs at the end of a long page are where fatigue peaks and the format defeats its own purpose. Fix:
+  native `<details>` / `<summary>`, no JavaScript, offline-safe, one row per question with the answer
+  collapsed. Verify with a browser check that answers are hidden by default (`offsetHeight === 0`) and
+  that a row opens. The instruction line matters as much as the mechanism: *"say your answer out loud
+  first, then open the row."* Class defs (`.qz`, `.qz summary`, `.qz .ans`) belong in the kit.
+  Rule of thumb: **more than about four questions in one block, hide the answers.**
+
+- **⭐ TEACH TOPIC B THROUGH THE TOPIC THE LEARNER JUST LEARNED, AND LEAD WITH "SAME SHAPE, DIFFERS IN
+  EXACTLY ONE THING."** Two protocols taught hours apart became nearly free the second time because the
+  page opened by naming the identity (both are JSON-RPC over a child process with a capability
+  handshake) and then isolated the single real difference (one frames messages by newline, the other by
+  a byte-count header). The difference is where the teaching lives, because a genuine engineering
+  tradeoff sits inside it. This is stronger than the usual analogy move: the vehicle is not an everyday
+  image, it is **a thing the reader verifiably understood an hour ago**, so the transfer is exact rather
+  than approximate. When two topics on the roadmap are structurally related, sequence them deliberately
+  and make the second one a delta.
+
+- **⚠️ A WRONG EXPLANATION INSIDE A SELF-TEST ANSWER IS WORSE THAN THE SAME ERROR IN PROSE, because the
+  format instructs the reader to memorize and say it.** The nemesis found a mechanically wrong framing
+  explanation that had been written into a closed-book answer, i.e. into the one part of the page whose
+  entire purpose is to be reproduced out loud under pressure. Prose gets skimmed; a quiz answer gets
+  rehearsed. **Verify every self-test answer to the same standard as a load-bearing factual claim, and
+  hunt them specifically**, because a reviewer reading for clarity will pass over a confidently wrong
+  answer exactly as fast as a correct one. Related: the honest replacement was also the *better*
+  answer, which is the recurring pattern in this file.
+
+- **⚠️ WHEN A PAGE MANUFACTURES ITS OWN APPARENT CONTRADICTION, IT MUST RESOLVE IT ON THE PAGE.** Two
+  sections stated facts that were each true and that looked mutually exclusive four sections apart
+  (a rule forbidding a null identifier, and a case that legitimately sends one). The nemesis flagged
+  that the page *"builds the trap and never disarms it"*, and that the reader had been instructed to say
+  both halves aloud. The resolution existed and was one sentence: the two rules govern different
+  message directions. **Grep a finished page for pairs of confident claims that a hostile reader would
+  put next to each other, and either reconcile them in place or cut one.** Anticipating the collision is
+  cheap; meeting it live is not.

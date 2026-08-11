@@ -32,11 +32,16 @@ One skill (`managing-assumption-debt`) is optionally hook-powered; `install.sh` 
   is in [CONTRIBUTING.md](CONTRIBUTING.md).
 - **Adversarial hardening.** Drafts get reviewed by isolated skeptic subagents, including a
   motivated-but-honest adversary (see `nemesis-review`, which is itself a skill here).
-- **Provenance, or it didn't happen.** Each skill carries a `## Provenance` section: the
-  baseline failure it was born from, and dated one-line wins appended whenever it catches
-  something real in the field. A skill that fires often but logs no wins is a retirement
-  candidate. `tools/skill_usage_report.py` sweeps the local Claude Code transcripts to
-  report fire-rates and flag never-invoked skills.
+- **Provenance, or it didn't happen.** Each skill carries a **dated field record**: the baseline
+  failure it was born from, plus dated wins appended whenever it catches something real. Discipline
+  and lens skills keep it under a `## Provenance` heading; the ones that accrete lessons run-by-run
+  keep it as dated `## Field validation` / `## Rules added <date>` sections instead, because a
+  chronological log reads better in place than a single appendix. What is non-negotiable is the
+  *date and the specific failure*, not the heading. Pure technical-recipe skills (`cadquery-modeling`)
+  are the exception: their evidence is the recipe, which either builds the part or doesn't.
+  A skill that fires often but logs no wins is a retirement candidate.
+  `tools/skill_usage_report.py` sweeps the local Claude Code transcripts to report fire-rates and
+  flag never-invoked skills.
 - **Two-tier privacy: engine vs. fuel.** This repo holds the shareable *engine* of each
   skill; the maintainer's personal context (logbooks, run logs, reader profiles, identity)
   is the *fuel*, and it stays out of git. The mechanism is structural, not disciplinary:
@@ -59,6 +64,12 @@ One skill (`managing-assumption-debt`) is optionally hook-powered; `install.sh` 
 | `emoting-on-8x8` | Making expressions legible on a 64-pixel LED matrix at low brightness: silhouette test, brightness-band color math, motion-carries-meaning | An ESP32-S3 matrix that kept rendering mud |
 | `feynman-explanation` | Explaining to someone working cold: map first, analogy before code, every symbol and acronym defined at first use, a per-learner mastered list so training wheels come off per item | A sharp learner who kept getting buried under unglossed jargon and walls of text |
 | `avoid-sycophantic-blowback` | Kills the hype-then-crash cycle when reporting news to a human: calibration before interpretation, a signal-strength taxonomy, mood counterweighting, and a one-word recalibration codeword | A staffing firm's templated shortlist email that got amplified into an emotional crash |
+| `sandwich-test` | Closes the intent–interpretation gap at instruction handoff: a five-class misread taxonomy, a tiered live protocol (silent check → state the reading → hard-stop at the irreversible line), and a cold-reader audit that rebuilds the PB&J game's barrier with isolated subagents | The peanut-butter-and-jelly game: an executor following the letter of an instruction while feeling fully compliant |
+| `capturing-judgment-as-data` | Turns a human's taste verdicts into a reproducible record instead of unrepeatable comments: pair-structured rounds, frozen baselines and rollback as first-class, drawings over comment boxes | Feedback that kept arriving as comments nobody could reproduce, and a fix "verified" against an instrument the human couldn't see |
+| `look-driven-iteration` | The cheap-render → grounded-feedback → measure-then-fix loop for work judged by eye; its core claim is a spending rule — review and tests gate *shipping*, not *exploring* | Expensive verification burned on looks the human had not approved yet |
+| `guarding-silent-failures` | Operations that fail while returning valid-looking output, and the checks meant to catch them — including the rule that a clean probe result is only evidence if the probe was first proven able to fail | One CAD session that hit six in a day: a fillet that ate 38% of a part and rendered fine, an AO pass that "worked" and did nothing, a cleanup that reported removing twelve files it never touched |
+| `stretching-frontier-tokens` | Spends the strongest model only where the frontier matters: measure the transcript first, then climb *down* — script it, cheapest capable model, frontier only for diagnosis, design, and prose aimed at the human | A measured session where images were 76.7% of all bytes and the frontier model did 100% of the loop, including screenshot choreography |
+| `cadquery-modeling` | CadQuery/OpenCASCADE recipes: identify edges by what they *are* with an asserted count, because point-based selectors lie; select topologically when no geometric test can separate the boundaries | `fillet()` dying with "no suitable edges" on geometry whose pocket and outer edge overlap in radius |
 
 A note on flavor: these are **live production copies, not genericized forks.** Some skills
 reference the maintainer's own workspace (a study-page dashboard, specific repos, a private

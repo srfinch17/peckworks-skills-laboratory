@@ -122,3 +122,31 @@ table.evtbl{width:100%; border-collapse:collapse; margin:0 0 13px; font-size:.88
 .mtbl td{padding:7px 10px; border-bottom:1px solid var(--line-soft); color:#C7CEDA; vertical-align:top;}
 .mtbl td.k{font-family:"IBM Plex Mono",monospace; color:var(--adjacent); white-space:nowrap; font-size:.82rem;}
 .mtbl td.v{font-family:"IBM Plex Mono",monospace; color:var(--have); white-space:nowrap; font-size:.82rem;}
+
+/* ---------------------------------------------------------------------------
+   .qz  SELF-TEST WITH HIDDEN ANSWERS  (added 2026-08-10)
+   Native <details>/<summary>. No JavaScript, works offline, works from file://.
+   USE WHEN a closed-book section has more than ~4 questions: with answers
+   visible the reader skims and it becomes an FAQ instead of a test.
+   MARKUP:
+     <details class="qz">
+       <summary>The question, phrased so it can be answered aloud</summary>
+       <div class="ans">The answer, which should add an angle rather than
+       restate the section body above it.</div>
+     </details>
+   Pair it with one instruction line above the block:
+     "Say your answer out loud first. Then open the row."
+   VERIFY in a browser: every .ans has offsetHeight === 0 before interaction,
+   and one row opens when toggled.
+--------------------------------------------------------------------------- */
+.qz{border:1px solid var(--line); border-radius:10px; background:var(--ink-3); margin:0 0 10px; overflow:hidden;}
+.qz summary{cursor:pointer; padding:13px 17px; font-weight:600; color:#fff; font-size:.97rem;
+  list-style:none; display:flex; gap:11px; align-items:flex-start;}
+.qz summary::-webkit-details-marker{display:none;}
+.qz summary::before{content:"\25B8"; color:var(--signal); flex:none;
+  transition:transform .16s ease; line-height:1.5;}
+.qz[open] summary::before{transform:rotate(90deg);}
+.qz summary:hover{background:var(--ink-2);}
+.qz .ans{padding:13px 17px 15px 45px; color:#B8C1CF; font-size:.94rem;
+  border-top:1px solid var(--line-soft); margin-top:2px;}
+.qz .ans b{color:#fff;}

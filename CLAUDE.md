@@ -10,6 +10,17 @@ Each skill is a self-contained `SKILL.md` (plus supporting files) in a flat `ski
 > the job search, private-memory-store paths) lives in the maintainer's PRIVATE memory or in
 > gitignored local files; only `*.template.md` schemas are tracked. The full pre-public
 > history lives ONLY in the local `private-history` branch: NEVER push it anywhere.
+>
+> **The rule covers DISCLOSURE, not just IDENTITY** (widened 2026-08-10, after a sweep found
+> the name rule had correctly caught nothing while two other categories leaked for weeks):
+> - **No verbatim quotes of the maintainer**, and nothing about their emotional state, health,
+>   well-being, or job-search status. A field case is logged for its *defect*, dated and
+>   specific; the person in it is third-person and generic. The mechanism is never the quote.
+> - **No absolute machine paths.** `~/`, `%USERPROFILE%`, or `<repo>` — never `C:\Users\<name>\`,
+>   which leaks the OS username and, through it, the GitHub handle and the person.
+> - The test is not "would this embarrass me?" but **"does this let a stranger who found this
+>   repo learn something about the maintainer they did not consent to publish?"** These files
+>   are attributable, permanent, and indexed; a push cannot be taken back.
 
 ## Layout
 
@@ -150,6 +161,44 @@ cross-check concessions, DISCOUNT paladin praise); (5) archive receipts BEFORE a
 pairing, court capped at 4 reviewers, the automatic second re-verify round removed.
 Cross-session discipline skill — value lives in reading the checklist at convening time, same
 testability class as the memory-type skills. Skill: `skills/review-court/SKILL.md`.
+
+### `avoid-sycophantic-blowback`  (status: field-proven; 3 validations logged)
+Kills the hype-then-crash cycle when reporting news: calibration in the same breath as the event
+(never below the fold), a signal-strength taxonomy stated out loud, mood counterweighting in both
+directions, and the one-word interrupt codeword. Born 2026-07-13 from a staffing firm's templated
+shortlist email that got amplified into a real emotional crash. **Genericized 2026-08-10:** the four
+field cases were rewritten third-person after a privacy sweep found this file was the repo's most
+personal, carrying verbatim quotes about the maintainer's job search and well-being under a public,
+attributable handle. The rules were untouched — the mechanism was never the quotes. **Log future
+cases the same way: dated and specific about the defect, generic about the person.**
+
+### `capturing-judgment-as-data`  (status: born here 2026-07-29; extended 4×)
+When correctness is a human's opinion (visual, tone, taste, UX feel), their verdicts must become a
+reproducible record instead of unrepeatable comments. Laws for structuring rounds, frozen baselines
++ rollback as first-class, and the screening failure mode (looking FOR fixes instead of AT the work).
+
+### `look-driven-iteration`  (status: field-proven; synced from live 2026-08-08)
+The cheap-render → grounded-feedback → measure-then-fix loop for work judged by eye. Its core claim
+is a spending rule: never burn expensive verification on a look the human has not approved yet.
+Sibling of `capturing-judgment-as-data` (that one records the verdict; this one gets it cheaply).
+
+### `guarding-silent-failures`  (status: born here 2026-08-09)
+Operations that fail while returning valid-looking output — CAD booleans, renderers, cleanup
+scripts, bulk edits. Distilled from one peckworks-cadmesh day that hit six of them, including a
+cleanup that reported removing twelve files it never touched. The rule that generalizes furthest:
+**a clean result from a probe is only evidence if the probe was first shown to fail.**
+
+### `cadquery-modeling`  (status: field-proven technical recipe; harvested 3×)
+CadQuery/OpenCASCADE recipes: picking edges by what they ARE (with an asserted count) rather than
+by point selectors that lie, and topological selection when no geometric test can work. Pure
+recipe skill — its evidence is the recipes, not a field-win log.
+
+### `stretching-frontier-tokens`  (status: ported into the lab 2026-08-10)
+Spending the strongest model only where the frontier matters: measure the transcript before
+theorizing, climb DOWN the ladder (script it → cheapest capable model → frontier only for
+diagnosis/design/human-facing prose), and the delegation-contract rules. This is the skill that
+encodes the build-subagent model policy cited above. **Lived only in `~/.claude/skills/` until
+2026-08-10 — unversioned and unbacked-up; ported so the policy has a source of truth.**
 
 ### `deletion-tripwire`  (status: born here 2026-07-19; TDD'd; wired live same day)
 The MECHANICAL third member beside the review pair: a PreToolUse hook that blocks destructive
