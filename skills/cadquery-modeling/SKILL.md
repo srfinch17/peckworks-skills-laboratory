@@ -67,6 +67,30 @@ Knock-on worth knowing: a deep seating inset drags the junction down beside the 
 
 A pocket-rim fillet raised `StdFail_NotDone` on the finished part while every ingredient was fine alone — plain slab OK, arch+opening OK, edge fillet OK, all three together FAIL. **A feature can be individually compatible with every other feature and still fail with all of them.** Test against the full stack, varying one ingredient, not pairwise.
 
+## A finished part can refuse EVERY further fillet
+
+OCCT will not round the edge of a round. Once a part has had a blanket pass like
+`edges(">Z or <Z").fillet(0.6)`, its top and bottom edges all bound fillet surfaces and further
+filleting fails outright with `There are no suitable edges for chamfer or fillet` — including via
+the ordinary string selector. Measured on three finished parts, each rebuilt with its own final
+pass disabled:
+
+| part | as finished | same part with `EDGE_ROUND = 0` |
+|---|---|---|
+| disc + pocket + groove | `edges(">Z").fillet(0.1)` **FAIL** | **OK** |
+| disc + arch loop | **FAIL** | **OK** |
+| rounded square | **FAIL** | **OK** |
+
+This is geometry, not a bad selector and not a broken mechanism — the identical call on an
+imported STEP with no prior fillets succeeded on 4 of 5 edges, and on a plain box every time.
+
+Consequences worth planning around:
+- **Any interactive "click an edge and fillet it" tool will refuse on already-rounded parts.** Say
+  so in the UI, or it reads as a broken button.
+- If edges need to stay editable, leave the blanket pass off and apply rounding last, or make it a
+  parameter that can be disabled.
+- A per-edge refusal is normal too and must be reported per edge, not as a whole-part failure.
+
 ## Cut order decides what can be rounded
 
 `fillet()` applies to whatever edges exist when it runs, so the ORDER of cuts sets which rims can be rounded:
@@ -76,9 +100,18 @@ A 2.4mm hole rim refused every fillet; the same part at 5.4mm across took 0.6mm 
 
 ## Verify by arithmetic, not by "it built"
 
+**Free floor: `Shape.isValid()`** (cadquery 2.8 wraps OCCT's `BRepCheck_Analyzer`). OCCT returns structurally broken solids — an open shell, a self-intersecting face — that still report a `Volume()`, still tessellate, still export, still render, and only fail in the slicer. One line before the export catches that whole class:
+
+```python
+if not solid.isValid():
+    sys.exit(f"INVALID SOLID: {project} failed BRepCheck_Analyzer. Nothing exported.")
+```
+
+Word it as `valid: True`, never as "verified" — a geometrically *wrong* solid is still perfectly valid, so this is a floor, not a verdict. Prove it fires: a box shelled with one face dropped and sewn back into a solid reports `Volume() = 800.0` and trips it.
+
 A wrong solid raises no exception. Check volume against a hand-computed expectation (`π r² d` for a pocket) and watch the volume DELTA between builds — a bad fillet can silently eat 400mm³ (measured worse: **1890mm³, 38% of the part**) and still return a valid solid that renders as a plausible object. State the number BEFORE the build; a prediction made afterwards is fitted to whatever came out. Cheapest possible catch; do it every build. See [guarding-silent-failures].
 
-### Volume is NOT reproducible across processes; topology IS
+### Volume is NOT reproducible across processes; topology COUNTS are — ORDER is not
 
 Three separate runs of unchanged code on the same part gave `3709.0172546784365`, `3709.0125436416643` and `3709.0181316673766` — a spread of ~0.006mm³, because OCC's internal ordering shifts with memory layout. Face and edge counts were 19/36 every single time.
 
@@ -86,6 +119,23 @@ So:
 - **Never compare volumes with `==`**, and never to more than about two decimals.
 - **Compare topology by equality and volume by tolerance.** 0.05mm³ works at keychain scale: ~10× the jitter and still ~2600× smaller than a feature worth detecting.
 - A committed build stamp will not match a fresh rebuild exactly, and that is fine. Any scheme that verifies a restore/checkpoint by re-running the build must be written this way or it fails at random and teaches everyone to ignore it.
+
+**But do not read that as "topology is reproducible".** The same non-determinism *permutes the sequence*: two runs of unchanged code both returned 36 edges and put a **different edge at index 3**. This is more dangerous than the volume jitter, because an index looks exactly as stable as a count and is not.
+
+**An edge index is never a selector — not in a script, not in a saved UI edit, not in a config.** Anything that persists `edges()[7]` silently addresses different geometry on the next build. Store what the edge *is* and re-find it:
+
+```python
+def edge_id(e):                       # collision-free across every part tested
+    c = e.Center()
+    return [e.geomType(), round(e.Length(), 2),
+            round(c.x, 2), round(c.y, 2), round(c.z, 2)]
+
+hits = [e for e in shape.edges().vals() if matches(edge_id(e), want, tol=0.05)]
+assert len(hits) == 1, f"expected 1 edge, matched {len(hits)}"
+shape = shape.newObject(hits).fillet(r)
+```
+
+`0.05mm` tolerance is ~8× the observed jitter and far below any real feature. Assert the match count — this is the same rule as "assert the inner-wire count", arriving through a different door.
 
 ### Face-count deltas: what fused, and what merely looks alarming
 

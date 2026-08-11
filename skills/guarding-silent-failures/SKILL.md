@@ -94,7 +94,26 @@ Failure modes to look for in your own probe:
   `telemetry`) hit a fallback path that happened to return plausible text, which read as a frozen
   readout and nearly became a bug report about the wrong subsystem.
 - **A stale instrument.** Prove the instrument is LIVE before diagnosing the system: do one real
-  interaction and confirm the readout moves.
+  interaction and confirm the readout moves. Knowing this rule does not prevent it — the same
+  trap (a backgrounded browser tab throttling `requestAnimationFrame`, so a polled readout froze
+  while the feature worked) recurred months later *with the rule already written down*. What
+  prevents it is mechanical: drive a **synchronous** update path instead of waiting on a polled
+  one, and check the liveness flag (`document.visibilityState`) before believing a negative.
+
+- **A check that cannot fire on the data you have.** The most dangerous disguise, because
+  everything about it looks like a pass. A new overhang-angle check reported "safe" across every
+  part in a repo — correctly, because every part was an extruded profile whose walls are all
+  vertical, so the warning branches were *unreachable*. A clean sweep and a dead check are
+  indistinguishable on that data.
+
+  **Fix: build the fixture that must fail.** Not a unit test of the function — an input chosen so
+  that a working check has no choice but to complain. Here: a sphere on a post, whose underside
+  sweeps every overhang angle from vertical to straight-down in one continuous surface. All four
+  severity tiers appeared, worst included, and only then was the clean result on the real parts
+  worth anything. Then delete the fixture; its job was to license one conclusion.
+
+  Ask it as: *what input would make this scream?* If you cannot name one, or the answer is "none
+  of our data", the check is decoration.
 
 ## Isolate by ingredient, not by intuition
 
@@ -112,13 +131,38 @@ The lesson generalises: **a feature can be individually compatible with every ot
 still fail with all of them.** Pairwise testing would have found nothing. Vary one ingredient at
 a time against the full stack.
 
+## Guard the EXITS, not the artefact
+
+The same blindness in a different domain: when something must not escape — a secret, an
+unprotected invention, PII, a pre-release asset — the instinct is to mark the *artefact*
+dangerous. But an artefact leaves through **paths**, and each path needs its own guard.
+
+A sensitive CAD file was protected by renaming every export with a `PRIVATE_` prefix, so
+publishing it took a deliberate rename rather than a habitual drag-and-drop. Real guard, and it
+covered exactly one exit. The project's "Checkpoint" button ran `git add -A`, and the file was
+untracked — one press would have written it into git history permanently, where removal means a
+rewrite. The prefix was irrelevant to that path.
+
+Enumerate the exits and check each: manual copy, `git add -A` from any script or button, an
+upload dialog, a **screenshot**, a log entry, a published artefact, a report from a subagent.
+Weight by reversibility, not likelihood — guard the irreversible exit first.
+
+Two corollaries:
+- **When a general rule meets a sensitive case, surface the conflict rather than silently
+  applying either.** A rule said screenshots are versioned because "the picture and the comment
+  are each half the design record" — right for the ordinary case, wrong for the sensitive one,
+  where a render discloses nearly as much as the source file.
+- **Name the contradiction in the config itself.** An ignore rule that deliberately contradicts
+  the rule six lines above it reads as an oversight unless it says why it exists.
+
 ## The order to work in
 
 1. Ask what would tell you if this were wrong. If nothing would, stop and add something.
 2. State the expected number before running.
 3. On a mismatch, diagnose by measuring the real artefact — not by re-reading the code.
 4. Fix the cause, then assert the invariant so it cannot return silently.
-5. Prove the assertion fires: break it on purpose once.
+5. Prove the assertion fires: break it on purpose once — and if your real data cannot make it
+   fire, build the fixture that can.
 
 ## Provenance
 
