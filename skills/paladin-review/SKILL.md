@@ -307,3 +307,37 @@ never-fabricate-a-date mechanism, the rejection/no-response split, the vocabular
 the folder-keying fix the original had written off as permanent). Division of labor held: the
 nemesis proved what was broken; only the paladin read the DOCS AGAINST THE PRODUCT and the
 product against its audience.
+
+Fifth field win 2026-08-11, and the first run that measured the skill's own failure mode in the wild.
+Two separate artifacts the same day: a set of interview-prep pages, and a technical teaching page.
+
+**The win.** On the prep pages the paladin was initially SKIPPED. Four other lenses ran (an adversarial
+reviewer, a follow-up skeptic, two cold readers), everything looked handled, and the author reported the
+work as done. The maintainer then asked whether the paladin had been run. It had not. Run late, it
+returned **the highest-severity finding of the day, and one no other lens could reach**: the document the
+interview panel was physically holding described the candidate, in his own words, as working alone, on the
+exact axis that round was convened to assess. Nothing in the prep mentioned it. **A missing lens does not
+degrade a review, it silently deletes a category**, and the deletion is invisible precisely because the
+remaining lenses all report clean in their own columns. Its second-tier findings were also all verified
+real: a pipeline diagram whose ordering contradicted the artifact's own code samples, a prediction about
+the event's content sourced only to a marketing statistic, and a citation that was accurate about a
+failure while sitting adjacent to a mechanism the author's repositories did not contain.
+
+**The failure mode, measured twice in one day, and this is why the verify-every-alarm filter exists.**
+Both were quantitative, both were confidently stated, and both were killed by going to the primary source:
+- It counted test-method *attributes* in source, reported roughly 667, and warned that a claim of "800+"
+  on a sent document was unverified and likely inflated. **Running the suite returned 818.** The claim was
+  correct and the alarm had inverted the truth. One attribute with several data rows runs as several
+  tests; a static count is not a runtime count.
+- It described an architecture-decision document as "tracked in git, public," and built an under-sell
+  finding on that basis. **`git ls-files` showed the file untracked.** Banking it would have had the author
+  pointing a reader at something that does not exist, which is the exact catastrophe the skill exists to
+  prevent, delivered by the reviewer the author is most inclined to believe.
+
+Two refinements, both now load-bearing. **(1) The orchestrator's discount-the-praise rule has a mirror:
+discount the paladin's NUMBERS too.** Devotion over-reports on risk the way hostility over-reports on
+severity, and a guardian who has just found a real blocker is at his most persuasive precisely when the
+next finding should be checked hardest. **(2) When the paladin makes a claim about what exists, run the
+command rather than reading the claim**: `git ls-files` for "it is committed," the test runner for a count,
+the compiler for an API. Its instinct about *where* to look was right both times; its measurement was
+wrong both times, which is a very specific and useful shape to know about this lens.

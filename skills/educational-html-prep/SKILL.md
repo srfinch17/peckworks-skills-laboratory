@@ -860,3 +860,55 @@ reviewers were a repo-armed nemesis plus two isolated reader-twins.
   message directions. **Grep a finished page for pairs of confident claims that a hostile reader would
   put next to each other, and either reconcile them in place or cut one.** Anticipating the collision is
   cheap; meeting it live is not.
+
+### Rules added 2026-08-11 (a technical-domain page built, panel-reviewed, then rebuilt from zero)
+
+A page teaching REST API design for an upcoming technical interview went through a four-lens gate: a
+compile-and-run code skeptic, an adversarial reviewer, a guardian reviewer, and a cold reader-twin.
+It was then thrown away and rewritten, and the rewrite was cheaper than the patch pass would have been.
+Four durable rules.
+
+- **⭐ STATE THE READER MODEL EXPLICITLY BEFORE WRITING, AND CHECK IT AGAINST EVIDENCE. A wrong reader
+  model generates a CLASS of defects at once, not a list of them.** The page was framed in its first
+  paragraph as "a refresher for someone who has already shipped these." That single choice independently
+  produced: a practitioner voice ("a CDN never reaches my servers"), no line anywhere marking what the
+  reader had actually operated, eleven separate promises that a given sentence would impress the
+  interviewer, over-explanation of the language he owns cold, and under-explanation of the exact
+  mechanisms he had never touched. The panel reported these as five or six findings. **They were one
+  finding.** The maintainer fixed it in one sentence ("assume I have never built one") and every symptom
+  resolved together.
+  **Two independent axes, and both must be stated:** what the reader knows COLD, and what the reader has
+  actually OPERATED. Getting the first wrong produces condescension. **Getting the second wrong produces
+  claim inflation**, which is the expensive one, because the page then coaches a voice the reader cannot
+  back up when asked "where did you do this?"
+  **The tell, and it is countable: when a review panel returns several findings that all point at
+  register, framing or emphasis rather than at facts, stop patching and re-examine the reader model.**
+  Factual defects are independent; register defects arrive in correlated clusters because they share a
+  cause. A panel is excellent at symptoms and poor at root cause; the orchestrator owns that synthesis.
+
+- **⭐ ANY PAGE TEACHING WHAT THE READER HAS NOT OPERATED NEEDS AN HONEST-CLAIMS SECTION BY DEFAULT.**
+  Not as a patch after a reviewer flags it. A page about problems at a scale the reader has never worked
+  at is a claim-inflation hazard *by construction*, and the guardian lens will say so every time. Build
+  in: a HAVE / STUDIED table sourced to primary documents, and one rehearsed sentence the reader
+  volunteers EARLY rather than surrendering under follow-up. The ordering is the whole mechanism. Said
+  first it reads as calibrated seniority; extracted third it reads as someone caught out. Corollary that
+  paid off here: the honest inventory surfaced genuinely relevant experience the page had ignored, so the
+  section made the reader look *stronger*, not weaker.
+
+- **⚠️ THE EXECUTING LENS BEATS EVERY PROSE LENS ON BEHAVIORAL CLAIMS, AND THE PROSE LENSES DO NOT KNOW
+  IT.** The page claimed that inserting a row during offset pagination causes both a duplicate and a
+  skipped row. An adversarial reviewer, a guardian reviewer and a cold reader all read that sentence and
+  none flagged it. A simulation walking every page to exhaustion settled it immediately: **an insert
+  duplicates and skips nothing; a delete skips and duplicates nothing.** The same lens captured a
+  cache-fingerprint bug off a live response header (a byte array interpolated into a string yields the
+  literal type name, so every record got an identical fingerprint) and measured an authorization sample
+  approving another user's record. Generalize past code: **any claim of the form "under scenario X,
+  behavior Y happens" is a claim you can simulate**, and prose review only evaluates whether a sentence
+  reads as true.
+
+- **⚠️ THE EM-DASH CHECK MUST COVER HTML ENTITIES.** A grep for the literal character reported clean and
+  a screenshot showed four em-dashes rendering, written as `&#8212;` inside SVG `<text>` labels. All four
+  forms render identically: `—`, `&#8212;`, `&mdash;`, `&#x2014;`. Prefer `&#183;` as a separator inside
+  diagram labels. This is the general rule in miniature: **a clean grep is only as good as the forms it
+  searches for, and an encoding the renderer resolves is a form.** It was found by looking at the render,
+  which is the standing argument for the visual gate being mandatory rather than a nicety.
