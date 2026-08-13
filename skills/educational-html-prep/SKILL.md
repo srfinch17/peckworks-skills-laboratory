@@ -912,3 +912,39 @@ Four durable rules.
   diagram labels. This is the general rule in miniature: **a clean grep is only as good as the forms it
   searches for, and an encoding the renderer resolves is a form.** It was found by looking at the render,
   which is the standing argument for the visual gate being mandatory rather than a nicety.
+
+### Rules added 2026-08-13 (a panel-prep page rebuilt from zero after the reader bounced off a gate-clean version)
+
+The predecessor page was accurate, sourced, and had passed the full four-lens gate. The maintainer
+read it and stalled on passage after passage, pasting each into chat in real time. The rebuild on a
+corrected reader model passed the same panel with only narrow factual findings and no register
+findings. Five durable rules:
+
+- **⭐ THE READER MODEL HAS A THIRD AXIS: WHAT THE READER HAS FORGOTTEN OF THEIR OWN WORK.** Beyond
+  knows-cold and has-operated, state what has decayed. The load-bearing fact the gate-clean page
+  missed was one the reader then supplied himself: assume everything about his own repos, and the
+  protocol they implement, is forgotten. Built-months-ago predicts nothing about can-explain-today.
+  Gates verify truth and clarity; a wrong reader model passes both, so the orchestrator owns the
+  model, and the reader-twin's charter must state all three axes explicitly.
+- **⭐ THE LIVE READER MID-READ IS AN INSTRUMENT NO TWIN MATCHES, AND EVERY PASSAGE THEY PASTE BACK
+  IN FRUSTRATION IS A SECTION REQUEST.** Each pasted "what does this mean" block was answered in
+  chat from zero AND became a taught section of the rebuild (a grounding section, a pairing section,
+  a worked dialogue, a five-decision walkthrough, a translated code comment). The finished page's
+  strongest sections were commissioned this way. This is build-from-the-learner's-questions
+  sharpened: a complaint IS the commission, not a wording note.
+- **⚠️ A WORKED DIALOGUE IS THE HIGHEST-RISK BLOCK ON A PREP PAGE.** It is the one block the reader
+  absorbs verbatim, in their own voice, so its claims feel like recall to writer and reader alike.
+  Both hostile lenses' top findings sat inside the dialogue: a capability claim the reader's own
+  code refutes (schema validation that does not exist; enforcement lives per-handler), and a
+  research leak scripted into the reader's mouth (a question presupposing a fact only
+  audience-research could supply). Verify every scripted line at as-sent-resume rigor against the
+  source, and sweep all sayable lines for facts that could only have come from researching the
+  audience.
+- **⚠️ A VERBATIM QUOTE FROM THE READER'S OWN CODE IS A RECEIPT, NOT TEACHING.** Comments compress.
+  Teach the mechanism first, show the quote as the checkable receipt, and attach a one-breath
+  translation directly after it, so the quote never has to carry the teaching load. The reader
+  bounced off his own class comment until it was walked clause by clause.
+- **⚠️ RETIRE ROUNDING-UP PHRASES WHEREVER THE RATIO IS CHECKABLE.** "Nearly doubled" for a 1.66x
+  gain survived multiple gates and two upstream memory documents before an adversarial pass divided
+  the raw numbers. State the two numbers; the phrase is drift, and the reader's audience contains
+  people who divide.

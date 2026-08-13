@@ -150,3 +150,18 @@ table.evtbl{width:100%; border-collapse:collapse; margin:0 0 13px; font-size:.88
 .qz .ans{padding:13px 17px 15px 45px; color:#B8C1CF; font-size:.94rem;
   border-top:1px solid var(--line-soft); margin-top:2px;}
 .qz .ans b{color:#fff;}
+
+/* ---------------------------------------------------------------------------
+   CODE BLOCKS WRAP, THEY DO NOT SCROLL SIDEWAYS  (added 2026-08-12)
+   The maintainer found every code window in the library carrying a horizontal
+   scrollbar and rejected it on sight: "the code windows require scrolling.
+   that's no good." A sideways scrollbar hides the right-hand end of a line,
+   which on a teaching page is often the whole point of the line (a trailing
+   comment, a tiebreak predicate, a chained call).
+   NOTE the trap that made this library-wide: most pages never set white-space
+   at all, they inherit <pre>'s default of `pre`. So a sweep that only patched
+   the pages with an explicit `white-space:pre` would have missed most of them.
+   Set it on BOTH pre and pre code.
+--------------------------------------------------------------------------- */
+pre{overflow-x:auto;}                      /* fallback for one unbreakable token */
+pre,pre code{white-space:pre-wrap; overflow-wrap:break-word;}

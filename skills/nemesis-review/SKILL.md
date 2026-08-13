@@ -501,3 +501,20 @@ reader about difficulty or outcome, and verify it against the source tier exactl
 factual "why this matters" claim (see the motivating-claim rule above). Also reconfirmed: the fix
 pass creates defects, the post-fix reader-twin caught a residual term-before-definition and a
 gloss wedged mid-clause, so re-run a reader-twin over the whole artifact after fixing.
+
+Eighteenth success 2026-08-13 on a panel-interview prep page rebuilt from zero (nemesis + paladin on
+the top model, a reader-twin, and a post-fix re-reader, isolated, one batch; nemesis armed with both
+repositories the page describes, the raw eval result JSONs, the application folder, and the live
+protocol spec). Blockers disjoint across lenses for the eighth measured time. The nemesis's finds:
+(1) a capability claim scripted inside the page's worked DIALOGUE that the repo refutes, the page
+had the author saying "I validate the arguments against the tool's schema" when the schema is served
+in the catalog and never consulted, with enforcement living per-handler; (2) a reassurance ("there
+was never much hidden time to hunt") refuted by a 30-second cross-process lock timeout constant plus
+a strictly serial dispatch loop, whose honest replacement became the page's strongest material; (3)
+a capability set taught as a closed set of three that the spec lists as six, where one omission (the
+logging channel) was the better answer to the page's own centerpiece question; and (4) an
+upward-rounded statistic ("nearly doubled" for a 1.66x gain) that had survived prior gates and lived
+in two upstream memory documents. New refinement: **on a prep page, aim the nemesis explicitly at
+the worked dialogue and every other block the reader will absorb verbatim** — scripted-mouth claims
+feel like recall to writer and reader alike, which is exactly why nobody checks them and exactly
+where they do the most damage.

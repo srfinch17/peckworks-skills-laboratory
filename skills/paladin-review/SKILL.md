@@ -341,3 +341,18 @@ next finding should be checked hardest. **(2) When the paladin makes a claim abo
 command rather than reading the claim**: `git ls-files` for "it is committed," the test runner for a count,
 the compiler for an API. Its instinct about *where* to look was right both times; its measurement was
 wrong both times, which is a very specific and useful shape to know about this lens.
+
+Sixth field win 2026-08-13, a panel-interview prep page, run in the same batch as the nemesis. Its top
+bombs were disjoint again, and two were classes no other lens hunts: **a research leak scripted into
+the author's own mouth** (the page's worked dialogue and a rehearsal row both had the author asking a
+question that presupposed a fact only researching the audience could supply, in the exact blocks the
+page tells the reader to absorb verbatim), and **a study plan that quietly overflowed the runway**
+(the page's linked shelf totaled roughly nine hours of reading against one remaining day, introduced
+across four places with the largest late additions unranked; the defusal was one ranked plan plus an
+explicit cut-without-guilt list). Its under-sell section went four-for-four on verification: an
+already-cleared claimable tool experience the page never mentioned, a compiler-enforced invariant
+test whose two halves were taught two hundred lines apart, a months-earlier design decision that had
+made a later migration cheap and was never told as one story, and coupling two count-corrections so
+they travel in one breath instead of surfacing as a pattern. Its numbers HELD this run: both
+quantitative checks (a test-runner count and a git-tracking check) verified correct, consistent with
+the verify-every-alarm rule being about verification, not distrust.
