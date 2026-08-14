@@ -948,3 +948,36 @@ findings. Five durable rules:
   gain survived multiple gates and two upstream memory documents before an adversarial pass divided
   the raw numbers. State the two numbers; the phrase is drift, and the reader's audience contains
   people who divide.
+
+### New page GENRE added 2026-08-14: the GLANCE CARD (at-a-glance monitor crib sheet)
+
+Commissioned the night before a decisive panel interview: 2-4 single-screen pages the maintainer
+keeps on the monitors behind his laptop during a video call, to glance up at if he freezes. A
+distinct genre from a teaching page, with its own rules, all field-proven in one build-fail-rebuild
+cycle that same night:
+
+- **What it is:** one viewport, ZERO scrolling ever, read-at-a-glance from several feet away. Huge
+  bold keywords (20-40px) carrying the load; tiny mono subtext only as memory fuel; boxed-flow
+  diagrams (stages with arrows) over prose; one accent color per card. No self-tests, no narrative,
+  no links: it is a crib sheet, not a lesson. Content comes ONLY from an already-gated prep page,
+  because a glance card inherits zero of its own verification.
+- **⭐ DESIGN AT THE TARGET WINDOW'S ASPECT RATIO; an auto-fit scaler cannot fix a wrong-aspect
+  layout, it can only MASK one.** The first build laid cards out landscape (~1240x770) and shipped
+  with a script that scales content to fit any window. The maintainer's real windows were PORTRAIT
+  halves of landscape monitors (~1000x1200). The scaler dutifully shrank the landscape design by
+  width, producing tiny text over a half-empty screen: technically no overflow, practically
+  unreadable, and the maintainer bounced hard. The fix was a redesign at ~980px-wide portrait, not
+  a scaler tweak. **The reported window size is a DESIGN input, not just a verification size**:
+  having the exact dimensions in hand (a screenshot was provided) and using them only to verify is
+  the trap; lay the content out for that shape first.
+- **Still ship the auto-fit scaler as the safety net** (transform scale = min(vw/w, vh/h, cap),
+  re-run on resize, center horizontally with the leftover width). It absorbs the difference between
+  design size and the real window so no snap arrangement can ever cut content off or scroll.
+- **Verify RENDERED at the exact reported window dimensions**, not a default viewport. The
+  em-dash/entity grep still applies (crib cards ship the same banned characters as any page).
+- **One card should be the PANIC card:** the recovery moves for going blank at the very top (say
+  the question back, name the boundary, start from the concrete thing you built, say-so-and-move),
+  then the say/never-say list and the two or three highest-stakes stories in compressed form. The
+  freeze is the moment the cards exist for, so the freeze card leads.
+- Register the cards on the dashboard and chip them onto the interview card so they are findable
+  in one click on the morning.
