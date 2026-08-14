@@ -632,6 +632,32 @@ dedicated code-accuracy skeptic, and two reader-twins, isolated. Two rules, both
   still caught a residual term-before-definition and a gloss wedged mid-clause, so re-run a
   reader-twin over the whole artifact after any fix batch, even a small one.
 
+### Rules added 2026-08-14 (a recruiter-syllabus prep page: the honesty table, and redundant SVG labels)
+
+- **Verify the artifact's own honesty apparatus FIRST, not last.** A prep page carried an
+  honest-claims table whose stated purpose was "every claim grounded to the record or marked GAP,"
+  and the adversarial reviewer found the page's worst defect in its FIRST CELL: a
+  years-of-experience figure larger than the number on the maintainer's own outbound record. The
+  honesty table READS as the check, so every pass skips it as meta; it is actually the
+  highest-risk surface on the page. Point the record-armed reviewer at the HAVE/GAP table before
+  anything else, and treat the maintainer's outbound record (the resume the other party holds) as
+  the CEILING for any number the page suggests saying aloud. Corollary: a computable sum sitting
+  near a capped claim (four tenures that add past the cap, two screens from "say the smaller
+  number") is the same defect family as a rounding-up phrase; reconcile it in place or remove the
+  computable form.
+- **The top SVG label-collision source is REDUNDANT label text: when an arrow's target is visible,
+  drop the target's name from the label.** Two figures in one build shipped leader lines striking
+  through their own labels ("waits for row 2" crossing the very line that points at row 2), a
+  class the deterministic bbox gate cannot see. The durable fix was semantic, not geometric:
+  shorten the label to its number and verb ("3. waits") and let the arrowhead carry the object.
+  Shorter labels also survive re-layout, where a nudged long label finds a new line to collide with.
+- **When two research inputs both claim the primary source and disagree on a number, check
+  INTERNAL consistency before fetching anything**: in one run, a research report's own quarterly
+  data table refuted its own headline growth percentage by simple arithmetic, settling the dispute
+  before the tiebreaker fetch (which then confirmed it). And for figures the reader will recite to
+  an insider, the organization's own published boilerplate outranks third-party encyclopedias even
+  where they conflict; cite the source the room would check.
+
 ## Inline-SVG diagrams: the highest-value move
 
 Diagrams are where these pages beat plain notes. Read `references/svg-diagrams.md` for the full

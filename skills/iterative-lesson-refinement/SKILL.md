@@ -37,7 +37,13 @@ echoes what you already know; isolation is the whole point.
    - **READER-TWIN** (mandatory since 2026-07-06; the slot whose absence let a stall ship):
      derive it per artifact from `references/reader-profile.md` (the durable profile of the
      actual reader: home-stack expertise, zero-knowledge topics, reading traits; update the
-     profile as the reader demonstrably learns topics). The real profile is personal and
+     profile as the reader demonstrably learns topics). ⚠️ **The profile rots in BOTH
+     directions**: it can lag behind learning (stale-low) AND it can overclaim (a 2026-08-14 run
+     found the profile asserting "production experience" for a skill the reader's own source-of-
+     truth record bounds to personal projects). When a twin flags a conflict between its profile
+     and the artifact, that is the twin working: adjudicate against the PRIMARY record (the
+     reader's ground-truth documents, not either derived file), and fix the PROFILE in the same
+     pass, or every future twin inherits the error. The real profile is personal and
      gitignored; copy `references/reader-profile.template.md` to create one for your reader. Shape: deep expert in A (their home
      stack: the language, IDE, or domain the page translates FROM or leans on), ZERO knowledge
      of B (the topic being taught). Mandate: reading in order,
