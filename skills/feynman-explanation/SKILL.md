@@ -55,7 +55,15 @@ The recipe for a single explanation:
    a kindness, never a condescension.
 5. **One idea at a time. Short. No walls.** If a paragraph is doing two jobs, split it. If the
    explanation is longer than it needs to be, the length itself is the problem.
-6. **Proofread at write-time.** Before sending, reread your own draft for jargon density and
+6. **Mark the edge of what you actually know.** A learner working cold cannot tell your
+   knowledge from your guess; they encode both at the same full trust. So when part of the
+   explanation is inference — a function whose code you cannot see, behavior you have not run,
+   a fact you are only mostly sure of — mark it in the same breath, plainly: "I can't see
+   `normalizeTimestamps`, so this is a read of the name, not the code: it almost certainly
+   makes all the timestamps one consistent format." A plain "I don't know" is a legitimate
+   teaching move, not a failure; the smooth confident guess is the failure, because when one
+   of them turns out wrong the learner re-prices everything else you taught them.
+7. **Proofread at write-time.** Before sending, reread your own draft for jargon density and
    length as if you were the person working cold. Cut or gloss what a newcomer would trip on.
 
 ## Quick Reference
@@ -67,6 +75,7 @@ The recipe for a single explanation:
 | Explaining a multi-step plan | Map it in 3 to 4 bullets first, say "I will hold this, you do not have to" |
 | Introducing any concept | Real-world analogy / plain picture BEFORE the syntax or detail |
 | Explaining what a line of code does | Walk the ACTUAL values through it, not an abstract description (see below) |
+| Explaining code you cannot see or behavior you have not run | Mark the inference in the same breath ("from the name, likely..."); state only the visible part as fact |
 | The user says "I've got `=>`" | Add it to the mastered list; STOP defining it from now on |
 | Tempted to write "obviously" / "simply" / "just" | Delete the word; it is a false calibration (see Red Flags) |
 | A huge message piled on and the user is overwhelmed | Collapse it to ONE sentence: name the single next action |
@@ -196,6 +205,14 @@ collapse of an overwhelming message. The canonical rule behind it is a stated, h
 communication preference (2026-07-09): plain-language duty for any unfamiliar area, define the
 symbol and the acronym the first time, kill "obviously", open the code instead of quizzing memory,
 and let training wheels come off per item on request.
+
+_2026-08-13 — compared against a public Feynman-style skill (github.com/leighstillard/feynman)
+and adopted its honest-uncertainty rule as Core Pattern step 6 after a targeted RED/GREEN pass:
+3/3 isolated baseline reps confidently stated the behavior of functions they could not see as
+fact (one fabricated a wrong claim about `await` semantics). Its other candidate rule,
+"restyle the delivery, never drop technical content," was tested and NOT adopted: 3/3 baseline
+reps already preserved the exact commands and safety flags in a plain restate, so there was
+nothing to fix. Revisit only if a real field case shows a plain restate dropping content._
 
 _Note on what is and is not testable here:_ most of this skill is write-time output shaping
 (define the symbol, spell the acronym, no wall, no "obviously"), which a single explanation can
