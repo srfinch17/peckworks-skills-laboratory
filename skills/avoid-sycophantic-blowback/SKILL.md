@@ -135,3 +135,27 @@ the round had been called "initial") and named the only two events that count as
 or a disposition. Generalized rule: **job-board relist cadence is never candidate-status signal, in
 either direction.** Do not let a refresh deflate the user, and do not let a posting disappearing
 inflate them (postings also vanish for budget freezes and req rewrites).
+
+## Field validation (2026-08-15, the despair-pattern vent)
+
+The user arrived exhausted after months of process, voicing a pattern with named examples: "every
+time I come away from an interview feeling genuinely good, it ends badly," and explicitly asked for
+no smoke. The established rules held (worst-case first: post-round feelings carry near-zero
+predictive power, and most late rounds end in rejection for everyone, because one seat and several
+finalists). Two additions came out of it:
+
+- **The strongest counterweight to a despair NARRATIVE is the user's own evidence list read back to
+  them.** Their list contained its own counterexample: one process on it had advanced them twice
+  after rounds they felt good about, and a separate round they had read as bad was in fact a
+  rejection, so their instrument was mostly tracking. The reframe that fits the data: the feeling
+  measures their own performance, while the outcome adds variables they cannot observe (competing
+  finalists, internal candidates, requisition politics). Facts the user already owns outrank any
+  fact brought in from outside; nothing supplied could have been as receivable. This is the despair
+  mirror of the 07-28 lesson: over-deflation here would have meant agreeing their judgment was
+  broken, which the record refuted.
+- **When a vent arrives bundled with a concrete request, doing the concrete work in the same reply
+  is part of the calibration.** A bounded, finishable task counterweights a mood better than any
+  wording; perspective alone reads as a pat on the head.
+
+Outcome: received as intended; the user said thanks for listening and moved on to the next task.
+(Genericized per this file's convention.)
