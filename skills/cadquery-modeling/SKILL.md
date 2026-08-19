@@ -157,6 +157,44 @@ part = cq.Workplane("XY").placeSketch(profile).extrude(t)
 part = part.edges(">Z or <Z").fillet(0.6)                   # now works
 ```
 
+### The SILENT variant — the same corruption that never raises
+
+`StdFail_NotDone` is the loud form. The quiet form removes **nothing at all**, and it is worse.
+
+Cutting with overlapping tools built in one call produces a corrupt compound. The `cut()` then
+succeeds, returns a valid solid, exports cleanly, and the volume is **unchanged**:
+
+```python
+# WRONG - the circles overlap each other, so the compound is corrupt
+cutter = cq.Workplane("XY").pushPoints(pts).circle(r).extrude(h)
+solid  = solid.cut(cutter)          # removes 0.0 mm3. No exception. isValid() True.
+```
+
+Measured on a fluted wall: scoops 0.55mm deep and 3.3mm wide, cutters of radius 2.7mm at
+3.7mm centres. The *bites* did not overlap — a clean ridge survived between them — only the
+cutter cylinders did, out behind the wall where nothing was being cut. That is enough.
+
+```python
+# RIGHT - one tool at a time, and assert the material actually moved
+before = solid.val().Volume()
+for pt in pts:
+    solid = solid.cut(cq.Workplane("XY", origin=(0, 0, z0)).center(*pt).circle(r).extrude(h))
+removed = before - solid.val().Volume()
+assert removed > 0.5 * expected, f"cut removed {removed:.1f}mm3, expected ~{expected:.0f}"
+```
+
+**The rule that covers both forms:** overlapping geometry may only be fused inside ONE
+`cq.Sketch()`. Anywhere else — a `pushPoints` extrude used as a cutter, a union of coplanar
+solids — assume it is corrupt and prove otherwise with a volume delta. A boolean whose result
+you did not measure is a boolean you did not verify.
+
+### Two cuts sharing one wall will meet
+
+When one feature cuts a wall from outside and another cuts it from inside, write the sum down
+and assert it. A wall fluted 0.55mm deep from outside and grooved 1.3mm deep from inside is
+1.85mm of removal from a 1.8mm wall: the flutes punched a neat row of holes into the groove.
+Every part rendered and exported fine. `FLUTE_DEPTH + SLOT_D < WALL`, asserted, is the fix.
+
 ## Edge-treatment robustness order
 
 1. Fillet on a sketch-first solid (works when topology is clean).

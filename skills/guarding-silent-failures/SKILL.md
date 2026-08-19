@@ -33,6 +33,14 @@ returned a perfectly valid solid, exported without complaint, and rendered as a 
 keychain. Nothing in the build output was red. The only thing that caught it was a volume
 predicted *before* the build.
 
+**Worked, the absence case:** a cut that removed **0.0 mm³**. The cutting tool was built from
+overlapping shapes in one call, which quietly corrupted it; the boolean then succeeded, returned
+a valid solid, exported cleanly, and left the volume untouched. Two consecutive design changes
+produced byte-identical volumes before anyone noticed — *that* coincidence was the only tell.
+An operation that removes, adds, replaces or migrates has a failure mode of **doing nothing**,
+and doing nothing raises no error anywhere. Any such call gets a before/after delta asserted
+against a rough expectation, computed from geometry rather than from the last run.
+
 ## Predict the number before you run it
 
 The cheapest possible detector. State the expected value **in advance**, then compare.
@@ -65,6 +73,25 @@ parameter two months later, and it names the cause in the failure message.
 Corollary: **prefer the check that fails LOUDLY.** Where a value sits near a limit but the failure
 mode raises an exception (rather than quietly mangling output), sitting near the limit is safe —
 the build stops. Reserve the margin-hunting for the silent ones.
+
+## A DERIVED count drifts; a COUNTED one cannot
+
+If a quantity is countable by looking — flutes on a wall, columns in a report, retries in a
+log — treat it as a **measurement**, not something to compute.
+
+Deriving it hides two failures at once. `n = round(run / pitch)` silently rounds to the wrong
+integer, and then it *re-derives* every time anything upstream changes, so a value that was
+right yesterday quietly becomes wrong when an unrelated margin moves. Both look like arithmetic
+working correctly.
+
+Measured on a fluted wall: `round(run / pitch)` gave 11. The object has 10, which the person
+holding it counted in about two seconds and which re-measuring the photograph then confirmed
+exactly. The pitch was right the whole time; the count was never a question the arithmetic
+should have been answering.
+
+**Apply:** make the count the input and let the extent follow from it. If it must be derived,
+assert it against an independently observed value, and print it every run so a drift is visible
+rather than inferred.
 
 ## Silent failure needs a DEFAULT, not a feature
 

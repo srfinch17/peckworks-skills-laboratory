@@ -122,6 +122,34 @@ Agents ARE good at, and should be used for:
 The multiplier is on the SEARCH, not the judging: turn "they judge twenty things serially" into
 "they pick from six pre-screened survivors". They stay the ground truth; the serial cost disappears.
 
+## The RENDER is an instrument too — section, don't shade
+
+"Objective screening" above assumes the picture reports the geometry faithfully. Often it does
+not, and every failure looks like a real defect in the work.
+
+Three distinct lies, all from one visualisation library in a single session:
+
+- **Coplanar surfaces drawn through each other.** Depth sorting is per-primitive, so two parts
+  sharing a face interleave. A large wedge of the wrong colour appeared across a panel; it was
+  the renderer, and hours went into "fixing" geometry that was correct.
+- **Framing that does not match the stated limits.** Axis limits were set to a 28-unit window
+  and the output showed considerably more, so a correctly-spaced pattern looked too coarse — and
+  got "corrected" to a spacing that was wrong.
+- **Detail below the output's resolution.** A defect occupying 0.2% of the object's volume was
+  invisible at sheet scale and instantly obvious to the owner at full screen.
+
+**The rule:** when the question is *where is the material, how much of it, and how many*, answer
+it from the DATA, not from the picture. Cut a section and measure the section; query the model;
+count the entities. For a solid that means intersecting a thin slab and measuring what comes
+back — which settled "10 troughs, 9 crests, pitch 3.850mm" exactly, after three shaded renders
+had each suggested something different.
+
+Reserve renders for the one thing they are genuinely good at: **does this read as the right
+object.** That is a question about gestalt, and it is also the question you should be putting to
+the human anyway.
+
+Corollary: if you and the owner disagree about something countable, do not re-render. Count.
+
 ## Anchor to an artifact, not a description
 
 Have them choose one reference (a photo, a screenshot, a product they like) early. "More organic" is
