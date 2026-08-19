@@ -383,3 +383,30 @@ not know what improved, so never leak the intent into their prompts. In its firs
 gate blocked one regression the author's own before/after framing had graded as an improvement,
 and its taxonomy doubled as the training corpus for a future standing look-judge agent - the
 log compounds twice.
+
+## Field addition (2026-08-16): the 3D pen, and judges audited like rigs
+
+Two portable upgrades from the bonsai project's heaviest week.
+
+**A pen that draws ON the artifact beats a pen that draws over the viewport.** Raycast the
+human's strokes onto the 3D surface and log model-space millimetre polylines alongside the
+screen-space ones. The payoff compounds: marks survive camera moves, they become
+calibration ground truth for detectors, and twice in one week the human freehand-drew the
+EXACT working band of the responsible field feature (edges within a millimetre), turning
+"somewhere around here" into a measured assignment. Two intake caveats learned the hard
+way: strokes ACCUMULATE while the human orbits, so left/right-of-frame reasoning is invalid
+until each stroke is projected onto the logged camera (one entry had 24 of 44 strokes
+behind the camera); and the recorded pen-colour NAME can disagree with the human's
+narration ("the purple circle" drawn with the magenta pen), so find marks by geometry plus
+their sentence, never by palette lookup.
+
+**Blind judges are instruments; audit them like rigs.** A gate judge reported six image
+pairs "byte-for-byte identical, sub-pixel jitter only" while checksums and mesh counts
+differed and the change was visible at a glance, then rubber-stamped no-harm. Standing
+rule: a judge must LOCATE the most visible difference region per pair before its verdict
+counts (knowing where is not knowing what was intended, so blinding survives); tell it the
+builds are known to differ; checksum the artifacts before believing any "identical" claim;
+a judge that cannot find a known change is VOID, exactly like a lying rig. Also blind the
+blindfold: renders fed to judges must exclude app UI, or trial captions leak the
+experiment (found because the top pixel-differences in one gate pair all sat inside the
+note box).

@@ -75,6 +75,8 @@ Quality tracked contract precision, not model tier. Four rules, each observed:
   registration sites - not just each diff.
 - **Stop background processes before dependency installs** - your own dev server holding a
   native module produced EBUSY mid-integration.
+- **Keep the words that will be SPOKEN or SENT; delegate the words that will be READ.** On a run with the frontier quota nearly exhausted, the orchestrator hand-wrote only the five verbatim scripts the human would read aloud in a live meeting, marked them "insert exactly as written, do not reword", and delegated every other word: teaching prose, layout, diagrams, a companion card, and the verification passes. **The scarce model's output should be the artifact with the lowest tolerance for paraphrase, not the one with the largest word count.** A subagent asked to improve copy will improve it, which is correct behavior and the wrong outcome when the copy is a script someone rehearses.
+- **A deliberately narrowed QA gate is a trade, not a shortcut, and it has to be logged as one.** Under a hard quota ceiling, a full multi-lens gate was replaced by one verifier armed with the four defect classes that actually mattered for that artifact; it returned nine real findings. Record the narrowing wherever the artifact's provenance lives, so a later reader knows which lenses never ran and can run them when the quota returns.
 
 ## Testing note
 

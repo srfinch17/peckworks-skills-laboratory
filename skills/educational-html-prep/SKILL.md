@@ -586,6 +586,18 @@ reader-twin panel, then re-gated by a SECOND fresh reader-twin after the fixes. 
   declared after its text will grow over that text). Both shipped past a clean gate and were
   obvious in the first screenshot. **The gate is a pre-filter; the visual look is still mandatory,
   and z-order is a thing to look for by eye specifically.**
+- **⚠️ THIRD BLIND SPOT, AND IT IS THE COMMON ONE: the gate compares text to the VIEWBOX, not to the
+  BOX THE TEXT SITS IN.** A flow diagram of labelled boxes passed a clean overflow-and-collision
+  check while one box's subtitle visibly spilled past both of its borders into the arrows on either
+  side. Nothing overflowed the viewBox, and no two labels overlapped each other, so the gate had
+  nothing to say. The fix is one more comparison, and it is cheap: for each `<text>`, find the
+  `<rect>` whose area contains the text's centre, then assert the text's bbox sits inside that rect
+  with a small margin. In practice a fixed-width box has a character budget (roughly
+  `width / 6.6` at 11px monospace), so the durable version is an ASSERT IN THE GENERATOR on label
+  length, not only a check on the render: `assert all(len(s) <= 15 for s in subtitles)` fails at
+  build time, before a screenshot is even taken. Same lesson as the other two blind spots: the
+  deterministic gate is a pre-filter, the eye is the gate, and every defect the eye catches should
+  become a new deterministic check so it is caught for free next time.
 - **New post-patch failure signature: prose that pre-emptively defends its own additions.** When a
   fix batch adds explanation, the additions tend to arrive wearing an apology: "You may never have
   used any of these, so briefly...", "Three more are worth naming so they do not read as noise."
@@ -813,6 +825,20 @@ prompt-eng-interactive-tutorial, claude-cookbooks}`; docs at `docs.claude.com`; 
    **Invoke the `nemesis-review` skill to run the panel; never hand-roll its charter from memory,
    even if you used it earlier the same session** (reproducing it from memory silently drops its
    pairing and cross-check rules; see that skill's Common Mistakes).
+
+   ⚠️ **A SUBAGENT TOLD "DO NOT REVEAL THE RESEARCH" WILL STILL LEAK IT, BECAUSE IT HAS IT.** A prep
+   page built by a strong subagent under an explicit no-reveal instruction still shipped three
+   leaks: an age claim about a named interviewer, a personality attribution ("someone who measures
+   things"), and a question routed to one person by name because research showed his interest in
+   that topic. The instruction was obeyed as a TOPIC ban and violated as a PHRASING leak. Two
+   mechanical fixes, strongest first: **(a) keep the research out of the builder's context entirely**
+   and pass only the behavioral conclusion ("ask him real questions and let him talk"), never the
+   evidence; or **(b) run a dedicated leak lens** whose only job is flagging any sentence that could
+   only have been written by someone who researched the room, including lines scripted into the
+   reader's own mouth. A general hostile lens does NOT reliably catch this, because a leak reads as
+   helpful specificity rather than as a defect. Worst instance: the leaked age claim had already been
+   contradicted by the reader's own in-room observation days earlier, so a refuted research artifact
+   outlived its refutation by being re-stated in a new document.
 6. **Register it so it's never orphaned.** Any NEW study/reference HTML gets a row in the `GUIDES`
    registry near the top of `dashboard.py` (cat / type / badge / title / desc / src), then re-run
    `py dashboard.py`. The dashboard is the one place all guides live.

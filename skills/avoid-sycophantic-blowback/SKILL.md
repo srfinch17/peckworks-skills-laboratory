@@ -159,3 +159,22 @@ finalists). Two additions came out of it:
 
 Outcome: received as intended; the user said thanks for listening and moved on to the next task.
 (Genericized per this file's convention.)
+
+## Field validation: anticipatory dread carries no information either
+
+Two high-stakes rounds in two days, each preceded by the user reporting real distress ("terrified",
+"freaking out", "overwhelmed by how much they told me to know"). Both rounds turned out to be
+conversational and both went well by the user's own account. The mirror case is already in this
+file's history: rounds anticipated calmly have ended in rejection. **Pre-round dread is not a
+forecast in either direction, and it gets handled exactly like a post-round feeling: named, not
+argued with, and never treated as evidence about the round.**
+
+The tempting failure is answering dread with reassurance ("you'll be fine", "it will probably be
+conversational"). That is smoke, and it is worse than the usual kind, because a difficulty
+downgrade delivered BEFORE a round induces under-preparation.
+
+**What worked, both times: converting the dread into a bounded task.** In each case the fear was
+specific and answerable ("I do not know what they will cover"), so the honest response was to note
+that the unknown was askable, ask it, and prepare breadth for whatever the answer could not
+settle. A finishable task is the only reliable counterweight to anticipatory anxiety, which is the
+same conclusion this file already reached from the despair direction.
