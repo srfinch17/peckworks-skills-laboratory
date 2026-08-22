@@ -22,7 +22,30 @@ import datetime
 REMINDER_EVERY_DAYS = 7
 
 EP_HEAD = re.compile(r"^###\s*EP-(\d+)\b", re.M)
-ISO_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
+DATE_LINE = re.compile(r"^- \*\*Date:\*\*(.*)$", re.M)
+# First date on the Date line, plus an optional range tail ("2026-08-20/21",
+# "2026-08-03 to 08-06"). The logbook's stated convention: ordering is by event
+# date, and a range episode sorts by its END date.
+DATE_TOKEN = re.compile(r"(\d{4}-\d{2}-\d{2})(?:\s*(?:/|\bto\b)\s*(\d{2}-\d{2}|\d{1,2})\b)?")
+
+
+def episode_date(block: str):
+    """Sort key for one episode: end date of the first range on its Date line.
+
+    Anchored on the '- **Date:**' line, NOT the first ISO date in the block -
+    meta-notes above it (e.g. a renumbering note) can carry later dates, and
+    grabbing those produced false newest-first alarms on a correctly-sorted file.
+    """
+    dl = DATE_LINE.search(block)
+    t = DATE_TOKEN.search(dl.group(1)) if dl else None
+    if not t:
+        return None
+    base, tail = t.group(1), t.group(2)
+    if not tail:
+        return base
+    if "-" in tail:
+        return base[:5] + tail          # YYYY- + MM-DD
+    return base[:8] + tail.zfill(2)     # YYYY-MM- + DD
 
 
 def audit(text: str):
@@ -40,16 +63,19 @@ def audit(text: str):
     for i, h in enumerate(heads):
         stop = heads[i + 1].start() if i + 1 < len(heads) else len(text)
         ids.append(int(h.group(1)))
-        d = ISO_DATE.search(text, h.end(), min(stop, h.end() + 400))
-        dates.append(d.group(0) if d else None)
+        dates.append(episode_date(text[h.end():min(stop, h.end() + 600)]))
 
     warns = []
     dup = sorted({n for n in ids if ids.count(n) > 1})
     if dup:
         warns.append("duplicate ids " + ", ".join(f"EP-{n:03d}" for n in dup))
-    seen = [d for d in dates if d]
-    if seen != sorted(seen, reverse=True):
-        warns.append("episodes are not newest-first, so a recent one is buried mid-file")
+    dated = [(n, d) for n, d in zip(ids, dates) if d]
+    bad = next(((a, da, b, db) for (a, da), (b, db) in zip(dated, dated[1:]) if da < db), None)
+    if bad:
+        warns.append(
+            "episodes are not newest-first (EP-%03d dated %s sits above newer EP-%03d "
+            "dated %s), so a recent episode is buried mid-file" % bad
+        )
     # Undated episodes are a known cosmetic gap in the early entries, not corruption.
     # Kept out of warns deliberately: a condition that fires every session forever is
     # how a guard trains you to ignore it.
