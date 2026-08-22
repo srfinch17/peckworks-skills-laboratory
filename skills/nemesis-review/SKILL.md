@@ -518,3 +518,25 @@ in two upstream memory documents. New refinement: **on a prep page, aim the neme
 the worked dialogue and every other block the reader will absorb verbatim** — scripted-mouth claims
 feel like recall to writer and reader alike, which is exactly why nobody checks them and exactly
 where they do the most damage.
+
+Nineteenth success 2026-08-21 on the peckworks-cadmesh DEV-RUN-PLAN.md (a five-run implementation
+plan for eight parked features), run SOLO at the author's explicit request - the orchestrator had
+begun self-escalating to the full court and the author stopped it mid-dispatch, visibly annoyed,
+asking for the nemesis alone. Operator lesson now on record: **invoked directly, the
+nemesis runs SOLO by default; the court convenes only on explicit request** - the pairing guidance
+in this skill is advice to the orchestrator, never an override of what the human actually asked
+for. The solo run then justified the trust: 9/9 findings survived orchestrator verification (zero
+false positives, zero drops), anchored by a BLOCKER of exactly the repo's signature class - the
+plan keyed a geometry cache on substrate VOLUME, and volume is position-blind (move `PULL_INSET`
+and the pull hole relocates at identical volume: silent stale-cache hit, every assert green,
+wrong plastic). Its concessions banked cleanly too: every file:line anchor in the plan resolved,
+and the plan's call-time-vs-import-time override scoping was right in both directions. New
+refinement, the run's highest-yield hunting ground: **when a plan's features were HARVESTED from
+named failure incidents, test each proposed fix against the incident it was harvested from - does
+the fix RECREATE it?** Three of five majors were exactly that shape: the one-export-path fix
+resurrected the stale-twins defect it existed to kill (layout-dependent file sets), the build-cost
+gate green-lit the exact unrequested 45-minute build it was born from (one timing scalar for a
+~45x configuration spread), and a durable scene file stored an index-as-identity in a repo whose
+own CLAUDE.md carries the law "an edge INDEX is never a selector." A plan can quote a law and
+violate it two sections later; diffing each mechanism against the laws the same document cites is
+where this artifact died and was rebuilt.

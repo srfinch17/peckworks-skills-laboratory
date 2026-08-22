@@ -117,6 +117,90 @@ and becomes enforcement. Written rules still leak occasionally; the codeword exi
 those leaks. Expect to use it, and expect the recalibration to be immediate and undramatic when
 you do.
 
+## Field validation (2026-08-19, a personal-metrics session) — two new shapes
+
+First run of this skill outside the job search, on a personal tracking dataset with months of
+history. Both directions fired in one conversation, and each added something.
+
+**Good-news direction — the deflator has to be a NUMBER, not a hedge.** A reading came in at
+the user's best value in eleven weeks. The honest lead was not "great news, but remember it's
+noisy"; it was the arithmetic: the reading sat **0.4 units** from where the series had been
+eighteen days earlier, **under its own measured 0.5-unit noise floor**, and the mean of three
+separate windows was identical. Rule 1 says calibrate in the same breath — this case
+sharpens it: **a vague caution is not calibration, it is a mood-softener.** Find the number
+that sizes the claim, or you are just hedging.
+
+**Despair direction — a self-assessment offered as fact is a CHECKABLE CLAIM, not a mood.**
+The user described their recent habits as scattered and hard to get a handle on. The reflex
+is to treat that as feeling and counterweight it with warmth. It was instead a factual
+assertion about a record that existed, and **the record said the opposite**: the prior
+month's inputs had swung across a 2x range (one of them repeatedly dropping to zero) while
+the two most recent weeks were nearly identical to each other. It was the most consistent
+stretch on file, and it was the one they called chaotic.
+
+This is distinct from the 2026-08-15 lesson. There, the user *supplied* an evidence list and
+it contained its own counterexample. Here they supplied **a conclusion with no evidence**, and
+the evidence lived in the record they could not hold in their head. Generalised:
+
+- **When someone in a low mood states something checkable about themselves, check it before
+  accepting it as the premise of your answer.** Adopting a false self-assessment is the
+  despair-direction equivalent of celebrating a staffing-firm email: agreeing with the mood
+  instead of reporting reality. Rule 7 territory, and easy to miss because agreeing *feels*
+  like listening.
+- **Correct the SCOPE, not the feeling.** The reply that worked was not "you're doing better
+  than you think" — it was "three of your four inputs are the steadiest they have ever been;
+  the fourth is genuinely broken, and it is the one already identified as the lever." The
+  value is accuracy about where the remaining work is. **"Everything is broken" is a reason to
+  quit; "one thing is broken" is a task.** A scoped correction is receivable in a way that
+  either blanket reassurance or blanket agreement is not.
+- **Then protect what is not broken.** Having been told their habits were chaotic, the user's
+  next move would have been to overhaul the two inputs the data said to leave alone. Naming
+  what must NOT change is part of the correction, not an afterthought.
+
+**Also confirmed:** the flat register let an unwelcome recommendation land. The correct advice
+ran opposite to the user's expectation (*increase* an input they had assumed needed cutting,
+while the headline number was barely moving). It was accepted without argument, which is the
+same result the origin case's calibration-first shape produces — bad news and
+counter-intuitive news travel on the same rails.
+
+## Field validation: audit a STRATEGIC READ part by part, and check whether "desperation" is a mislabel
+
+A negotiation round went unexpectedly well and the user, expecting an offer, brought two things: a
+read on the counterparty (their communications were disorganized, so a reliable candidate should
+hold a stronger negotiating position) and a self-description (that they would probably accept
+mostly out of desperation). Two different objects, each needing a different move.
+
+**The read was half right, and the split was the entire value.** Agreeing would have inflated it;
+disputing it would have been the performative harshness rule 7 already bans. The response that
+worked named which half held (the diagnosis was correct, and the user's reliability genuinely was
+worth money to that counterparty) and then supplied the mechanism that broke the other half: **the
+counterparty's incentive was double, close fast AND close cheap, because the money came out of
+their own margin.**
+
+- **A strategic read is a claim with parts. Audit it part by part instead of endorsing or
+  rejecting the whole.** "Right about the diagnosis, half right about what it buys you" is a real
+  answer; both "yes, use that leverage" and "careful, don't assume" are noise.
+- **The correction that lands supplies the missing MECHANISM, not a caution.** They could act on
+  "their incentive is split, so expect a low first number and one counter." Nobody can act on
+  "don't get overconfident." Same lesson as the numeric-deflator case above, in strategy rather
+  than data.
+- Extends the 07-28 rule (evaluate their analysis on its merits before adding anything): when the
+  analysis is *partially* correct, the split IS the deliverable.
+
+**Second, quieter: they labeled a sound decision "desperation."** What they had actually
+described — an interim arrangement with several concrete upsides they themselves listed, taken
+while the longer search continued — is a rational trade that also relieves pressure. Not the same
+thing, and the label was doing damage: it framed a good decision as a capitulation, which is
+precisely the frame that makes someone negotiate badly for it.
+
+- **A self-description dropped in passing is still a claim, and a mislabel can be corrected
+  without reassurance.** Not "don't be so hard on yourself"; instead restate what they actually
+  described and let the mismatch with the label show. The user confirmed the calibration landed,
+  then listed real reasons the decision was good.
+- Companion to the personal-metrics lesson above (a self-assessment is checkable against the
+  record). Here no record existed: the refutation came from **their own description in the same
+  message**, the cheapest source available and the one most often skipped.
+
 ## A note on this file's own examples
 
 The cases above are real, and they were deliberately rewritten in the third person: the mechanism

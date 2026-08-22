@@ -142,6 +142,22 @@ Failure modes to look for in your own probe:
   Ask it as: *what input would make this scream?* If you cannot name one, or the answer is "none
   of our data", the check is decoration.
 
+- **A probe that reaches nothing — the check is sound, your test of it is hollow.** The mirror
+  image of every entry above, and it produces a FALSE ACCUSATION rather than a false pass. To
+  prove a fit-check could fail, the input constant it "depends on" was reassigned after import
+  and the check re-run. It stayed silent, and the check was about to be reported as blind. It
+  was not: every value the check actually reads had been **derived from that constant at import
+  time**, so mutating the constant afterwards changed no state the check consults.
+
+  **Mutate what the check READS, not what conceptually causes the problem.** In any module where
+  constants are derived at load time — `WIDTH = LENGTH / ASPECT`, config resolved once, a cached
+  schema — those are two different values, and the gap is silent in both directions: a sound
+  check looks blind, and a blind check can look sound. Either poke the derived value directly,
+  or `reload()` the module and mutate before derivation runs.
+
+  The tell: **a probe that changes nothing observable.** Before concluding "the check is broken",
+  confirm your mutation actually moved a value the check reads. Print it.
+
 ## Isolate by ingredient, not by intuition
 
 When something fails only sometimes, build the matrix. A pocket-rim fillet raised
@@ -182,16 +198,74 @@ Two corollaries:
 - **Name the contradiction in the config itself.** An ignore rule that deliberately contradicts
   the rule six lines above it reads as an oversight unless it says why it exists.
 
+## An exception is not proof that nothing happened
+
+The other half of "it failed but looked fine": **it failed loudly, and the message described
+only the part it noticed.** A traceback feels like a clean abort — the operation did not
+finish, so surely it did not do anything. That inference is wrong whenever the operation
+destroys before it creates.
+
+**Worked:** a small patch script did `open(path, 'w').write(new_text)` on a 21 KB reference
+document. The write raised `UnicodeEncodeError` — an astral-plane emoji had been written as a
+surrogate-pair escape (`\uD83D \uDEA9`) instead of `\U0001F6A9`, so the string held two
+lone surrogates. The traceback said the text could not be encoded. What it did **not** say is
+that `'w'` had already truncated the file to **zero bytes** before the encoder ever ran. The
+next command re-ran the patch against the now-empty file and reported
+`AssertionError: anchor not found` — a second, entirely misleading error pointing at the patch
+logic instead of at the destroyed file. Recovery was possible only because the file happened
+to be committed.
+
+**The generalisable shape:** truncate-then-write, delete-then-copy, drop-then-recreate,
+`>` redirection, `tar -x` over a live tree. Each has a window where the old thing is gone and
+the new thing does not exist yet. An error thrown inside that window leaves the destination in
+a state no error message mentions.
+
+- **Read the error for what it claims, not for what you hope it implies.** "Could not encode"
+  is a statement about the encoder. It is not a statement about the file.
+- **After any failed operation that writes, look at the target before doing anything else.**
+  `wc -c`, `git status`, `ls -l`. One command. The misleading second error above would never
+  have been raised if the file had been checked first.
+- **The fix is structural, not careful.** Write to a temporary path, then rename over the
+  target. `os.replace(tmp, path)` is atomic on POSIX and Windows, so a failure anywhere in the
+  write leaves the original untouched. Same idea as guarding the exits: make the destructive
+  step unreachable rather than remembering to avoid it.
+- **Version control is a backstop, not a guard.** It covers only what was committed, and does
+  nothing for generated artefacts, untracked files, or anything mid-session.
+
+```python
+tmp = path + '.tmp'
+with io.open(tmp, 'w', encoding='utf-8', newline='\n') as f:
+    f.write(new_text)          # any failure here leaves `path` intact
+os.replace(tmp, path)          # atomic swap
+```
+
+**This guard paid for itself the same hour it was written.** The very next patch — the one
+adding this section — hit the identical encoding fault, and because it wrote through a temp
+file the target survived untouched; only the `.tmp` was zeroed. A structural guard is worth
+more than the lesson that produced it.
+
+⚠️ **Related trap, same root cause:** the escape sequences never survived the shell. A heredoc
+that looked literal collapsed doubled backslashes, so `\\uD83D` in the source arrived at
+the interpreter as `\uD83D` and produced a real lone surrogate. **When file content contains
+backslash escapes, do not route it through a shell heredoc** — use a direct file-write tool, or
+build the backslash at runtime (`BS = chr(92)`) and substitute a placeholder.
+
 ## The order to work in
 
 1. Ask what would tell you if this were wrong. If nothing would, stop and add something.
 2. State the expected number before running.
 3. On a mismatch, diagnose by measuring the real artefact — not by re-reading the code.
+   **If the mismatch was an exception from something that writes, look at the target file
+   first** — the error described the failure, not the damage.
 4. Fix the cause, then assert the invariant so it cannot return silently.
 5. Prove the assertion fires: break it on purpose once — and if your real data cannot make it
    fire, build the fixture that can.
 
 ## Provenance
+
+Extended 2026-08-19 with the truncate-then-fail case: a `UnicodeEncodeError` mid-write that
+emptied a 21 KB document, a second misleading `anchor not found` error on the retry, and the
+shell-heredoc backslash collapse that caused the encoding fault in the first place.
 
 Distilled 2026-08-09 from a peckworks-cadmesh session that hit all of these in one day: a fillet
 that ate 38% of a part and rendered fine, an AO pass that rendered pure black with no console

@@ -1033,3 +1033,51 @@ cycle that same night:
   freeze is the moment the cards exist for, so the freeze card leads.
 - Register the cards on the dashboard and chip them onto the interview card so they are findable
   in one click on the morning.
+
+### Rules added 2026-08-19 (a four-topic primer built and gated in one session: twin, accuracy skeptic, nemesis, then a post-fix twin)
+
+Four durable additions. The run is also the cleanest measurement yet of what a fix pass costs.
+
+- **⚠️⚠️ A FOURTH BLIND SPOT IN THE DETERMINISTIC DIAGRAM GATE, AND IT IS THE WORST ONE, BECAUSE THE
+  GATE REPORTS CLEAN WHILE THE PAGE IS VISIBLY BROKEN: CSS transforms on SVG elements resolve
+  `transform-origin` against the VIEWBOX, not the element.** A row of animated progress bars
+  declared at `x="70"` with `transform-origin:left center` and an animated `scaleX` did not grow
+  from their own left edge; they scaled from `x=0`, sliding left across the canvas and covering the
+  row labels at `x="20"`. **The bbox gate cannot see this by construction**, because `getBBox()`
+  returns UNTRANSFORMED geometry: every element measured exactly where it was authored, so overflow,
+  collision and inside-the-box checks all passed while the render was mangled. Only the screenshot
+  caught it. **Fix: `transform-box: fill-box` on every animated SVG element** (SVG's initial
+  `transform-box` is `view-box`, which is almost never what you want). Generalizes: *any* check that
+  reads authored geometry is blind to *any* defect introduced by rendering, so animation and
+  transforms move a page's failure modes out of the gate's reach entirely. If a page animates, the
+  screenshot is not a nicety, it is the only instrument that works.
+- **⚠️ AN IMPOSSIBILITY CLAIM ABOUT THE READER'S OWN MEASURED DATA IS ONE PARAMETER SWEEP FROM
+  REFUTATION, AND NOBODY SWEEPS IT.** A page taught that a similarity threshold could not separate
+  two populations, "no threshold exists," derived from a real overlap in the reader's committed
+  results. The nemesis swept every candidate floor against the raw per-question scores and found one
+  that catches 4 of 4 at a cost of 5 of 18 false positives. **Nothing was fabricated; "separates"
+  had silently meant "separates perfectly."** The honest replacement is strictly stronger: a priced
+  tradeoff the author declined, with the price stated, rather than a wall. **Rule: when a page says a
+  mechanism is impossible, cannot work, or that no value of X would help, SWEEP X against the raw
+  records and state the cost instead.** Impossibility is the most checkable claim on any page and the
+  least checked, because it reads as a conclusion rather than an assertion. Same family as the
+  motivating-claim rule; the tell is any absolute quantifier ("no", "never", "cannot", "any").
+- **⚠️ IDENTICAL NUMBERS IN A COLUMN READ AS REPLICATION. CHECK WHETHER EACH ROW COULD HAVE PRODUCED
+  A DIFFERENT VALUE.** The same page showed a guard scoring "0 of 4" on three runs, in the same
+  visual weight as its other metrics. Two of those runs had the threshold configured below every
+  score in their own result file, so refusing anything was arithmetically impossible: those zeros
+  were **not measurements**, and only the third row tested the shipped configuration. **Before a
+  results table implies n=3, verify each row's configuration could have moved the number.** Print the
+  varying parameter as its own column; a constant that was not actually constant is where a table
+  lies without a single wrong digit.
+- **⭐ TRACK THE READER-TWIN'S TWO SCORES SEPARATELY, BECAUSE A FIX PASS TRADES THEM AGAINST EACH
+  OTHER.** Twin 1 scored the draft 7/10 "did this teach me" and 6/10 "could I finish it without
+  disengaging." A ~30-edit fix pass answering every finding moved it to **8 on teaching and 5 on
+  engagement**: comprehension up, completion down, because the fixes were definitions, caveats and
+  precision, and all three add mass. The twin named the mechanism: nine warning blocks meant the
+  warning symbol stopped signalling, one finding got fully restated in three separate sections, and
+  one term got defined twice 200 words apart. **A fix pass is not done when the findings are
+  answered; it is done when the second score has not dropped.** Practical countermeasures, all from
+  that twin: cap the alarm symbols per page, state a finding once and cross-reference it rather than
+  re-telling it, and after inserting a definition grep the rest of the page for the older gloss of
+  the same term. Corollary worth its own line: **a page can fail by being MORE correct.**

@@ -195,6 +195,62 @@ and assert it. A wall fluted 0.55mm deep from outside and grooved 1.3mm deep fro
 1.85mm of removal from a 1.8mm wall: the flutes punched a neat row of holes into the groove.
 Every part rendered and exported fine. `FLUTE_DEPTH + SLOT_D < WALL`, asserted, is the fix.
 
+## An interpolating loft OVERSHOOTS where you sampled sparsely
+
+`Solid.makeLoft(wires, ruled=False)` fits a smooth surface **through** your wires — so between
+two distant wires it behaves like a spline and **bulges past them**. Sample unevenly and the
+sparse span is where the error lives.
+
+A scoop lofted through z-levels clustered at its two fades, with a 5.7mm unconstrained gap down
+the middle, cut **0.696mm deep where the constant said 0.55** — 27% over, on the part's signature
+feature. `isValid()` passed, the STL exported cleanly, the render looked right. Only sectioning
+the solid and walking the profile found it.
+
+```python
+cq.Solid.makeLoft(wires, False)   # smooth: splines THROUGH the wires, overshoots the gaps
+cq.Solid.makeLoft(wires, True)    # ruled: linear between wires, cannot overshoot
+```
+
+**Rule: if you generate the wires yourself, use `ruled=True` and buy smoothness with level
+density instead.** Then the shape is exactly what your formula says, the depth guard is
+predictable, and smoothness is a knob you control. Reserve smooth lofts for wires you did not
+choose the spacing of. Same hazard in any construction that interpolates points you supply —
+splines, sweeps, easing curves.
+
+## Tangency, not width, decides whether two scoops leave a ridge
+
+A circular arc meets a flat wall **at an angle**. So whatever survives between two circular
+scoops is a flat strip with a hard shoulder either side — a *ridge* at any spacing. Narrow the
+gap and you get a thinner ridge; close it completely and you get a cusp. There is no width that
+yields a rounded crest.
+
+For a continuous wave, the profile must reach zero **depth and zero slope** together. A raised
+cosine over the pitch does:
+
+```python
+bite = amp * (1 + math.cos(2 * math.pi * (t - 0.5))) / 2   # t: 0..1 across one pitch
+```
+
+Consecutive scoops then hand off tangentially and the surface reads as one wave. Measured: wall
+within 0.05mm of full crest went 2% → 22%. **The width constant was deleted, not retuned** — with
+a cosine spanning the pitch there is no width to choose. When a complaint names a *character*
+(smooth vs sharp, wave vs peak), ask which mathematical property produces it and whether your
+current form can express it at all.
+
+## Export tolerance is part of the model's correctness
+
+`cq.exporters.export(shape, path)` defaults to **0.1mm** linear deviation. That is invisible on a
+35mm disc (0.3%) and fatal on a 0.55mm relief (18%) — the same number, right and wrong depending
+on the subject, which is why it goes unexamined for months.
+
+```python
+cq.exporters.export(shape, str(stl), tolerance=0.02, angularTolerance=0.06)
+```
+
+**Compute deviation ÷ smallest feature before believing a "faceted / pixelated / stepped"
+complaint is about geometry.** Fix it at the shared exporter so every part benefits; triangles
+are cheap (18k → 49k, 2.4MB here).
+
 ## Edge-treatment robustness order
 
 1. Fillet on a sketch-first solid (works when topology is clean).
