@@ -569,3 +569,38 @@ edits rather than reporting them, which the page never said and its neighbours i
 opposite of). Two findings the orchestrator initially doubted turned out real, because the
 orchestrator's own verification greps had truncated mid-row. **Verify with the whole record, not a
 truncated view of it, before dismissing a finding as a false positive.**
+
+
+Twenty-first success 2026-08-23 on an interview-prep page rebuilt days before the round (nemesis on
+the top model armed with **the version it replaced** plus the whole application folder, a
+compile-and-run code skeptic and a cold reader-twin on a cheaper tier, isolated, one batch). Blocker
+classes disjoint for the eleventh measured time, and the separator this run was **not domain but what
+each lens was GIVEN TO READ**. The reader-twin returned eight register findings; the code skeptic
+compiled and ran all 32 snippets on real .NET (102/102 assertions green) and found a complexity chip
+the page contradicted twice in its own text. The nemesis found every BLOCKER, and **all of them were
+things the PREVIOUS version did right that the rework had silently deleted**: an instruction to
+practise without AI tooling, removed from prep for a round where AI use is disqualifying in writing; a
+stuck-at-25-minutes rule, removed, leaving a timer with no expiry behaviour; two practice targets
+dropped that the page's own standing table ranked "worth the most practice"; and a primary-source
+attribution stripped, after which a WEAK-source caveat landed on the one fact the recruiter had put in
+writing. Its verdict is the keeper: *"the rework improved the teaching and degraded the plan, which is
+the specific way a rework fails: attention went where the new work was."*
+Three refinements, all field-proven this run:
+(1) **When the artifact is a REWORK, arm one reviewer with the OLD VERSION and instruct it to diff for
+DELETIONS, not only for what got louder.** This is the mirror of the twentieth run's amplification
+rule and it cost more. **The sympathetic lenses were structurally incapable of the finding**, because
+a deletion does not exist in the document they were reading; that is an arming failure, not a reviewer
+failure.
+(2) **Deletions and improvements sort themselves BY SECTION, and the sort runs backwards.** Every
+improvement landed in the teaching sections and every deletion in the action section (the plan), which
+is the only part that touches the outcome. **Diff the ACTION section against the artifact's own
+DIAGNOSIS section**: those two drift apart while the prose improves, and here the plan contradicted a
+tier table printed three sections above it.
+(3) **The concession cross-check paid again, in the direction of confirming rather than refuting.**
+The nemesis expected the twelve animated figures to be decorative and instead recomputed every trace
+against the SVG's own step attributes and conceded all twelve correct, including a Floyd's-cycle
+figure whose two markers genuinely meet at the arithmetically correct node. A hostile lens conceding
+the thing it went in expecting to break is still the highest-confidence signal the panel produces.
+⚠️ Also confirmed: **the orchestrator's own verification pass needs the same scrutiny as the
+artifact.** A cross-reference sweep run before the panel reported clean while missing half its targets
+(the pattern was lowercase-only); the nemesis found those too.

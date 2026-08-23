@@ -1142,3 +1142,89 @@ the reason this entry exists.
   for the defects the other passes structurally cannot see** - here it found the blocker both other
   lenses passed over. If tokens are the real concern, say so as a decision the maintainer can
   overrule, never as a limitation.
+
+
+### Rules added 2026-08-23 (a DS&A prep page rebuilt days out: 12 stepped figures, a 3D canvas, and a plan that quietly got worse)
+
+- ⭐⭐ **STEP-DRIVEN FIGURES BEAT CSS KEYFRAME LOOPS, and they are cheaper to author.** One ~70-line
+  engine reading declarative attributes off the SVG (`data-show="2+"`, `data-tx`, `data-sx`,
+  `data-cls="hit@3"`, plus `data-cap="sentence0|sentence1|..."` on the `<svg>` itself) replaced roughly
+  forty bespoke `@keyframes` sets across twelve diagrams. It buys three things a loop cannot: the
+  reader can **PAUSE and step at his own pace** (he is studying, not watching), **every step carries
+  its own sentence of narration**, which is where the teaching actually lives, and
+  `prefers-reduced-motion` degrades to "does not auto-advance" instead of "does not work". Authoring a
+  new figure becomes pure markup. Autoplay only while the figure is on screen (IntersectionObserver).
+  **Assert `data-steps` equals the caption count in the gate**; that drift is this design's classic
+  silent defect.
+- ⚠️⚠️ **AN ANIMATED FIGURE MUST NOT RESIZE, AND THIS IS A COMPREHENSION BUG, NOT A POLISH ONE.** The
+  per-step caption is the one element whose height changes, because captions run one line to five. With
+  only a CSS `min-height` guess, every tick reflowed the figure box and shoved the whole page below it
+  up or down. The maintainer's words: *"it's jarring, fucks up my concentration, and needs to stop."*
+  For a reader with ADD that is disqualifying, and no review lens flagged it, because every individual
+  frame renders perfectly.
+  **The fix is measure-then-lock, never a hardcoded height:** before the figure first plays, render
+  each caption into the div, measure it, take the tallest, and set that as `min-height`. Re-measure on
+  `resize` (wrapping changes with width) and on `document.fonts.ready` (the first measurement runs
+  against the fallback font and can come up a line short).
+  ⚠️ **Measure with `getBoundingClientRect().height` and `Math.ceil`, not `scrollHeight`.**
+  `scrollHeight` returns a rounded-down integer, under-reserves the tallest caption by a fraction, and
+  leaves a 1px twitch on exactly one step. Also give any counter that changes width mid-play
+  ("ring 0" to "ring 34 of 34") a `min-width`, or it rewraps its own flex toolbar.
+  ⭐ **The gate that proves it, and it must walk every step of every figure:** click each step, record
+  the figure height, the document height, AND the top of the element BELOW the figure, then assert zero
+  variance. Repeat at three viewport widths. Then reproduce it honestly: scroll the figure in so its
+  observer starts it autoplaying, and sample the element below for ~15 seconds. A per-step screenshot
+  cannot catch this; only sampling positions across steps can.
+- ⚠️⚠️ **DIFF A REWORK FOR DELETIONS, NOT ONLY FOR WHAT GOT LOUDER.** The rule above (a rework corrects
+  what it hunts and PROMOTES what it does not) has a mirror that cost more here: **a rework also DELETES
+  what the old version did better, and the deletions land in whatever section the rework was not excited
+  about.** Four of the nemesis's nine findings were v1-did-it-right regressions, and every one sat in the
+  PRACTICE PLAN while the rework's attention was on new figures: a "plain editor, no autocomplete
+  crutches" instruction deleted from prep for a round where AI use is disqualifying in writing; a
+  stuck-at-25-minutes rule deleted, leaving a timer with no expiry behaviour; two practice targets
+  dropped that the page's OWN standing table ranked "worth the most practice"; and a primary-source
+  attribution stripped, after which a WEAK-source caveat landed on the one fact the recruiter had put in
+  writing. **Keep the pre-rework copy reachable and diff for removals, reading each as a decision that
+  owes a reason.** Diff the ACTION section (plan, checklist, runbook) against the artifact's own
+  DIAGNOSIS section specifically: those two drift apart while the prose improves, and the action section
+  is the half that touches the outcome.
+- 📌 **A SCHEDULE-SHAPED SECTION IS PERISHABLE AND MUST BE RE-CUT WHEN THE READER'S PLAN CHANGES.** The
+  page argued, in its own words, that "a stale plan is worse than no plan, because it quietly tells you
+  that you are already behind before you have done anything", and then kept a Saturday column after he
+  said he would study Sunday and Monday. **Apply the page's rules to the page.** When re-cutting, state
+  what the shorter runway COSTS rather than silently compressing (fewer problems, a day that can no
+  longer be pure rehearsal) and name the one constraint still protected. Keep the days NAMED rather than
+  hardcoding "two days" everywhere, and demote the dropped day to an optional box, so the page is honest
+  without punishing him if he does open it early.
+- ⭐ **ELEVENTH MEASUREMENT OF THE PANEL'S DIVISION OF LABOUR; BLOCKER CLASSES DISJOINT AGAIN.**
+  Reader-twin: 8 findings, all register and undefined-term (`heap` and `graph` used two sections before
+  their definitions; "hash map" never equated with `Dictionary<K,V>`, which is the reader's own daily
+  word). Code-accuracy skeptic, compiling and RUNNING every snippet on real .NET: 102 of 102 assertions
+  green, plus a complexity chip the page contradicted twice in its own text. Nemesis, armed with v1 AND
+  the job folder: the only BLOCKERs, all of them in the plan. **Neither sympathetic lens found a single
+  deletion**, because a deletion is invisible to anyone reading only the artifact in front of them.
+- 📌 **A PRINTABLE desk artifact is the right form when the round's own monitoring makes a second SCREEN
+  a tracked signal** (the platform reports multi-monitor, tab switches, outside pastes and resizes; a
+  browser cannot see paper). Build it as a print stylesheet, and **MEASURE the fit rather than assuming
+  it**: inject the page's own `@media print` rules as screen CSS at the target content width (letter
+  portrait with 0.4in margins is 739 x 979 px) and assert the height. Adding one table row put it 12px
+  onto a second sheet, which defeats the entire artifact. Blanket `color:#000` in print, because a dark
+  theme's light-grey body text prints faint and reads as broken. And put **no CODE on it** for a
+  live-coding round: code copied off a sheet is code the reader cannot explain, and explaining is graded.
+- ⚠️ **THREE SILENT HTML/SVG DEFECTS FROM THIS BUILD, none visible in source, each needing its own
+  detector.** (1) **In SVG a CSS rule beats a presentation attribute**, the opposite of the HTML
+  inline-style intuition, so `class="cellbox" fill="#2BE0CE"` renders in the class's grey while the
+  figure still looks finished; it hit three figures where the colour WAS the meaning. Promote literal
+  colours to inline `style=`, and verify with `getComputedStyle(el).fill`. (2) **A raw double quote
+  inside a `data-cap=` attribute closes it early and the parser discards every remaining attribute on
+  that tag**, which silently stripped every `data-*` off two whole figures; they still rendered, still
+  had captions and controls, and simply never animated. Escape to `&quot;`, and detect by counting
+  animated elements per figure and asserting non-zero. (3) **A label emitted before the cells it labels
+  gets painted over.** The unifying property: **each produced a complete, plausible, finished-looking
+  artifact**, which is exactly why a structural gate, a console check and a source grep were all blind
+  by construction.
+- ⚠️ **INSERTING A SECTION INVALIDATES EVERY HARD-CODED CROSS-REFERENCE, AND THE SWEEP MUST GREP BOTH
+  CASES.** A `section [0-9][0-9]` sweep found and fixed four references and sailed past `Section 04` and
+  `Section 08`, one of which then pointed at its own section. Same family as the em-dash-entity gotcha:
+  a clean grep is only as good as the forms it searches. Assert mechanically that every nav link's
+  number equals its target section's own `h2` number.
