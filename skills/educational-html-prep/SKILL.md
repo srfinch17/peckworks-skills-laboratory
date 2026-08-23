@@ -1081,3 +1081,64 @@ Four durable additions. The run is also the cleanest measurement yet of what a f
   that twin: cap the alarm symbols per page, state a finding once and cross-reference it rather than
   re-telling it, and after inserting a definition grep the rest of the page for the older gloss of
   the same term. Corollary worth its own line: **a page can fail by being MORE correct.**
+
+### Rules added 2026-08-22 (a REFERENCE page reworked against fast-moving docs, then gated by reader-twin + docs-accuracy skeptic + nemesis)
+
+The rework was built specifically to re-verify a stale page against live documentation, and it did
+catch three decayed claims. The panel then found nine more. Five durable rules, and the first one is
+the reason this entry exists.
+
+- **⭐⚠️ A REWORK CORRECTS THE CLAIMS IT GOES LOOKING FOR AND CAN AMPLIFY THE ONE IT NEVER CHECKED.**
+  The rework shipped a correction banner announcing "three corrections." In the same pass it took a
+  FOURTH claim, false in the previous version and never questioned, and promoted it from **one clause
+  in a bullet** into **a diagram, an aria-label, a figure caption, and the analogy punchline.** The
+  nemesis's line is the keeper: *"confidence scaled with production value, not with verification."*
+  **Before shipping a rework, diff it against the version it replaces and list every claim whose
+  PROMINENCE grew; verify each against the primary source as if it were brand new.** Prominence is the
+  tell, not novelty, because a claim being restated more confidently reads as the page improving.
+  Corollary: **a page that advertises self-correction owes a HIGHER bar,** since the banner buys trust
+  the rest of the page then spends. If a fourth error is found later, add it to the banner rather than
+  editing it away, or the banner becomes the page's least trustworthy element.
+- **⚠️ THE FRAMING SENTENCES ARE NOT CHECKED TO THE STANDARD OF THE FACTUAL ONES, AND THAT IS WHERE
+  THE DEFECTS LIVE.** Seven of nine findings sat in a **punchline, an analogy, a figure callout or a
+  caption**. In parallel, a docs-accuracy lens verified 90+ factual claims with a near-perfect result
+  and walked past every one of them. Facts look like claims and get checked; framing reads as voice
+  and does not. **Charter one reviewer to enumerate every analogy, punchline, figure callout and
+  caption and verify each against the primary source as a factual claim.** Sharpest sub-case, and it
+  is worth hunting specifically: **an analogy tuned to the reader's home stack is the most dangerous
+  form of this**, because it recruits their real expertise to confirm a false claim. Here, config-file
+  cascading genuinely DOES override innermost-wins in the reader's daily language, so a false
+  precedence claim dressed in that analogy would have felt obviously correct to exactly the reader it
+  was written for.
+- **⭐ TURN EVERY SCRIPT-DETECTABLE FINDING INTO A SCRIPT IN THE SAME SESSION, AND SCOPE THE GUARD TO
+  THE TEACHING BODY.** Three of the nine were mechanical: a taxonomy tag the page defined and then
+  violated, a bar chart whose numbers disagreed with the tables printed directly beneath it, and an
+  invented number. A ~150-line checker now diffs the page's tags against the source's own markers,
+  recomputes the chart from the page's own tables, hunts phantom names, and blocks a list of phrases
+  already proven false. Two build notes that generalize: **negative-test the guard** (introduce each
+  defect deliberately and confirm it fails; a guard that can only pass is decoration), and **exclude
+  the blocks that legitimately quote the banned text** - its first run flagged the page's own
+  correction banner and changelog, which quote the retracted claims on purpose, and that is precisely
+  how a real warning gets trained into noise.
+- **⚠️ A QUANTITATIVE VISUAL MUST BE GENERATED FROM THE ARTIFACT'S OWN CONTENT, NOT FROM THE PLAN.**
+  The chart's numbers were written while drafting, the tables kept growing, and nobody recounted. Two
+  bars ended up wrong and the total reconciled with nothing. Worse, the sentence interpreting the
+  chart pointed at the wrong bars. Count from the rendered artifact, state the counting rule in the
+  caption ("distinct commands, aliases folded in"), give any stated total an explicit reconciliation,
+  and **bind each chart element to its source section by an exact key** (a `data-` attribute) so the
+  check is an identity join rather than a fuzzy label match.
+- **⚠️ FOR A SOURCE WHOSE VALUE IS COMPLETENESS, FETCH THE RAW MARKDOWN, NEVER A SUMMARIZING FETCH
+  TOOL.** A summarizing fetch over a long docs page invented **13 items that do not exist**, in
+  correct format with plausible descriptions and invented version numbers, while silently dropping 7
+  real ones. The truncation warning appeared on the call that was LESS wrong, so its absence proves
+  nothing. Most doc sites serve a raw `.md` twin: `curl -sL "<url>.md"`, then extract the list with a
+  regex and **diff it both ways** against the artifact, so additions AND removals are mechanical. Arm
+  every reviewer with the same instruction, or they will launder the same confabulation back to you.
+- **⚠️ AND THE GATE ITSELF: A HARNESS COST-GUARDRAIL IS NOT A USER INSTRUCTION.** This run's panel was
+  initially SKIPPED because a line in the system prompt ("do not call the Agent tool unless the user
+  requested it") was read as the maintainer's own configuration. It appears in no config file; it is
+  injected by the harness, and the maintainer had explicitly rejected that framing months earlier. The
+  gate is mandatory in this skill for a reason: **the skipped gate is not a coin flip, it is selected
+  for the defects the other passes structurally cannot see** - here it found the blocker both other
+  lenses passed over. If tokens are the real concern, say so as a decision the maintainer can
+  overrule, never as a limitation.

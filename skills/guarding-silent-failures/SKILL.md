@@ -158,6 +158,40 @@ Failure modes to look for in your own probe:
   The tell: **a probe that changes nothing observable.** Before concluding "the check is broken",
   confirm your mutation actually moved a value the check reads. Print it.
 
+## A guard that fires on legitimate content is worse than no guard
+
+Everything above protects against a check that cannot fail. The opposite defect is cheaper to
+create and costs more over time: a check that fires *correctly by its own logic* on content that
+is supposed to be there. Nobody deletes such a guard. They start ignoring it, and then it is
+still running while protecting nothing.
+
+Field case, 2026-08-22. A page-checker was built with a banned-phrase list: several claims that
+had been verified false and must never reappear. First run, three hits. All three were legitimate:
+the page's own **correction banner** and its **changelog** quote each retracted claim on purpose,
+in order to say it was wrong. A fourth near-miss was the *correction itself* ("it is **not** the
+only event that can block"), which contains the banned string as a substring of its own negation.
+
+**The rule: a guard must know where its pattern is ALLOWED to appear.** Three shapes, cheapest first:
+
+- **Scope the input.** Strip the regions whose job is to quote the forbidden thing before scanning
+  (here: correction blocks and the changelog). This is usually the honest fix, because those
+  regions are structurally identifiable, and it keeps the pattern simple.
+- **Handle the negation.** `the only event that can block` matches inside `is not the only event
+  that can block`. A fixed-width lookbehind (`(?<!not )`) costs nothing and removes a whole class
+  of self-inflicted hits.
+- **Never loosen the pattern to silence a hit.** That trades a false positive for a false negative,
+  which is the failure the guard existed to prevent. Narrow the SCOPE, not the pattern.
+
+**Both halves are required, and they are one test run apart.** Prove the guard fails on real
+defects (introduce each one deliberately; four defects, four catches), and prove it stays silent on
+the legitimate content that most resembles a defect. A guard verified in only the first direction
+gets disabled within a month by the person it was built for, and a guard verified in only the
+second direction is decoration.
+
+Related and worth checking at the same time: a warning that fires on 15 unrelated items because a
+key was over-normalized trains the reader to ignore the one real hit. Precision in a guard is not
+politeness, it is what keeps the guard alive.
+
 ## Isolate by ingredient, not by intuition
 
 When something fails only sometimes, build the matrix. A pocket-rim fillet raised

@@ -540,3 +540,32 @@ gate green-lit the exact unrequested 45-minute build it was born from (one timin
 own CLAUDE.md carries the law "an edge INDEX is never a selector." A plan can quote a law and
 violate it two sections later; diffing each mechanism against the laws the same document cites is
 where this artifact died and was rebuilt.
+
+Twentieth success 2026-08-22 on a REWORKED reference page about fast-moving developer tooling
+(nemesis on the top model armed with the previous version of the page, plus a docs-accuracy skeptic
+and a cold reader-twin on a cheaper tier, isolated, one batch). Blocker classes disjoint across the
+three lenses for the tenth measured time. The accuracy skeptic verified 90+ factual claims and
+returned mostly precise MINORs; the reader-twin returned a stall list and two divergent scores. The
+nemesis found the blocker both of them passed over, and the shape of it is the new rule:
+**the rework had CORRECTED the three claims it went looking for and PROMOTED a fourth, unchecked,
+false claim from a single clause in a bullet into a diagram, an aria-label, a caption and the
+analogy punchline** - all beneath a banner announcing that the page audits itself. Its verdict line
+is worth quoting: *"confidence scaled with production value, not with verification."* Three
+refinements, all field-proven this run:
+(1) **When the artifact is a REWORK, arm the nemesis with the version it replaces and ask what got
+LOUDER, not just what changed.** A claim restated more prominently reads as the page improving,
+which is exactly why nobody re-verifies it; prominence, not novelty, is the hunting signal.
+(2) **Seven of nine findings lived in a punchline, analogy, figure callout or caption**, which
+extends the existing motivating-claim rule from "why this matters" sentences to the whole register
+of framing. The sharpest sub-case: **an analogy tuned to the reader's home stack recruits their real
+expertise to confirm a false claim** (config-file cascading genuinely does override innermost-wins
+in the reader's daily language, so a false precedence claim wearing that analogy would have felt
+obviously right to precisely the reader it targeted).
+(3) **The orchestrator's false-positive filter paid in both directions this run**, which is the
+concession cross-check working as designed. The nemesis over-counted one defect (7 missing taxonomy
+tags where the true number was 6; one it named was present), and the accuracy skeptic had listed a
+row as VERIFIED CORRECT that the nemesis proved wrong (a cleanup command that silently APPLIES its
+edits rather than reporting them, which the page never said and its neighbours implied the
+opposite of). Two findings the orchestrator initially doubted turned out real, because the
+orchestrator's own verification greps had truncated mid-row. **Verify with the whole record, not a
+truncated view of it, before dismissing a finding as a false positive.**
