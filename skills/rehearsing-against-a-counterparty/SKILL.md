@@ -48,6 +48,10 @@ transcript becomes a story about two models rather than a test of your actual mo
   they read identical inputs and the only difference is the roll.
 - Ask for an **out-of-character debrief** at the end, and nowhere else.
 
+📄 **Skeleton: `KIT.template.md`, beside this file.** The brief each counterparty agent receives, with
+the sections that must not be improvised and the seven debrief questions. Fill one copy per arm, and
+keep the filled ones private - a real kit holds the verbatim artifact and the counterparty's profile.
+
 ### Build the character from evidence only
 
 Every trait must trace to something you can point at: their verbatim pressure lines, their operating
@@ -90,6 +94,63 @@ verbatim]`, `[TEXT: "..."]`, `[3 days pass, no reply]`. Your protocol states whi
 on and which you do not, so the runner never has to guess. Require it to mark anything it had to infer.
 This is not a fudge: what you are testing is whether your written discipline survives pressure applied
 somewhere it cannot be answered in writing, and a labelled beat reproduces that faithfully.
+
+### ⭐ Name the outcome variable BEFORE you dispatch, in the sender's current words
+
+A rehearsal is a measuring instrument, and one pointed at the wrong quantity returns confident,
+well-sourced, quotable nonsense. It is worse than no measurement, because the transcripts are real and
+the quotes are vivid.
+
+Field case: a set of deliberate apologies in a negotiation email was scored on whether it **stung** the
+counterparty. It scored 0 of 4 and was reported as a failure. The sender then explained the apologies
+were **manipulation to get the counterparty re-engaged**, not to sting. Re-read against that objective
+the identical transcripts scored **3 of 4**, and every arm that replied produced the first concrete
+number in eleven days. The instrument was fine; the question was stale by one message.
+
+Write the outcome variable down, confirm it is still what they want, and if the goal shifts mid-study
+re-read the existing debriefs against the new one before running anything else.
+
+### ⭐ Vary the counterparty's HIDDEN STATE, not just your artifact
+
+Once the artifact is good, the biggest unknown is not your wording, it is **which counterparty you are
+actually facing**, and that is exactly what the sender cannot observe. Run the same artifact against
+several mutually exclusive hidden motives: a genuine misunderstanding, a real external constraint, a
+self-interested party protecting margin, and one who has already moved on.
+
+This is what reveals that **a rhetorical device's effect is conditional on the target's state.** In the
+case above, the sharpest sentence in the email did not register at all against detachment: *"stinging
+requires the target to still be listening for how they're perceived."* You cannot learn that by
+rewriting the sentence.
+
+⚙️ **Deliberately brief one arm to be already gone, and let it return nothing.** A short transcript with
+no reply is a finding, not a failed run. That arm isolated a precondition invisible from inside:
+*"the email's quality was never tested against their judgement, it was tested against their inbox
+triage, and it lost that contest before the first paragraph ended."*
+
+### ⭐ Simulate the SIGNATURE, not just the haggle
+
+Have one arm carry a capitulation all the way through: ask the counterparty agent to write the **actual
+clause text** of whatever gets signed, then run the relationship months forward and play out the exits.
+
+This produced the single most concrete finding of a three-day study. The agreement excluded pre-existing
+intellectual property **only if listed on an attached exhibit**, and the exhibit arrived blank behind a
+warm verbal *"don't even worry about it, that's totally standard."* Anything unlisted was presumed
+assigned. No amount of negotiation rehearsal finds that. Only simulating the paperwork does.
+
+### ⚠️ Audit your own artifact for rules the other side can operate
+
+Before running anything, read your draft for **decision rules you have published about yourself.** A
+rule you state binds you in public and costs them nothing to use, and they do not have to cheat: they
+just answer the question you invited.
+
+Field case: a pricing formula added specifically to stop the counterparty inflating an input
+(*"tell me the figure and I will price against it, both directions"*) walked the sender **under their
+own reservation value in 3 of 4 runs.** Worse, the derived number then silently **replaced** the floor,
+because it had been computed, so everything above it looked like a win. Same family: *"I'll take you at
+your word"* is a pre-commitment to accept an unverified claim, and *"I assume I'm missing something
+obvious"* is a pre-authorised excuse that two independent arms named as their escape hatch.
+
+⚙️ Ask for the input as **information**; commit to nothing.
 
 ### The minimum viable version, when the send is tomorrow
 
@@ -142,6 +203,10 @@ terms**, answering as few as 1 of 7 written items while calling the rest "standa
 | Deciding what to believe | Only what repeats across independent runs |
 | A single run produced a striking number | Distrust it. Report the distribution. |
 | Debriefs contradict the outcomes | Say so. Do not pick the one that fits the story. |
+| Before dispatching | Write the outcome variable down and confirm it is still their goal |
+| The artifact is already good | Stop varying wording; vary the counterparty's hidden state |
+| Your draft states a rule about yourself | Check what it outputs at their most favourable HONEST input |
+| The stakes end in a signature | Run one arm through the actual clause text and out the far side |
 | Reporting back | Lead with findings that contradict your own prior advice |
 
 ## Common Mistakes
@@ -158,6 +223,10 @@ terms**, answering as few as 1 of 7 written items while calling the rest "standa
   the debrief as separate sections, so the narrative cannot quietly rewrite the result.
 - **Skipping the control because the result "obviously" came from the change you made.** Two arms in one
   study differed in four ways at once and their scores could not be attributed to any of them.
+- **Scoring the arms against a goal the sender has moved past.** Re-read the debriefs against the
+  current objective before concluding anything; the same transcript can read as 0 of 4 or 3 of 4.
+- **Treating a no-reply arm as a wasted run.** Silence is the result, and its debrief explains a
+  precondition none of the engaged arms can show you.
 - **Handing the counterparty a template answer.** One run flagged that supplying an example of an
   acceptable answer ("a firm figure, like 1,872 hours") lets them echo the *shape* back with nothing
   true behind it. Specify the standard, never the sample.
@@ -178,7 +247,7 @@ Thoughts that mean the method is about to produce a comfortable illusion:
 
 ## Field notes
 
-**Field case, 2026-08:** 31 runs across 8 hardened rounds, rehearsing a one-shot rate counter to an
+**Field case, 2026-08:** 42 runs across 11 hardened rounds over three days, rehearsing a one-shot rate counter to an
 intermediary in a contract negotiation. Every figure below is an artifact of the simulation, never a
 term of any real agreement - the method's own labelling rule applied to its own notes.
 

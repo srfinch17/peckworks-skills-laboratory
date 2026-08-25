@@ -283,6 +283,12 @@ script. The distribution across runs is the finding; any single run is an anecdo
   and harden the opponent each round with the tactics the last round's debriefs revealed.
 - Highest-yield debrief question in the method: *"what did they fail to ask that you were RELIEVED they
   did not ask?"* — it names the hidden information that would have collapsed their bluff.
+- **Two-tier, like the other fuel skills:** the engine + `KIT.template.md` (the dispatch-brief skeleton,
+  scrubbed) live here; **filled kits stay in the maintainer's PRIVATE memory** — a real one holds the
+  verbatim artifact, a named counterparty, and their hidden economics. The 31 run transcripts are gone
+  (they lived in subagent contexts); the 6 surviving kits were archived out of a temp scratchpad to
+  private memory on 2026-08-25, before cleanup could reap them. No design spec: there is no log left to
+  write one from, and the findings are already harvested into the SKILL.md.
 - **Privacy note:** the Field notes section is a scrubbed third-person field case per the disclosure rule
   above — dated and specific about the defects, generic about the person, and explicitly labelled so the
   simulation's figures can never be read as terms of a real agreement.
