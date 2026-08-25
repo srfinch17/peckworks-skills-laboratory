@@ -152,6 +152,22 @@ obvious"* is a pre-authorised excuse that two independent arms named as their es
 
 ⚙️ Ask for the input as **information**; commit to nothing.
 
+### ⚠️ A finding expires when the sender's POSITION changes, not when the artifact does
+
+The runs tell you what a sentence costs **given what the sender is currently defending.** Change that,
+and the same sentence can invert.
+
+Field case: three of four arms flagged a warm line about a named person on the other side as a leak,
+because it told the counterparty the sender still wanted the deal while a contested number was still
+being held. Once the sender conceded that number, there was nothing left to protect. **The same sentence
+became an asset**: the counterparty now had to justify reopening the file internally, and evidence that
+the two principals got on well is exactly what gets carried into that conversation. Liability and
+ammunition, one decision apart, identical words.
+
+⚙️ **Before reusing any finding, restate the position it was measured under.** If the sender has since
+conceded, decided, or been overtaken, re-derive rather than reapply. A finding with no stated
+precondition will be reused past its expiry, because it reads as a fact about the sentence.
+
 ### The minimum viable version, when the send is tomorrow
 
 A full multi-round study is a luxury. Under a deadline, cut in this order and know what you gave up:
@@ -207,6 +223,7 @@ terms**, answering as few as 1 of 7 written items while calling the rest "standa
 | The artifact is already good | Stop varying wording; vary the counterparty's hidden state |
 | Your draft states a rule about yourself | Check what it outputs at their most favourable HONEST input |
 | The stakes end in a signature | Run one arm through the actual clause text and out the far side |
+| Reusing an earlier finding | Restate the position it was measured under; a concession can invert it |
 | Reporting back | Lead with findings that contradict your own prior advice |
 
 ## Common Mistakes
@@ -215,6 +232,9 @@ terms**, answering as few as 1 of 7 written items while calling the rest "standa
   *identical* hidden economics estimated the walk-away anywhere from $75 to $140 an hour. That number is
   noise. The *pattern* (they bluff a ceiling they are nowhere near) repeated and is worth something; the
   figure is worthless.
+- **Reporting a device as good or bad without naming what it was defending.** "Warmth about a named
+  person leaks" is only true while there is a position to leak. Findings need their preconditions attached
+  or they get reused after they expire.
 - **Treating the simulation as evidence about the real person.** It is a rehearsal instrument. Label it
   that way wherever it gets written down, every time.
 - **Stopping at one round.** One round tells you what a naive opponent does. The value is in the
