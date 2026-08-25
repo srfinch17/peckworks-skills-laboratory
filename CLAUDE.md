@@ -268,3 +268,21 @@ object/scope, literal-vs-intended, missing done-criteria, scope-creep). Fires on
 earlier than its neighbors: assumption-debt (sessions), nemesis/court (soundness),
 deletion-tripwire (execution). Spec + full test log:
 `docs/specs/2026-07-22-sandwich-test-design.md`.
+
+### `rehearsing-against-a-counterparty`  (status: born here 2026-08-24; field-developed over 31 runs)
+Tests what a high-stakes message CAUSES someone to do, not whether it reads well — the class of defect
+no review pass finds, because reviewers evaluate the document. Run N independent counterparty agents
+(fresh general-purpose subagents, never forks of yourself, which just reproduce your own conclusions)
+against the VERBATIM artifact, with your own replies governed by a written *protocol* rather than a
+script. The distribution across runs is the finding; any single run is an anecdote.
+- **The central finding, from a controlled pair:** the reply protocol wins the headline number, but the
+  DOCUMENT wins every term underneath it (a question absent from the artifact can never be answered).
+  A review that only hardens the prose is doing the half that was never at risk.
+- **Two rules that generalize past negotiation:** run past the concession (rounds that stopped when the
+  number settled all reported success; four messages deeper they were dodging 6 of 7 written items),
+  and harden the opponent each round with the tactics the last round's debriefs revealed.
+- Highest-yield debrief question in the method: *"what did they fail to ask that you were RELIEVED they
+  did not ask?"* — it names the hidden information that would have collapsed their bluff.
+- **Privacy note:** the Field notes section is a scrubbed third-person field case per the disclosure rule
+  above — dated and specific about the defects, generic about the person, and explicitly labelled so the
+  simulation's figures can never be read as terms of a real agreement.
