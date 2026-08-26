@@ -183,6 +183,25 @@ that explains a benefit rather than stating a mechanism.
 
 ## Common Mistakes
 
+- **Reviewing only the INSTANCE when the SPEC is what produced the defect (added 2026-08-25).**
+  Two documents were written independently against a frozen template whose spec said a certain
+  section *must* contain a scaling answer. **Both invented a false one.** The nemesis's line is the
+  finding: ***"two for two is not bad luck, it is the rule working as written."*** A template that
+  makes a slot mandatory will get it filled, truthfully or otherwise.
+  **So charter the reviewer to attack the SPEC as well as the artifact:** which of these defects did
+  the instructions REQUIRE? The fix is rarely to delete the slot; it is to widen what counts as
+  filling it (*"if no true answer exists, saying so and naming exactly what breaks IS the answer"*).
+  A defect the spec caused will otherwise recur in every future artifact built from it.
+- **Not checking the CORRECTIONS.** In the same review, the single claim that survived the scrub was
+  the one wearing a dated retraction banner: it had struck a true sentence and inserted a false one.
+  **A paragraph that announces its own rigour reads as already-checked, so it receives the least
+  scrutiny of anything on the page.** Add corrections, citations, test names and status lines to the
+  hunt list explicitly; they carry borrowed trust and that is what makes them good hiding places.
+- **Missing that the confidence is bolted to the weakest claim.** Both blockers in that build were
+  immediately followed by a status boost telling the reader this was their strongest ground. The
+  pattern is systematic rather than stylistic: **the least-verified claim attracts the most
+  confident framing**, which instructs the reader to lean in hardest exactly where the artifact is
+  weakest, and strips the hedging that would let them survive being corrected.
 - **Dropping the honesty gate.** Pure hostility produces an unrankable pile of manufactured
   complaints. The gate (ego depends on being unassailable) is mandatory.
 - **A personal/romantic backstory.** Funnier, weaker: it points the animosity at the person,

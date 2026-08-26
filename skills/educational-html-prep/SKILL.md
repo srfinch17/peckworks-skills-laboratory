@@ -1228,3 +1228,37 @@ the reason this entry exists.
   `Section 08`, one of which then pointed at its own section. Same family as the em-dash-entity gotcha:
   a clean grep is only as good as the forms it searches. Assert mechanically that every nav link's
   number equals its target section's own `h2` number.
+
+### Rules added 2026-08-25 (worked walkthroughs for a skill the reader has read about but never performed)
+
+A companion page teaching a learner to actually *do* something they had only read about. Five
+findings, all of which generalise past the domain.
+
+- **WORKED EXAMPLES BEAT UNAIDED ATTEMPTS FOR A NOVICE, AND THE ADVANTAGE REVERSES WITH EXPERTISE.**
+  Two separate primary literatures say so (Sweller's worked-example effect; Kalyuga et al. on
+  expertise reversal). The concrete implication contradicts the instinct: **do not make a blind
+  attempt the FIRST contact with a pattern.** Study a fully worked instance, then attempt a
+  different instance of the same shape. **Say the reversal ON the page**, because handing worked
+  examples to someone who is expert in a neighbouring area reads as condescension. Framing it as
+  "a seven-day tool, not a permanent one" is what makes it receivable, and it happens to be true.
+- **A NUMBERED FRAMEWORK TAUGHT FOR LIVE USE MUST LABEL WHICH ITEMS ARE LIVE.** A twelve-beat
+  teaching template read, to a cold reader-twin, as *a twelve-item checklist under a 25-minute
+  clock* - a wall, not a ramp. One banner fixed it: **which items you run in the moment, which
+  exist only for studying, and which are the other party's move rather than yours.** Any framework
+  with more steps than the reader can execute live needs that split stated, never implied.
+- **A DIAGRAM OF THE BUG BEATS A DIAGRAM OF THE ALGORITHM**, once the algorithm is drawn elsewhere.
+  The companion reference page already carried twelve stepped figures of patterns *working* and not
+  one of a pattern *failing*. The highest-value new figures were two-panel **broken versus guarded**
+  step-throughs, animated on the exact input that separates them. The wrong turn is the part a
+  learner cannot get from reading a correct solution, and it is the part that survives to the exam.
+- **THE SECTION A PAGE IS MOST CONFIDENT ABOUT IS USUALLY ITS LEAST VERIFIED.** Both blocker defects
+  in that build lived in the *what if they push harder* section, and both were **prose about scale**,
+  which feels safe precisely because it is not code. **Every claim in a what-if section must be
+  checked against the code the SAME page prints.** One asserted O(window) memory for a structure
+  that never evicts; running it measured 501 entries for a window of 3. Never close such a section
+  on a status boost about the answer ("this is your ground") - that instructs the reader to lean in
+  hardest exactly where the page is weakest.
+- **A STUDY AID'S READING TIME IS A SCOPE CHANGE TO THE READER'S PLAN, AND IT IS INVISIBLE.** Four
+  walkthroughs added 66 minutes to a study day nobody re-costed. **Compute the added reading time,
+  compare it to the day it lands in, and put the arithmetic on the page with the trade named** -
+  then leave the decision to the reader rather than rewriting their plan quietly.

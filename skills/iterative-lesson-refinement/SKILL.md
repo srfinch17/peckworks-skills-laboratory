@@ -192,6 +192,17 @@ answer sitting right under the question... I'm not testing myself, I'm reading a
 artifact is HTML, `educational-html-prep` carries the collapsed-answer component (`.qz`) and the
 "say it out loud first, then open the row" instruction line.
 
+21. **Verify a CORRECTION at least as hard as a claim.** A pass producing retractions struck a
+    TRUE sentence and inserted a FALSE one behind a dated banner. The scrub that caught two other
+    invented claims in the same document sailed past that one, because **a paragraph announcing its
+    own rigour reads as already-checked.** A verification artifact carries borrowed trust, which is
+    exactly what makes it the best hiding place for an error.
+22. **The most confidently written section is the least verified one.** Both blocker defects in one
+    gated build sat in the *escalation* section - the what-if-they-push-harder material - because it
+    is prose rather than code and therefore feels unfalsifiable. It is the opposite: it is the most
+    checkable thing on the page and nobody checks it. **Charter one reviewer to check every claim in
+    the advanced/what-if section against the code the same page prints.**
+
 ## Subagent Prompt Skeleton
 
 > You are role-playing [NOOB/BASICS/EXPERT] for a lesson-quality test. Stay in character.
