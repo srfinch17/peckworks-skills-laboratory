@@ -125,6 +125,25 @@ def check(path, orig=None, cfg=None, drill=False):
         problems.append("markdown heading syntax quoted in prose ('## N'): say what the reader sees")
     if cfg.get("require_time_line") and not drill and not re.search(cfg["require_time_line"], "\n".join(new.split("\n")[:8])):
         problems.append("no time-cost line in the first 8 lines (expected %r)" % cfg["require_time_line"])
+    # a list flattened into one line renders as a wall (C24): three or more " - " item separators on one line
+    for line in new.split("\n"):
+        if not line.startswith(("|", "```", "<")) and len(re.findall(r"\s-\s(?:`|\*\*)", line)) >= 3:
+            problems.append("flattened list on one line (%d items): put each item on its own line: %s..." % (len(re.findall(r"\s-\s(?:`|\*\*)", line)), line[:80]))
+    # a bullet list glued to the paragraph above it renders as one wall (C24, second form): the
+    # markdown converters in use need a blank line before the first "- " item
+    lines = new.split("\n"); in_code = False
+    for i, line in enumerate(lines):
+        if line.startswith("```"):
+            in_code = not in_code
+        if in_code or i == 0:
+            continue
+        prev = lines[i - 1]
+        if re.match(r"\s*[-*] ", line) and prev.strip() and not re.match(r"\s*[-*] ", prev) and not prev.startswith(("|", "#", ">")):
+            problems.append("list glued to the paragraph above it (needs a blank line before): %s..." % line[:60])
+    # ordinal-position phrases go stale whenever a unit moves between days (C25)
+    m = re.search(r"\b(First|Second|Third|Fourth) (problem|unit) (of the day|today|of the day's plan)\b", "\n".join(new.split("\n")[:8]))
+    if m:
+        problems.append("ordinal plan phrase in the header (%r): it goes stale when the unit moves; name the day only" % m.group(0))
     # required opening picture (catalog C09 / C18): the section's first prose must carry a picture cue
     for beat in cfg.get("drill_picture_beats", []) if drill else cfg.get("picture_beats", []):
         m = re.search(r"^## %d\. .*$" % beat, new, re.M)
@@ -183,7 +202,8 @@ def selftest():
            + "This sentence is deliberately padded with many many extra words so that it runs well past "
              "the thirty word ceiling that the gate enforces for plain prose everywhere on every page in "
              "this whole library tonight. Obviously fine. Pop the heap twice. We saw 23.8% of them. "
-             "See the section headed ## 9.\n")
+             "See the section headed ## 9.\n\n**Name key.** - `a` = one - `b` = two - `c` = three - `d` = four\n"
+             "**Legend.**\n- `x` = glued\n")
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_check_plain_selftest.md")
     open(p, "w", encoding="utf-8").write(bad)
     cfg = dict(DEFAULTS); cfg["terms"] = ["heap"]; cfg["picture_beats"] = [7]
@@ -191,7 +211,7 @@ def selftest():
         probs, _ = check(p, cfg=cfg)
     finally:
         os.remove(p)
-    want = ["sentence of", "banned", "term 'heap'", "number '23.8%'", "markdown heading", "section 7 has no everyday picture"]
+    want = ["sentence of", "banned", "term 'heap'", "number '23.8%'", "markdown heading", "section 7 has no everyday picture", "flattened list", "list glued"]
     for w in want:
         assert any(w in x for x in probs), (w, probs)
     print("SELFTEST PASSED (%d classes caught)" % len(want))
