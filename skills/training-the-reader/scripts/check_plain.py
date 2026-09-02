@@ -53,6 +53,8 @@ DEFAULTS = {
     "picture_beats": [],
     "picture_cues": r"\b(Picture|Imagine|Think of|Suppose|Say you|Say there)\b",
     "picture_window": 900,
+    # a unit must state its own time cost near the top, so a plan can derive chips from it (C14)
+    "require_time_line": None,   # e.g. r"Reading time: about \d+ minutes"; None = no check
 }
 
 CODE_RE_T = r"```%s\n.*?```"
@@ -84,7 +86,7 @@ def sentences(text):
     out = []
     for block in re.split(r"\n\s*\n|\n(?=\s*(?:[-*>]|\d+\.|#))", text):
         flat = re.sub(r"\s+", " ", block).strip(" >-*#")
-        parts = re.split(r"(?<=[.!?:;])\**\s+(?=[A-Z\"'(*`])", flat)
+        parts = re.split(r"(?<=[.!?;])\**\s+(?=[A-Z\"'(*`])", flat)   # a colon joins, it does not end
         out.extend(p.strip() for p in parts if len(p.strip()) > 1)
     return out
 
@@ -121,6 +123,8 @@ def check(path, orig=None, cfg=None, drill=False):
             problems.append("em-dash form present: %r" % form)
     if re.search(r"(?<!`)## ?\d", prose):
         problems.append("markdown heading syntax quoted in prose ('## N'): say what the reader sees")
+    if cfg.get("require_time_line") and not drill and not re.search(cfg["require_time_line"], "\n".join(new.split("\n")[:8])):
+        problems.append("no time-cost line in the first 8 lines (expected %r)" % cfg["require_time_line"])
     # required opening picture (catalog C09 / C18): the section's first prose must carry a picture cue
     for beat in cfg.get("drill_picture_beats", []) if drill else cfg.get("picture_beats", []):
         m = re.search(r"^## %d\. .*$" % beat, new, re.M)
