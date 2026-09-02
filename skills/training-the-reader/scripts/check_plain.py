@@ -82,11 +82,11 @@ def prose_only(text, cfg):
 
 
 def sentences(text):
-    """A blank line, a bullet, a heading, a bold label or a semicolon ends a unit."""
+    """A blank line, a bullet, a heading or a bold label ends a unit; punctuation inside a line ends one only at . ! ?"""
     out = []
     for block in re.split(r"\n\s*\n|\n(?=\s*(?:[-*>]|\d+\.|#))", text):
         flat = re.sub(r"\s+", " ", block).strip(" >-*#")
-        parts = re.split(r"(?<=[.!?;])\**\s+(?=[A-Z\"'(*`])", flat)   # a colon joins, it does not end
+        parts = re.split(r"(?<=[.!?])\**\s+(?=[A-Z\"'(*`])", flat)   # a colon or semicolon joins, it does not end
         out.extend(p.strip() for p in parts if len(p.strip()) > 1)
     return out
 
