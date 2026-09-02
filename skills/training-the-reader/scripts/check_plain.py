@@ -47,6 +47,12 @@ DEFAULTS = {
                     r"\bdivide\b", r"\btimes\b", r"\bplus\b", r"=", r"\^", r"\bwindow\b", r"\bcapacity\b",
                     r"\bdefault\b", r"\bcrash", r"\bgrid\b", r"\bminutes? is\b"],
     "number_pattern": r"\b\d+(?:\.\d+)?%|\b\d{1,3}(?:,\d{3})+\b|\b\d{3,}\b(?! ?(?:ms|px|pt|s\b))|\b\d+ (?:mentions|reports|entries|candidates|cases)\b",
+    # sections that must OPEN with an everyday picture (catalog C09/C18): section numbers + the cue
+    # a picture sentence carries. Empty list = no check. The picture must appear within the first
+    # `picture_window` characters of the section's prose.
+    "picture_beats": [],
+    "picture_cues": r"\b(Picture|Imagine|Think of|Suppose|Say you|Say there)\b",
+    "picture_window": 900,
 }
 
 CODE_RE_T = r"```%s\n.*?```"
@@ -115,6 +121,17 @@ def check(path, orig=None, cfg=None, drill=False):
             problems.append("em-dash form present: %r" % form)
     if re.search(r"(?<!`)## ?\d", prose):
         problems.append("markdown heading syntax quoted in prose ('## N'): say what the reader sees")
+    # required opening picture (catalog C09 / C18): the section's first prose must carry a picture cue
+    for beat in cfg.get("drill_picture_beats", []) if drill else cfg.get("picture_beats", []):
+        m = re.search(r"^## %d\. .*$" % beat, new, re.M)
+        if not m:
+            continue
+        nxt = re.search(r"^## \d+\. ", new[m.end():], re.M)
+        body = new[m.end(): m.end() + (nxt.start() if nxt else len(new))]
+        head = prose_only(body, cfg)[: cfg.get("picture_window", 900)]
+        if not re.search(cfg["picture_cues"], head):
+            problems.append("section %d has no everyday picture in its opening (no %s within %d chars)"
+                            % (beat, cfg["picture_cues"], cfg.get("picture_window", 900)))
     # term before definition (first prose use must carry a defining cue)
     cues = [re.compile(c, re.I) for c in cfg["definition_cues"]]
     for term in cfg["terms"]:
@@ -165,12 +182,12 @@ def selftest():
              "See the section headed ## 9.\n")
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_check_plain_selftest.md")
     open(p, "w", encoding="utf-8").write(bad)
-    cfg = dict(DEFAULTS); cfg["terms"] = ["heap"]
+    cfg = dict(DEFAULTS); cfg["terms"] = ["heap"]; cfg["picture_beats"] = [7]
     try:
         probs, _ = check(p, cfg=cfg)
     finally:
         os.remove(p)
-    want = ["sentence of", "banned", "term 'heap'", "number '23.8%'", "markdown heading"]
+    want = ["sentence of", "banned", "term 'heap'", "number '23.8%'", "markdown heading", "section 7 has no everyday picture"]
     for w in want:
         assert any(w in x for x in probs), (w, probs)
     print("SELFTEST PASSED (%d classes caught)" % len(want))
