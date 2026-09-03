@@ -169,6 +169,15 @@ Keep defining the ones that are not yet on the list.
   flourish drew "why is it so amazing? we knew what we were doing"; the honest rewrite, an
   unenforced convention held only by discipline with no wire-level contract, landed and provoked
   the learner's best question of the session.)
+- **Treating years in a field as reps on the thing being taught.** "You've been doing this for
+  25 years" / "this is your ground" / "should be second nature" feels like encouragement and lands
+  as an accusation: the learner is asking BECAUSE they have not done this particular thing, and the
+  sentence tells them that not knowing it makes them dumb. Tenure on a stack is not reps on a
+  technique. Name what the technique is and what to practise; never attach a status claim about the
+  learner to it. The only honest tenure sentence is the inverse ("you have shipped for years; what
+  you have never done is X, so X is what we practise"). (Field case 2026-08-28: "Twenty-five years
+  of moving data" on a study page for a man who had never finished a LeetCode Medium. His words:
+  "a dick punch... everyone in your position has done this a million times and so should you have.")
 - **Defining every term but pacing like a debrief.** Definitions present, register wrong: each
   term glossed once inline, then the summary sails on at colleague speed (three new concepts per
   paragraph, breezy tone). Compliance with the letter (definitions exist) masks violation of the

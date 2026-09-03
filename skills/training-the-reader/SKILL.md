@@ -77,6 +77,9 @@ shortened, never lengthened or removed.
 | Findings answered, catalog never updated | Step 5 is not optional; the next read pays for it |
 | A seed picture handed to a writer as fact | Seeds are hypotheses; the writer checks the picture against the broken code's changed line (catalog C10); four of sixteen seeds were wrong |
 | A scripted fix trusted because it printed "ok" | Count-assert every replace, exclude frozen regions, make prose regexes wrap-tolerant, re-run the full gate after each script |
+| A new gate wired into a pipeline stage that never sees what it checks | Wire it where the whole artifact exists, then count the cases it must refuse BEFORE trusting the first green build: a done-line gate placed after the builder had peeled the done line off passed ten sheets, eight of which it should have refused |
+| A scripted structural edit whose regex treats a markup prefix as text | Anchor the prefix explicitly (an optional `(> ?)?` let `(.*\S)` capture the `>` itself and three labels lost their blockquote), then grep for the damage signature and render one touched page before the gate's PASS is believed; a blank line inside a paragraph is not a gate class |
+| A filler trim that lands inside a frozen block | Assert the match sits outside code, svg and tables before replacing; the frozen-svg check caught a five-character trim inside a figure caption |
 | The first sweep of a new check trusted | Positive-test the guard: 59 of the first 70 hits were the gate's own artifacts (headings read as prose, bold labels split from their definitions, thousands separators, defined numbers re-flagged) |
 
 ## Provenance

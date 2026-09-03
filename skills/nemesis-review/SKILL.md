@@ -623,3 +623,21 @@ the thing it went in expecting to break is still the highest-confidence signal t
 ⚠️ Also confirmed: **the orchestrator's own verification pass needs the same scrutiny as the
 artifact.** A cross-reference sweep run before the panel reported clean while missing half its targets
 (the pattern was lowercase-only); the nemesis found those too.
+
+Twenty-second and twenty-third successes, 2026-08-26, two panels in one day on an interview-prep
+walkthrough library and its hub pages. The first (nine lenses over nine new walkthrough documents:
+five code skeptics, two reader-twins, nemesis, paladin) returned 41 findings with ZERO blocker
+overlap between lenses for the twelfth measured time; the nemesis's best catches were a procedure
+that performed the wrong check (an editor that does not type-check until Run, described as
+"watching it compile"), and a frequency-ranking claim refuted by the sanctioned source's OWN TABLE
+two paragraphs above the prose asserting it, an error that had propagated source -> spec -> brief
+-> page and was fixed at all four layers plus banned-gated. The second panel produced a NEW
+CHARTER RULE now standing: **when an artifact's promise is verbatim citation, charter the nemesis
+to diff every quotation character-by-character against the source.** Result: 6 of 12 quote-styled
+blocks were quoting the research digest's PARAPHRASE, one with an invented word, under a footer
+promising verbatim fidelity, and the root cause was the orchestrator's own spec stamping
+"verbatim" on unverified strings (spec-attack rule vindicated again). Quotation marks join the
+borrowed-trust costume list: they confer said-by-a-person authority that no ordinary review
+re-checks. The concession cross-check paid symmetrically: the four genuinely verbatim quotes were
+character-exact, and the builder had even overridden the faulty spec correctly in one place,
+proving the discrimination was learnable and simply never demanded.

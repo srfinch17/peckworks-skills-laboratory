@@ -369,6 +369,20 @@ screening-for-your-fixes failure recurred WITH the skill loaded (the blister cas
 showed the two screening rules alone are discipline and lose to cadence pressure; the structural
 blind-gate rule was added in response. Next recurrence should tighten again.
 
+## Field addition (2026-08-27): renderers disagree — law 1 includes WHICH renderer
+
+Art-lab recurrence of law 1 with this skill loaded: a vector file with
+ambiguous windings rendered INVERTED in the agent's instruments (pymupdf
+raster, Inkscape's boolean flattener) versus the human's browser. Three
+confident edit strategies were built and "verified" against the wrong
+picture; the human's revert order followed. The sensor question is not just
+"look at pixels" but "WHOSE pixels" — probe a few known points in the
+human's actual renderer before trusting any raster, and freeze one of their
+renders as the ground-truth input for downstream tooling. Corollary
+confirmed the same day: an allowed-change zone drawn too generously made the
+raster-diff gate blind to the exact failure it existed to catch (wrong
+denominator, rule 2's shape appearing inside a verification mask).
+
 ## Field addition (2026-08-01): the defect taxonomy + observation gate
 
 When enough verdicts accumulate, distill them into a DEFECT TAXONOMY: one class per recurring

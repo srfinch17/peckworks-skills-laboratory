@@ -201,6 +201,31 @@ precisely the frame that makes someone negotiate badly for it.
   record). Here no record existed: the refutation came from **their own description in the same
   message**, the cheapest source available and the one most often skipped.
 
+## Field validation: serial self-doubt in one sitting, and the decayed-skill claim
+
+One morning, three escalating versions of "I can't do this" arrived within hours: fear of a
+FUTURE round contingent on passing the current one; "I don't even know what [the topic] means";
+and "I haven't touched that system in over a year." Each was a checkable claim, and each check
+returned something more specific and less frightening than the feeling: the future round's
+reported content favored the person's strongest axes; the "unknown" topic was one they had
+operated for nine years (the gap was quiz VOCABULARY, a translation problem, the cheapest gap
+class there is); and the year-away decay hit mostly the least-testable layer (tool navigation),
+not the mental model a browser-based test can actually probe. Additions to the method:
+
+- **Check each claim in a series separately; never answer the series with one blanket.** Each
+  refutation must cite a different specific fact, or the run of responses reads as reflexive
+  cheerleading and stops landing. Naming the pattern ONCE at the end ("that's three versions of
+  the same forecast this morning, and the record disagreed each time") is calibration; leading
+  with it is dismissal.
+- **For an "I've forgotten X" claim, split what decays from what persists, then check which one
+  the situation tests.** A year away erases retrieval and navigation, not architecture. If the
+  gate ahead cannot measure the decayed layer (a code test cannot test portal-clicking), say so:
+  it converts dread into a bounded relearning task, and relearning once-owned material is fast,
+  which is honest, not soothing.
+- **The bounded-task counterweight compounds:** each exchange ended by pointing at the same next
+  concrete action. The dread never got to reset the plan, and the plan absorbing the dread is
+  what eventually quiets it.
+
 ## A note on this file's own examples
 
 The cases above are real, and they were deliberately rewritten in the third person: the mechanism
