@@ -93,3 +93,10 @@ shortened, never lengthened or removed.
   ways that looked finished (a regex ate two time lines, a trim edited a frozen table row, a normalizer
   overran a length ceiling by one character, an example id in a command line inflated every plan chip).
   Every one was caught by a check written hours earlier for a different reason.
+- 2026-09-02, second pass: nine pages re-read after fixes by catalog-armed cheap readers on plain-text renders
+  (80k-106k tokens per read, about half the HTML cost), each told the previous reads' findings and made to quote
+  where each fix landed before scoring. Finish scores reached 7 or 8 on all ten pages (two needed a third read).
+  Five new classes (C38-C42); five judgment classes became builder rules the same day (a conditional done line,
+  no typed totals, no pronouns, a legend derived from the chips, hub chips synced from the pages). Three of the
+  orchestrator's own scripted fixes misfired and were caught by gates or renders, never by their own success
+  messages.
