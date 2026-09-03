@@ -94,6 +94,22 @@ the how.
   two local projects and has never deployed. He caught it himself and asked for the rule. His
   articulation is worth keeping: *"The better I know stuff, the easier it is to explain it to experts
   who can tell if I'm bullshitting."* Logged as EP-047 in the assumption-debt log.)
+  ⚠️⚠️ **THE RULE ABOVE WAS TOO NARROW, AND A TRUE TENURE CLAIM WALKED THROUGH IT (2026-08-28,
+  EP-082). TENURE IS NOT REPS. Never tell him a technique is his ground.** "Twenty-five years of
+  moving data that does not fit in memory", "This is your ground, not theirs", "a twenty-four year
+  old grinding LeetCode cannot produce this" all shipped on the Anduril walkthroughs. Every one is
+  TRUE at the career level and every one is a punch at the technique level, because 25 years on
+  C#/SQL is not 25 years of external merge sorts: he has done that once, or in college, or never,
+  and he is on the page BECAUSE of that. His words: *"it's a dick punch from the perspective of
+  'everyone else in your position has done this a million times and so should you have.'"* The
+  reader-twin flagged it twice (H5 false comfort, H6 age flattery) and it shipped anyway, so the
+  judgment rule is now a GATE: `py check_trivialization.py` sweeps `Study/`, and
+  `build_walkthroughs.py` / `build_day_pages.py` import `gate_tenure()` and refuse to build on a
+  live hit. Allowed shapes: the honest INVERSE ("you have shipped software for 25 years; what you
+  have never done is produce an algorithm in a timed hour", marked `<!-- tenure-ok -->`),
+  interviewer-expectation facts WITHOUT the year count, and within-page callbacks to a rep he did
+  this week ("you did this exact search in W3"). End a section on the answer, never on him.
+  Memory: `feedback-tenure-is-not-reps`.
 - **Offline-first.** Inline everything that matters (SVG, CSS). Google Fonts may load from CDN but
   must degrade gracefully (always give a `system-ui` fallback). No build step, no external JS libs.
 - **Self-contained pages.** One `.html` file, internal `<style>`, internal SVG. It must open from
@@ -1229,6 +1245,38 @@ the reason this entry exists.
   a clean grep is only as good as the forms it searches. Assert mechanically that every nav link's
   number equals its target section's own `h2` number.
 
+### Rules added 2026-08-27 (a hub-and-day-pages rework the reader rejected, then a rebuild that landed)
+
+- **⭐⭐ WHEN THE COMPLAINT IS "THIS PAGE IS TOO BIG TO WORK WITH," THE DELIVERABLE IS THE CONTENT
+  PARTITIONED, NEVER A MAP TO IT.** A hub plus per-session checklist pages shipped with every link
+  pointing back INTO the huge page they existed to replace, and the reader rejected the whole
+  build in one message. The test that would have caught it costs one question at design time:
+  *after my fix, does the reader still have to touch the artifact they complained about?* If yes,
+  it is navigation wearing a fix's clothes. Every mechanical gate and both review lenses passed
+  the wrong-shaped pages, because the misread was upstream of every charter (the reader-model
+  law again, applied to the COMMISSION rather than the reader).
+- **⭐ REPETITION ACROSS SELF-CONTAINED PAGES IS A FEATURE, and the reader will say so if asked.**
+  Shared method boxes, rules boxes, and mock instructions repeated verbatim on every session page
+  beat a single canonical copy that must be navigated to. Spaced re-reading of the same short
+  rules is pedagogy, not redundancy. (The commissioning reader, verbatim: repeated instructions
+  across days are "Perfectly Fine! In fact, it will probably help.")
+- **⭐ BUILD SESSION PAGES BY ASSEMBLY, NOT AUTHORSHIP: a builder script that imports the library
+  page's own shell, converter and GATES, then composes runsheet + extracted sections + full
+  per-topic content.** Already-gated content recomposed needs zero re-review; only new framing
+  prose does. This is what made a full structural rework cost hours, not days.
+- **⭐ EXTRACTION-TIME GATING IS FREE CROSS-PAGE AUDITING.** When the builder extracts a section
+  from a source page, running the target page's banned-claim gate against the EXTRACTED source
+  content found a live retracted claim still sitting in the source's highest-traffic section,
+  where every sweep had missed it because sweeps target the pages being built, not the pages
+  being quoted. Never silently embed (or silently "fix") failing source content: refuse, mark a
+  visible fallback, report; then fix the SOURCE and re-extract.
+- **A BADGE AND ITS EXAMPLE MUST SHOW THE SAME THING.** A complexity rule carried an O(n x m)
+  pill beside a snippet demonstrating the O(n log m) upgrade the prose mentioned; for a rusty
+  reader that mismatch is a stall exactly at the moment of maximum trust. Any labeled example
+  (Big-O pill, pattern tag, difficulty chip) demonstrates the labeled case, with variants in
+  prose only. Same pass reconfirmed the oldest rule in this file: a 4px label overlap between
+  two figure panels passed every deterministic gate and was caught only by looking.
+
 ### Rules added 2026-08-25 (worked walkthroughs for a skill the reader has read about but never performed)
 
 A companion page teaching a learner to actually *do* something they had only read about. Five
@@ -1262,3 +1310,128 @@ findings, all of which generalise past the domain.
   walkthroughs added 66 minutes to a study day nobody re-costed. **Compute the added reading time,
   compare it to the day it lands in, and put the arithmetic on the page with the trade named** -
   then leave the decision to the reader rather than rewriting their plan quietly.
+
+### Rules added 2026-08-27 (a GENERATED data dashboard: a build script plus hand-written prose, gated by a reader-twin and a raw-record fact-checker)
+
+First page in the library whose numbers come from a **generator** (a Python script reading two
+data files and splicing a JSON blob into the HTML) rather than from drafting. That split turned
+out to be the whole lesson. The fact-checker verified ~65 quantitative claims against the raw
+sources; **every statistic the generator emitted was correct, and all six blockers sat in prose
+the generator never touched.**
+
+- **NEW, HIGHEST VALUE: WHEN A PAGE HAS A COMPUTED LAYER AND A HAND-TYPED LAYER, EVERY DEFECT
+  LIVES IN THE HAND-TYPED LAYER. POINT THE AUDIT AT WHAT THE GENERATOR DOES *NOT* PRODUCE.** A
+  generator with a self-test is close to defect-free by construction, and it creates a halo: the
+  page *feels* computed, so the sentences around the charts get read as computed too. They are
+  not. In this build the hand-typed layer held a wrong formula, a wrong count, a wrong
+  denominator, a backwards causal claim and an unsourced constant. **The cheapest audit
+  instruction that exists is "list every number in this artifact that the generator did not
+  compute, then check those."**
+  WARNING, and it is embarrassing in exactly the way that makes it stick: the page's own hero
+  paragraph promised "Nothing is typed in by hand," while sixteen figures in its prose were.
+  **A self-congratulating methodology claim is a factual claim about the artifact**, it is the
+  FIRST one a reviewer should test, and it is the one nobody writes a check for. Scope such a
+  promise to what is actually true ("every chart is computed; quoted one-off measurements carry
+  their date") or delete it.
+- **FIFTH BLIND SPOT IN THE DETERMINISTIC DIAGRAM GATE, AND IT IS THE ONE THAT BITES ON DATA
+  CHARTS: A LABEL STRUCK THROUGH BY THE *DATA*.** The existing four blind spots all compare text
+  to other text or to boxes. On a chart the thing that eats a label is the **series itself** (a
+  path) or a **bar** (a rect) whose height is data-dependent and therefore unknown at authoring
+  time. Two shipped past a clean gate this run: a "healthy zone" annotation with the step-line
+  running through it, and a "floor 1,400" reference label buried by two bars. getBBox comparisons
+  see neither, because no two *text* elements overlap. Three fixes, most robust first: (a) place
+  the label where the data provably cannot reach (compute the series min or max over that
+  x-range first); (b) give the label its own background rect sized from text.length; (c) at
+  minimum, paint it after the data. General form: **on a data-driven chart, any element
+  positioned by a constant can collide with any element positioned by data, and only a
+  screenshot sees it.**
+- **PAINT REFERENCE LINES AND THEIR LABELS *AFTER* THE DATA MARKS.** The natural drafting order
+  puts gridlines and threshold lines first because they read as background. A threshold line the
+  reader must actually *read* (a target, a floor, a budget) is foreground: drawn first, it gets
+  buried by every bar that crosses it, which is exactly the bars the line exists to judge.
+- **textContent DOES NOT PARSE HTML ENTITIES, SO SVG LABELS BUILT IN JS MUST USE REAL
+  CHARACTERS.** A caption assembled as "one bar = one logged day &#183; dashed bar = ..." and
+  assigned via textContent rendered the literal seven characters on the chart. The same string in
+  an innerHTML tooltip on the same page rendered correctly, which is why it survived review by
+  analogy. Use the real character directly in any string bound for textContent. Cheap detector,
+  add it to the gate: regex every rendered SVG text node for `&#\d+;|&[a-z]+;` and fail on a hit.
+  (Sibling of the em-dash-entity rule: there, an encoding the renderer resolves is still a form;
+  here, an encoding it does *not* resolve is another.)
+- **A FILTER THAT SELECTS THE "TYPICAL" CASES NEEDS BOTH BOUNDS, OR IT RECRUITS THE OUTLIER AS
+  EVIDENCE FOR THE NORM.** To support "this is what a normal day looks like," the page selected
+  logged days over 2,000 calories. That swept in a documented 3,020 binge, and the resulting
+  sentence cited a binge as proof of normality while sounding more rigorous than the claim it
+  replaced. **One-sided thresholds are the tell.** Bound both ends, then **name the excluded
+  outliers in the artifact** ("the 3,020 on 7/18 was a binge and is left out of that range") so
+  the exclusion is a disclosed choice rather than a hidden one.
+- **CHECK THE PAGE'S OWN ARITHMETIC AGAINST THE RULES THE PAGE ITSELF TEACHES.** Section 01
+  argued at length that two weigh-ins inside one session are *one* reading. The window averages
+  under that very argument counted both, double-weighting two days, including the page's own
+  worked example. Deduplicating changed the headline spread from 0.7 lb to 0.3 lb and made the
+  claim **stronger**. **Whenever an artifact states a methodological rule in prose, grep its
+  computations for violations of that rule.** A page contradicting itself between its lesson and
+  its math is invisible to a clarity reviewer and lethal to a careful one. (Also the recurring
+  pattern in this file: the honest correction was the better result, again.)
+- **AN ERROR SURVIVES WHEN EVERY CHECK EVER RUN HAPPENED TO BE INSENSITIVE TO IT. HUNT THAT SHAPE
+  DIRECTLY.** A long-standing repo formula ("fat mass = 0.69 x weight") had silently dropped an
+  intercept, leaving it wrong by ~87 units at the level while remaining exactly right for
+  *changes*. Every verification anyone had ever run on it used changes, so it passed for months
+  and got restated in the measured voice. Ask of any load-bearing formula: **what class of check
+  would this survive even if wrong, and has every check so far been that class?** Then
+  deliberately run one outside that class (here: evaluate at a single point instead of on a
+  delta). Same run, same family: a number cited five times across two summary documents as a
+  measured observation ("2,050") **existed in no raw record at all**. Layering holds, now
+  measured three separate times in this file: **raw records beat summary docs beat prose.**
+  Correct the mid-layer in the same change, and grep siblings for the propagated value.
+- **TWELFTH MEASUREMENT OF THE PANEL'S DIVISION OF LABOUR, AND THE CLASSES WERE DISJOINT AGAIN.**
+  The reader-twin (ADD, non-technical, tired) returned pacing and definition findings and scored
+  comprehension 8 / engagement 6, naming the exact three blocks it skimmed. It caught the density
+  and the buried-lede ordering; it **verified nothing**, and read straight past the wrong formula.
+  The fact-checker recomputed everything from raw and caught zero pacing problems. Neither would
+  have shipped a good page alone. Also reconfirmed: **the reviewers raced the fixes** - the
+  fact-checker reported against the pre-fix file and several findings were already resolved, so
+  triage every finding against the CURRENT artifact before re-fixing.
+- **A DASHBOARD THAT CANNOT READ ITS SOURCE AT RUNTIME GOES STALE SILENTLY AND LOOKS IDENTICAL
+  WHEN IT DOES.** A file:// page cannot fetch its own CSV, so the data is baked in at build time.
+  **Ship the rebuild as a one-command guard with a self-test, write the "rebuild after new data"
+  rule into the project's CLAUDE.md, and check whether that file already carries a standing
+  instruction the new artifact now contradicts** (here it said "no standing dashboards," which
+  would have told the next session to tear the page down). **A new standing artifact almost
+  always invalidates a line in the standing instructions; go find it in the same change.**
+
+
+### Rules added 2026-09-02 (a 21-walkthrough library rebuilt for a longer runway, reused verbatim, then rewritten plain under a gate)
+
+- **⭐⭐ "MAKE IT FEYNMAN" MEANS REWRITE THE PROSE; GATED IS NOT PLAIN.** A rebuild that extended a
+  study plan from four days to ten reused sixteen accuracy-gated walkthroughs verbatim because the
+  commission also said "a good amount is already done." The maintainer's verdict on the reused prose was
+  "verbal insanity," and a cold read confirmed it: 36-to-58-word sentences joining a statistic, a
+  parenthetical and a caveat; terms defined two sentences after use; numbers with no origin; study-only
+  tangents as dense as the live beats. No page had ever been gated for readability. **When a commission
+  carries both "reuse" and "make it plainer," the second clause is the deliverable; say which reading
+  you took before dispatching.** Readability is now a script: the `training-the-reader` skill's gate and
+  catalog. Run it on any page before calling it Feynman.
+- **THE REWRITE CONTRACT THAT MADE CHEAP MODELS SAFE: freeze everything checkable, free everything else.**
+  Section headings (numbered core), every code block, every figure, every table value and every measured
+  number are frozen and asserted against an archived original; the rewrite must be SHORTER. Under that
+  contract a Sonnet-class model rewrote 21 files with zero code or figure changes and one class of
+  defect: sentences it joined with a colon or semicolon to slip under the word cap. Close that in the
+  gate, not in the prompt.
+- **A BULLET LIST NEEDS A BLANK LINE BEFORE IT, OR THE CONVERTER GLUES IT INTO THE PARAGRAPH ABOVE.** Two
+  "Name key" legends that were correct bullets in the source rendered as 113-word walls. Same family as
+  the table-followed-by-prose row bug; a normalizer inserts the blank line and the gate refuses the glue.
+- **DERIVE THE PLAN FROM THE UNITS.** Every hand-typed time chip drifted from its walkthrough's own
+  "Reading time" header, twice in one day (once at 25 versus 40-60 minutes, again when the rewrite
+  shortened the headers). The builder now derives each chip from the header, the day's total from the
+  chips, the command line from the task's status, and the badge from the folder id, and a gate refuses a
+  sheet whose chips do not sum to its total. See the 08-27 computed-versus-typed rule; this is it applied
+  to schedules.
+- **SHARED BOILERPLATE CARRIES ITS HOME PAGE'S ASSUMPTIONS.** Sections embedded on every day page still
+  said "section 03", "section 08", "section 14"; a closing reassurance line lived in three sheets; a
+  banner translating a name outlived the name. After any embed, sweep the embedded SOURCE for
+  cross-references that resolve only at home, and re-read every banner against the new page.
+- **THE FINISH SCORE IS THE ONE THAT MOVES, AND EXECUTABILITY MOVES IT.** Across ten catalog-armed reads
+  the teaching score sat at 7 to 8 while the finish score ranged 5 to 7, and its killers were never
+  prose density: a task with no file or command, a chip disagreeing with the unit, a "done" line
+  contradicting the drop rule, a read-only task carrying run commands. For a reader who disengages under
+  overwhelm, a contradiction on the run sheet costs more than a long sentence in beat 11.

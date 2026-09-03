@@ -75,11 +75,18 @@ shortened, never lengthened or removed.
 | Gate splitter treats a bullet list or a bold label as one 150-word sentence | Split on blank lines, bullets, bold labels, semicolons; strip inline code before tags |
 | A table followed by prose with no blank line renders an extra row | Normalizer inserts the blank line |
 | Findings answered, catalog never updated | Step 5 is not optional; the next read pays for it |
+| A seed picture handed to a writer as fact | Seeds are hypotheses; the writer checks the picture against the broken code's changed line (catalog C10); four of sixteen seeds were wrong |
+| A scripted fix trusted because it printed "ok" | Count-assert every replace, exclude frozen regions, make prose regexes wrap-tolerant, re-run the full gate after each script |
+| The first sweep of a new check trusted | Positive-test the guard: 59 of the first 70 hits were the gate's own artifacts (headings read as prose, bold labels split from their definitions, thousands separators, defined numbers re-flagged) |
 
-## Real-World Impact
+## Provenance
 
-Origin: a ten-day interview-prep library of 21 worked walkthroughs the maintainer called
-"verbal insanity". Baseline cold reads scored 7 teach / 5 finish. After the loop (gate, 14
-cheap-model rewrites, catalog-armed reads): 21/21 files pass the gate, all everyday pictures
-judged to carry the mechanism, scores 8 / 6 and 7 / 7, and three defect classes became scripts
-the same day.
+- 2026-09-02, born: a 21-walkthrough interview-prep library the maintainer called "verbal insanity" after a
+  rebuild had reused it verbatim. Baseline cold reads 7 teach / 5 finish. After the loop: 21/21 files pass
+  the gate, ten day pages cold-read by catalog-armed cheap readers (teach 7 to 8, finish 6 to 7; one page
+  re-read after fixes moved 5 to 7), a 220k-token picture sweep found eight defects four full reads had
+  missed, and eight judgment classes became script checks the same day. Catalog at 37 classes.
+- 2026-09-02, the guard guarded its author: four of the orchestrator's own scripted fixes broke files in
+  ways that looked finished (a regex ate two time lines, a trim edited a frozen table row, a normalizer
+  overran a length ceiling by one character, an example id in a command line inflated every plan chip).
+  Every one was caught by a check written hours earlier for a different reason.

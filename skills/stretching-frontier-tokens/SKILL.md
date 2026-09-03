@@ -86,3 +86,7 @@ dispatch-heavy skill testing. Treat as unvalidated under pressure; tighten on fi
 recording the rationalization used. First execution same day: a 3-model review fan-out + a
 3-agent build fan-out moved ~615k tokens of work off the frontier quota with zero collisions;
 the contract rules above were added from what that run showed.
+
+## Provenance
+
+- 2026-09-02: a 21-file Feynman rewrite plus ten cold reads ran on ~30 Sonnet-class agents (reads 156k-208k each, pair rewrites 130k-310k, one 220k picture sweep that found what four full reads missed) while the frontier wrote only the charter, the analogy seeds, the catalog entries and the diagnoses and never read a walkthrough end to end. Two waves of 9-12 agents died on the human's five-hour limit; waves of 3-4 with write-the-file-first agents finished with zero kills. A 34 KB single Write hit the 64k output cap; assembly by script from small pieces did not.

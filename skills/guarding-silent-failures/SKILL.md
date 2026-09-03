@@ -284,6 +284,80 @@ the interpreter as `\uD83D` and produced a real lone surrogate. **When file cont
 backslash escapes, do not route it through a shell heredoc** — use a direct file-write tool, or
 build the backslash at runtime (`BS = chr(92)`) and substitute a placeholder.
 
+## A formula can be wrong in a direction none of your checks can see
+
+(2026-08-27, a health-data dashboard audited against its own raw records.)
+
+A repo carried `fat mass = 0.69 x weight` for months. The real fit was affine:
+`0.693 x weight - 87`. Dropping the intercept made it wrong by ~87 units **at the level**
+(it implied 69% body fat where the truth was 28%) while staying **exactly right for
+changes**, because the intercept cancels in a subtraction.
+
+It survived every review because **every check anyone had ever run on it was a delta check.**
+The verification in the notes literally read "Δweight +2.5, Δfat +1.7, 0.69 x 2.5 = 1.7 ✓".
+That check cannot fail no matter how wrong the intercept is.
+
+- **Ask of any load-bearing formula: what class of check would this pass even if it were
+  wrong, and has every check so far been that class?** Then run one deliberately outside it.
+  For a linear relation the two classes are *level* and *slope*: if you have only ever tested
+  on differences, evaluate it once at a single real point. It takes seconds.
+- **A clean check history is evidence about your checks, not about the formula.** The longer a
+  number has "held up," the more selected the surviving checks are for insensitivity.
+- Same family, same run: **a one-sided threshold used to select "typical" cases recruits the
+  outlier as evidence for the norm.** Selecting logged days `>= 2000` to characterise a normal
+  day swept in a documented binge at 3,020, and the sentence built on it then cited the binge as
+  proof of normality. **Bound both ends, and name what you excluded** where the reader can see it.
+- And: **deduplicate before you aggregate.** A mean over raw rows double-counted repeat
+  measurements taken seconds apart, silently weighting those days twice. The tell was that the
+  same document *argued in prose* that a repeat inside a session is one reading. **When an
+  artefact states a methodological rule, grep its own computations for violations of it** — that
+  contradiction is invisible to every reviewer reading only the prose.
+
+## A correction is an event; a claim is a population
+
+When a factual claim is retracted, the instinct is to fix the artefact in front of you, announce
+the correction, and move on. That fixes one *instance*. The claim is a **population**: every copy
+already written to disk still carries it, and nothing about the announcement reaches them.
+
+Measured, three times in one workspace: a corrected number was fixed in the new batch and left
+standing in two older staged documents; then a retracted provenance claim ("hand-wrote X") was
+still sitting in three artefacts **three weeks after** the retraction, one of which shipped to its
+recipient hours before it was caught.
+
+**The hand-search does not close this, and the reason is structural.** Each manual sweep re-picks
+which spellings to look for, so each sweep re-earns its own blind spot. Three separate greps for
+`hand-wrote` all came back clean while `hand-written` sat untouched in three files, because no
+sweep happened to choose that form. Adding the retraction to a mechanical guard surfaced **six**
+carriers on its first run.
+
+- **When a claim is retracted, add it to the guard in the same hour.** Not to a memo, not to a
+  memory file, not to a checklist. To the thing that runs and refuses.
+- **Enumerate the variants at guard-writing time**, when you are thinking about the claim:
+  hyphenated, unhyphenated, past tense, participle. The guard searches them all forever; you will
+  not.
+- **Sweep the whole population, not the new batch.** The carriers are, by definition, in the old
+  material nobody is currently looking at.
+
+### The guard will carry the bug it exists to catch
+
+The banned-phrase check above matched **case-sensitively**, so `hand-wrote` could never have
+matched `Hand-wrote` at the start of a bullet. That is exactly the failure class the guard was
+written to prevent, living inside the guard. A tool that checks for a family of mistakes is
+written by someone thinking about that family, which is precisely the state in which you stop
+checking yourself.
+
+**So negative-test every guard before believing it**, and include *negative controls* — inputs
+that must stay clean. A guard that flags everything is indistinguishable from a guard that works,
+until it costs you a correct sentence. The check that shipped here runs ten cases, three of which
+assert the *correct* phrasing is NOT flagged.
+
+### Corollary: a noisy check trains you to ignore it
+
+A leakage scan for cross-company names returned 44 hits on 45 documents. Every one was the word
+"Salesforce" appearing as a genuine skill. A check with that signal-to-noise ratio does not get
+tuned, it gets dismissed — and the next time it fires for real, it is dismissed too. Whitelist the
+known-good before the check goes into anyone's routine.
+
 ## The order to work in
 
 1. Ask what would tell you if this were wrong. If nothing would, stop and add something.
@@ -309,3 +383,4 @@ cleanup that reported removing twelve files it had not touched, and a build chec
 because `publicDir` copied 15MB of models into `dist/` on every run. Related skills:
 [cadquery-modeling] for the geometry-specific traps, [look-driven-iteration] for output judged by
 eye, [nemesis-review] for adversarial review before committing.
+- 2026-09-02: a new plain-prose gate's first sweep returned 70 hits, 59 of them the gate's own artifacts (headings counted as prose, a bold label split from the definition after it, "1,000" read as "000", a number re-flagged at every reuse after being sourced once). Positive-testing the guard before queuing human work on its output saved a 59-item false fix list. The same day four of the orchestrator's own scripted fixes failed while printing success and were caught only by gates written for other reasons.
