@@ -55,6 +55,7 @@ fully verify.
 - **Waves of three or four agents.** A twelve-agent wave died on a five-hour usage limit twice.
 - **One read, one write, at most three fix rounds** per file. Never re-read an original.
 - **The orchestrator never loads the page.** It reads reports and gate output only.
+- **Readers read a RENDER, never the HTML.** `scripts/render_page.py <page.html> <out.txt>` keeps headings, lists, fenced code, figure step captions and [DETAILS] markers; reads cost about half (78k-106k against 156k-208k) with no loss the reports could show.
 - After a kill, message the SAME agent first; its transcript persists. Re-dispatch only if that fails.
 
 ## The Frozen Contract (the rewrite rule)
@@ -80,7 +81,17 @@ shortened, never lengthened or removed.
 | A new gate wired into a pipeline stage that never sees what it checks | Wire it where the whole artifact exists, then count the cases it must refuse BEFORE trusting the first green build: a done-line gate placed after the builder had peeled the done line off passed ten sheets, eight of which it should have refused |
 | A scripted structural edit whose regex treats a markup prefix as text | Anchor the prefix explicitly (an optional `(> ?)?` let `(.*\S)` capture the `>` itself and three labels lost their blockquote), then grep for the damage signature and render one touched page before the gate's PASS is believed; a blank line inside a paragraph is not a gate class |
 | A filler trim that lands inside a frozen block | Assert the match sits outside code, svg and tables before replacing; the frozen-svg check caught a five-character trim inside a figure caption |
+| An exemption marker for a banned form | Fix the exception to fit the gate instead (characters in a problem became "that player"); a pronoun survived three sweeps, each fixing only the spellings it searched for, and an exemption is where the next survivor hides |
+| A wrap-tolerant matcher that stops at a blockquote prefix | Join words with `\s+(?:>\s?)?`; a phrase straddling "the\n> interviewer" returned zero matches and looked absent |
 | The first sweep of a new check trusted | Positive-test the guard: 59 of the first 70 hits were the gate's own artifacts (headings read as prose, bold labels split from their definitions, thousands separators, defined numbers re-flagged) |
+
+## When to Stop
+
+The teaching score plateaus early (7 to 8); the finish score is what the loop moves, and it moves on
+executability: setup printed before launch, the condition on the bullet it modifies, the folder
+located on the first command line, a count stated where a chip is charged. When a re-read returns
+"none, ship it" and its siblings return one or two judgment items, the reader-twin is exhausted.
+Stop dispatching; the next signal is the human's own stalls, which no twin can predict.
 
 ## Provenance
 

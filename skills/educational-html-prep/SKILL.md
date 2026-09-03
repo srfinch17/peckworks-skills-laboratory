@@ -1435,3 +1435,13 @@ the generator never touched.**
   prose density: a task with no file or command, a chip disagreeing with the unit, a "done" line
   contradicting the drop rule, a read-only task carrying run commands. For a reader who disengages under
   overwhelm, a contradiction on the run sheet costs more than a long sentence in beat 11.
+- **ORDER IS CONTENT FOR A READER WHO EXECUTES TOP-DOWN (2026-09-02 late).** Across eleven re-reads the
+  finishing score moved only on execution order: a mock box printing "How to start: run claude" above
+  "Before you start: run py reset.py Mock"; a drop rule placed after the HARD STOP line it modified; a redo
+  charged per problem with no count stated; the practice folder never located. Print setup before launch
+  and label it ("do this first"), put a condition on the bullet it modifies, locate the folder on the first
+  command line, and state every count where a chip is charged.
+- **A VERBATIM QUOTE MEETS A BANNED FORM: EDIT WITH BRACKETS, NEVER SILENTLY.** The recruiter's own words
+  said "He will ask you questions throughout" on three pages whose method box says the interviewer may not
+  be that person. The honest fix is "[the interviewer] will ask you questions throughout": the quote stays
+  a quote, the edit is visible, and the pronoun gate passes without an exemption.
