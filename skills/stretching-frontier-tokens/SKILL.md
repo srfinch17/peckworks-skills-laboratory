@@ -90,3 +90,17 @@ the contract rules above were added from what that run showed.
 ## Provenance
 
 - 2026-09-02: a 21-file Feynman rewrite plus ten cold reads ran on ~30 Sonnet-class agents (reads 156k-208k each, pair rewrites 130k-310k, one 220k picture sweep that found what four full reads missed) while the frontier wrote only the charter, the analogy seeds, the catalog entries and the diagnoses and never read a walkthrough end to end. Two waves of 9-12 agents died on the human's five-hour limit; waves of 3-4 with write-the-file-first agents finished with zero kills. A 34 KB single Write hit the 64k output cap; assembly by script from small pieces did not.
+
+## Field validation: the human named the split himself, and the frontier share turned out to be the review gate
+
+Mid-session the user asked for a sanity check: was the only part of a resume-tailoring workflow that needed a
+frontier model the customization step itself, with everything else being grunt work? Yes, with one addition that
+the same week had demonstrated twice: two cheap-agent deliverables (a dashboard CSS feature, then a follow-up with
+web-search logo hunting) each reported grep counts that were all correct while the rendered page was broken in a
+way only a screenshot showed. The frontier model's irreducible share is the review gate on what cheap agents
+return: read the diff, render the output, verify the report's claims. Grunt that moved off the frontier model:
+link extraction, dedup, folder metadata, generate and audit runs, tracker and dashboard refreshes, per-company
+logo lookups (about 300k Sonnet tokens for 40 web searches, acceptable where the frontier model would have spent
+the same plus its own reasoning). The lever that makes the split pay is BATCHING: per-item inline work by the
+frontier model costs about the same as briefing an agent per item, so the agent must take a day's worth of items
+and return only the short list that needs frontier judgment.

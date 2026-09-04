@@ -287,3 +287,26 @@ specific and answerable ("I do not know what they will cover"), so the honest re
 that the unknown was askable, ask it, and prepare breadth for whatever the answer could not
 settle. A finishable task is the only reliable counterweight to anticipatory anxiety, which is the
 same conclusion this file already reached from the despair direction.
+
+## Field validation: two inbound recruiter emails in one day, and the calibrator was in the user's own ledger
+
+The user forwarded two recruiter emails within hours and asked what to make of each. The first was a templated
+staffing blast ("based on the most recent resume we have on file", a chatbot screener, an unnamed client, a
+keyword-pile job summary). The second was a named recruiter at a different staffing firm quoting four lines of the
+user's actual resume back and pre-flagging the one gap himself. Same day, same inbox, two tiers apart, and the
+user's own question on the first ("I don't remember applying") was the tell that it was a database harvest.
+
+- **Tier from the message's FEATURES, not from the sender's category.** Both senders were staffing agencies. The
+  blast was tier 1 (form email); the quoted-resume note was tier 2 (recruiter with specifics). Naming the features
+  that separate them (resume-on-file language, bot screener, unnamed client, versus specifics only a reader could
+  quote) let the user act differently on each without either being oversold: three questions by email for the
+  first, a 30-minute call booked for the second.
+- **The origin case's mechanism recurred and was caught this time: the sizing fact was already in the user's own
+  records.** The tier-2 sender's firm had two earlier postings in the user's ledger, both flagged "position is
+  occupied" talent-pool listings, one applied to with no reply ever. Grep the employer AND the intermediary before
+  writing a word of assessment; the deflator delivered in the same breath ("this may be the same pipeline machine
+  with a better hook; the four quoted lines are what makes it worth 30 minutes") is what made "take the call" an
+  honest recommendation rather than a hype.
+- **Give the next action a decision rule, not a mood.** "A named client plus a band means worth a look; a form
+  reply or another bot link means drop it" is checkable when the reply lands. The user booked the call, logged it,
+  and moved on without a spike in either direction.
