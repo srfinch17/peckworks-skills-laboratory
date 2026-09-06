@@ -152,6 +152,73 @@ Two details that matter more than they look:
   leave draw mode. A mark belongs to one subject and one comment; carrying it forward annotates the
   wrong thing, and leaving draw mode on silently steals the drag from the camera.
 
+### Agree the grammar BEFORE round one, and re-agree when marks stop landing
+
+Before the first judged round in any project, write down with the owner what every element of a
+record MEANS: each pen colour, a line versus a circle versus a filled scribble, a jagged stroke,
+the comment's relation to the marks, and which of those the instruments actually read. Ten
+minutes, one page, committed. Field-proven the hard way (2026-09-05): five weeks of rounds ran on
+an undeclared grammar; the agent read strokes as exact pixel paths while the owner meant them as
+rough windows, "blue" in a comment could not be resolved between two pens, and the loop ended with
+the owner rejecting round after round of "fixes" he could not see. His own diagnosis afterwards:
+the agent never understood what the marks meant because the meaning had never been explicitly
+defined. The grammar is a spec both parties sign, not an
+inference the agent makes; when verdicts and instruments diverge, re-read the grammar before
+touching either. And treat a round spent fixing the evaluation process as a real round: it is
+where the value per iteration is set.
+
+### The instrument sees structure, never wrongness
+
+Field-proven 2026-09-05: a render-domain scorer that measures tone structure under the owner's marks
+gripped his DEFECT lines and his SHOULD-BE lines equally (both around the 75th percentile against random
+windows), because a wrong band and a right ridge look the same to a local statistic. No pixel measure
+knows what is wrong; only the owner does. So an instrument's honest role is a CHANGE instrument at the
+owner's windows: before -> after under each mark, normalised by how much the rest of the artifact
+changed, plus a calibration-free "did anything happen here" percentile, with verdicts UNCHANGED /
+CHANGED / WORSE / NOT VISIBLE and never "fixed". Report two nulls (a random spot at its best angle, and
+at one random angle): they answer different questions and disagree usefully.
+
+### Verdicts without their words: the reverse pair
+
+When the owner marks a CANDIDATE and writes no better/same/worse, do not ask again: remove the candidate
+under their marks and measure. What falls to background without it was the candidate's own harm; what
+strengthens without it was a feature the candidate had filled. Field-proven 2026-09-06: a "bridge"
+candidate the owner had marked as an unwanted growth and a hump rising far too high was reverted the
+same day by exactly this, with no further question to him.
+
+### Predict UNCHANGED by default
+
+Three sealed predictions of IMPROVED were wrong in one night; the predictions that held said
+"unchanged" and "the outline moves out". The bias that predicts improvement is the bias that once wrote
+"fixed". Write the sealed prediction as UNCHANGED unless a measurement already showed the change reaching
+the owner's marks, and say the confidence.
+
+### Mine the corpus once, then go forward with them
+
+A harvest of old marks (a text re-read under the grammar, then a locate-first visual verification) is
+worth exactly one pass: marks drawn on since-changed code are not positives today, and the owner's
+memory of what an old mark meant fades (two of three questions came back with no recollection). After that
+pass the owner's own ruling applied: stop mining, load a fresh round, let their new marks be the ledger.
+Make the first live round a stated CALIBRATION too: report whether the process located what they marked
+(line marks at the 82..100th percentile, a stroke they called jagged classed jagged by the rule, rigs
+matching their telemetry), not only what the defects were.
+
+### A mark is a window, not a path
+
+Their pen is a thin, freehand, roughly placed line; it is not a measurement. Scoring the exact
+pixels under a stroke is a recipe for disaster (field-proven 2026-09-05: a render-domain scorer
+that walked the stroke's own pixels saw about a third of the owner's lines and called nothing he
+could see "fixed" three rounds running). Treat every mark as
+a strip rubbed clear on a steamed window: widen it (5..20px at the owner's zoom; SWEEP the radius
+and take the one where separation stops improving) and look THROUGH it at the artifact for what
+their WORDS describe. A line's direction is its smoothed direction, never the hand wiggle. Three
+grammar rules to confirm with the owner, since theirs may differ: a JAGGED stroke is an
+instruction to look for jaggedness (a steady hand does not draw jagged by accident); a bare line
+means "a boundary is here"; a circle means "look inside", and its colour says for what. The
+comment's words override all of this per entry, and pooled calibrations group strokes by what the
+owner SAID a colour meant, never by pen colour alone (they grab the wrong pen and explain instead
+of redrawing).
+
 ### Code version is what makes it survive
 
 Parameters replay against *today's* code. To rebuild an artifact a year later, or to compare this

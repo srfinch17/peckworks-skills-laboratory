@@ -225,3 +225,23 @@ reads as a lathe mark no matter how infinitely smooth its edges are. At that poi
 engineering smoothness: either put the shape lever itself in front of the owner (feature vs no
 feature, measured beforehand to actually remove the complaint), or redesign so the feature is
 carried by the structure the owner's green lines describe.
+
+## Probes must see the change before their null means anything
+
+A probe that reads "no change" has to be shown it CAN see the change. Field-proven 2026-09-05/06: two
+field probes of a root-to-trunk junction (a surface top line along a ray at the root's azimuth, and a
+vertical line above the root's axis) both read a candidate as doing nothing, and both were confounded:
+the trunk leaned over its roots so the vertical line hit the trunk's own column, and the run curled off
+the ray so the ray passed along the tube's flank. The candidate was in fact changing the geometry, and
+the owner's marks found the change as HARM two hours later. Rules: (1) before trusting a null, drive a
+change the probe must see and confirm it does; (2) measure from the vantage the human judges from (their
+camera, the render), and treat field probes as diagnosis only; (3) a 2D picture of a 3D junction is a
+hypothesis, not a model.
+
+## Cheap knob pairs and refutations before any build; stop designing tired
+
+The same arc ran two slider pairs and six mechanism probes, each with a sealed prediction, before a
+line of geometry was written, and every one refuted its hypothesis by measurement without spending the
+owner's eye. The one BUILD of the arc came at the end of a marathon, on a picture that the next probe
+showed was incomplete, and it was harm. When N cheap refutations point at "the representation is wrong",
+the right next act is a spec and a review court in a fresh session, not a 150-line law at 2 a.m.
