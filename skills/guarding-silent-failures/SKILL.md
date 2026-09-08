@@ -313,7 +313,109 @@ That check cannot fail no matter how wrong the intercept is.
   artefact states a methodological rule, grep its own computations for violations of it** — that
   contradiction is invisible to every reviewer reading only the prose.
 
-## A correction is an event; a claim is a population
+## An aggregate metric can read 100% while the decision it stands for reads 0%
+
+(2026-09-07, a linter built to predict document-layout defects before rendering.)
+
+The tool simulates a typesetter's greedy line wrap and asks one question: **is a paragraph's last
+line a single stranded word?** It passed its own selftest. It passed a negative control against
+every existing document. It shipped.
+
+Then a second, independent instrument refused a document the linter had just called clean.
+
+Measured against 269 real paragraphs extracted from 12 rendered PDFs:
+
+| tolerance | line-count agreement | **real defects caught** | false alarms |
+|---|---|---|---|
+| as shipped | **269 / 269** | **0 of 3** | 0 |
+| +2pt | 269 / 269 | 2 of 3 | 0 |
+| +3pt | 268 / 269 | **3 of 3** | 1 |
+
+**Line-count agreement was perfect and recall was zero, at the same time.** The simulation was
+systematically about one word conservative on every line, from measuring text read back out of a
+PDF (roughly 0.7% wide) rather than measuring it the way the renderer does. A bias that is
+*consistent* does not move a count: every line broke one word early, so the number of lines came
+out right and the position of the last break came out wrong. The defect lives entirely in the
+quantity the count throws away.
+
+- **Write the confusion matrix for the decision the guard actually makes**, not for a quantity
+  that correlates with it. Real defects caught, false alarms raised. Everything else is a comfort
+  metric, and a comfort metric that reads 100% is worse than no metric because it ends the inquiry.
+- **Ask what the guard's output is a THRESHOLD on**, then test at that threshold. Here the count
+  was an aggregate and the decision was a boundary; agreement on the first is nearly uninformative
+  about the second.
+- **Calibrate against rendered output, not against the constants in the source.** The geometry
+  derived by reading the renderer's own configuration was exactly right (frame widths verified to
+  the point against the PDFs) and the model built on it was still biased, because the bias entered
+  through the measuring function, not the parameters.
+- **Choose the error direction on COST, and say the cost out loud.** A false alarm here costs one
+  look at a sentence; a miss costs a full render-and-check round, which is the entire reason the
+  tool exists. That makes 1 false alarm in 269 the correct price for full recall, and it is the
+  opposite of the tidy choice.
+
+**Sibling failure in the same session, worth stating separately: an exclusion written for one case
+silently covers every case that shares its shape.** The independent gate skipped single-word lines
+where `text.isupper()`, intended to ignore a section heading called `EDUCATION`. It therefore also
+ignored **acronym** orphans (`CSS3`). A second exclusion, `len(text) > 3`, ignored **short**
+orphans (`40%`). Both were real defects sitting in finished, ready-to-send documents, and both
+surfaced only because a second instrument disagreed with the first. **When you write an exclusion,
+name the case it is for in a comment and then ask what else matches that predicate.**
+
+## Your own repair can carry the bug it repairs, one abstraction level up
+
+(2026-09-08, two files flipped in one session by the logic written to stop the flip.)
+
+A known hazard: reading a text file with a helper that normalises line endings, then writing the
+result back as bytes, silently rewrites every line in the file. It is documented, it is understood,
+and it was hit anyway on a 1,734-line configuration file **while writing the section about
+preventing mistakes.**
+
+The second hit is the one worth keeping. The fix written in response detected the file's ending
+with, in effect, `use CRLF only if EVERY line is CRLF`. The next file was mixed (1,533 CRLF plus 9
+stray LF from some earlier edit), the unanimity test failed, and it flipped 1,552 lines.
+
+- **A guard derived from a clean mental model meets files that are not clean.** Real artefacts are
+  mixed: mixed endings, mixed encodings, mixed conventions. **Detect by majority, never by
+  unanimity**, and treat "all of them agree" as a claim to verify rather than a shape to assume.
+- **Print the invariant on both sides of the write.** Both slips were visible within one second
+  purely because the patch script printed before/after counts of each ending. The measurement cost
+  nothing and was the entire difference between a caught defect and a silent 1,700-line diff.
+- **This is the same shape as the guard carrying the bug it exists to catch (above), moved one level
+  up: the REPAIR carried the bug the repair was for.** When you write a countermeasure immediately
+  after being burned, that code is written under the same assumptions that produced the burn. Run it
+  against the ugliest real input you have, not against the clean case you were just thinking about.
+
+## A stated intention is an artefact that looks like the work
+
+(2026-09-08, the mechanism named by a human collaborator who had solved it for themselves
+years earlier.)
+
+A turn of work ended with the sentence "Building the three now" and no build. The more instructive
+repeat came next: the following turn opened by correctly stating "I did not build the three", and
+then did something else. **Naming the omission did not reinstate it.**
+
+Their account, from lived experience: announcing what you are about to do delivers
+part of the feeling of having done it, so the drive to actually do it drops and the item gets
+skipped. His countermeasure is a habit, not a reminder: **do not say you are doing a thing, or
+nearly done with it, until it is done.** Nobody needs the announcement before the result anyway, so
+it buys nothing and costs the follow-through.
+
+- **The hazard is the UNACTIONED announcement, not narration.** A sentence of intent immediately
+  followed by the action is safe: nothing sits in the gap, because there is no gap. Past tense about
+  finished work is safe. A *conditional* offer at a stopping point ("say the word and I will") is
+  safe and is the right way to end. The dangerous form is declarative, first person, future tense,
+  with nothing after it.
+- **Prefer a gate on the ARTEFACT over a gate on the SENTENCE.** The tempting fix is a hook that
+  scans outgoing prose for intent language. It fires on every honest handoff, and a noisy check
+  trains you to ignore it (see above). The fix that paid was re-running the job's own opening
+  inventory as a CLOSING gate: every item in a batch must end as a built thing, a recorded
+  rejection, or a recorded deferral. It exited non-zero and named **24 decisions that existed only
+  as sentences** in a report, which no prose check could have found.
+- **The general shape: any inventory taken at the start of a batch can be re-run at the end as a
+  completeness gate, for free.** You already wrote the hard part. Inverting its pass condition turns
+  "what is new?" into "what did I fail to resolve?".
+
+
 
 When a factual claim is retracted, the instinct is to fix the artefact in front of you, announce
 the correction, and move on. That fixes one *instance*. The claim is a **population**: every copy
