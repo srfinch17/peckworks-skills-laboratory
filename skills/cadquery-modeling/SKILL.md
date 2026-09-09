@@ -137,6 +137,28 @@ shape = shape.newObject(hits).fillet(r)
 
 `0.05mm` tolerance is ~8× the observed jitter and far below any real feature. Assert the match count — this is the same rule as "assert the inner-wire count", arriving through a different door.
 
+### `.val()` is objects[0] — counting geometry through it is a blind spot
+
+`Workplane.val()` returns the FIRST object on the stack, not the stack. So a check written as `len(wp.val().Solids())` reports on one object and silently ignores the rest:
+
+```python
+w = cq.Workplane("XY").newObject([boxA, boxB])
+len(w.vals())                            # 2 objects on the stack
+len(w.val().Solids())                    # 1   <-- what a naive guard sees
+sum(len(o.Solids()) for o in w.vals())   # 2   <-- the truth
+```
+
+This is nastiest inside a guard whose whole purpose is catching "this part is secretly two bodies", because the guard reads clean on exactly the input it exists to reject. It also survives casual testing, because the obvious probe does *not* trigger it: `pushPoints([...]).box(...)` leaves ONE object — a Compound — whose `.Solids()` correctly reports both bodies. Two objects on the *stack* is the breaking case, and that is what `newObject([...])` and some selector chains produce.
+
+**Anything that COUNTS geometry sums over `.vals()`.** Reserve `.val()` for "I know there is exactly one object and I want it".
+
+```python
+def solid_count(wp):
+    return sum(len(o.Solids()) for o in wp.vals())
+```
+
+Same family as the volume/topology rule above: the measurement was fine; the thing being measured was not what you thought it was.
+
 ### Face-count deltas: what fused, and what merely looks alarming
 
 Cutting a groove flush to a pocket wall raises the question fused-or-hairline-ridge, and the counts answer it. But the expected delta depends on how many faces the boundary has:

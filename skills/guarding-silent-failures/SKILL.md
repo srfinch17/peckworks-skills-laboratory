@@ -232,6 +232,47 @@ Two corollaries:
 - **Name the contradiction in the config itself.** An ignore rule that deliberately contradicts
   the rule six lines above it reads as an oversight unless it says why it exists.
 
+## Match the guard's BLAST RADIUS to what it actually protects
+
+A guard has two decisions, not one: *what does it detect*, and *how much does it destroy when
+it fires*. Getting the second wrong turns a correctness win into a productivity loss, and the
+team learns to route around the guard.
+
+A caching layer for expensive CAD art verified its own round trip: write the solid to STEP,
+read it back, compare volume and face count before trusting the cache. The first version
+`assert`ed. That would have killed a **forty-five-minute** build at its very end — over a
+*cache*. The solid in memory was perfectly good; only the bank was suspect. The fix was to
+narrow the blast radius, not the check:
+
+```python
+if not round_trip_ok:
+    step.unlink(missing_ok=True)        # refuse the BANK
+    print("!! not banked, rebuilt every time: <reason>")
+    return art                          # the BUILD carries on
+```
+
+Losing a cache is a slow build. Trusting a bad cache is a wrong part. Only the second is worth
+stopping for.
+
+The opposite call, made in the same codebase on the same day, is equally important: a
+split-to-objects guard on printed parts **does** refuse the whole export, because there the
+artefact itself is the thing that is wrong and shipping it wastes a print.
+
+Ask: *if this fires, what is actually unsafe?* Fail exactly that much — no more, and no less.
+
+### Shape the opt-out so a mistake fails LOUD
+
+A guard that legitimate cases must escape needs an override, and the override's failure mode is
+part of the design. Prefer one where a mis-configuration makes the guard **stricter**:
+
+- Default ON, with a named constant as the opt-out (`EXPECT_SOLIDS = 3`, declared in the file it
+  describes, next to the reason). New code is guarded without anyone remembering to ask.
+- Key the opt-out by NAME, not position. A typo then matches nothing, so the strict default
+  applies and the build stops — annoying, visible, safe. Had it matched loosely, the typo would
+  have silently disabled the guard.
+- Check which way your override fails before you ship it. "Wrong config ⇒ guard off" is the
+  same silent-failure shape the guard was written to eliminate.
+
 ## An exception is not proof that nothing happened
 
 The other half of "it failed but looked fine": **it failed loudly, and the message described
@@ -384,6 +425,134 @@ stray LF from some earlier edit), the unanimity test failed, and it flipped 1,55
   up: the REPAIR carried the bug the repair was for.** When you write a countermeasure immediately
   after being burned, that code is written under the same assumptions that produced the burn. Run it
   against the ugliest real input you have, not against the clean case you were just thinking about.
+
+## A record with two arrival paths defeats a check that reads one
+
+A guard can be correct, tested, and quietly covering half its population, because you asked
+whether the LOGIC was right and never asked what the INPUT set actually contains.
+
+A duplicate-detection check keyed on a requisition id parsed from a job posting file. It had
+worked all week, and it had just caught a real duplicate that morning. It then reported **NEW** for
+a job the user had already applied to: same requisition, same title, same salary band.
+
+**The cause was not the logic. It was an arrival path nobody had enumerated.** That application
+had been submitted through the EMPLOYER's own hiring system rather than the job board, so the
+board id for it existed nowhere on disk, and every future re-posting of that requisition on any
+board would read as brand new forever. An entire population was invisible.
+
+The same codebase had already suffered the identical shape a day earlier: records in one state
+stored their source in a differently-named file, so the id parser returned nothing for all of them.
+Two instances, same question unasked.
+
+⚙️ **Ask of every guard: what are ALL the ways a record of this kind gets created, and does the
+check read every one of them?** Enumerate the paths, not the logic. A guard that reads one path
+is not wrong, it is scoped, and nothing in its output tells you where the scope ends.
+
+⚙️ **The fix should widen the input, not add a special case.** Here: any record may now declare
+extra ids with an explicit marker line, read from every file type a record can carry. That covers
+the known gap and the next one, instead of hard-coding the employer-system case.
+
+⛔ **A false NO is worse than a false YES.** A false yes gets investigated. A false no ends the
+search and looks exactly like an all-clear.
+
+## An artifact must satisfy the rule it publishes
+
+A standards page was written to stop a recurring defect. Its build checklist told the reader to
+grep any finished page for three specific phrases, and to treat a page missing all three as
+unfinished.
+
+**The page itself failed that grep.** One of the three phrases had wrapped across a line in the
+page's own markup, so the check it published returned nothing on the file that published it. An
+assertion caught it before the file was ever written; no human review would have, because the
+prose read as authoritative and the rule read as obviously satisfied.
+
+Worse, the published rule was itself wrong: it said to grep, and a plain grep dies on a line wrap.
+So the artifact carried a check that could not do its job, aimed at a page that could not pass it.
+
+⚙️ **Whenever you write a rule INTO an artifact, run that rule against the artifact before
+shipping.** It costs one command and it is the cheapest possible test of whether the rule is
+executable at all.
+
+⚙️ **And read the rule as an implementer would.** "Grep for X" is a specification. If X can wrap,
+contain an entity, or vary in case, the specification is incomplete and every future reader will
+inherit the incompleteness. Say "grep whitespace-normalized", or ship the command.
+
+📌 A checklist inside a document has the same borrowed trust as a verification artifact: it looks
+like the checking already happened.
+
+## A control that is too easy proves nothing
+
+(2026-09-08. Three guards in one day passed a control that could not fail, and each shipped its real
+failure mode untested.)
+
+- A freshness checker was proven able to reject a folder titled "Underwater Basket Weaver". It could
+  not tell **"Senior Software Engineer, Backend" from "LEAD Software Engineer, Backend" at the same
+  company**, and reported twelve live matches of which roughly five were real, four were sibling
+  postings, and three were nonsense.
+- A batch transform asserted that the string it removed was gone and that it had introduced no
+  forbidden character. Both true. It had also **deleted the name, contact line, summary and skills**
+  from nine documents.
+- A layout linter matched the renderer's line counts 269 times out of 269 and caught **none** of the
+  three real defects it existed to find.
+
+**A test proves only what it DISCRIMINATES.** A control that is obviously different from a real
+defect is free to pass, so passing it carries no information. **Choose the control that is the
+NEAREST thing the guard could confuse**: the sibling case, the off-by-one-level case, the
+same-shape-different-meaning case. If the control is easy, it is decoration.
+
+**Assert what must SURVIVE, not only what CHANGED.** This is the second half and it is the one that
+bites hardest on transforms. Checking your own edit tells you nothing about the collateral. Add
+invariants for the things whose loss would be catastrophic and silent: the document still contains
+its identifying header, the required sections are still present and still the same count, the file
+did not shrink by more than a small margin. In the case above, the size check alone would have
+caught it in one second: the damaged files went from 8,000 characters to 4,400.
+
+**Snapshot before the first write on any batch transform.** The recovery above cost five minutes
+instead of a day purely because sixteen originals had been copied aside first, by convention rather
+than by foresight.
+
+⛔ **And a guard that answers NO wrongly is worse than no guard.** The same day, an employer-history
+check reported "NO history" for a company with four records on file, because its name-normalising
+function split camelCase on a lowercase-to-uppercase boundary only and therefore never split an
+ACRONYM followed by a word. **33 employers were silently invisible** to a check that had caught a
+real duplicate hours earlier, which is precisely why nobody doubted it. A false NO ends the search;
+a false YES at least gets investigated.
+
+## A written record is a measurement with no expiry date
+
+(2026-09-08. Four recorded claims failed in a single day, in both directions.)
+
+A fact gets checked once, written down, and from then on it is inherited rather than re-examined,
+because the writing itself reads as the check having happened. **Nothing in a corpus expires on its
+own and nothing announces that it has gone stale.** Worse, the confidence a note carries tracks its
+AGE rather than its accuracy, and it runs the wrong way: the older a note is, the more settled it
+feels and the less likely anyone is to test it.
+
+In one day, four notes in a long-running collaboration were found wrong:
+
+- A capability recorded as "a worked design, not deployed" had in fact **shipped**, so a true and
+  valuable claim had been suppressed from every document for a month.
+- A hard constraint ("there are no paying clients") that justified banning two words turned out to
+  rest on a **false premise**, so a true word had been banned.
+- A phrasing the collaborator had personally approved months earlier was, on re-reading, **not true
+  of him any more**, and was about to ship in a document.
+- A job requisition retired on **five agreeing "dead" signals** was open the whole time.
+
+- **A record that BLOCKS something deserves more scrutiny than one that PERMITS something.** A block
+  is silent. Nobody notices the sentence that was never written, the claim that was never made, the
+  option that was never considered, so a wrong block can persist indefinitely with zero feedback.
+  Three of the four above were blocks.
+- **Agreement between sources that share a failure mode is not corroboration.** The retired
+  requisition died on five signals that were all downstream job boards, each with its own expiry
+  clock, none of them the employer. Before counting agreeing sources, ask how they could all be
+  wrong together.
+- **The counter is asking the person, not building another instrument.** All four were caught by the
+  human: two volunteered, two from a direct question. **Zero were caught by a script**, and three
+  new guards were written that same day. Instrumentation catches drift in things you compute. It
+  cannot catch decay in things you were told.
+- **When a record is corrected, supersede it in place and date it, the same hour.** Do not delete:
+  the wrong version is evidence about how the error propagated, and a reader who half-remembers the
+  old claim needs to see it explicitly retracted rather than silently absent.
 
 ## A stated intention is an artefact that looks like the work
 
