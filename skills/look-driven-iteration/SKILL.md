@@ -217,6 +217,30 @@ can stay honest while the numbers go stale. What settled it was the predict-then
 FROM the state the earlier click should have set, proving the click had worked all along. Do one
 real interaction, confirm the readout changes, and only then believe what it says.
 
+**This warning has now failed three times, and the reason is how it is indexed.** The three
+occurrences were: a frozen telemetry pane; a new feature that looked broken; and — worst — an
+app that would not load at all, which got written up as a bug report against working software
+before it was caught. That third one was a load path awaiting a single `requestAnimationFrame`
+inside its "show the spinner" helper, so the whole pipeline parked forever with a healthy
+server, a healthy worker, and no console error. Nothing about that disguise resembles "a frozen
+readout", so recognition never fired even though the rule was written down in three places.
+
+**A warning indexed by SYMPTOM cannot fire when the symptom mutates. Bind it to the TOOL.**
+The first action of any browser-automation session, before reading anything off the page:
+
+```js
+document.hidden === false
+  && await new Promise(r => { const i = requestAnimationFrame(() => r(true));
+                              setTimeout(() => { cancelAnimationFrame(i); r(false); }, 1000); })
+```
+
+If that returns false, nothing the page shows is evidence about the system under test, and
+anything gated on a frame will hang forever rather than fail. Two corollaries: prove the real
+work is sound by a path that does NOT touch rAF (posting the same payload to a hand-built
+worker took ten seconds and settled it); and if the tool cannot bring a window to the
+foreground, report that the visual check was **not performed** rather than describing what the
+frozen page showed.
+
 ## When smoothing keeps failing, the eye is rejecting a SHAPE
 
 A defect that survives multiple continuity fixes (smoother fades, softer edges, C2 kernels) is
