@@ -96,6 +96,18 @@ These are the moves that measurably worked in practice, beyond the write-time ru
   example a full TDD (Test-Driven Development) micro-loop: write one failing test, run it and
   watch it go red, explain why red is *good* here (it proves the test can fail), make it green,
   commit. A finished small thing builds ownership; a half-explained big thing erodes it.
+- **A design is sections of three sentences, one picture each; the facts go in a table.**
+  A plan section that is CORRECT and COMPLETE can still be unreadable: every fact packed into
+  one paragraph is a wall even when each sentence is plain. What landed was the same content
+  re-cut as: one plain sentence saying what the piece is for, one everyday picture (workers
+  "already booted and waiting", a "shelf in memory" with labelled slots), one sentence on the
+  consequence the reader cares about. Numbers and comparisons went into a short table with a
+  "why it matters" column, never into the prose. The reader called the result the essence of
+  what a Feynman explanation is. Near-miss in the same reply, worth the reminder: two acronyms
+  (OCCT, glTF) sailed through undefined because they felt like project vocabulary; they were
+  not, and he had to ask. Project vocabulary is only vocabulary once it is on the mastered list.
+  (Field case 2026-09-09: cadmesh real-time-slider design; the first cut was sent back as too
+  dense to read, one short Feynman per section; the three-sentence recut of identical content landed.)
 - **Checkpoint with an explain-back.** Ask the learner to say it back in their own words, then
   affirm what is right BEFORE sharpening what is off. "Yes, different files, that is exactly the
   goal" first, then correct the mechanism. Affirmation keeps them engaged through the correction.

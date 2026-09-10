@@ -126,6 +126,13 @@ Failure modes to look for in your own probe:
   while the feature worked) recurred months later *with the rule already written down*. What
   prevents it is mechanical: drive a **synchronous** update path instead of waiting on a polled
   one, and check the liveness flag (`document.visibilityState`) before believing a negative.
+- **A safeguard known only by its name.** `gh pr merge --auto` was reported as "merges when CI
+  goes green, so the test gate holds." The repo had no branch protection and no rulesets, so
+  "requirements met" was always true and the flag merged on the spot; it landed one second after
+  the checks finished, which made it LOOK gated. A red run would have merged identically. Before
+  saying something is gated, blocked, or protected, read the config that enforces it (the ruleset,
+  the required check, the hook), not the flag or the workflow name. A guard you have only heard
+  described is a claim. (2026-09-10)
 
 - **A check that cannot fire on the data you have.** The most dangerous disguise, because
   everything about it looks like a pass. A new overhang-angle check reported "safe" across every
@@ -655,3 +662,29 @@ because `publicDir` copied 15MB of models into `dist/` on every run. Related ski
 [cadquery-modeling] for the geometry-specific traps, [look-driven-iteration] for output judged by
 eye, [nemesis-review] for adversarial review before committing.
 - 2026-09-02: a new plain-prose gate's first sweep returned 70 hits, 59 of them the gate's own artifacts (headings counted as prose, a bold label split from the definition after it, "1,000" read as "000", a number re-flagged at every reuse after being sourced once). Positive-testing the guard before queuing human work on its output saved a 59-item false fix list. The same day four of the orchestrator's own scripted fixes failed while printing success and were caught only by gates written for other reasons.
+
+## Field case: an attribute is not a state (2026-09-09)
+
+A slide-out panel's body had `hidden` set and the acceptance recorded `bodyHidden: true`, and
+the panel rendered OPEN, because an author rule `section.tool { display:flex }` beats the UA
+`[hidden]`. The check measured the attribute the code set, not the effect the user sees; it
+could not fail. Rule: prove a UI state by its computed effect (`getComputedStyle(el).display`,
+a bounding rect, a pixel), never by the flag that was supposed to produce it. Same family: a
+dock "fit" measured with three hint lines EMPTY (0 px each under `:empty{display:none}`) passed
+a panel that overflowed once they were populated; populate every state line, then measure.
+Both found by reviewers who asked "what would this check look like if the thing were broken?"
+
+## Field case 2026-09-10 — an instrument blind to its own first write
+
+`nothing_lands_under_projects` snapshotted the tree in case 5 — after case 1 had already
+written `__pycache__/model.pyc` beside the model. The check passed on every run while the
+law it enforced ("a preview writes nothing under projects/") was false. Two lessons: (1) take
+the BASELINE before any action in the process, not before the case; (2) the fix was proven by
+making the test fail on purpose (comment out `sys.dont_write_bytecode`, watch red, restore,
+watch green) — a guard that has never been red has not been tested. Same night, the other
+direction: a literal 50 ms poll "z==7 && spinner hidden && slider==3" counted 160 samples of a
+LEGITIMATE state (the first build truthfully shown, spinner already run, second build queued);
+the per-swap MutationObserver that asked the real question ("was a spinner shown for THIS
+landing") found 0. An instrument can also be wrong by counting the truth as a failure — write
+the question the check answers, then check the check answers it.
+

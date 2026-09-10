@@ -104,3 +104,31 @@ logo lookups (about 300k Sonnet tokens for 40 web searches, acceptable where the
 the same plus its own reasoning). The lever that makes the split pay is BATCHING: per-item inline work by the
 frontier model costs about the same as briefing an agent per item, so the agent must take a day's worth of items
 and return only the short list that needs frontier judgment.
+
+## Field validation 2: a whole feature run on the tiers, and where the frontier share actually went (2026-09-09)
+
+peckworks-cadmesh DEV-RUN-2: 17 tasks, every one implemented by Opus or Sonnet from a brief
+(page + delta + scope contract), reviewed by a fresh Sonnet/Opus reviewer, 11 fix rounds, a
+whole-branch review, ~40 dispatches, ZERO frontier tokens on implementation. The frontier
+share was: the plan, the nemesis fixes, one dispatch brief per task (~40 lines each), the
+rulings (33, all ledgered), and the seam checks between runs. Three things the run proved
+about the contract: (1) executors PREDICTING before running is what makes cheap executors
+safe: they refuted five claims in my own briefs (a wrong count, a wrong sign, a wrong
+variable name, a wrong "this was already added", a security sentence inverted); (2) a
+reviewer that REBUILDS the table from the file (all 15 endpoints: method guard + origin guard
++ root handling) is worth more than one that reads the report; (3) Opus session limits are a
+live constraint (two 429s); resuming the same agent after the reset kept its context, and a
+Sonnet fallback for mechanical tasks cost nothing. Full ledger: repo `DEV-RUN-2.md` section 6.
+
+## Field case 2026-09-10 — DEV-RUN-3 (cadmesh), 8 tasks, tiered
+
+Haiku transcribed a brief that carried complete code correctly on the first pass (the two fix
+rounds it drew were a reviewer's pedantry about a temp-file path). Sonnet implementers on
+integration tasks each disclosed something the brief had not anticipated (a lock deadlock, an
+orphan worker, a second race) — their "Concerns:" line was the highest-value output of the run.
+Sonnet task reviews found real Importants in 5 of 8 tasks but never an interaction bug; the one
+Opus whole-branch review found the Critical (a queued second release landing the first build
+silently) that lived between two correct tasks. Rule confirmed with numbers: cheapest tier for
+transcription, mid tier for integration and per-task review, the strongest model ONLY for the
+whole-branch pass — and never skip that pass to save tokens, it is where the expensive bug was.
+
