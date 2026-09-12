@@ -13,24 +13,25 @@ A fan-out is a spend the user cannot take back. Before launching one, price it a
 
 ## The check, before ANY multi-agent launch
 
-1. **Price it.** Agents times cost per agent. Measured: a web-research agent with 100 to 200 tool calls costs 250K to 360K tokens; a panel or judge call costs the context it carries plus output, so N calls over a D-token dossier cost about N times D. Forty researchers plus nineteen panel calls over a 113K-token dossier came to 12.7M tokens.
-2. **Ask what would change the answer.** If the user's gut has already picked, the deliverable is the three to five facts that could reverse it, not a vote count. Nine advisors voting 7 to 1 for the option the user already favored added nothing the facts had not.
+1. **Price it.** Agents times cost per agent. Measured: a web-research agent with 100 to 200 tool calls costs 250K to 360K tokens; a panel or judge call costs the context it carries plus output, so N calls over a D-token dossier cost about N times D. Twenty-one research and skeptic agents plus nineteen panel calls over a 113K-token dossier came to about 12.2M tokens.
+2. **Ask what would change the answer, and ask the user too.** If the user's gut has already picked, the deliverable is the three to five facts that could reverse it, not a vote count. Nine advisors voting 7 to 1 for the option the user already favored added nothing the facts had not. "What would change your mind?" is one line in the hold-up message and it scopes the whole job.
 3. **Price the cheap path.** One agent, or inline reads of the two or three primary sources, usually delivers the same facts at a twentieth of the cost. Say what it would miss.
 4. **If the big path is over 500K tokens, or over five times the cheap path: STOP.** Post the hold-up message and end the turn. Do not launch and explain afterward.
+5. **Under both thresholds: type the estimate in one line and proceed.** No question. A pause that fires on every three-agent job is a nag, and a nag gets ignored.
 
 ## The mid-spend check: if you can see the answer, stop
 
 The pause is not only at launch. At every phase boundary of a running fan-out (research done, round 1 done, verify done), before the next phase spends anything:
 
 1. **Write the predicted answer in three sentences, with the facts that carry it.** If you cannot, the next phase is earning its cost. Let it run.
-2. **If you can, ask: would the next phase change the verdict, or only add confidence to it?** Confidence is not worth millions of tokens. Kill the run, report the answer and the facts now, and offer the rest as an option with its price.
-3. **Structural rule: one phase per workflow.** Never chain research into deliberation into synthesis in a single script. Each phase is its own launch, and the check above runs between them where the user can see the predicted answer and say stop.
+2. **If you can, ask: would the next phase change the verdict, or only add confidence to it?** Confidence is not worth millions of tokens. Stop the background task (TaskStop in Claude Code), send the three-sentence answer with its facts, and one line: "the rest costs about X and would add Y; want it?" Then end the turn.
+3. **Structural rule: one phase per workflow.** Never chain research into deliberation into synthesis in a single script. Each phase is its own launch, and the check above runs between them where the user can see the predicted answer and say stop. Killing a run is the fallback for a script that was already chained; the structural rule is the primary.
 
 Measured: the verdict was fully visible after seven research dossiers, about 3.5M tokens in. The remaining 19 panel calls cost 6.4M tokens and returned the same answer with a vote count attached. A second chance came after round 1 (6 to 3); round 2 cost 3.2M and moved one vote.
 
 ## The deliverable is the Feynman version, not the report
 
-The answer the user reads IS the deliverable. A long report is an appendix on disk. Shape of the answer, in this order, under 400 words:
+The answer the user reads IS the deliverable. Do not commission a long synthesis at all; the raw material already on disk (dossiers, memos) is the appendix if anyone wants depth. A 6,000-word moderator report cost about 380K tokens to write and then had to be explained. Shape of the answer, in this order, under 400 words:
 
 1. The verdict in one sentence.
 2. Three to five facts that carry it, one idea per sentence, plain words, every term defined where it appears.
@@ -41,7 +42,7 @@ A number that is an estimate is written as an estimate ("one advisor put it near
 
 ## Agents write short too
 
-Output tokens are the expensive ones, and the agents' verbosity is invisible until the bill. Never put a word FLOOR in an agent prompt. Caps instead: a position memo is a vote, three reasons, one worst case, the flip conditions, 250 words; a rebuttal is the strongest opposing point and the answer to it, 150 words; a synthesis is the four-part shape above. Plain words in the agents too, so the synthesis is not translating jargon into jargon.
+Output tokens are the expensive ones, and the agents' verbosity is invisible until the bill. Never put a word FLOOR in an agent prompt. Caps instead: a research agent returns its claims as structured fields (claim, source, date, confidence) plus a summary of 300 words; a position memo is a vote, three reasons, one worst case, the flip conditions, 250 words; a rebuttal is the strongest opposing point and the answer to it, 150 words; a synthesis is the four-part shape above. Plain words in the agents too, so the synthesis is not translating jargon into jargon.
 
 Measured: prompts that demanded 800 to 1500 words per memo, 600 to 1200 per rebuttal, and 3,000 words minimum from the moderator produced about 30,000 words of deliberation nobody read, at 350K tokens per call.
 
@@ -83,7 +84,7 @@ Four lines, then stop:
 - Any prompt carrying over 50K tokens of context to more than five agents.
 - The word "exhaustive" or "comprehensive" in my own plan.
 - A skeptic pass on every claim rather than on the decision-driving ones.
-- The user has said "tokens", "money", or "sanity" in the last week.
+- The user has said "tokens", "money", or "sanity" in this session, or memory records that they did.
 - I am about to launch without having typed a token estimate.
 - A word floor ("800 to 1500 words") in any agent prompt.
 - A final answer over 400 words, or one the user has to ask me to explain.
@@ -91,6 +92,6 @@ Four lines, then stop:
 
 ## Real-world impact
 
-Origin, 2026-09-12: 59 agents, 12.7M tokens, six hours, for a two-option decision the user had already called. The verdict matched their gut; the top-ranked factor was partly a line the pipeline put in their mouth; the one condition the summary kept repeating was one they had already settled; the report was 6,000 words they had to ask to have explained. Their words: "you could have just stopped and advised me that I didn't need all of that." That sentence is this skill.
+Origin, 2026-09-12: 40 completed agents (21 more died at a usage limit and were re-run), about 12.2M tokens, six hours, for a two-option decision the user had already called. The verdict matched their gut; the top-ranked factor was partly a line the pipeline put in their mouth; the one condition the summary kept repeating was one they had already settled; the report was 6,000 words they had to ask to have explained. Their words: "you could have just stopped and advised me that I didn't need all of that." That sentence is this skill.
 
-Test record (same day, cheap single-shot agents): with the skill loaded and the originating request plus the exhaustive-mode reminder, the agent posted the hold-up message with a token estimate before launching; placed at the research-done boundary, it stopped the run and wrote the three-sentence verdict; asked for the final answer, it produced 251 words with the estimate marked as one advisor's and no "you said."
+Test record (same day, cheap single-shot agents): with the skill loaded and the originating request plus the exhaustive-mode reminder, the agent posted the hold-up message with a token estimate before launching; placed at the research-done boundary, it stopped the run and wrote the three-sentence verdict; asked for the final answer, it produced 251 words with the estimate marked as one advisor's and no "you said." Caveat on the control: the no-skill agent also offered to pause, because its prompt said the user was on a metered plan. The real baseline is the origin session, where no such cue existed and nothing paused. The skill's job is to be that cue in every session.
