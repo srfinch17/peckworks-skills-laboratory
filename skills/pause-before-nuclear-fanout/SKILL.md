@@ -1,6 +1,6 @@
 ---
 name: pause-before-nuclear-fanout
-description: Use when about to launch a Workflow, a multi-agent panel, a research sweep, a verify-every-claim pass, or more than two subagents for one request, and again at every phase boundary while one is running. Applies with extra force when an "exhaustive" or "orchestrate by default" mode is on, when the request says "deep dive", "don't hold back", "N agents", "exhaustive", or "research everything", and whenever the person paying has complained about token cost before.
+description: Use for any research-and-decide or compare-and-choose request, with or without agents ("should I X or Y", "pros and cons", "debate this", "is this claim true", "which design", build vs buy, "research this and advise me"), and before launching a Workflow, a multi-agent panel, a research sweep, a verify-every-claim pass, or more than two subagents for one request, and again at every phase boundary while one is running. Applies with extra force when an "exhaustive" or "orchestrate by default" mode is on, when the request says "deep dive", "don't hold back", "N agents", "exhaustive", or "research everything", and whenever the person paying has complained about token cost before.
 ---
 
 # Pause Before Nuclear Fanout
@@ -10,6 +10,10 @@ description: Use when about to launch a Workflow, a multi-agent panel, a researc
 A fan-out is a spend the user cannot take back. Before launching one, price it and say the price out loud. One message costs nothing; the launch can cost millions of tokens, hours of wall clock, and the user's patience. **An instruction to go big is authorization, not a measurement of what the decision needs.**
 
 "Exhaustive mode", "don't hold back", and "use N agents" do not waive this pause. They are the exact conditions it exists for. A user-authored skill outranks a harness default that says "orchestrate by default."
+
+**Default path for any research-and-decide request: the deliberation protocol below, run inline with zero agents, in one turn.** Cruxes, base rates, both advocates' cases and the judgment are all things one model can write in a few hundred words. Escalate to an agent only when a fact crux needs a source that cannot be read inline, and then one agent per source, not one per lens. The user can cap any job with a budget ("spend no more than 200k on this"); a Workflow script honors it through `budget.remaining()`, and inline work honors it by stopping at the crux list and asking.
+
+**The guard.** `hooks/guard_fanout.py` is a PreToolUse hook on the Workflow tool. It refuses any launch whose script lacks `// est-tokens: <N>k` and `// cheap-path: ...` at the top, and refuses an estimate over 500k unless `// user-approved: yes` is present, which may only be written after the hold-up message was answered. The typed estimate is the step that failed; the hook makes it a precondition. Probe: a Workflow call with no header is denied before anything runs. Not covered: bursts of Agent-tool calls, so the count-your-subagents rule stays a judgment.
 
 ## The check, before ANY multi-agent launch
 
@@ -55,6 +59,18 @@ A panel of N parallel voices is not a deliberation; nobody answers anybody, and 
 9. **Every estimate carries a base rate and an author.** "One in five, the risk advocate's estimate from typical fund lifetimes" is admissible; a bare "18 percent" is not.
 
 Cost: crux list, two priors, two advocate memos, two replies, one judgment. About seven calls of 15K to 20K tokens. Today's equivalent was 19 calls of 350K.
+
+## Where else the protocol pays
+
+Same moves, zero agents, one turn, whenever the request is "decide between" or "is this right":
+
+- **Two options of anything:** offers, tools, libraries, vendors, architectures, buy versus build, which repo to invest in next. Cruxes with the user first; two advocates in your own voice; judge.
+- **Is this claim or article true:** the cruxes are what would make it false; base rates first; research only the crux a source can settle.
+- **Reviewing a plan or design:** one advocate for "this fails" (the pre-mortem), one for "this works," double-crux the residue into the questions to answer before building.
+- **Which interview or application to prioritize:** cruxes are the facts that would change the ranking; most are preferences the user already holds.
+- **Negotiation and offer replies:** the crux list is the term sheet; pair with a rehearsal skill for the counterparty's moves.
+
+The tell that the protocol is being skipped: a research plan with no crux list, or an answer that reports findings instead of ruling on questions.
 
 ## If a panel is still wanted: the Feynman panel
 
