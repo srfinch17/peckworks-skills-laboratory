@@ -40,11 +40,20 @@ The answer the user reads IS the deliverable. Do not commission a long synthesis
 
 A number that is an estimate is written as an estimate ("one advisor put it near one in five"), never as a measurement. If a section of the long report cannot be said in one plain sentence, it is not a finding, it is noise.
 
-## Agents write short too
+## When a deliberation does run: the Feynman panel
 
-Output tokens are the expensive ones, and the agents' verbosity is invisible until the bill. Never put a word FLOOR in an agent prompt. Caps instead: a research agent returns its claims as structured fields (claim, source, date, confidence) plus a summary of 300 words; a position memo is a vote, three reasons, one worst case, the flip conditions, 250 words; a rebuttal is the strongest opposing point and the answer to it, 150 words; a synthesis is the four-part shape above. Plain words in the agents too, so the synthesis is not translating jargon into jargon.
+Cheap and sharp are the same design. A panel that restates the research is expensive because it is dull; a panel built to disagree is short because disagreement is specific.
 
-Measured: prompts that demanded 800 to 1500 words per memo, 600 to 1200 per rebuttal, and 3,000 words minimum from the moderator produced about 30,000 words of deliberation nobody read, at 350K tokens per call.
+1. **Lenses, not a headcount.** Three to five advisors, each chosen because that lens could flip the answer. No tiebreaker seats: the product is facts that flip, not a vote count. If two lenses would say the same thing, drop one.
+2. **Slice the dossier per lens.** Each advisor gets the claims and sources for its lens plus a one-page summary of the rest, never the whole dossier. A number in a slice carries the denominator it needs ("59 open reqs, 44 of them retail store staff"); a bare count gets over-read, and a test memo did exactly that. Nineteen calls over a 113K-token dossier is the pattern that cost 6.4M tokens; five calls over 15K slices is twenty times cheaper and each advisor reads what it can actually judge.
+3. **State the current lean and ask each advisor to attack it.** "The read so far is X. Through your lens: the strongest fact against X, the strongest fact for X, and what would flip you." Agreement is cheap. Disagreement is the deliverable. This is also where the adversarial pass lives, so no separate refute-every-claim stage.
+4. **Memo shape, 250 words, written for a reader working cold:** verdict in one sentence; the one fact the popular read is ignoring; worst case under each option, one sentence each; two or three flip conditions the user can check by asking someone. Every term defined where it appears, one idea per sentence, plain words, and an estimate labeled as an estimate with who made it.
+5. **No round 2 by default.** Step 3 already puts the other side's strongest argument in every memo. Run a rebuttal only for an advisor whose stated flip condition another advisor's fact satisfies, 150 words, only that advisor.
+6. **No moderator agent.** The orchestrator reads the memos itself (five memos is 1,250 words) and writes the 400-word answer. That keeps the judgment where the review gate is and removes the hop where an inference became a quote.
+7. **Verify only what the memos lean on.** Count the claims the memos actually cite, check those, and label the rest as unchecked.
+8. **Word caps, never floors, on every agent.** Research agents return claims as structured fields (claim, source, date, confidence) plus a 300-word summary. Output tokens are the expensive ones and an agent's verbosity is invisible until the bill.
+
+Measured: prompts that demanded 800 to 1500 words per memo, 600 to 1200 per rebuttal, and 3,000 words minimum from the moderator produced about 30,000 words of deliberation nobody read, at 350K tokens per call. The useful content was three arguments and nine flip-condition lists. The recipe above yields the same three arguments and the lists in about five calls of 20K each.
 
 ## Facts about the user travel with their source and scope, or not at all
 
