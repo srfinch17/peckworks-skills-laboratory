@@ -40,9 +40,25 @@ The answer the user reads IS the deliverable. Do not commission a long synthesis
 
 A number that is an estimate is written as an estimate ("one advisor put it near one in five"), never as a measurement. If a section of the long report cannot be said in one plain sentence, it is not a finding, it is noise.
 
-## When a deliberation does run: the Feynman panel
+## The deliberation protocol: cruxes, two advocates, one judge
 
-Cheap and sharp are the same design. A panel that restates the research is expensive because it is dull; a panel built to disagree is short because disagreement is specific.
+A panel of N parallel voices is not a deliberation; nobody answers anybody, and N agents reading one dossier produce one opinion N times. A deliberation is a small number of moves that each add information. The protocol, in order:
+
+1. **Cruxes before research.** Write the three to five questions whose answers decide it (a crux is a question where a different answer flips the verdict). Show the list to the user in one message: "these decide it; do you already know any?" Today one of five cruxes (remote policy) was already settled in the user's head; a 30-second check would have removed a fifth of the work. Mark each crux as a FACT (research can answer it) or a PREFERENCE (only the user can). Preference cruxes get asked, never researched; in a test, two of five cruxes were preferences. Research is scoped to the open fact cruxes only. Two hundred fifty claims were verified; about twenty touched a crux.
+2. **Priors before evidence.** Each advocate states its lean and confidence from the brief alone, before seeing the research. The size of the update after reading is information; an advocate that never moves is not reading.
+3. **Base rates first, specifics second.** For each crux, the general-practice answer from the model's own knowledge, labeled as such (private-equity hold periods, how cost centers fare in downturns, what first-engineer seats become). Specific research is spent only where a specific fact could move a crux off its base rate.
+4. **Two advocates, not a panel.** One argues A, one argues B, same slices, each must steelman the other side and name the crux it would concede on. Diversity of lens comes from a checklist inside each advocate's prompt (finance, career, risk, daily life), not from one agent per lens. Two calls replace eighteen.
+5. **Sequential, not parallel, for the reply.** A writes, B answers A, A answers B once. Three short calls in a chain carry more than nine in parallel, because each one responds to a specific claim.
+6. **Resolve disagreement by double-crux.** Where the advocates still differ, name the factual question that would settle it. Those questions, with who can answer them, are the deliverable's "what to ask" section. A disagreement without a checkable question is a taste difference; say so and stop arguing it.
+7. **The orchestrator judges.** No moderator agent. Read the advocates (about 800 words total), rule on each crux, write the 400-word answer. Frontier judgment stays at the review gate; cheap models do the advocacy.
+8. **Stop on information, not on rounds.** Stop when a move produces no new crux and no new fact, or when the predicted verdict is unchanged across the last two moves. Never schedule "round 2" in advance.
+9. **Every estimate carries a base rate and an author.** "One in five, the risk advocate's estimate from typical fund lifetimes" is admissible; a bare "18 percent" is not.
+
+Cost: crux list, two priors, two advocate memos, two replies, one judgment. About seven calls of 15K to 20K tokens. Today's equivalent was 19 calls of 350K.
+
+## If a panel is still wanted: the Feynman panel
+
+Use only when the user asks for a panel by name or the decision has more than two sides. Cheap and sharp are the same design. A panel that restates the research is expensive because it is dull; a panel built to disagree is short because disagreement is specific.
 
 1. **Lenses, not a headcount.** Three to five advisors, each chosen because that lens could flip the answer. No tiebreaker seats: the product is facts that flip, not a vote count. If two lenses would say the same thing, drop one.
 2. **Slice the dossier per lens.** Each advisor gets the claims and sources for its lens plus a one-page summary of the rest, never the whole dossier. A number in a slice carries the denominator it needs ("59 open reqs, 44 of them retail store staff"); a bare count gets over-read, and a test memo did exactly that. Nineteen calls over a 113K-token dossier is the pattern that cost 6.4M tokens; five calls over 15K slices is twenty times cheaper and each advisor reads what it can actually judge.
