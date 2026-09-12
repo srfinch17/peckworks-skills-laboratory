@@ -269,3 +269,40 @@ line of geometry was written, and every one refuted its hypothesis by measuremen
 owner's eye. The one BUILD of the arc came at the end of a marathon, on a picture that the next probe
 showed was incomplete, and it was harm. When N cheap refutations point at "the representation is wrong",
 the right next act is a spec and a review court in a fresh session, not a 150-line law at 2 a.m.
+
+## Field addition (2026-09-12): a dropped candidate is a change to report, and the trial list is an instrument
+
+Three rounds in one day landed on identical geometry. The owner marked the same tree sixteen times
+per round and said so in the plainest words available. Nothing was wrong with his marking. Two things
+were wrong on my side, both mechanical:
+
+- **I refuted my own candidates silently.** A screened-and-dropped candidate looks, from the owner's
+  chair, exactly like no work at all, and worse: like being shown the same thing on purpose. Rule: every
+  reply after a round of theirs OPENS with what changed since their last round, item by item, or with
+  "nothing changed, do not mark". A reply that buries "skip those buttons" in paragraph six has not said it.
+- **The trial list was stale.** Sixteen buttons all loading one baseline plus flags refuted weeks ago.
+  The list of things you offer for judgment IS part of the instrument: it shows the baselines and ONE
+  candidate pair, and anything refuted or judged is retired the same day. Add a guard on intake too: flag
+  any entry whose parameters equal an earlier entry's ("SAME GEOMETRY AS"), so the same mistake cannot pass
+  through the brief unnoticed. Guards, not reminders.
+
+Three more, from the same day:
+
+- **A refutation is only as good as its instrument.** A local bark depth cap had been "measured worthless"
+  twice on field-domain probes; a mesh-domain instrument calibrated on the owner's own strokes (his red at
+  1.5..2.4x the mean, his green at 0.7x) showed it removes the whole class in one run, and he judged the
+  result a clear improvement. Before accepting a recorded refutation, ask what
+  instrument produced it and whether that instrument can see what the human sees.
+- **The resolution-scaling test:** re-mesh at a finer cell and watch how a roughness number SCALES. True
+  curvature scales with the cell; mesher sawtooth does not. It settled "is the residual real or an artifact"
+  in one run.
+- **After N cheap refutations of the same representation, change the representation THAT DAY, with pixels
+  to the owner first.** The earlier note in this skill ("a spec and a court in a fresh session") was right
+  about the 2 a.m. law and wrong as a stopping rule: three cheap knob pairs (fatten the tube, land it at the
+  edge) each cost a round of his time and each failed the same way, because a round tube cannot be a
+  buttress. The blade (the root as a tall ellipse whose top edge rides one straight line from where it
+  leaves the trunk to its toe, the line measured on the one root he never marks) was built, tested, screened,
+  blind-gated and sent as pictures in one evening. Derive the new law from the example they never mark.
+- **The blind gate is a pre-filter you can trust.** Twice in one day a fresh judge, not told the intent,
+  named the same defect the owner then named in his own words (a bulge where the root meets the trunk).
+  A gate FAIL means the candidate is not shown, not shown "for their eye only".

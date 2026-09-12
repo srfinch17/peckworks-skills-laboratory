@@ -491,3 +491,24 @@ a judge that cannot find a known change is VOID, exactly like a lying rig. Also 
 blindfold: renders fed to judges must exclude app UI, or trial captions leak the
 experiment (found because the top pixel-differences in one gate pair all sat inside the
 note box).
+
+## Field addition (2026-09-12): the same-geometry guard, the four-button list, the opening line
+
+The atomic record captured, faithfully, three rounds of the human marking IDENTICAL geometry, because the
+list of buttons offered for judgment had sixteen entries loading one baseline and the AI had dropped its
+candidates without saying so. The record was fine; the loop around it had two holes. Three laws, all
+mechanical:
+
+1. **The intake brief flags repeats.** For every entry, compare its full parameter set with every earlier
+   entry in the brief and print "SAME GEOMETRY AS <entry>" when they match. Marks on a flagged entry are on
+   an unchanged artifact and are not scored as new. (bonsai: scripts/roundbrief.ts; it fired four times on
+   the batch in question.)
+2. **The judged list is the baselines plus ONE candidate pair.** Everything refuted, judged, or superseded
+   is retired from the visible list the same day; keep the entries for the record and for replay tooling.
+3. **The opening line.** Every reply after a judged round opens with what changed since the last round, by
+   item, or "nothing changed, do not mark". A dropped candidate is a change to report.
+
+And one about verdicts: a gate that a fresh, uninformed judge FAILS is not shown to the human "for their
+eye only". Twice in a day the fresh judge and the human named the same defect in their own words; the gate
+is trusted as a pre-filter, and the human's attention is the scarce resource the whole method exists to
+protect.
