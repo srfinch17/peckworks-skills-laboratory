@@ -512,3 +512,51 @@ And one about verdicts: a gate that a fresh, uninformed judge FAILS is not shown
 eye only". Twice in a day the fresh judge and the human named the same defect in their own words; the gate
 is trusted as a pre-filter, and the human's attention is the scarce resource the whole method exists to
 protect.
+
+
+## Field addition (2026-09-20): old marks are history; the comment, not the card; several tries are the point
+
+Artlab bird day, three corrections from the owner, each one sentence:
+
+- **A mark's authority expires with the candidate it was drawn on.** I built a round-1 plan on a
+  month-old red line from the log; he had no idea why. Rule: each round's spec is the owner's CURRENT
+  words plus marks drawn on THAT round's candidate. Mine the corpus once at most (see 2026-09-06 note),
+  then let fresh marks be the ledger.
+- **Read the comment, not the subject field.** A verdict on one element arrived on the card for a different
+  element (a comment about a slightly bumpy line on the first, logged under the second). The record's `subject` is where he clicked; the
+  words say what he judged. The digest should show comments in full, and the reader should expect
+  cross-card verdicts.
+- **"One edit and call it fixed" is the anti-pattern the whole capture system exists to replace.** The
+  owner's own position: proposing several tries per round is what the capture software is for. The
+  round that converged shipped four candidates one knob apart, pre-screened; the ones that thrashed
+  shipped one edit each with a claim attached. Round-economy instinct pushes toward the single edit;
+  the structural fix is the pair/N-candidate round format, already in this skill, applied without
+  exception.
+- **A circle means "look inside" and the verdict inside may be tiny** (two points where one was wanted; a barely
+  visible bumpiness). Zoom to the circle at 16x before deciding what the owner saw; both were
+  invisible at card size and real at zoom.
+
+## Field addition (2026-09-21): the state vocabulary, and the valve on the gate
+
+- **Three words for three states, in every report after a round:** BUILT (code exists, tests pass, the switch is
+  off), LOADED (a button on the owner's bench), REFUTED BEFORE CODE (a spec a review killed). A week of built-and-
+  parked candidates reported only as "nothing new to mark" reads to the owner as nothing having been built; the owner said as much.
+  List the switch id beside each built item so the owner can open it without you loading it.
+- **The gate filters what you put in front of the owner, not what they may open.** After two gate failures in a
+  row, name the switches. After a defect family's N-th refuted representation (here seven), stop building and put
+  the decision to the owner: the options, what each costs, what the record says about each.
+- **Judge integrity rules that held:** a judge not told to zoom misses changes of a thousand pixels and returns
+  "no difference" (void); told to zoom past 2x it reads mesh facets as serration; one judge per sitting; a defect
+  counts when two judges name it at the same camera; verdict tallies at 1..2mm differences are noise, named
+  defects that repeat are signal.
+
+- **The button list is part of the instrument, two rulings from the owner (2026-09-22):** only the evaluation being
+  conducted is on the bench (one constant names the bench and the ids; everything else stays hidden, baselines
+  included; a finished round comes down the minute its verdict is logged, before anything new loads), and a pair's
+  two buttons sit next to each other. He had re-judged stale buttons by accident and said so; a guard, not a reminder.
+- **A fix for a defect only your instrument saw is not a round.** Verified in one afternoon: the fix was correct,
+  the prediction held, and the owner could not tell what it was for and preferred the baseline. Step one of every
+  round is one of their marks; a probe finding is at most a question to put to them.
+- **Explain the mechanism in the trial text itself, in everyday pictures.** The rounds he judged fastest and most
+  precisely carried one image each (a weld bead between two pipes; a river keeping its name past a bridge). He asked
+  for that register everywhere, and asked that ids and seeds never be used as if he remembered them.

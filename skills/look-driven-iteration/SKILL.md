@@ -306,3 +306,130 @@ Three more, from the same day:
 - **The blind gate is a pre-filter you can trust.** Twice in one day a fresh judge, not told the intent,
   named the same defect the owner then named in his own words (a bulge where the root meets the trunk).
   A gate FAIL means the candidate is not shown, not shown "for their eye only".
+
+
+## Field addition (2026-09-20): when the ask is "make it look real", references and numbers come first
+
+Artlab bird feet: three rounds of taste guesses (hooked claws; tiny flat shapes; bold strokes) were all
+tossed. The owner pointed out that real finch feet are photographed everywhere and should be looked up. Two Commons
+photos, proportions read off as NUMBERS relative to a feature already in the art (forward toe = 1.0 x
+tarsus, hallux 0.6, claws 0.3 and gently curved, toes thin and flat, one toe reads from the side with
+a second just behind), and round 4 was chosen on sight. This is the "find the governing formula before
+tuning constants" rule above, applied to anatomy: when the target exists in nature, spend the cheap
+research pass FIRST, downscale the photos (`.playwright-mcp/ref_*_s.jpg`) so you can actually look at
+them, write the ratios down, and build to the ratios. Style guesses cost three rounds of his eye.
+
+Also confirmed today: the owner's standing instruction to look at the output after every edit is the
+cheap-render rule stated from the other side of the table; and a fix whose measured effect is zero (fillet on an obtuse kink, area
+delta 0) must not be shipped as a fix.
+
+## Field addition (2026-09-21): prototype before spec, the gate-hidden week, and a straightened frame reveals hidden seams
+
+Three more from one project week, each paid for:
+
+- **Prototype one instance before you write the spec, and spec before you convene a court.** Two design specs
+  went spec then court then refuted, at 130k and 470k tokens each; the second reintroduced a defect a probe had
+  measured the night before, because it reused an existing primitive and inherited that primitive's coordinate
+  frame without testing it. A one-instance prototype on the cheapest synthetic case (the bench column), measured
+  at export resolution and looked at, costs about a tenth of a court and would have shown the failure. Corollary:
+  before building on an existing primitive, list its frame, its gates and its constants and test each against the
+  last refutation. A reused primitive carries its old failure modes for free.
+- **The observation gate needs a release valve.** With "a gate-failed candidate is never shown" in force, a week
+  in which every candidate failed the judge left the owner asking whether anything had been built. Report state
+  in three words every time (built and parked, loaded, refuted before code, each with its switch); after two gate
+  failures in a row, name the switches so the owner can look with their own eyes without you loading a button;
+  and cap each defect family: after N refuted representations, stop building and put the decision to the owner
+  with the options and their measured costs.
+- **When a fix removes the mark and the judge names a new defect elsewhere, ask what the old geometry was
+  hiding.** Straightening a leaning trunk removed the owner's bulge and exposed a round-tube junction the lean had
+  been leaning away from for two months. One cause, two symptoms; the "new" defect was the older one.
+
+Judges at the millimetre, the working brief: diff map first, crops at 2x and never more (mesh facets read as
+teeth beyond that), facets present in both frames are never a defect, a judge reporting no difference where the
+pixel diff is large is void for that camera, and a defect is believed when two judges name it at the same camera.
+
+## Field addition (2026-09-22): the recipe, the stand-in, the tree they see, and the count that lied
+
+Six rounds in one day on one project; four things worth carrying to any look-judged work.
+
+- **The recipe that got an approval on the first try, in order:** their marks, with their own colour definitions for
+  that entry; the discriminator (render the state WITHOUT the feature at their exact camera: no defect there means
+  the feature is the cause, defect there means it is the base shape); a histogram of the feature's own contribution
+  at the mesh vertices INSIDE their window, keyed by the feature's own coordinates (not pixels: the bands they mark
+  were 5..9 levels of 255 and no threshold separated them from noise); one constraint in THEIR words; a numeric
+  prediction sealed before the run (a failed prediction kills a law in one run; three died that way in a morning);
+  a guard test on the field; one pair beside the judged button. The owner's verdict: "you got it on the first try,
+  remember how you got here."
+- **The step that cannot be skipped is the first one.** The same recipe, run on a defect only my probe could see
+  (two handed-over grooves measured dead; the fix one sentence, prediction exact, tests green), came back "the
+  first one looks better, I can't tell what the second one is trying to do." A clean measurement of an invisible
+  defect is still an invisible defect. Own observations are questions for the owner, never builds.
+- **A stand-in approval starts the real round.** Three laws approved on a practice column with one fake root produced
+  three new defect classes in the first hour on the real tree (a flat flare over long buried runs; roots surfacing
+  as islands ahead of their collar; knuckle roots too short to carry a groove). Each needed its own one-constraint
+  law; a fixed-millimetre floor failed where a proportional one held. Budget the screen on the real thing, not just
+  the port; and screen with the SAME instrument that worked on the stand-in.
+- **Probe the thing they see, and do not trust an invariant as a null.** My probes ran on the library's defaults; the
+  app the owner judges runs on his approved sliders; those were different trees, and half a day of numbers described
+  roots his tree does not have. The instrument's input is the logged parameter block of an entry he made. And the
+  rig's triangle count was identical with the change on and off, three runs in a row, while the geometry had
+  changed: a count is a liveness check, a checksum of positions is a change detector.
+- **Delegation that worked:** an exact spec (the reference implementation named, the hot-loop variables named, the
+  constants, the tests, the report format, "declare every deviation") to a cheaper model built the port first time.
+  The expensive half was the screen afterwards, and that is the half that is not delegable.
+
+## Field addition (2026-09-24): offer the judging surface in the FIRST build; the no-server version
+
+A tool that stamps a rating badge onto photos was built to match a reference image within a few levels per
+channel, and verified by pixel diffs and my own screenshots. The owner's real questions (how big on the photo,
+which colours) were questions of taste on HIS photos. The owner had to ask for the loop, in effect: a way to
+judge how the overlay's size should be adjusted. Matching the reference was a milestone; it was never the
+acceptance test. When the deliverable is visual and the owner will tune it, offer the judging surface in the first
+build.
+
+The minimal version, when the owner wants no server (plain HTML and CSS, just open the file):
+
+- **A `-test` flag on the same CLI** that renders every variant into a folder and writes one static `index.html`
+  next to them. Opening it by double-click is the whole workflow; change flags, rerun, reload.
+- **The exact command that produced the page, printed at the top**, plus a settings table with colour swatches.
+  That is the "replayable parameters" half of grounded feedback, for free: whatever he likes, he can copy.
+- **Side-by-side axes that match his real decision:** each photo × each candidate size in one row, each state
+  on light, grey and dark backgrounds, and a strip at fixed small pixel sizes shown at actual size (where
+  legibility dies).
+- **Verify the page yourself before handing it over, but not via `file://`**: browser automation refuses it.
+  Serve the folder on `127.0.0.1` for the check and stop the server afterwards.
+
+Next rung when his marks start coming in: add the one-click comment box (append text + the page's command to a
+file), per "Set up the loop before iterating" above.
+
+## Field addition (2026-09-28): a slow render is a symptom (profile it by feature), and a hash guard makes speed work free of the eye loop
+
+The first rule above says "if a look takes minutes to see, fix that first". Two lessons from doing exactly
+that on a deterministic geometry generator whose preview took 18 seconds and whose export took a minute:
+
+- **Profile by feature on a LOGGED configuration before optimizing anything.** The assumed hot spot (a
+  1600-line per-point field function; an earlier review had even named the finite-difference gradient inside
+  it) was not the lever. One stage profile with per-feature switches showed the texture cost nothing
+  measurable, that turning the base bulges off cut evaluations threefold NOT because of their arithmetic but
+  because the mesher's safety margin had been widened for every segment by the sum of every feature, and that
+  the mesher's own hash-map bookkeeping was a fifth of the time. Time is a symptom like any other: measure it,
+  split it by feature, then build. The three changes that followed (a per-segment margin, an exact
+  lower-bound cull, typed rolling storage in the mesher) took the preview from 18.4s to 4.5s and the export
+  from 62.7s to 15.9s.
+- **Guard speed work with output hashes of the real configurations, and it never touches the eye loop.** Before
+  the first edit, hash the final output for the owner's own logged settings (seven cases: the trees he judges,
+  a full-assembly case, an old-feature case). After each change, hash again; the lines must match exactly. A
+  match is a complete proof for a deterministic pipeline, cheaper than any judge, and it means the owner's
+  approved look is untouched by construction. When rewriting a driver, keep the old one as an oracle and add a
+  test that the two agree byte for byte. A triangle count is NOT this guard (a same count passed as "no change"
+  on 2026-09-22 while the geometry had moved): hash the positions and the indices.
+
+The pairing matters: the profile says where the time is, the hash says the fix changed nothing he can see.
+Without the second, every speed change would need a round of his eye; with it, none did.
+
+Same day, a process lesson for the plan above the loop: **a direction review with no mechanism is a wish.** A
+written review said "print first, product first"; three weeks and fifteen polish rounds later nothing had
+moved, because every session opened on the current family's next law and the owner's "go" was a go on that
+law. The rules that held in that project were all mechanical (an active-round list, a retired set, a
+same-geometry flag). When a review changes direction, give it a gate the same day: the status table carries the
+open phase, and every proposed round names the phase it serves.
