@@ -308,3 +308,28 @@ something else moved.
 ## Standard model.py shape
 
 Constants in mm at the top with plain-name comments → `build()` → `cq.exporters.export()` to both STL (printable mesh) and STEP (editable B-rep) → headless PNG preview via `shape.val().tessellate(0.2)` + matplotlib `Poly3DCollection` (Agg backend). Worked example: `peckworks-cadmesh/projects/keychain/model.py`.
+
+
+## Booleans that cannot fail silently (one tool at a time, assert what moved)
+
+Two silent failures worth designing against: a compound of OVERLAPPING cutters can cut 0.0 mm3
+(valid solid, clean export, no exception), and a union whose tool floats beside the base
+"succeeds" with a bigger volume, then falls apart in a slicer's split-to-objects. Both are caught
+by applying tools one at a time and asserting per tool: a cut must remove more than the kernel's
+volume jitter (about 0.05 mm3 across processes), a union must add material AND leave exactly one
+solid. Count solids over every object on the Workplane stack (`sum(len(o.Solids()) for o in
+wp.vals())`), never through `.val()`, which sees only the first. Patterns (rows at a pitch, polar
+copies, mirrors) should only MAKE tools; whether they fuse into one body or stay N deliberate
+solids is the model's decision. Measured 2026-09-28 on cadquery 2.8.0: the overlapping-cutters
+case did NOT always reproduce, which is exactly why the assert stays.
+
+## Text that prints (stroke width from the glyphs, not from the font size)
+
+`Workplane.text()` at a given cap height draws strokes of roughly 0.075 x height with the default
+regular face (0.30 mm at 4 mm, 0.66 mm at 8 mm) and about 0.12 x height bold. A raised stroke
+under two nozzle widths drops out of an FDM slice; an engraved channel under one nozzle width is
+filled by the slicer. So measure before fusing: tessellate the text solid, cast inward rays from
+its side faces (not the top: that measures thickness), and take the 10th percentile rather than
+the minimum (acute corners such as the crossing of an X read near zero). Measure per glyph, or a
+kerning gap between two letters is mistaken for a stroke (0.15 mm between "0" and "."). Rule of
+thumb at a 0.4 nozzle: raised text 10 mm tall or bold at 8; engraved text 6 mm tall.
