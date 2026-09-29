@@ -688,3 +688,28 @@ the per-swap MutationObserver that asked the real question ("was a spinner shown
 landing") found 0. An instrument can also be wrong by counting the truth as a failure — write
 the question the check answers, then check the check answers it.
 
+
+## Field case 2026-09-28: the launcher rewrote the request, and the success was measured one step short
+
+Building Windows screensavers, three plausible results were each wrong about a different thing:
+
+- **The harness changed the input.** `Start-Process saver.scr /c` should open the settings dialog.
+  It "hung" instead. A stack dump (`dotnet-stack report -p <pid>`) showed the process in its
+  full-screen mode: the `.scr` shell association silently replaces the arguments with `/S`. The
+  product was fine; the launcher lied. Rule: when a test result is surprising, **check that the
+  thing under test received the input you think you sent**, and look inside the live process
+  before theorizing about the code. (Launch with `UseShellExecute = false`.)
+- **The harness changed the environment.** A manual full-screen launch from a background shell
+  showed the taskbar on top. Real launches never do: Windows runs them on a separate desktop and
+  grants focus. Reproducing through the real entry point (asking Windows to start the
+  screensaver) settled it. A test launch path is itself an ingredient; isolate it.
+- **"Done" was measured on the artifact, not on what the user sees.** After an install, the file
+  was in `System32` with a matching hash, so the report said "it's in your Screen Saver Settings
+  list". The user saw no such entry: the dialog had been open since an earlier install and builds
+  its list only when it opens. Asking Windows to open it again just re-focused the stale copy.
+  The guard that followed: the installer closes any open copy, opens a fresh one, **reads the
+  dropdown** (Win32 `CB_GETLBTEXT`, since UI Automation could not see it) and prints whether the
+  new entry is listed. Proven both ways: the old dialog's process was replaced, and a bogus name
+  produced FAIL with a nonzero exit.
+
+Same shape as "an attribute is not a state" above: the check stopped one hop before the consumer.
