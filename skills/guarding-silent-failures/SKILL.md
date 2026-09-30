@@ -713,3 +713,7 @@ Building Windows screensavers, three plausible results were each wrong about a d
   produced FAIL with a nonzero exit.
 
 Same shape as "an attribute is not a state" above: the check stopped one hop before the consumer.
+
+## Field case 2026-09-29: a checker that read its patterns from the documents it checked
+
+A drift checker let a map group files with a glob. Any `{...}` span was treated as a wildcard, so a route placeholder such as `{token}` in a map compiled to `.*` and matched every file name: "no unlisted files" printed clean in 32 of 80 folders, including every folder that changed most. Found only when an adversarial reviewer was told to make the tool report clean on a wrong map. Fix: accept only backticked globs that carry a file extension, refuse any pattern that also matches a random probe name, and ship `--selftest`, which plants every failure class in a scratch repository and fails if any check stays silent. Sibling the same day, the opposite failure: a PreToolUse guard that matched the raw command text blocked a legitimate edit because a heredoc body only mentioned the guarded command. Strip heredoc bodies and quoted strings before matching, and test both a real invocation (blocked) and a mention (allowed).

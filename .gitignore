@@ -29,3 +29,6 @@ MASTERED.md
 # python bytecode
 __pycache__/
 *.pyc
+
+# Local backup copies (a stale SKILL.md.bak sat untracked for a month)
+*.bak
