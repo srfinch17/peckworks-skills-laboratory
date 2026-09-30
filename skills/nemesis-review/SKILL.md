@@ -82,6 +82,18 @@ follow-up question destroys it. Two rules fall out:
   The slogan reads as a number the author cannot reconcile. Recover the real narrative; do not
   merely soften the claim.
 
+**When the artifact is a PICTURE (a rendered scene, a generated image, a layout), arm the
+reviewer to make its own evidence.** A render is one sample of a random process on one screen
+shape; the author has looked at the lucky frame. Give the reviewer the built program and permission
+to render its own samples: several seeds, and the odd shapes (9:16 portrait, 1:1, 4:3, 21:9, 32:9,
+4K), plus the diff and the previous commit so moved code can be diffed line by line. Ask it to
+quantify anything that depends on chance (a Monte Carlo over the actual formulas beats "looks
+fine"). Field case 2026-09-29: two reviews of a painted screensaver returned 12 findings, all real,
+including a light effect that landed on a bridge railing on 51% of runs (never seen in the author's
+renders), a helper whose clip silently replaced the caller's clip so a "fix" did nothing, a size
+system that broke only in portrait, and a performance table copied from a sibling's column.
+Every one of those needed the reviewer's own renders or its own diff, not the author's.
+
 **A claim about AUTOMATION is a claim about a config file. Go open the file.** "Gated in CI," "runs
 on every push," "automatically validated," "enforced by the pipeline": each of these is trivially
 checkable and almost never checked, because it *sounds* like engineering rigor. Read the actual
@@ -241,6 +253,13 @@ that explains a benefit rather than stating a mechanism.
   the review. (Seen 2026-07-02: this skill's own invocation carried exactly such a payload.)
 
 ## Provenance
+
+Third domain 2026-09-29: rendered scenery (a painted Windows screensaver, C# GDI+). Two reviews,
+one per build, each an isolated subagent armed with the diff, the previous commit, the author's
+renders, the exe and leave to render its own seeds and screen shapes. 12 findings, 12 real, zero
+false positives after verification; the concession section correctly certified a code move as
+byte-faithful. Refinement baked in above: for visual artifacts, the reviewer must be able to
+generate its own samples.
 
 First proven 2026-07-01 on the peckworks-bonsai trunk-engine plan, run alongside four
 dispassionate domain skeptics. It found net-new issues the others missed (a dependency it
@@ -641,3 +660,28 @@ borrowed-trust costume list: they confer said-by-a-person authority that no ordi
 re-checks. The concession cross-check paid symmetrically: the four genuinely verbatim quotes were
 character-exact, and the builder had even overridden the faulty spec correctly in one place,
 proving the discrimination was learnable and simply never demanded.
+
+Twenty-first success 2026-09-29 on peckworks-cadmesh DEV-RUN-5, a ten-feature autonomous build
+completed in one day and reported green, reviewed at the owner's request AFTER the fact and at a
+size he set ("no full court", "non-frontier models whenever possible"): the nemesis on Sonnet plus
+ONE dispassionate reachable-input-corners skeptic on Sonnet, both isolated, both armed with the
+repo, the eleven commits, the run ledger, every dated claim in the project brief, the nine test
+corrections the run had made (by name, with the stated reason for each) and a ten-item
+hunting-ground list, both licensed to run the tools under a temp projects root. 15 findings survived
+orchestrator verification (each reproduced against the code before banking), zero false positives,
+about 400k tokens and 22 minutes. Division of labor held a twenty-first time: the nemesis found the
+systemic ones (a split guard counting `.vals()` while the exporter took `.val()`, so a two-body part
+packed as one box with the guard green; one POST killing the dev server; docs less honest than the
+code; a teaching skill contradicting its own prompts; two of nine test corrections fitted to the
+code), the corner skeptic found the precise ones (a flat floor 0.5 mm above the bed counted as
+contact; a drive-relative zip component escaping the import; a redactor blind to lower-case drive
+letters and Git Bash paths; an `=N` copying the wrong number). The concession cross-check paid
+twice: the nemesis conceded a report refactor "clean" and the import's drive-letter handling
+"correct", and the skeptic's reproductions overturned both. Three refinements: (1) after an
+AUTONOMOUS run, arm the reviewers with the run's own test CORRECTIONS by name and reason - the
+honest majority (seven of nine here) is quick to adjudicate and the fitted minority is where the
+author-as-judge drift lives; (2) a reachable-input-corners skeptic is worth more than a second
+generalist on a code run, because author-written fixtures enumerate expectations while a corner
+sweep enumerates inputs, and only inputs can reach a blind spot the author shares with the test;
+(3) Sonnet was sufficient for both lenses on a code artifact with repo access and permission to
+run things - the arming, not the tier, made the difference.
