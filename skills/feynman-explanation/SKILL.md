@@ -1,6 +1,14 @@
 ---
 name: feynman-explanation
-description: Use when explaining code, syntax, an unfamiliar tool, concept, process, or any area the user is newer to, and whenever the user signals overwhelm ("feynman", "lost", "too much", "slow down", "ELI5", "in plain English", "you lost me"). Also use before dumping a dense multi-point plan, a jargon-heavy synthesis, or a wall of technical text on someone who is loaded up or working cold, and any time you are about to introduce a symbol (=>, ===, async, generics), an acronym (TDD, MRR, CI), or a specialized term for the first time. Reach for it proactively, not only when asked: the failure it prevents (jargon density and length that quietly make a learner disengage) is silent, so do not wait to be told you lost them.
+description: >-
+  Use when explaining code, syntax, an unfamiliar tool, concept, process, or any area the user is
+  newer to, and whenever the user signals overwhelm ("feynman", "lost", "too much", "slow down",
+  "ELI5", "in plain English", "you lost me"). Also use before dumping a dense multi-point plan, a
+  jargon-heavy synthesis, or a wall of technical text on someone who is loaded up or working cold,
+  and any time you are about to introduce a symbol (=>, ===, async, generics), an acronym (TDD, MRR,
+  CI), or a specialized term for the first time. Reach for it proactively, not only when asked: the
+  failure it prevents (jargon density and length that quietly make a learner disengage) is silent,
+  so do not wait to be told you lost them.
 ---
 
 # Feynman Explanation

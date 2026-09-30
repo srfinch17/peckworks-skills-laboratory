@@ -1,6 +1,10 @@
 ---
 name: cadquery-modeling
-description: Write and debug CadQuery/OpenCASCADE parametric CAD models in Python. Use when creating CAD geometry for 3D printing (peckworks-cadmesh model.py files or similar), when fillet() or chamfer() throws StdFail_NotDone / "BRep_API: command not done", or when a boolean-heavy solid refuses edge operations.
+description: >-
+  Use when writing or debugging CadQuery/OpenCASCADE parametric CAD models in Python: creating CAD
+  geometry for 3D printing (peckworks-cadmesh model.py files or similar), when fillet() or chamfer()
+  throws StdFail_NotDone / "BRep_API: command not done", or when a boolean-heavy solid refuses edge
+  operations.
 ---
 
 # CadQuery modeling

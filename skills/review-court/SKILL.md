@@ -1,6 +1,15 @@
 ---
 name: review-court
-description: Use to convene the adversarial-review panel before an expensive or irreversible commitment whose fate a reviewer can judge — correctness, safety, reversibility, spec-fidelity — and whose direction is already approved. The DEFAULT is lean: nemesis + ONE reviewer chosen at run time (paladin for outcome/footgun/under-sell/irreversible-public risk; a domain skeptic for pure correctness), single pass, ~150-350k. The FULL COURT (up to 4 reviewers; a second re-derive only for a disputed, decision-changing blocker) is reserved for a high-blast-radius irreversible technical gate. Triggers: "convene the court", "review court", "review this", "red team this". Do NOT convene on taste/look-driven work not yet signed off — cheap render first. The siblings run INDEPENDENTLY; there is no mandatory pairing — pick by the risk.
+description: >-
+  Use to convene the adversarial-review panel before an expensive or irreversible commitment whose
+  fate a reviewer can judge — correctness, safety, reversibility, spec-fidelity — and whose
+  direction is already approved. The DEFAULT is lean: nemesis + ONE reviewer chosen at run time
+  (paladin for outcome/footgun/under-sell/irreversible-public risk; a domain skeptic for pure
+  correctness), single pass, ~150-350k. The FULL COURT (up to 4 reviewers; a second re-derive only
+  for a disputed, decision-changing blocker) is reserved for a high-blast-radius irreversible
+  technical gate. Triggers: "convene the court", "review court", "review this", "red team this". Do
+  NOT convene on taste/look-driven work not yet signed off — cheap render first. The siblings run
+  INDEPENDENTLY; there is no mandatory pairing — pick by the risk.
 ---
 
 # Review Court

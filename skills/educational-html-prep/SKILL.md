@@ -1,15 +1,13 @@
 ---
 name: educational-html-prep
 description: >-
-  Build or upgrade Feynman-style HTML study/teaching pages for the maintainer's job-search & AI-native
-  learning workspace, matching the dark "mission-control" dashboard identity. Use this WHENEVER
-  the maintainer asks to "flesh out / punch up / make a learning page", turn dense notes or a markdown
-  study pack into real teaching material, add diagrams/charts/icons to a study or reference page,
-  make a guide "top notch" or "ace-interviews" ready, build interview-prep or onboarding HTML, or
-  create a themed standalone HTML page in this workspace. Also use it when adding inline SVG
-  diagrams to explain a concept, or when he says "do the same to the rest of the library". Covers
-  the teaching method (plain-English → analogy → diagram → defend-it Q&A), the THEME tokens, the
-  reusable CSS kit, inline-SVG diagram patterns, and the dashboard-registration workflow.
+  Use when the maintainer asks to build or upgrade a Feynman-style HTML study or teaching page in
+  the job-search / AI-native learning workspace: "flesh out / punch up / make a learning page",
+  turning dense notes or a markdown study pack into real teaching material, adding diagrams, charts,
+  icons, or inline SVG to a study or reference page, making a guide "top notch" or "ace-interviews"
+  ready, building interview-prep or onboarding HTML, creating a themed standalone HTML page that
+  must match the dark "mission-control" dashboard identity, or "do the same to the rest of the
+  library".
 ---
 
 # Educational HTML Prep

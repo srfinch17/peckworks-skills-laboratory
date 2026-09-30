@@ -1,6 +1,10 @@
 ---
 name: versioning
-description: Establish or maintain version certainty in a repo; one canonical VERSION stamped into every independently-deployed artifact, each made self-reporting, with a drift check. Use when setting up versioning in a new project, when asked "are we current / what's deployed?", when adding a version field/endpoint, or when build/deploy artifacts can silently drift out of sync.
+description: >-
+  Use when setting up versioning in a new project, when asked "are we current / what's deployed?",
+  when adding a version field, endpoint, or stamp to an artifact, when a repo has several
+  independently-deployed artifacts (firmware, server, UI, CLI) that can silently drift out of sync,
+  or when a version bump did not show up in what is actually running.
 ---
 
 # Versioning: know what's actually deployed

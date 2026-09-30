@@ -12,11 +12,12 @@ ships on vibes: a skill exists because an agent was first observed failing witho
 ```bash
 git clone <this-repo>
 cd peckworks-skills-laboratory
-bash install.sh        # symlinks every skills/* into ~/.claude/skills (idempotent)
+bash install.sh        # links every skills/* into ~/.claude/skills (idempotent)
 ```
 
 Skills load at session start, so open a new Claude Code session to pick them up. Because
-they are symlinks, editing a skill in the repo updates the installed copy: one source of
+they are symlinks (directory junctions on Windows without Developer Mode; same effect),
+editing a skill in the repo updates the installed copy: one source of
 truth, no drift. The skills are also portable to any runtime that reads the
 [agentskills.io](https://agentskills.io) `SKILL.md` format: copying a skill folder into
 that runtime's skills directory is enough.
@@ -100,7 +101,7 @@ peckworks-skills-laboratory/
   README.md
   CONTRIBUTING.md          # conventions + the TDD-for-skills workflow + the win-logging rule
   LICENSE                  # MIT
-  install.sh               # idempotent: symlinks every skills/* into ~/.claude/skills
+  install.sh               # idempotent: links every skills/* into ~/.claude/skills
   skills/
     <skill-name>/
       SKILL.md             # required

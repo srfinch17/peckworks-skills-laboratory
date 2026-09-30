@@ -1,6 +1,10 @@
 ---
 name: emoting-on-8x8
-description: Design legible expressions and custom animations for the ESP32-S3 8x8 LED matrix (Claude's expression channel, matrix_express / matrix_animate / the CANNED library in mcp_server/expressions.ts). Use whenever creating, redesigning, or debugging a glyph or animation that has to read on the physical 64-pixel panel, including when an expression "doesn't read," looks like one flat color, flickers, or freezes the board.
+description: >-
+  Use when creating, redesigning, or debugging an expression, glyph, or custom animation for the
+  ESP32-S3 8x8 LED matrix (Claude's expression channel: matrix_express / matrix_animate / the CANNED
+  library in mcp_server/expressions.ts), including when an expression "doesn't read," looks like one
+  flat color, flickers, or freezes the board.
 ---
 
 # Emoting on the 8×8 panel

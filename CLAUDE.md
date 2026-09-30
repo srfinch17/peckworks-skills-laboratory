@@ -28,7 +28,7 @@ Each skill is a self-contained `SKILL.md` (plus supporting files) in a flat `ski
 skills/<skill-name>/SKILL.md   # one skill per folder; required frontmatter: name, description
 _template/SKILL.md             # copy to start a new skill
 docs/specs/                    # design specs (YYYY-MM-DD-<topic>-design.md)
-install.sh                     # idempotent: symlinks every skills/* into ~/.claude/skills
+install.sh                     # idempotent: links every skills/* into ~/.claude/skills
 README.md · CONTRIBUTING.md    # what a skill is · the test-first workflow + conventions
 ```
 
@@ -39,7 +39,10 @@ README.md · CONTRIBUTING.md    # what a skill is · the test-first workflow + c
   REFACTOR. Full process in `CONTRIBUTING.md`. This applies to edits too, not just new skills.
 - **Frontmatter rules:** `name` (letters/numbers/hyphens only); `description` third-person,
   starts with "Use when...", describes ONLY triggering conditions; never summarize the
-  workflow (agents follow the summary and skip the skill body if you do).
+  workflow (agents follow the summary and skip the skill body if you do). **Write the
+  description as a folded block (`description: >-`).** A plain one-line value that contains a
+  colon-space is invalid YAML; the loader silently drops it and the skill never triggers (four
+  skills sat that way for weeks until 2026-09-30). `python tools/check_frontmatter.py` catches it.
 - **Match the form to the failure:** prohibitions + rationalization tables for discipline
   failures; positive recipes/contracts for wrong-shaped output.
 - One excellent example beats five mediocre ones. Separate files only for heavy reference or
@@ -62,8 +65,12 @@ README.md · CONTRIBUTING.md    # what a skill is · the test-first workflow + c
 
 The `skills/` folder is the *workshop*, not a discovery path. Claude Code loads skills from
 `~/.claude/skills/`, so each skill is **symlinked** there (edit in the repo → the installed
-copy updates; one source of truth). Run `bash install.sh` to (re)create the symlinks: it is
+copy updates; one source of truth). Run `bash install.sh` to (re)create the links: it is
 idempotent, auto-discovers every `skills/*/SKILL.md`, and won't clobber a real non-symlink.
+On Windows without Developer Mode it falls back to directory junctions (no privilege needed;
+added 2026-09-30 after a machine turned out to have ZERO lab skills installed because `ln -s`
+failed). Per-machine bring-up is driven from the Dropbox global memory
+(`ClaudeGlobalMem/technical/skills_manifest.md` + `install-skills.sh`), which calls this script.
 
 **Per-machine, and not synced by Dropbox:** `~/.claude/` lives outside Dropbox, so the install
 symlinks (and any hook wiring in `~/.claude/settings.json`) must be reconstituted on each

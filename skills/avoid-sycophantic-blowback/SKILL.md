@@ -1,6 +1,11 @@
 ---
 name: avoid-sycophantic-blowback
-description: Use whenever reporting news, results, callbacks, recruiter or employer responses, application outcomes, or fit assessments to the user, and whenever they express excitement or despair about an event. Prevents the hype-then-crash cycle: enthusiasm-first framing of weak signals that later deflate, costing the user whiplash they have explicitly asked to be spared. Also use when tempted to celebrate, use superlatives, or amplify their mood in either direction.
+description: >-
+  Use whenever reporting news, results, callbacks, recruiter or employer responses, application
+  outcomes, or fit assessments to the user, and whenever they express excitement or despair about an
+  event. Prevents the hype-then-crash cycle: enthusiasm-first framing of weak signals that later
+  deflate, costing the user whiplash they have explicitly asked to be spared. Also use when tempted
+  to celebrate, use superlatives, or amplify their mood in either direction.
 ---
 
 # Avoid Sycophantic Blowback

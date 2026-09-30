@@ -13,9 +13,14 @@
 #
 # Usage:   bash install.sh
 #
-# On Windows (Git Bash), creating real symlinks needs Developer Mode or an elevated shell;
-# MSYS=winsymlinks:nativestrict below forces a real symlink and fails loudly otherwise.
-# On macOS/Linux that env var is simply ignored and ln -s works natively.
+# On Windows (Git Bash), creating a real symlink needs Developer Mode or an elevated shell;
+# MSYS=winsymlinks:nativestrict below forces a real symlink attempt and makes ln fail loudly
+# instead of silently copying. When that fails, make_link falls back to a DIRECTORY JUNCTION
+# (mklink /J), which needs no privilege at all. Git Bash reports a junction as a symlink
+# (test -L and readlink both work), so the rest of this script cannot tell the two apart, and
+# Claude Code follows either. Learned 2026-09-30: a machine with Developer Mode off had ZERO
+# lab skills installed and nobody noticed until a skill failed to trigger.
+# On macOS/Linux the env var is ignored and ln -s works natively.
 
 set -euo pipefail
 
@@ -26,6 +31,27 @@ SKILLS_DEST="$HOME/.claude/skills"
 export MSYS=winsymlinks:nativestrict
 
 mkdir -p "$SKILLS_DEST"
+
+# make_link TARGET LINK: a real symlink where the OS allows one, else (Windows) a junction.
+make_link() {
+  local target="$1" link="$2"
+  if ln -s "$target" "$link" 2>/dev/null; then
+    return 0
+  fi
+  if command -v cygpath >/dev/null 2>&1; then
+    local wt wl
+    wt="$(cygpath -w "$target")"
+    wl="$(cygpath -w "$link")"
+    # Separate arguments, not one quoted string: Git Bash backslash-escapes embedded quotes
+    # on the Windows command line and cmd.exe cannot read that. MSYS_NO_PATHCONV keeps /c
+    # and /J from being rewritten as paths.
+    if MSYS_NO_PATHCONV=1 cmd /c mklink /J "$wl" "$wt" >/dev/null 2>&1; then
+      return 0
+    fi
+  fi
+  echo "  FAILED   $(basename "$link"): could not create a symlink or a junction" >&2
+  return 1
+}
 
 echo "Installing skills from: $SKILLS_SRC"
 echo "                   into: $SKILLS_DEST"
@@ -51,7 +77,7 @@ for skill_path in "$SKILLS_SRC"/*/; do
     fi
     # Wrong symlink target; repoint it.
     rm "$link"
-    ln -s "$target" "$link"
+    make_link "$target" "$link"
     echo "  repoint  $name (was -> $current)"
     fixed=$((fixed+1))
     continue
@@ -68,7 +94,7 @@ for skill_path in "$SKILLS_SRC"/*/; do
     continue
   fi
 
-  ln -s "$target" "$link"
+  make_link "$target" "$link"
   echo "  link     $name"
   linked=$((linked+1))
 done

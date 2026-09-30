@@ -69,7 +69,11 @@ questions.
 
 - **One skill per folder** under `skills/`, named in active voice (`creating-x`, not `x-creation`).
 - **`SKILL.md` frontmatter:** `name` (hyphens only) and `description` (third person,
-  "Use when…", triggers/symptoms only; no workflow summary). Max 1024 chars.
+  "Use when…", triggers/symptoms only; no workflow summary). Max 1024 chars. Write it as a
+  folded block (`description: >-` + indented lines): a plain one-line value containing a
+  colon-space is invalid YAML, and the loader silently drops it, so the skill never triggers
+  (four skills sat that way for weeks; found 2026-09-30). `python tools/check_frontmatter.py`
+  fails on that and on a description that does not start with "Use". Run it before committing.
 - **Keep it scannable:** overview with the core principle, a quick-reference table, a
   common-mistakes section. Use a small flowchart only for non-obvious decision points.
 - **One excellent example** beats five mediocre ones in different languages.
