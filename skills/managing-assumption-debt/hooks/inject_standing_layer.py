@@ -21,6 +21,7 @@ import datetime
 import glob
 
 REMINDER_EVERY_DAYS = 7
+MAIN_LINE_CAP = int(os.environ.get("ASSUMPTION_DEBT_MAIN_CAP", "200"))
 
 EP_HEAD = re.compile(r"^###\s*EP-(\d+)\b", re.M)
 DATE_LINE = re.compile(r"^- \*\*Date:\*\*(.*)$", re.M)
@@ -127,6 +128,10 @@ def main() -> None:
         except OSError:
             pass
     n_eps, next_id, warns, undated = audit(text, extra)
+    n_lines = text.count("\n") + 1
+    if n_lines > MAIN_LINE_CAP:
+        warns.append("the main logbook is %d lines, over its %d-line cap: move its oldest episodes (verbatim, newest "
+                     "first) to the <stem>_archive_<YYYY-MM>.md file for their month" % (n_lines, MAIN_LINE_CAP))
     gap = f" ({undated} early entries carry no date line.)" if undated else ""
 
     parts = [

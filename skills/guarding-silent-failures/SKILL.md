@@ -717,3 +717,29 @@ Same shape as "an attribute is not a state" above: the check stopped one hop bef
 ## Field case 2026-09-29: a checker that read its patterns from the documents it checked
 
 A drift checker let a map group files with a glob. Any `{...}` span was treated as a wildcard, so a route placeholder such as `{token}` in a map compiled to `.*` and matched every file name: "no unlisted files" printed clean in 32 of 80 folders, including every folder that changed most. Found only when an adversarial reviewer was told to make the tool report clean on a wrong map. Fix: accept only backticked globs that carry a file extension, refuse any pattern that also matches a random probe name, and ship `--selftest`, which plants every failure class in a scratch repository and fails if any check stays silent. Sibling the same day, the opposite failure: a PreToolUse guard that matched the raw command text blocked a legitimate edit because a heredoc body only mentioned the guarded command. Strip heredoc bodies and quoted strings before matching, and test both a real invocation (blocked) and a mention (allowed).
+
+## Field case 2026-09-30: four quiet failures in one afternoon of tool setup
+
+Setting up a database MCP server and reorganizing a memory store produced four failures that each looked like
+success, and one rule that covers two of them.
+
+- **A CLI that accepted flags and wrote half of them.** A config tool's `add` command took `--fields.name` and
+  `--fields.description`, printed "Added new entity", and wrote no fields at all; the same tool marked a real primary
+  key `primary-key: false`. Read the written file after every generator step. Better: generate the config from a
+  script that is the source of truth, and ship a `--check` that asserts its safety properties (negative-tested with
+  planted violations).
+- **A validator that exits 0 on the fatal case.** The config validator warned that every request would run as
+  anonymous, which meant the only role granted any permission would never apply and every read would be refused, and
+  it still exited 0. Treat `warn:` lines as failures in the smoke test; an exit code is a summary, not the finding.
+- **An index that outlived its target.** A repository README still listed a sample that the repository had deleted
+  (the folder returned 404), contradicting a blog that said it was gone. Check the thing, not the list of things.
+- **"Restarted" that did not reach the process.** Environment variables reach a process only at launch; the session
+  under test was a child of a terminal opened hours before the variable was set. Settle it by measuring (the stored
+  value, the process ancestry and start times), not by the claim.
+
+**Make before break** (two moves, one of each outcome): moving a hook's script before removing the setting that
+pointed at it made every subsequent shell command fail, including the one meant to remove the setting. Splitting a
+file that a hook parses went cleanly, because the hook was extended to read the new files FIRST and its output (episode
+count, next id) was compared before and after. Before moving, renaming or splitting anything, find everything that reads
+it; rewire the readers first; move second; compare their output.
+

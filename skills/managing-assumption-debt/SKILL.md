@@ -103,7 +103,7 @@ while the newest episode sat last, so every session-start read of the top missed
 The `inject_standing_layer.py` hook now publishes the next free id and warns on duplicates or
 broken ordering, because the collisions happened for want of a knowable next number.
 
-**When the logbook outgrows about 200 lines, split it; never truncate it.** Keep the standing layer and the newest episodes in the main file; move older episodes verbatim to sibling files named `<logbook stem>_archive_<YYYY-MM>.md` (newest first), and long reference sections (such as the working countermeasures) to their own sibling file with a pointer. The SessionStart hook reads every `<stem>_archive*.md` for the next free id and the duplicate check, so an archived id is never reused; verify after a split that the published episode count and next id are unchanged.
+**When the logbook outgrows about 200 lines, split it; never truncate it.** Keep the standing layer and the newest episodes in the main file; move older episodes verbatim to sibling files named `<logbook stem>_archive_<YYYY-MM>.md` (newest first), and long reference sections (such as the working countermeasures) to their own sibling file with a pointer. The SessionStart hook reads every `<stem>_archive*.md` for the next free id and the duplicate check, so an archived id is never reused; verify after a split that the published episode count and next id are unchanged. The hook also warns at session start when the main file passes its line cap (default 200, env `ASSUMPTION_DEBT_MAIN_CAP`).
 
 The durable fix is often **mechanical, not memory**: where a debt recurs, build a guard
 (a sanitizer at generation time, a structural rule like "the human writes the core logic,
