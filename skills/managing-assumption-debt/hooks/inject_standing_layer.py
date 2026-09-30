@@ -18,6 +18,7 @@ import re
 import sys
 import json
 import datetime
+import glob
 
 REMINDER_EVERY_DAYS = 7
 
@@ -48,7 +49,7 @@ def episode_date(block: str):
     return base[:8] + tail.zfill(2)     # YYYY-MM- + DD
 
 
-def audit(text: str):
+def audit(text: str, extra_ids=()):
     """Episode count, next free id, and any structural drift.
 
     The logbook once split into two independently-numbered append regions under a
@@ -57,6 +58,11 @@ def audit(text: str):
     Nothing was watching, so the drift read as fine. Publishing the next free id is
     what prevents a recurrence - the collisions happened because that number was not
     knowable at a glance from either end of an 900-line file.
+
+    extra_ids: episode ids from archive files (older episodes moved out to keep the main
+    logbook short). They count toward the next free id and the duplicate check, so an
+    archived id is never reused; ordering is still checked on the main file only, where
+    "newest at the top" is what a session reads.
     """
     heads = list(EP_HEAD.finditer(text))
     ids, dates = [], []
@@ -65,8 +71,9 @@ def audit(text: str):
         ids.append(int(h.group(1)))
         dates.append(episode_date(text[h.end():min(stop, h.end() + 600)]))
 
+    all_ids = ids + list(extra_ids)
     warns = []
-    dup = sorted({n for n in ids if ids.count(n) > 1})
+    dup = sorted({n for n in all_ids if all_ids.count(n) > 1})
     if dup:
         warns.append("duplicate ids " + ", ".join(f"EP-{n:03d}" for n in dup))
     dated = [(n, d) for n, d in zip(ids, dates) if d]
@@ -80,7 +87,7 @@ def audit(text: str):
     # Kept out of warns deliberately: a condition that fires every session forever is
     # how a guard trains you to ignore it.
     undated = sum(1 for d in dates if not d)
-    return len(ids), (max(ids) + 1 if ids else 1), warns, undated
+    return len(all_ids), (max(all_ids) + 1 if all_ids else 1), warns, undated
 
 
 def emit(context: str) -> None:
@@ -109,13 +116,24 @@ def main() -> None:
     if not m:
         return
 
-    n_eps, next_id, warns, undated = audit(text)
+    # Older episodes may live in sibling archive files: <logbook stem>_archive*.md
+    stem = os.path.splitext(path)[0]
+    archives = sorted(glob.glob(stem + "_archive*.md"))
+    extra = []
+    for a in archives:
+        try:
+            with open(a, encoding="utf-8") as f:
+                extra += [int(m.group(1)) for m in EP_HEAD.finditer(f.read())]
+        except OSError:
+            pass
+    n_eps, next_id, warns, undated = audit(text, extra)
     gap = f" ({undated} early entries carry no date line.)" if undated else ""
 
     parts = [
         "Assumption-debt standing layer (auto-loaded by hook; do not narrate this to the user):",
         m.group(1).strip(),
-        f"Full logbook + episodes on demand: {path}",
+        f"Full logbook + episodes on demand: {path}"
+        + (f" (older episodes: {', '.join(os.path.basename(a) for a in archives)})" if archives else ""),
         f"Logbook: {n_eps} episodes, newest first. A new episode takes id EP-{next_id:03d} and goes "
         "at the TOP of the Episodes section. Do not infer the next id by reading either end of the "
         "file; use the number given here." + gap,

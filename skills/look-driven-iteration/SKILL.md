@@ -433,3 +433,13 @@ moved, because every session opened on the current family's next law and the own
 law. The rules that held in that project were all mechanical (an active-round list, a retired set, a
 same-geometry flag). When a review changes direction, give it a gate the same day: the status table carries the
 open phase, and every proposed round names the phase it serves.
+
+## Field addition (2026-09-30): an animation's judging surface needs a speed dial
+
+One sample step-through animated figure for a teaching site, with a one-click "copy for Claude" feedback box, was
+approved on first look. The owner's very first request was a speed control, then more range, up to sixteen times normal:
+at high speed the whole flow plays in about two seconds and its SHAPE shows; stepping shows the detail. Ship the
+speed dial in the first build of any animated judging surface. Scale all three clocks from one number: the step timer
+in JS, SVG `animateMotion` durations, and CSS transitions (`calc(<time> / var(--sp))`), remembering the original values
+so repeated changes never compound. The feedback box delivered step, scenario and viewport width with the note,
+which is the grounded-feedback rule above working as designed.

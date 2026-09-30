@@ -685,3 +685,23 @@ generalist on a code run, because author-written fixtures enumerate expectations
 sweep enumerates inputs, and only inputs can reach a blind spot the author shares with the test;
 (3) Sonnet was sufficient for both lenses on a code artifact with repo access and permission to
 run things - the arming, not the tier, made the difference.
+
+Twenty-second success 2026-09-29: a multi-agent build of per-folder navigation maps and a nine-page teaching site for two ASP.NET Core MVC repos. A read-only accuracy skeptic checked about 55 claims and every code excerpt and found nothing wrong. The nemesis, armed with the reader's own C#/.NET/SQL Server expertise and repo access, found the blocker it sailed past: an access-scoping guarantee ("a customer-role user sees only their own records") inherited from a research brief, which the list query did not enforce, so the pages taught a probable live data-exposure bug as a feature. Attacking the SPEC explained why: the writers' fact ladder said "brief first, code only for what the brief lacks", which forbids re-checking any claim the brief already makes. A second nemesis ran the author's own drift checker and made it lie (a `{token}` route placeholder in a document compiled to a match-all glob, blinding one check in 32 of 80 folders) and found staleness markers written as HTML comments, which the loader strips before the model reads them. Home-turf errors (cookie `HttpOnly` framed as a cross-origin risk, a SQL Server local variable described as parameter-sniffed) were caught only by the lens armed with the reader's expertise. Eight isolated lenses, almost no overlap.
+
+Twenty-third success 2026-09-30: the same teaching site as the twenty-second, re-reviewed twice more: once after its
+fix pass, once after its diagrams were rebuilt as step-through animations and its prose rewritten. About 50 findings
+across the two rounds, zero false positives among the MAJORs after orchestrator verification. Four refinements:
+(1) **The re-review found a new BLOCKER inside the fix.** The corrected pages described customer scoping performed by
+role branches that can never execute, because a class-level authorization attribute excludes that role. **When a
+claim says code PROTECTS something, verify the protecting branch is reachable**; a guard that cannot run is not a
+guard, and a reader who knows the framework will trust the sentence anyway.
+(2) **The canonical facts file was itself too absolute** ("two places only"; the code had four), and a rule allowing
+superlatives "only if the facts file proves them" laundered it into six pages. Arm the nemesis against the canonical
+source as well as the pages: a single source of truth is also a single point of failure.
+(3) **In a picture, position and length are claims.** Every label and caption of an animated figure can be right while
+its drawn order or bar length asserts something false (a read drawn during rendering that runs after an outside call;
+bar lengths implying the opposite of a sibling page's inference). A layout gate that checks every animation state for
+overlap cannot see this; say so in the charter.
+(4) **A prose-only rewrite is not claim-safe.** A later plain-language pass that passed every gate had changed 10
+claims, 7 by dropping a hedge ("inferred", "not verified", "apparently"). Diff a rewrite against its archived version;
+the hedge class became a zero-token check, and a drift auditor reads for the rest.

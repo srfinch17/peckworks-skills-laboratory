@@ -19,8 +19,13 @@ def render(src):
     t = re.sub(r"<svg[^>]*data-steps=.*?</svg>", fig, t, flags=re.S)
     t = re.sub(r"<svg.*?</svg>", lambda m: "[icon]" if len(m.group(0)) < 600 else "[svg figure: " + " | ".join(l.strip() for l in re.findall(r"<text[^>]*>(.*?)</text>", m.group(0), flags=re.S) if l.strip())[:600] + "]", t, flags=re.S)
     t = t.replace('<span', ' <span').replace('</span>', '</span> ')
-    # code blocks
-    t = re.sub(r"<pre[^>]*>(.*?)</pre>", lambda m: "\n```\n" + html.unescape(re.sub(r"<[^>]+>", "", m.group(1))) + "\n```\n", t, flags=re.S)
+    # code blocks: park them until the end. Unescaping them here and then running the global tag
+    # strip below deleted every C# generic and HTML snippet inside code (Task&lt;T&gt; -> Task).
+    vault = []
+    def park(m):
+        vault.append(html.unescape(re.sub(r"<[^>]+>", "", m.group(1))))
+        return "\n\x00PRE%d\x00\n" % (len(vault) - 1)
+    t = re.sub(r"<pre[^>]*>(.*?)</pre>", park, t, flags=re.S)
     t = re.sub(r"<details[^>]*>", "\n[DETAILS, collapsed until clicked]\n", t); t = t.replace("</details>", "\n[/DETAILS]\n")
     t = re.sub(r"<summary[^>]*>", "\n[summary shown] ", t)
     t = re.sub(r"<h1[^>]*>", "\n\n# ", t); t = re.sub(r"<h2[^>]*>", "\n\n## ", t); t = re.sub(r"<h3[^>]*>", "\n\n### ", t); t = re.sub(r"<h4[^>]*>", "\n\n#### ", t)
@@ -31,6 +36,7 @@ def render(src):
     t = re.sub(r"<[^>]+>", "", t)
     t = html.unescape(t)
     t = re.sub(r"[ \t]+", " ", t); t = re.sub(r"\n[ \t]+", "\n", t); t = re.sub(r"\n{3,}", "\n\n", t)
+    t = re.sub(r"\x00PRE(\d+)\x00", lambda m: "```\n" + vault[int(m.group(1))].strip("\n") + "\n```", t)
     return t.strip() + "\n"
 if __name__ == "__main__":
     src, dst = sys.argv[1], sys.argv[2]

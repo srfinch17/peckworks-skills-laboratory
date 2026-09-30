@@ -47,4 +47,10 @@ assert len(warns) == 1 and "EP-006 dated 2026-08-10 sits above newer EP-007 date
 warns = h.audit(ep(3, "2026-08-21") + ep(3, "2026-08-20"))[2]
 assert any("duplicate ids EP-003" in w for w in warns), warns
 
+# Archive ids (older episodes moved to sibling files) count toward the next id and duplicates.
+n, next_id, warns, _ = h.audit(GOOD, extra_ids=[12, 9])
+assert (n, next_id) == (9, 13) and warns == [], (n, next_id, warns)
+warns = h.audit(GOOD, extra_ids=[3])[2]
+assert any("duplicate ids EP-003" in w for w in warns), warns   # an archived id reused in the main file
+
 print("all checks pass")

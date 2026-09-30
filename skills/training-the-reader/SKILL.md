@@ -84,6 +84,7 @@ shortened, never lengthened or removed.
 | An exemption marker for a banned form | Fix the exception to fit the gate instead (characters in a problem became "that player"); a pronoun survived three sweeps, each fixing only the spellings it searched for, and an exemption is where the next survivor hides |
 | A wrap-tolerant matcher that stops at a blockquote prefix | Join words with `\s+(?:>\s?)?`; a phrase straddling "the\n> interviewer" returned zero matches and looked absent |
 | The first sweep of a new check trusted | Positive-test the guard: 59 of the first 70 hits were the gate's own artifacts (headings read as prose, bold labels split from their definitions, thousands separators, defined numbers re-flagged) |
+| The text render hands readers code with the generics deleted: `<pre>` content was unescaped, then the global tag strip removed `<IActionResult>` as if it were a tag | Park `<pre>` blocks before stripping tags and restore them last (fixed in `scripts/render_page.py` 2026-09-29); spot-check one code block in a render before trusting a read of a C# page |
 
 ## When to Stop
 
@@ -92,6 +93,27 @@ executability: setup printed before launch, the condition on the bullet it modif
 located on the first command line, a count stated where a chip is charged. When a re-read returns
 "none, ship it" and its siblings return one or two judgment items, the reader-twin is exhausted.
 Stop dispatching; the next signal is the human's own stalls, which no twin can predict.
+
+## Field addition (2026-09-30): HTML pages, dropped hedges, and what a twin cannot know
+
+A ten-page HTML teaching site for a codebase ran through this loop: 409 sentences over 30 words went to 0, teach
+7 to 8, finish 6 to 7. What it added:
+
+- **HTML works through the render.** Gate the text render (`render_page.py`), normalize its numbered headings to the
+  gate's form, drop the one-line figure summaries, and freeze every `<svg>` byte for byte against the archived HTML. A
+  wrapper of about 100 lines did it; the gate itself was unchanged.
+- **A project config REPLACES list keys.** Build it in code from the defaults plus the project's extras. In a codebase
+  KB, a `file:line` citation is a number's origin; without that cue every line number read as unsourced.
+- **The gate passed while the rewrite changed 10 claims.** Seven were dropped hedges. Per this skill's own promotion
+  rule the class became a check: each hedge term's count in the rewrite must not fall below the original, with an
+  explicit flag to pass after a writer checks that the hedge moved rather than vanished. The other three needed a
+  drift auditor reading the before and after renders. Run one after every site-wide prose pass.
+- **Gate quirks shape the prose.** The sentence splitter did not split before a sentence opening with inline code, so
+  writers started sentences with filler to satisfy it and prefixed source citations with "Code:". Harmless, but it is
+  the gate writing the page; when a quirk is worked around twice, fix the splitter.
+- **A twin knows how the reader reads, not what the reader must do.** The final read's top fix was "add a day-one
+  block: what to ask first". Built without asking, it was wrong: the reader already had assigned work. Act on a twin's
+  findings about the text; turn its claims about the reader's needs into one question to the human.
 
 ## Provenance
 
