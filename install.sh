@@ -32,6 +32,17 @@ export MSYS=winsymlinks:nativestrict
 
 mkdir -p "$SKILLS_DEST"
 
+# same_path A B: on Windows (cygpath present) paths are case-insensitive, and the same repo
+# gets reached as .../Dropbox/Dev/... from one caller and .../dropbox/dev/... from another;
+# without this every run "repoints" all 20 links for no reason.
+same_path() {
+  if command -v cygpath >/dev/null 2>&1; then
+    [ "$(printf %s "$1" | tr '[:upper:]' '[:lower:]')" = "$(printf %s "$2" | tr '[:upper:]' '[:lower:]')" ]
+  else
+    [ "$1" = "$2" ]
+  fi
+}
+
 # make_link TARGET LINK: a real symlink where the OS allows one, else (Windows) a junction.
 make_link() {
   local target="$1" link="$2"
@@ -70,7 +81,7 @@ for skill_path in "$SKILLS_SRC"/*/; do
 
   if [ -L "$link" ]; then
     current="$(readlink "$link")"
-    if [ "$current" = "$target" ]; then
+    if same_path "$current" "$target"; then
       echo "  ok       $name (already linked)"
       skipped=$((skipped+1))
       continue
