@@ -94,6 +94,17 @@ renders), a helper whose clip silently replaced the caller's clip so a "fix" did
 system that broke only in portrait, and a performance table copied from a sibling's column.
 Every one of those needed the reviewer's own renders or its own diff, not the author's.
 
+**When the artifact is INTERACTIVE (a web page, a UI, a tool a person clicks), arm the reviewer to DRIVE it, and
+to listen where the author did not.** A reviewer that only reads the code cannot see an empty screen. Give it the
+means to run the thing with real input (for a web page: a headless browser over the DevTools Protocol with real mouse
+events, the real GPU, and the browser's log channel as well as the console), the owner's request verbatim as the bar,
+and a list of states the author's own checks never visit: at rest, after a reload, a narrow or very wide window,
+large and hostile inputs, an input with loops. Then charter it to attack the author's CHECK SCRIPT as an artifact:
+which assertions test the named instance instead of the rule, which could pass while the behaviour is broken, which
+thresholds sit just above what the code enforces. Field case 2026-09-30: an author's 42 passing browser checks
+asserted "22 cards exist" after a reload while the reviewer's own run showed zero relationship lines drawn; the
+reviewer also caught controls covering the selected item at one window shape the author never rendered.
+
 **A claim about AUTOMATION is a claim about a config file. Go open the file.** "Gated in CI," "runs
 on every push," "automatically validated," "enforced by the pipeline": each of these is trivially
 checkable and almost never checked, because it *sounds* like engineering rigor. Read the actual
@@ -127,6 +138,8 @@ The three load-bearing design elements (do not drop any):
 | A reviewer concedes X, another reviewer's finding attacks X | The finding wins pending your own check; a concession means "this lens couldn't break it," not "it is unbreakable" |
 | Artifact builds on existing code | Give reviewers repo read-access; tell them to verify the artifact's claims against the code, not just critique the prose |
 | Artifact is written for a known audience | Arm the adversary with the AUDIENCE's expertise (their stack, their era, their pet peeves); home-turf claims are where the artifact dies |
+| Artifact is interactive (page, UI, tool) | Arm the reviewer to run it with real input and its own harness; charter it to attack the author's check script too |
+| Re-review after a fix pass | Hand the reviewer the previous findings and the claimed fix for each; hunt caches without invalidation, inverted precedence rules, and checks fitted to the reported case |
 | Backstory | Professional grudge (lost a role/contract/bet), not personal |
 
 ## Implementation
@@ -214,6 +227,24 @@ that explains a benefit rather than stating a mechanism.
   pattern is systematic rather than stylistic: **the least-verified claim attracts the most
   confident framing**, which instructs the reader to lean in hardest exactly where the artifact is
   weakest, and strips the hedging that would let them survive being corrected.
+- **Treating the fix pass as safe because each fix is small (added 2026-09-30).** In one three-round review of an
+  interactive page, two of the three second-round MAJORs lived inside first-round fixes, and both have a nameable
+  shape worth hunting by name. (1) **A cache added for speed with no invalidation list**: "rebuild only when the
+  camera moved" left a reloaded scene with nothing drawn, because a reload does not move the camera. Ask of every
+  new cache or skip-when-unchanged: what ELSE changes its inputs? (2) **A precedence bug "fixed" by inverting it**:
+  "the selection hides the search highlight" became "the search hides the selection". The fix for "A overrides B" is
+  an invariant that names what must always hold, never "B overrides A". Also from that run: when a timing check
+  failed after a fix, the right move was to make the code faster and leave the threshold alone, and when a check
+  proved to be measuring the test environment (a software GPU), to report it loudly as not judged there rather than
+  loosen it. A threshold that moves to meet the result is the author-as-judge drift this skill exists to catch.
+- **Accepting an undo that only works if nothing moved in between (added 2026-10-01).** A third nameable shape,
+  after the uninvalidated cache and the inverted precedence: **state that is accumulated step by step and later
+  "undone" by the opposite steps.** An animation nudged an object a little each frame along the camera's up direction
+  and summed the nudges; undoing it after the camera had turned applied the opposite amounts along a different
+  direction, and objects ended up to two widths from their place. All 139 of the author's checks passed, because
+  every one held the camera still between the do and the undo. Charter the reviewer to find every `+=` whose
+  correctness depends on a later `-=`, and to **change the hidden input between the two** (camera angle, scale,
+  window shape, the order of operations). The fix is a value derived fresh from current state, not a better undo.
 - **Dropping the honesty gate.** Pure hostility produces an unrankable pile of manufactured
   complaints. The gate (ego depends on being unassailable) is mandatory.
 - **A personal/romantic backstory.** Funnier, weaker: it points the animosity at the person,
@@ -705,3 +736,40 @@ overlap cannot see this; say so in the charter.
 (4) **A prose-only rewrite is not claim-safe.** A later plain-language pass that passed every gate had changed 10
 claims, 7 by dropping a hedge ("inferred", "not verified", "apparently"). Diff a rewrite against its archived version;
 the hedge class became a zero-token check, and a drift auditor reads for the rest.
+
+Twenty-fourth success 2026-09-30 on an interactive three.js web page (a 3D schema explorer, one HTML file plus a
+schema pipeline), run SOLO at the owner's request as his stated finish line ("you'll know you're done when it
+passes nemesis review"): one nemesis on a cheaper tier, isolated, armed with the repo, the owner's request verbatim,
+the reader's home-turf expertise (SQL Server) and licence to write its own browser harness. Three rounds, 23
+findings, zero false positives after orchestrator verification, about 345k tokens in total. Round one: 9 findings,
+led by a home-turf label lie only the expertise-armed lens would rank first ("FK" drawn on columns that had only a
+name-based guess behind them, no constraint), a memory model that needed a gigabyte at 300 tables, and an anchor
+that pointed at the wrong row past a display limit. Round two, on the fixed page: three new MAJORs, two inside the
+fixes (the two shapes now listed under Common Mistakes), all invisible to the author's 42 green checks. Round
+three: PASSES, minors only. Three refinements, baked in above: (1) for an interactive artifact the reviewer must
+RUN it, with its own harness and a wider listening channel than the author's; (2) the author's check script is an
+artifact too, and "tests the reported instance, not the rule" is its characteristic defect right after a findings
+round; (3) the verification round can go back to the SAME reviewer with its context intact: it kept its harness,
+re-ran its own reproductions, and cost about a third of a fresh round, while the round that hunts NEW defects in
+the fixes is still better served by a fresh, isolated lens. Also confirmed: a pass verdict from a reviewer told
+"do not invent a major to avoid conceding, and do not concede one that is real" came with five honest minors
+attached, which is what a credible pass looks like.
+
+Twenty-fifth success 2026-10-01, the same interactive page through two more feature builds (a click-versus-
+double-click model with a new layout, then a "roll up" animation), again SOLO on a cheaper tier, and this time ONE
+reviewer resumed across all four rounds. Each build went needs-fixes, then passes; 20 findings, zero false
+positives; about 316k tokens for the four rounds against 140k to 200k for a single fresh round. Refinements:
+(1) **The accumulate-then-undo shape** (now under Common Mistakes): the one MAJOR of the second build, invisible to
+139 green checks that never moved the camera between roll and unroll. (2) **Split the builder of the checks from
+the author of the code.** A separate cheaper agent was briefed to write assertions for the RULES from a plain
+description of the behaviour, to leave a failing assertion failing, and to look at its own screenshots. It caught
+a 44 ms frame regression and a control overlap before the reviewer ran, and the reviewer then attacked that script
+as an artifact (it found a click test aimed at the smallest instance and a camera check that restated the code).
+(3) **Ask for taste separately from defects.** When the owner's finish line is a look, charter one paragraph,
+at most three concrete items, marked as taste and kept out of the severity ranking. It produced the change that
+most improved the look (a scanner beam instead of a hard edge) without inflating the findings. (4) **A resumed
+reviewer verifies well and hunts new defects less widely**: rounds two and four confirmed fixes with its own
+reproductions and found only minors, including two inside the fixes (a skip that bypassed a side effect; a fixed
+pixel guess). For a risky fix pass, a fresh lens is still the stronger hunter; for confirmation, resume.
+(5) **A screenshot of an animation must be taken inside the animation**: the reviewer twice judged a 0.45 second
+effect from frames taken after it had settled, and said so. Give the timing in the brief.
