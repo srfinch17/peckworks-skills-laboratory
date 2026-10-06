@@ -443,3 +443,47 @@ speed dial in the first build of any animated judging surface. Scale all three c
 in JS, SVG `animateMotion` durations, and CSS transitions (`calc(<time> / var(--sp))`), remembering the original values
 so repeated changes never compound. The feedback box delivered step, scenario and viewport width with the note,
 which is the grounded-feedback rule above working as designed.
+
+## Field addition (2026-10-02): a second judge reached through chat screenshots, and the mark-scope rule
+
+An icon for a company web page was judged by a colleague of the owner, who saw only screenshots relayed through a chat
+and answered with marked-up images. Eighteen rounds, each cheap; four things that made it so, and the one that did not.
+
+- **One preview page per round, three things on it:** the new version marked as the one wired in, the previous
+  version beside it, and the reference image. Shown at the real sizes it will live at (both tile widths) and enlarged.
+  Open it in the owner's browser; they screenshot it for the judge. The judge never sees your prose, only the page.
+- **Change only the marked area, and keep the rest byte-identical.** The one rejected round took a circled corner as a
+  licence to redraw the whole front and relayer the drawing; the verdict was to go back to the previous one and work
+  only in that area. The tell: your own change list is longer than their mark list. A wider fix is a separate variant,
+  never folded in.
+- **A mark that admits two readings becomes two variants, with the literal one named.** "Mirror the beam across" in an
+  isometric drawing meant mirror in APPEARANCE: the geometric mirror already existed and looked smaller, because near
+  members foreshorten. Showing both let the owner pick in one message.
+- **Judge size in the row, not alone.** A thin-lined drawing read smaller than its flat heavy-stroked neighbours and
+  needed two size bumps; the second one did nothing until the container's padding, the real cap, was measured.
+- **Once past three rounds, generate the artifact and the preview page from one script**, so they cannot drift; a
+  hand-synced copy produced one malformed file. Isometric drawings are easiest to edit as car-space coordinates run
+  through one projection formula, with members drawn as a dark stroke under a narrower light stroke for a 3D bar.
+
+## Field addition (2026-10-02): "pop it open" is the judging surface, and the review waits for the verdict
+
+Screensavers, one day, five builds. The owner's whole judging loop was: I launch the saver full screen for him
+(`Start-Process X.scr /s`, he moves the mouse to close it), he says "open it one more time" two or three times,
+then one line of verdict: approved, or close but smooth out one named motion, or a named thing he could
+  not see. No comment box was needed; the launch IS the one-click surface. Things that held:
+
+- **Hold the hostile review until the verdict, then run it once.** Both nemesis runs came after approval and
+  returned 11 real findings, none about taste (a boat over land on 1 seed in 13; birds tangling on half of
+  seeds). Reviewing first would have risked 390K on a look he might have sent back, as in EP-132. He asked for
+  the review himself once the look was settled.
+- **State the reading of an ambiguous complaint in one line and start.** A complaint that a figure had one hand
+  and that its wave was visible was read as "no fingers on the hanging hand, and the wave is a frozen pose"; he
+  corrected mid-turn (the wave was NOT visible), which landed in the same build. Say the reading;
+  do not stop to ask.
+- **A "smooth it out" complaint on a flip-book is a pose count and an easing problem**, not a speed problem: 6
+  wing poses snapped, 24 did not; the bend of the wing against the stroke and an eased glide transition were
+  what read as "fluid".
+- **Animation below one pixel is not animation.** A bob of 0.43 px rounded to zero every frame while its
+  reflection flickered one pixel. Set a floor in pixels and round the pair together.
+- **Tell the owner the measured hands-off time of any test that his input aborts.** "25 seconds" for a
+  two-minute run produced two rounds of false FAILs and a misdiagnosis (EP-134).

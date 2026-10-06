@@ -103,6 +103,14 @@ while the newest episode sat last, so every session-start read of the top missed
 The `inject_standing_layer.py` hook now publishes the next free id and warns on duplicates or
 broken ordering, because the collisions happened for want of a knowable next number.
 
+**The Date line is what the ordering check reads.** It takes the first date on the `- **Date:**`
+line; a range (`2026-08-05/06`, `2026-08-03 to 08-06`, `2026-10-01 to 2026-10-02`) sorts by its
+END date. Dates in the prose around it are ignored. Field case 2026-10-05: the full-date range
+form was not recognised, so an episode spanning two days sorted by its start and the hook raised
+a false "not newest-first" warning on a correctly ordered log. Fixed in the hook with a test; if
+the warning names an episode whose Date line starts with a range, suspect the parser before
+reordering anything.
+
 **When the logbook outgrows about 200 lines, split it; never truncate it.** Keep the standing layer and the newest episodes in the main file; move older episodes verbatim to sibling files named `<logbook stem>_archive_<YYYY-MM>.md` (newest first), and long reference sections (such as the working countermeasures) to their own sibling file with a pointer. The SessionStart hook reads every `<stem>_archive*.md` for the next free id and the duplicate check, so an archived id is never reused; verify after a split that the published episode count and next id are unchanged. The hook also warns at session start when the main file passes its line cap (default 200, env `ASSUMPTION_DEBT_MAIN_CAP`).
 
 The durable fix is often **mechanical, not memory**: where a debt recurs, build a guard

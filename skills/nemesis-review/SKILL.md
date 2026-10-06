@@ -245,6 +245,21 @@ that explains a benefit rather than stating a mechanism.
   every one held the camera still between the do and the undo. Charter the reviewer to find every `+=` whose
   correctness depends on a later `-=`, and to **change the hidden input between the two** (camera angle, scale,
   window shape, the order of operations). The fix is a value derived fresh from current state, not a better undo.
+- **Reviewing frames when the defect lives in time (added 2026-10-06).** A system with a scheduler,
+  a queue, a deck, a retry loop or a cache can be right in every frame, every item and every
+  screenshot, and still stop working after minutes. In one review of 40 animated events, all 40
+  passed every still-frame check; the BLOCKER was that a card which could never start on some
+  screens stayed in a shuffled deck forever, the deck never reshuffled, and the whole feature went
+  silent 2.6 minutes in on a third of screens. Only a reviewer that SIMULATED the real scheduler
+  for 15 to 20 minutes over many seeds could see it. For anything that runs over time, charter
+  the reviewer to simulate minutes (or hours), not inspect moments, and to ask of every "skip
+  this for now" rule: what if it is true forever?
+- **The orchestrator breaking the reviewer's environment mid-run (added 2026-10-06).** An isolated
+  reviewer is only isolated in its context; it still runs the author's real build. An orchestrator
+  that rebuilds, cleans or edits that build while the reviewer works hands it broken evidence (in
+  the field case, a half-cleaned build that made every launch fail and put error dialogs on the
+  owner's screen). Give each reviewer its own copy of the binaries, or freeze the build until it
+  reports; if the author must change something, message the reviewer what changed and when.
 - **Dropping the honesty gate.** Pure hostility produces an unrankable pile of manufactured
   complaints. The gate (ego depends on being unassailable) is mandatory.
 - **A personal/romantic backstory.** Funnier, weaker: it points the animosity at the person,
@@ -773,3 +788,33 @@ reproductions and found only minors, including two inside the fixes (a skip that
 pixel guess). For a risky fix pass, a fresh lens is still the stronger hunter; for confirmation, resume.
 (5) **A screenshot of an animation must be taken inside the animation**: the reviewer twice judged a 0.45 second
 effect from frames taken after it had settled, and said so. Give the timing in the brief.
+
+Twenty-sixth success 2026-10-02 on peckworks-screensavers: two new painted savers (Halloween, Christmas) and
+three animated additions (a boat, a flock, a waving arm), two SOLO opus runs, each isolated and armed with the
+diff, the built exes, the author's renders, leave to render its own seeds, shapes and long run times, and a hunt
+list of the repo's past findings. 11 findings, 11 real, zero false positives, about 390K for both. The pattern
+of catches is worth naming because it repeats the first screensaver review almost exactly: (1) **a thing placed
+at "horizon plus a constant"** sailed over land on 1 seed in 13 (the near ridge dips below the horizon on some
+seeds); the fix is the repo's own rule, ask the scenery; (2) **N random placements with no clearance test**
+tangled on half of seeds (birds into X shapes); (3) **a float clock, twice** (a float copy of a double clock, and
+phases that grow unbounded), both dead after days; (4) **a docs claim one size too grand** ("behind the trees"
+when geometry says only the corner branches can cover him); (5) **sub-pixel animation that rounds to nothing**
+(a bob of 0.43 px); (6) a portrait screen getting a tenth of the snow, because the count followed width over
+height while the size followed the size unit. Two process points: both runs were held until the owner had
+approved the look full screen, and every finding survived; and the orchestrator's own verify-then-push chain
+pushed on a FAILED check (EP-134), so the review's rigor was undone by a pipeline that did not read its gate.
+
+Twenty-seventh success 2026-10-05/06 on peckworks-screensavers: "happenings", small random animated events, 79 of
+them across four savers, each set built by cheaper helper models from a common brief and reviewed by Claude from
+render sheets before the owner's look. Four SOLO opus runs (one per saver; the last two in parallel because 20 events
+each is all one lens can cover deeply), each armed with the commit, the built program, leave to render its own seeds
+and screen shapes, a reflection harness for counts, and a hunt list of the repo's earlier findings. 26 findings, 26
+real, about 1.1M tokens for the four. Pattern of catches: every defect was SYSTEMIC (shared draw depth, where walkers
+stand, cost stacking, claims, a stencil built from the wrong copy, placement so strict an event almost never shows),
+never in one helper's drawing, and each became a numbered rule in the recipe the next helpers are briefed with, so the
+spec-attack rule paid four times. Three refinements, baked in above: (1) the BLOCKER lived in time, a deck that jammed
+after 2.6 minutes, found only by simulating the scheduler for 15 to 20 minutes; (2) a domain persona outside the
+artifact's technical domain (a picture-book illustrator) surfaced cultural and natural-world errors (a crescent moon
+that rose at dusk, out-of-season insects) that the graphics lens would not rank; (3) the orchestrator broke a running
+reviewer's build with a mid-review rebuild, so reviewers now get their own copy. Also confirmed: a monthly spend limit
+refused an opus reviewer mid-chain and a cheaper retry too; the review waited a day and nothing shipped unreviewed.

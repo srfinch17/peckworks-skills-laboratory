@@ -26,9 +26,11 @@ MAIN_LINE_CAP = int(os.environ.get("ASSUMPTION_DEBT_MAIN_CAP", "200"))
 EP_HEAD = re.compile(r"^###\s*EP-(\d+)\b", re.M)
 DATE_LINE = re.compile(r"^- \*\*Date:\*\*(.*)$", re.M)
 # First date on the Date line, plus an optional range tail ("2026-08-20/21",
-# "2026-08-03 to 08-06"). The logbook's stated convention: ordering is by event
-# date, and a range episode sorts by its END date.
-DATE_TOKEN = re.compile(r"(\d{4}-\d{2}-\d{2})(?:\s*(?:/|\bto\b)\s*(\d{2}-\d{2}|\d{1,2})\b)?")
+# "2026-08-03 to 08-06", "2026-10-01 to 2026-10-02"). The logbook's stated
+# convention: ordering is by event date, and a range episode sorts by its END date.
+# The full-date tail was missing until 2026-10-05: a "YYYY-MM-DD to YYYY-MM-DD"
+# episode sorted by its START date and raised a false newest-first warning.
+DATE_TOKEN = re.compile(r"(\d{4}-\d{2}-\d{2})(?:\s*(?:/|\bto\b)\s*(\d{4}-\d{2}-\d{2}|\d{2}-\d{2}|\d{1,2})\b)?")
 
 
 def episode_date(block: str):
@@ -45,6 +47,8 @@ def episode_date(block: str):
     base, tail = t.group(1), t.group(2)
     if not tail:
         return base
+    if len(tail) == 10:
+        return tail                     # full YYYY-MM-DD end date
     if "-" in tail:
         return base[:5] + tail          # YYYY- + MM-DD
     return base[:8] + tail.zfill(2)     # YYYY-MM- + DD

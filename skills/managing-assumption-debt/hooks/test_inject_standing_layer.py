@@ -30,6 +30,9 @@ GOOD = (
 assert h.episode_date("- **Date:** 2026-08-04 (x)\n") == "2026-08-04"
 assert h.episode_date("- **Date:** 2026-08-05/06 (x)\n") == "2026-08-06"
 assert h.episode_date("- **Date:** 2026-08-03 to 08-06 (x)\n") == "2026-08-06"
+# Full-date tail (2026-10-05 field case: sorted by START date before, false newest-first warning).
+assert h.episode_date("- **Date:** 2026-10-01 to 2026-10-02 (x)\n") == "2026-10-02"
+assert h.episode_date("- **Date:** 2026-10-01/2026-10-02 (x)\n") == "2026-10-02"
 assert h.episode_date("> note from 2026-08-20\n- **Date:** 2026-08-19 (x)\n") == "2026-08-19"
 assert h.episode_date("- **Date:** career session deadbeef\n") is None
 assert h.episode_date("no date line at all\n") is None
