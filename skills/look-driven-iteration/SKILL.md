@@ -487,3 +487,51 @@ then one line of verdict: approved, or close but smooth out one named motion, or
   reflection flickered one pixel. Set a floor in pixels and round the pair together.
 - **Tell the owner the measured hands-off time of any test that his input aborts.** "25 seconds" for a
   two-minute run produced two rounds of false FAILs and a misdiagnosis (EP-134).
+
+## Field addition (2026-10-07): numbered cards that never move, sets kept as history, and the live card with its command
+
+Seven judged rounds of a photo footer in one day, through a page served over a tunnel to the owner and his colleagues.
+What made it fast:
+
+- **Permanent card numbers.** Every variant got a number on the card; a removed card's number is never reused and a
+  new round is appended as a new set. He judged by number ("card 47 is the consensus") across rounds and people, and
+  nobody had to describe a picture. The one time a card was dropped (a rule made it impossible) its number stayed a
+  gap, by design.
+- **Every set stays in the generator behind a switch.** When he said "drop all the rest", the sets were hidden, not
+  deleted; two earlier sets had lived only in a scratch folder and he asked, unprompted, for all past iterations to be
+  recoverable. Keep the definitions in the repo and a dated history file with the verdict of each round; the caption
+  of every card carries the exact command that reproduces it.
+- **A live card beside the static ones, with the command printed under it.** Once the look was close he wanted dials:
+  text, font and style, QR on/off and size, rating, every meter colour. The card is a browser rendering from the
+  library's own geometry, and under it the command that renders the same thing for real, so a reaction becomes a
+  reproducible run. The dials that moved the design were the ones a generator could not guess (font, QR size by whole
+  steps).
+- **Say what is unreachable before building.** "Make the QR 10 to 20 percent bigger" was impossible without blurring
+  the code (whole pixels per module), so the page showed both reachable steps and said why, up front. He accepted it
+  without a round lost.
+- **The owner is also an instrument.** He scanned the code with his phone. Ask for that proof when a device is the
+  consumer; the decoder on the file is the floor, not the ceiling.
+- **Driving beats looking before any claim.** A screenshot of the live card showed "a code in a tile"; the code was
+  the wrong one (a sibling page's sample link) and he saw it. A tester that drove the page then found a second bug a
+  picture cannot show. For anything a person clicks: a driving tester plus running its command, then the claim.
+
+
+## Field addition (2026-10-06): a trade between two defects is theirs to judge, and the dial sweep names the body
+
+Two from one night, paid for with fifteen days:
+
+- **When a candidate removes THEIR mark and the gate refuses it for a DIFFERENT defect, that is a trade, and a
+  trade is theirs to judge, by eye.** The 2026-09-21 valve (name the switches, put the options in prose) was in force
+  and did not reach the owner: a visual judge does not decide from prose. The candidate that emptied the owner's
+  months-old circle stayed parked behind a gate that had never been calibrated to rank two defects, and the owner
+  marked the same mound again ("you have been unable to fix this for literally months"). The gate ranks harm on the
+  SAME mark; for a different defect elsewhere, load the pair beside the baseline, name the cost in the trial text in
+  everyday pictures ("mound for knob"), seal the prediction, and let their eye rank the two.
+- **Sweep the existing dials at their camera before designing any law.** Fourteen renders (every root dial, the lean,
+  the curve, the parked flag) on one contact sheet took fifteen minutes and said what months of laws had not: no root
+  dial touched the mound; only a straight trunk foot did. A dial sweep is a discriminator for which BODY owns a defect.
+  Then locate the cost the same way: "feature on minus feature off" along rays from the axis, tabled by height and
+  azimuth, found the knob at one address (one root's bulge and tube stacking on the vertical flank) in three probes.
+- **A pixel scorer is void when the candidate moves the model in the frame.** The straightened trunk shifted everything
+  left; the scorer's fixed windows then compared different parts of the tree and said WORSE. Say "void", never report
+  the number.

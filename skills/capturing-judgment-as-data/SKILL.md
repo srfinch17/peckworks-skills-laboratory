@@ -560,3 +560,14 @@ Artlab bird day, three corrections from the owner, each one sentence:
 - **Explain the mechanism in the trial text itself, in everyday pictures.** The rounds he judged fastest and most
   precisely carried one image each (a weld bead between two pipes; a river keeping its name past a bridge). He asked
   for that register everywhere, and asked that ids and seeds never be used as if he remembered them.
+
+## Field addition (2026-10-06): the gate does not rank two defects
+
+- **The observation gate filters harm on the mark being judged; it never ranks two different defects.** A candidate
+  that removed the owner's mark at their camera was parked for three weeks because the gate named a new defect
+  elsewhere. The owner never saw the trade and marked the same defect again, angrily. Rule: when the gate's objection
+  is a different defect, the candidate is LOADED as a pair with the cost named, and the owner's eye ranks the two.
+  Prose options (the 2026-09-21 valve) are not a decision surface for someone who judges by eye.
+- **A window scorer is void when the candidate moves the model in the frame.** Fixed pixel windows then compare
+  different parts of the object; report "void", not the number. Check this before reading any scorer verdict on a
+  candidate that changes pose, lean or position.
