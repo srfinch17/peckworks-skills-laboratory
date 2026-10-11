@@ -101,7 +101,14 @@ once. State plainly which parts are established and which are your reading.
 
 ## When a complaint survives two fixes, stop tuning
 
-Ask whether the current representation can express the target at all. Round primitives cannot make
+First check that you are tuning the thing they mean. A complaint names what they SEE ("a line of
+stones dividing the land"), not a feature, and the eye maps it onto whichever feature you already
+suspect. Render at full size, crop where they point, find the thing in the pixels, trace it to the
+code that paints it, and say "it is X, painted by Y" before touching anything. One session spent
+two rounds reworking a sand edge beside a deliberate stepping-stone path; the fix was deleting
+the path. A feature can be the defect, and locating costs one render.
+
+Then ask whether the current representation can express the target at all. Round primitives cannot make
 ridges; radius modulation cannot make organic bumps, only spheres; isotropic noise cannot make
 directional grain no matter the amplitude. If the defect is intrinsic to the representation, change
 the representation.
@@ -535,3 +542,88 @@ Two from one night, paid for with fifteen days:
 - **A pixel scorer is void when the candidate moves the model in the frame.** The straightened trunk shifted everything
   left; the scorer's fixed windows then compared different parts of the tree and said WORSE. Say "void", never report
   the number.
+
+## Field addition (2026-10-07): motion is not a still, and check the medium's ceiling first
+
+Two misses in one night on a screensaver build, both of which a still render passed.
+
+**Motion needs motion instruments.** Three verdicts in a row were about movement ("standing
+waves", "not flowing smoothly"), and each fix was checked with stills plus a headless draw-time
+number. Neither can see motion. The real frame log on the person's own display showed 41 fps with
+17 to 59 ms gaps (a 64 Hz timer out of step with a 60 Hz screen), and a frame-dump measurement showed
+the "flowing" texture dissolving in place. When the words are about motion, build these before the
+next fix: (1) dump consecutive frames and measure whether a patch's detail reappears SHIFTED a few
+frames later (travel) or merely changes (shimmer); (2) log real frame intervals on their display,
+which is the only check that includes presenting and pacing. Draw time is not frame rate.
+
+**Check the medium can reach the look before polishing in it.** The ask was "as photorealistic as
+possible"; five rounds tuned a code-painted scene that could only ever be an illustration ("so
+laughably bad it makes me think you made it bad on purpose"). The 2026-09-20 addition above
+already said references come first; it was not applied because every round compared the render
+with the previous render. Put one real reference next to the first cheap render and ask "can this
+medium get there?" If not, change the medium (here: a real photo with only the moving parts
+animated got "much better" on first sight) before spending a single polish round.
+
+## Field addition (2026-10-09): a comparative verdict is not a pass, and anything alive is followed before it is shown
+
+The motion rule above was applied to the water and not to the fish swimming in it. The person's
+first verdict on the photo scene had been "ok much better" (next to a far worse painted one). Two
+sessions of additions later, checked on stills and section timings, they watched it once and
+retired it: the fish "were just stupid overlays that wiggled in place, then slid around ... behaved
+exactly how fish don't". The fish were one side-on picture, flipped to turn, slid to dart.
+
+**A comparative verdict approves the direction, not the parts.** "Better" next to a worse build
+says keep going. Go back for a verdict on each moving element they have not named, and when they
+ask to make something "more visible", first ask whether it belongs there at all (no fish is
+visible under a mirror-bright reflection).
+
+**Anything alive passes four gates or is left out.** Really visible where it is; drawn in the
+scene's own perspective (an overhead view needs a top-down animal, never a side view turned);
+turns by bending (a spine that follows the path the head took) or as a rigid whole, never by
+flipping a picture; moves the way that animal moves, checked against footage. Absence beats a fake:
+on a real photo the fake creature is the one thing the eye goes to.
+
+**Follow it before showing it.** The cheap render for a moving actor is not a still: log its
+position every frame, dump the frames, and make a strip of crops centred on it (one tile every
+few frames, stamped with time and state). Plot its path over minutes on several seeds. Built that
+way the next day, the replacement scene's koi, swallows, dragonflies and snake surfaced three
+steering bugs (an actor trapped, laps in one lane, an orbit round a waypoint) before any render
+reached the person. Before adding to an existing build, watch all of it in motion and raise its
+weakest actor first; never polish around a rotten core.
+
+## Field addition (2026-10-09, evening): measure the invariant, move the whole field, name the mechanism behind the complaint
+
+Four judged rounds on one screensaver shore in one evening (grass, rocks, a turtle, cattails), each
+answered within the hour by the owner's own idle screensaver showing the newest build. What held:
+
+- **A picture of the invariant is not a measurement of it.** A 48-tile follow strip centred on the
+  turtle's nose read as "nose first"; the body was laid out ahead of the nose and it swam tail first.
+  He saw it in one look. Before showing anything that moves, write the one number that is wrong if
+  the thing is backwards, mirrored or inverted (here cos(body axis, velocity) over every moving
+  frame) and compute it; then look at the strip. The strip now carries head, tail and velocity marks.
+- **Moving sprinkles on a static field read as "the ground moves in spots".** Static carpet of
+  blades plus 800 swaying tufts measured 1.1 mean change per frame on a lawn patch and looked still;
+  sliding and brightening the whole carpet by the wind field took it to 3.1 and the wave showed. When
+  the ask is "wavy", the FIELD must move, not things standing in it. A per-frame change number on a
+  fixed crop is the instrument for a moving field; the follow strip is for an actor.
+- **Translate the complaint into the drawing mechanism before touching a constant.** "A white line
+  of rocks" was a pale pen round each stone's foot. "Rocks on top of the water" was the waterline
+  drawn straight across each stone (the bank curve) instead of round its own rim. "Gray circles" was
+  a radial gradient (a pillow) with ruled creases and polka-dot grain. Each took one change once the
+  mechanism was named, and the first guess at each (fade by depth, thinner pen, smaller dots) was a
+  tuning of the wrong mechanism.
+- **Under water things go darker and bluer, never paler.** Mixing a submerged stone toward the pale
+  water colour made fog; mixing a band inside its rim toward water darkened by a third made a wet
+  flank with a waterline. The same held for the pond's shallows earlier. Know the direction a medium
+  pushes colour before blending toward it.
+- **Jittered grids still read as planted rows.** Tufts one per cell with random offsets looked
+  sown in lines at 75% occupancy; random placement with a minimum-spacing rejection looked like a
+  lawn. Parallel shadow strokes at 34 alpha wove a lattice; 16 alpha and 60% length read as grass.
+- **Measure the heavy size after every look change, not at the end.** Taller grass doubled the tuft
+  pages' area and pushed 4K from 15 to 21 ms a frame with nothing visibly wrong. Two mechanical cuts
+  (sprites stamping only each row's painted stretch; the carpet refreshed on alternate rows from a
+  kept copy, checked for comb by odd-versus-even frame change) got it back under a sixtieth. A look
+  round that ends over budget on his screen is a round he will send back for stutter.
+- **The idle timer is a judging surface.** He asked for the Windows screensaver off while work runs
+  and on, pointing at the newest build, when it is done (`scripts\saver.ps1`): he then sees the latest
+  work by walking away and gives one line on return. No "run it" round-trips, no UAC, no install.
