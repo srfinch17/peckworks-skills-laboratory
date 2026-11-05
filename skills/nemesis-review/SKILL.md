@@ -818,3 +818,74 @@ artifact's technical domain (a picture-book illustrator) surfaced cultural and n
 that rose at dusk, out-of-season insects) that the graphics lens would not rank; (3) the orchestrator broke a running
 reviewer's build with a mid-review rebuild, so reviewers now get their own copy. Also confirmed: a monthly spend limit
 refused an opus reviewer mid-chain and a cheaper retry too; the review waited a day and nothing shipped unreviewed.
+
+Twenty-eighth success 2026-10-07/08 on a .NET image-overlay library, five runs on Sonnet across one
+build: a SPEC review (174K) that found the defaults change would silently rewrite every judged card and that the
+planned golden test could not fail (a whole-canvas mean passed with the wrong seller, rating, or no QR code at all;
+the reviewer measured it), both designed out before code; a REPO review (187K) that found a BLOCKER by building a
+hostile input (a second JPEG frame header bypassed the pixel cap: 100 Mpx decoded against a 50 Mpx cap); a VERIFICATION
+round resumed on the same reviewer (218K) that confirmed the fixes dead with its own probes and found a NEW major inside
+the fix pass (a wrong limit, 2953 for 134, written into three documents); and a PRE-PUSH round (131K) that converged,
+independently, with the guardian on the one defect a green Windows suite hid: a test needing a Windows-only font, so
+the never-run Ubuntu CI leg would have gone red on its first run in front of the author's colleagues. Refinements:
+(1) **A CI workflow that has never run is a claim like any other.** Arm the reviewer to read it against every test for
+platform-bound assumptions (system fonts, `C:\` paths, `.exe` names, case-sensitive file systems, line endings), and
+have the orchestrator prove it on a throwaway branch before the protected branch; this one passed first time only
+because both lenses had read it. (2) **Arm the spec review with the code's own history**: the lab that rendered every
+judged card derived from the live defaults, a fact visible only in the code, and the spec's "nothing judged changes"
+was false until the reviewer opened it. (3) **A golden image test is a claim about what it can catch**: make the
+reviewer mutate the inputs and report which defects pass the tolerance before the test is trusted.
+
+Calibration run 2026-10-08 (a null result, recorded so the skill's record is not only wins): a two-file pre-push diff
+on an ASP.NET Core report page (an icon copied from a sibling app, one CSS width rule, five label lines), already
+approved by the owner's eye over four rounds and already passed by a code reviewer twice. Nemesis on Sonnet, armed
+with a shared brief, the sibling repo and its own copy of the app on its own port; about 83K. It rendered six widths
+in both states, verified every claim the change made about existing code, found no blocker and four honest minors
+(inert size attributes, an unstated spec reading, cross-app parity, a pre-existing accessibility gap), and conceded
+the rest. Its one useful output was a sentence for the pull request. Lesson: on a small diff the owner has judged by
+eye, the nemesis mostly certifies; say so in the estimate and let the owner choose (he did, and chose to run it).
+
+Success 2026-10-16 on peckworks-screensavers (Sakura Pond round fifteen: a turtle rebuilt for fluid 3D motion, a
+koi shadow and swim-wave fix for two owner complaints, a hunger mood, two helper-built animals, and two new pieces
+of a shared mind kit), run SOLO on the top model at the owner's one-line request, isolated, armed with its own
+built copy, the previous build, the diff, the owner's words verbatim, the author's numbers as claims and the kit's
+instruments, with licence to splice its own loggers and simulate 20 minutes. First round 447K, 46 min: 2 MAJOR, 6
+MINOR, 8 of 8 real. Then the SAME reviewer resumed for confirmation (514K, 18 min): 5 confirmed, 2 partly, 1
+changed shape, 6 new minors, "safe to ship". Refinements, each field-proven this run:
+(1) **A reviewer that can SUBTRACT a known per-point offset from the measured shape splits a symptom into its
+causes.** The author's worm metric (bend reversals along the drawn spine) had barely moved after a wave and a
+turn-rate fix; the reviewer removed each spine point's known screen sink and re-ran it: 95% of the worm frames
+were the DEPTH profile laid along the body (a clamp sawtooth, an unshifted trail, the honest dive history drawn as
+a vertical S), not the wave. The fix the author then made (a stiff vertical spine) took the as-drawn metric from 5%
+to 0.3%. Charter a reviewer on any shape complaint to decompose the measured shape by its sources before judging
+the author's fix.
+(2) **The fix pass regressed the field twice, and only the author's own re-run of the full instrument set caught
+it.** A change to the shared steering kit's contract (made for the turtle) doubled every koi's touches; a
+whole-body lift by the bed clamp slid tails up the screen. Neither reached the confirmation round because the
+orchestrator re-ran the complete timeline after each fix. Make that explicit in the fix pass: the confirmation
+round verifies the fixes; it is not the place to discover a fix broke a neighbour.
+(3) **Resume for confirmation, with the author's claims restated as claims.** The resumed reviewer kept its
+instruments, re-ran its own reproductions and found two defects INSIDE the fixes (a surface probe that read the
+air as a body, so no float ever reached the top; a chase that had changed from "swims away" to "orbits"). About
+half the cost of a fresh round, and it also refuted the author's causal cost story with one measurement (mean
+depth, mixed): a causal claim in a commit message is a claim like any other.
+(4) **The subagent harness refused to write the report file**; the reviewer returned the full report as its
+message. Say in the charter that the message IS the report, so the reviewer does not spend effort on a file.
+(5) The reviewer judged a deliberate rule exemption (a buoyant turtle rising while still, against the pond's own
+no-slide rule) by measuring the drift and saying how it reads, and handed the call to the owner: a review that
+names a trade-off as a trade-off, with numbers, is worth more than one that forces it either way.
+(6) **Field case 2026-10-19 (a creature round on a painted pond, nine findings, two confirmation rounds, "safe to
+ship" on the third pass).** Three lessons for the fix pass. (a) The reviewer's metric is the judge of the fix, not
+the author's: a "standstill 0 s" count passed a froglet that wiggled in a pocket for 57 s (the reviewer measured
+"confined within 12 px for T s"); an "overlap over 8 px" count passed ducklings that shuddered (the reviewer
+measured direction reversals per run, 0 before the fix, 13 to 49 after). Charter the confirmation round to RE-RUN
+ITS OWN INSTRUMENTS and have the author adopt them into the kit the same day, then run them before the next fix
+list goes out. (b) A claim in the author's fix list is an artifact: the author wrote "said in the docs" of a list
+never written, and the reviewer grepped it. Tell the reviewer to grep every claim about docs, comments and
+commit messages, not only code. (c) A fix pass that needs more than a handful of patches is a missing instrument,
+not a hard bug: eight patches on one snake jam until the log carried the number the step rule actually reads (the
+head's own clearance and blocked flag); then one patch. Ask the reviewer, when a fix chain runs long, to name the
+quantity the failing rule reads and whether the author's log carries it. Cost shape: 395k review, 553k and 589k
+confirmations (same reviewer resumed), about a day of the author's time, 27 instrumented builds.
+
+**Field case 2026-10-29 (a nemesis on a REVIEW, not on the work).** The owner of a painted screensaver, after six rounds of patches on one complaint, ordered an independent review of the 3D world and "a nemesis of his own" on that review, then the review revised. The reviewer (isolated, with a repo copy, renders and logs) found the structural fault in one pass and prototyped a fix. The nemesis, armed the same way, caught three overreaches the orchestrator would have acted on: the prototype "cut cleanly" only for the body and left fins and eyes floating on the rock (one render showed it); a proposed rebuild step would have brought back a fault the owner had rejected (a deliberately stiff spine, recorded in the rules file); and a scale change quietly undid two of the owner's verdicts (the review misreported the history). Every finding was conceded on evidence and the review was reordered: shape first, the owner's choice as a separate step with side-by-side renders. The shape that worked: give the nemesis the same artifact access as the reviewer (build, render, logs), the owner's verbatim words as the bar, and the rules file as the record of what the owner praised; charter it to attack the PROPOSAL's steps (does each leave the owner something better; what verdict does it reverse; what does the prototype actually show) as hard as the diagnosis. Then send the nemesis file back to the reviewer with "concede or rebut with evidence, per finding" and act only on the revised review.

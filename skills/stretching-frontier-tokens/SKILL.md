@@ -132,3 +132,20 @@ silently) that lived between two correct tasks. Rule confirmed with numbers: che
 transcription, mid tier for integration and per-task review, the strongest model ONLY for the
 whole-branch pass — and never skip that pass to save tokens, it is where the expensive bug was.
 
+
+## Field case 2026-10-16: two helpers in parallel on a visual build, and what the frontier share bought
+
+Sakura Pond round fifteen: the frontier model fixed the owner's two look complaints and rebuilt the turtle itself
+(measured, not delegated: the instruments decided what was wrong), then briefed two cheaper helpers in parallel,
+each in its own copy of the repo (`git archive HEAD | tar -x`), with a pattern file to copy, may and may-not-touch
+lists, the comment style, the instrument routine with the numbers to report, and "never launch full screen".
+Goldfish (a second fish kind on the koi's body and mind): 249K, 22 min, usable. Mouse (a new land animal on the
+shared trail and walking kit): 271K, 41 min, usable. Both helpers' own weak-spot notes were right (a khaki tail
+fin; a subtle sit-up) and were acted on at the merge. Where the frontier share went, in order of value: the two
+briefs; the three-way merge (a small script, LF-normalised `git merge-file`, conflicts only on doc table rows); the
+look review of each sheet; running the FULL pond timeline on the merged build, which found that a weighting the
+frontier model itself had added put every fish into one behaviour (the helpers could not have seen it: it was
+not in their scope); and the adversarial review round, which the helpers' own checks cannot replace (a helper
+tuned a visit gap against a visibility count its own fade bug had inflated). Rule confirmed: delegate the making
+of a bounded piece with a pattern and a proof; keep the brief, the merge, the whole-system measurement and the
+review.

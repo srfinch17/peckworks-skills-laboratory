@@ -627,3 +627,276 @@ answered within the hour by the owner's own idle screensaver showing the newest 
 - **The idle timer is a judging surface.** He asked for the Windows screensaver off while work runs
   and on, pointing at the newest build, when it is done (`scripts\saver.ps1`): he then sees the latest
   work by walking away and gives one line on return. No "run it" round-trips, no UAC, no install.
+
+## Field addition (2026-10-11): a steered creature's default bug is a standstill, and the feeler must be finer than the obstacle
+
+Three rounds on one overhead pond in two days (minnow schools and a dragonfly's game, a lizard and a
+log, a snake that steers and startles), each verified by instruments before the owner saw it, each
+approved in one line. What held:
+
+- **The bug a still cannot show is the creature that STOPS.** Five times in three days the failure
+  was not a wrong look but a standstill: a lizard that crashed its own update and was visible 0 s of
+  60 (its stills looked fine), a lizard flipping Dash and Bask thirty times a second on a rock's wet
+  side, a snake jammed against a lily pad for two minutes on every seed, and earlier a swallow
+  orbiting a waypoint for 52 s and a turtle out of view 40 to 70 s in 180. Every one showed in a
+  timeline (position and state every five seconds, visible seconds per minute, longest standstill)
+  and none in a frame. For anything with a goal, the timeline is the FIRST instrument, before the
+  follow strip; read the longest standstill as a number. Then the strip, for the look (that is what
+  caught fish wriggling like worms and a tail folding into a hairpin).
+- **A sensor spaced wider than the smallest thing it must see is blind to it up close.** The snake's
+  feelers sampled at 0.35, 0.7 and 1.0 of a body length ahead; a lily pad is a tenth of that. Pressed
+  against the pad, every feeler landed in clear water beyond it, the goal's pull held the nose on the
+  pad, and the step was refused for ever. Feelers from just past the snout outward, AND the refused
+  step itself forcing an avoidance turn, ended it. Any "never stuck" rule (a step is refused when it
+  would enter something) is a deadlock unless the refusal feeds back into the steering.
+- **The obstacle model is per layer.** The same lily pad is no wall to a koi (it swims under; the
+  pad's soft painted edge had once trapped fish as a ring of wall) and a hard wall to a snake on the
+  surface. Hold obstacles as what they are (circles, a capsule for the log) and let each creature's
+  layer decide which ones count, rather than one shared mask.
+- **Two of his standing instructions can collide, and the collision is mine to see.** "Pop the build
+  open for me" and "leave the idle key pointing at the newest build" are the same file opened
+  twice; a follow-up publish then fails "file in use". Publish everything ready before the pop-open.
+  When a standing rule is added, check it against the others on the same resource.
+- **A finish line that is taste cannot be met by the builder.** A goal ending in "cute" and "awesome"
+  has no instrument; the stop hook rejected every finish report and several turns
+  went on repeating the same line. Say once what only the person can judge, name the two moves open
+  to them (clear the goal or give the line), and stop.
+- **Verdicts are arriving on the strength of the instruments.** "Yes, push" came before any look
+  verdict on two rounds (the push had been held for his word). The instrument routine (timeline,
+  nose-first, clearance, flee response, back-to-back cost, verify) is what he is trusting; keep it
+  complete every round, and keep the look question open in the final line, because the push yes is
+  not the look yes.
+- **Today's cost number is not yesterday's.** The same build read 12.6 ms one day and 15.8 the next
+  at 1440p. Only old-versus-new back to back in the same minutes says what a change cost (here:
+  nothing). A number against the table is a mood reading.
+
+## Field addition (2026-10-15): the state lives on the beads, a side is measured, and the same-scene gate
+
+Sakura Pond thirteen and fourteen (a really deep pond, fish that tilt into a dive, petals shoved
+aside), both pushed on one "commit and push" before any look verdict, the third round in a row.
+
+- **A property that can be partly true belongs on the points, not on the thing.** One depth per fish
+  could not tilt, could not vanish head first, could not shove a petal with only the back that is up
+  at the surface. Depth per spine point gave all three for free, and the petal rule fell out of it
+  ("pieces shallower than a half width push"). When an owner says a thing is half in one state, move
+  the state to the beads before adding a cue.
+- **A cue with a SIDE is a claim about the running code's convention, not about geometry.** The sun
+  gleam was put on the shaded flank because I derived "which side is v positive" from the normal on
+  paper; the painter runs its pieces nose to tail, so v runs the other way. A crop at 8x could not
+  tell the gleam from the dorsal line three pixels off; a sixteen-sample brightness profile across the
+  body at one frame settled it in one line of numbers. Any gleam, shadow, lean or lift is checked by a
+  profile against the scene's own shadow direction before it is shown.
+- **The same-scene gate comes before any number.** Three rounds in a row moved a dice roll (traits
+  dealt, an island placed earlier, a petal's size rolled before its life), and each time an
+  old-versus-new timing or behaviour comparison was comparing two different scenes; each time a
+  SECOND instrument had to find it (a pixel diff, a section timer blaming an untouched part). Now one
+  tool renders a frame from each build at one seed and prints the share of pixels that differ
+  (kit `motion/samescene.py`); it runs before the first timing is read. A guard beats remembering.
+- **A rule with a number carries the scope it was written for.** A "bed-forced rise is exempt from the
+  rise limit" rule, asked for by a reviewer when the pond was shallow, became a 50-pixel slide when
+  the pond went three times deeper. When the quantity a rule leans on moves by 2x, re-run the
+  instrument that justified the rule rather than carrying the rule.
+- **The lag between the leading and trailing part of one body is a metric.** "Seconds the tail is
+  seen after the head is gone" caught a fish hung nose down for eight seconds that nose-first,
+  clearance, standstill and slide all passed. For any state that travels along a body, log the lag.
+- **An owner's world law, said once about one element, is a gate for every element after it.**
+  "Nothing can clip through anything in this universe" was said about petals; it now means every new
+  thing declares, in the docs, what it is solid to and what it passes under, and the known
+  exceptions are listed as the likely next round rather than left for the owner to find.
+- **His next list is the verdict.** Three rounds pushed on the instruments before any look line; the
+  look line never came separately, the next spoken list did. What he does not name is accepted for
+  now; carry the open taste questions in memory and do not re-ask them.
+
+## Field addition (2026-10-16): decompose the measured shape by its sources before tuning the shape
+
+A complaint about a shape ("a super wiggle that ripples down the body like a worm") was measured (bend reversals
+along the drawn body: a quarter of frames), two plausible causes were fixed (the wave's envelope, a filtered turn
+rate), and the metric barely moved. The fix that worked came from a reviewer who subtracted each point's KNOWN
+screen offset (the depth-driven sink) from the drawn shape and re-ran the same metric: the planar shape alone
+reversed on 0.1 to 0.35% of frames, so 95% of the symptom was the depth laid along the body, which three different
+mechanisms were stepping. Rule: when a shape metric survives a fix, do not tune the shape further; subtract every
+known contribution to the drawn shape one at a time (an offset, a projection, a wave, a history) and re-measure
+after each. The source whose removal collapses the number is the cause, and it was not the one the complaint's
+words pointed at. Pairs with "When a complaint survives two fixes, stop tuning": this is what to do instead.
+
+## Field addition (2026-10-19): a diagnosis from code is a hypothesis until a crop shows it, and two keep-out classes
+
+A look complaint ("tadpoles can swim on top of the petals") was diagnosed in a harvest from the draw order and
+written down as fact with a fix plan. The next session rendered first, as "When a complaint survives two fixes"
+asks, but BEFORE any fix: old build and new at the logged moments the mechanism predicted, side by side at 4x. The
+sheets were identical, and the thing the owner saw was a different element entirely (a heap of petals painted once
+into the backdrop, which every mask called open water, with the animals drawn crisp over it). The code-found bug was
+real and rare (seconds per four minutes); his words said "currently", which names something seen whenever he looks.
+Rules: (1) a diagnosis made from code, a summary or a reviewer's note is a HYPOTHESIS until a crop shows the pixels it
+names; write it with that word or with the crop's file name, never as a plain sentence, and make the render the
+first act of the session that builds on it; (2) when the mechanism's rate does not match the complaint's rate
+("sometimes" against "currently"), look for a second mechanism before building the first; (3) a mask built from
+geometry is a claim about the picture and the painter decides what is on top: anything painted once at or above a
+live layer is in that layer's stencil or copied back over it every frame (third instance of this class).
+
+The fix then needed two kinds of keep-out, and one mechanism could not serve both: as a WALL the heap's zone penned a
+scattered group in a pocket for three minutes; as nothing it filled with resting animals. Steering obstacles come in
+two classes, solid and "pass through but never settle"; steps test the first, placements (home, spawn, perch, slot)
+test both. And a placement test written apart from the step rule is always weaker than the step rule (fourth
+instance): a home passed its own test while every step from it was refused, and the animals were born on one pixel
+for a whole run. The placement test calls the step test at that point and then samples a ring round it.
+
+## Field addition (2026-10-20): pacing over a whole start, a hitch as a first-use cost, pace as species, and the event log that locates a complaint
+
+Sakura Pond, rounds twenty to twenty-two in one day: the chance meal of tadpoles, the turtle's feet, tadpole haunts, koi
+company, then "find ways of speeding things up, smoothing things out", then two one-line looks ("the tadpoles swim a little
+bit too fast ... like mosquitos", "the new duck ... wings are floating specs above the body").
+
+- **Pacing is measured over a whole run START, not a settled window.** A 15 s on-screen log read an even 17 ms a week ago
+  and the number stood in three documents; the first log over a start read half the frames at two pages, a steady 60 only
+  from 5.3 s, and on one run never, because a pump with hysteresis sat on its own way-back line. Any "smooth" claim carries
+  the start-of-run log beside it, and is re-measured whenever the settled cost moves (every round that adds an animal).
+- **A dropped frame the averages hide is a first-use cost until proved otherwise.** Tiered JIT's rough code for the first
+  seconds; a full-strength compile of an animal's code on the frame it first appears; the framework's generic code for your
+  own types compiled when a collection spread or a LINQ call first runs; a pool trim. The instruments: a per-section WORST
+  frame with its frame number (an average cannot show one frame), the update timed in laps of its own, and the runtime's own
+  list of what it compiled and when (DOTNET_JitDisasmSummary=1: the END of the list is what compiled mid-run). The fixes
+  are structural: tiers off, everything pre-compiled at start, no LINQ or spreads on per-frame or per-event paths.
+- **A tiny animal's pace IS its species to the eye.** Ten body lengths a second switched on and off dead, with a ten-beat
+  tail, read as a mosquito; five for half a second, seven beats, a coast to a stop read as a tadpole. When a complaint names
+  a species, the speed and the beat are the first dials, judged on a 4x strip at the real rate PLUS a per-frame speed trace
+  across the state change (the strip could not tell that the first fix had not run, the trace could: the previous state
+  zeroed the value the next state was meant to ease).
+- **A look complaint about an animal is located through the animal's OWN event log, then a dump at the log's dials.** "The
+  new duck ... wings floating above the body" could have been the flap or the ride; stills on two seeds, the duck log at
+  20x for the cute events' frames, then dumps at those frames and 4x strips named it in one pass: a duckling riding on its
+  mother's back. Two cosmetic rescues judged on the same strip, then the feature came out of the dice (its code kept, its
+  roll kept so the scene's dice hold). Deleting a behaviour is a legitimate fix when its drawing cannot carry it.
+- **A helper's cute or event animation gets a 4x strip before the merge, not after his look.** The ride had been built by
+  a helper, measured for overlap and shudder, reviewed by the nemesis for solidity, and never judged by eye at 4x; it reached
+  him. Every event an agent builds is on a strip in the brief's deliverables.
+
+## Field addition (2026-10-26): motion proved is not motion seen, one painter term is not the line, and a rules file that ate its own loop
+
+Sakura Pond, rounds twenty-eight to thirty in one day (a living shoreline, the snake's orbit, the deep, the frogs), and
+"fix claude.md" before any of them.
+
+- **Motion proved is not motion seen.** The first lapping water's edge moved 3 px up the sand and back; a pixel trace down
+  one column across two frames proved it, and the 8x strip and the change map showed nothing, because the flooded sand took
+  the water's colour and the bared sand the dry colour: each frame alone was a rest frame. Motion that leaves no trace is
+  invisible. A wetness memory (dark sand drying over six seconds) made it readable and the change map count rose from near
+  zero to 102,000 pixels. Two numbers, in order: the trace that proves the thing moves, then the between-frame change count
+  over seconds that proves an eye could see it move.
+- **One painter term found is one term.** "The boundary goes over the rocks" was located, before coding, to the rock wrap's
+  wide rim mix; that term was rewritten and the crops showed solid stones with the water round them, so the round was called
+  done. Two other terms drew the same bank curve across the stone's face and the complaint came back in the same words. After
+  locating a line, grep every pass that paints near that curve; and verify a line complaint by the line's ABSENCE at the
+  pointed spot on the fixed build, with the fix's own change map tracing along the line he named, never by the presence of
+  the new feature. [EP-162]
+- **The loop's own notes can eat the loop.** The project's rules file took a diary entry per round until it was 184,591
+  characters, 4.6 times the tool's "large file" warning, and the warning printed to the human at every session start, never
+  to the agent appending. Rules and diary split, a size FAIL in the verify step, and two rounds later the rules file was 122
+  characters under its own cap: a ceiling without a rule for what leaves is a reminder. Every addition moves an older passage
+  out verbatim; a harvest that ends within 10 percent of the cap prunes first. [EP-161]
+
+## Field addition (2026-10-28): a motion complaint is located in the logs by distance to the named thing, a metric is checked against the picture it claims, and a fix that slows a thing shrinks its probes
+
+Sakura Pond, round thirty-nine: "the fish get all janky [near the rocks] and so do other animals. also make the snakes
+look more natural. drop the checkered one."
+
+- **Split by distance to the thing he named, on the last build's own logs, before any render.** Every motion number
+  (nose jerk, turn-rate change and its sign flips, speed and depth steps, the sharpest drawn bend, refusals by cause)
+  within 0.08u of a stone against the rest, per animal. It found two stutters that no standstill count would have
+  (a 60 Hz freeze-and-step up a flank; a tail beating at full cruise against a shoulder) and cleared the turtle in
+  the same pass. One table, one pass, the place and the animal he meant.
+- **A number is checked against the picture it claims before it is a finding.** Two of the split's numbers were
+  false leads: the turn-rate flips were a climb flag flickering on a fish whose heading drifted smoothly, and the
+  spine kink was the tail fin's four points. The order that held: split by distance, trace the worst episode frame
+  by frame with the rule's own inputs, then crop the trace at 4x. The trace is what says "this is the jank".
+- **A fix that slows a thing shrinks every probe measured in its steps.** The first fix (a refused fish slows to a
+  crawl) exposed a 115 s jam because the probe for a way out reached a fifth of a pixel. Every probe gets a floor
+  in pixels, and every fix pass is a whole set again at both sizes: three of this round's three builds found a
+  second cause.
+- **The look change rode on the same instruments.** The snake's redraw (a head and neck, a round body in rows of
+  scales, soft marks, the body a hair under) was judged on 4x crops of the old and new build at the log's own
+  surface windows, two skins of the four; the two unseen are named as unseen in the handoff.
+
+## Field addition (2026-10-30): "look at some photos" is a brief about the common denominator, a palette is chosen by its OUTPUT, and a new kind reuses the old body
+
+Sakura Pond, round forty-four: "the underwater look and the terrain need work. look at some online photos or something to
+get a better idea. also, i want a little more activity in the "deep sea" areas ... add something else down in the deep
+that im forgetting."
+
+- **Locate first, then look at the photos for what EVERY one has in common.** The published render said what was wrong in
+  two nouns (a flat teal field with a scatter of dark discs; a boulder on a bald lit dome ten times its width). Two image
+  searches then named the brief: every real pond bottom is a carpet of DISTINCT things, each lit and shaded, algae on all
+  of them, leaves, twigs, rubble at a boulder's foot, and the water is green. The lesson that generalises: a field with a
+  grain (dots, noise) reads as paint; a carpet of individually lit objects reads as a place. Write the common denominator
+  into the round's notes before any constant moves, so the next "more" has an anchor.
+- **Under a dimming filter, pick a palette by what the filter OUTPUTS, not by the input colour.** Two catfish palettes
+  vanished on the bed: the depth rule keeps 0.14 of red, 0.4 of green and 0.48 of blue, then mixes 0.62 of water, so every
+  mid tone lands within a few levels of the silt. Making the fish paler moved it by the same few levels. What read was
+  CONTRAST inside the thing (a dark back against pale mottling) and a smaller share of the filter. Compute or sample the
+  filter's output at the depth the thing lives at before choosing its colours.
+- **A third kind reuses the body and the mind; what it needs of its own is its WALLS.** The catfish was the koi's enum,
+  dice weights and a constructor branch. Its two real lessons were steering: a bottom dweller lives within a hair of its
+  own depth cap, so a clearance floor derived from that cap makes every hollow a wall (it yo-yoed), and a floor that
+  follows its depth down a slope keeps the slope open (it climbed a boulder). One fixed floor and no climbing fixed both;
+  found in the first logged runs, before any strip.
+- **A pixel gate that cannot pass is not a failed gate; prove the invariant another way.** The water's colour changed on
+  every water pixel, so the same-scene gate read 67 percent different. The dice were proved unmoved by the start logs
+  (the island, the formations and the log at the same places in old and new), and only then were the behaviour numbers
+  compared.
+
+## Field addition (2026-11-02): a page he reads gets agents' screens before his eye, stills lie about animation, and a look handoff is one line plus the page opened
+
+A project tracker page, two rounds in one evening. The first cut, built by a Sonnet agent to a brief that said
+"concise", came back "pathetic no-pizazz page ... i know you're holding out on me". Three things that generalise:
+
+- **The design is the main session's; the build and the judging are delegable.** A builder briefed with "concise" for a
+  page the owner will look at produces a plain page every time. Draw the design yourself from the owner's own taste rules
+  (here: pastel tokens, visible edges, faint pulsing line art never on text, motion only where data moves, toys that
+  reveal the data, a replay button and a speed dial), then delegate. Before the owner's eye, two cheap agents: a Sonnet
+  screen of the full-page screenshots in both themes for OBJECTIVE items (overlaps, clipping, contrast, edges, alignment:
+  five real defects and one wrong call in 82K) and a Haiku cold read of the text render for the words (92K). The owner's
+  standing ask is non-frontier wherever quality holds; this is where it holds.
+- **A headless still lies about anything animated.** Count-ups are caught mid-count, staggered reveals show their first
+  item only, actors on wires are invisible. The Sonnet screen read the mid-count numbers as a data change. Two rules:
+  the HTML carries the final value and the script animates toward it, so a still is never wrong; and a page probe drives
+  the page (CDP, a fixed profile folder) and asserts the motion: an actor's position sampled across frames rises along its
+  wire, the padlock shuts, hover picks the pane, the rings fill, every timeline entry reaches opacity 1. The probe's first
+  FAILs were the instrument both times (the animator pauses off-screen and the probe had not scrolled; a regex evaluated
+  in the page came back NaN through CDP): parse outside the page, scroll first, and read the raw attribute before fixing.
+- **A look handoff is one sentence and the page opened in the owner's browser.** Three tables of who judged, routing
+  and what only he can do got "im confused on what im supposed to be looking at rn". Open it for him (`Start-Process`),
+  say what it is in one line, say what you want from him in one line. Status tables are for "how we doing" (EP-236).
+
+## Field addition (2026-11-02, night): the debug build is the first render, and a tone is set by the painted pixel
+
+Sakura Pond, three builds of a one-pixel sparkle tuned on crops that showed nothing, then one build with every flash
+forced solid white that settled "does it reach the frame" in a single render. Then a rock's underwater foot painted at
+three greys that all read pale, because the light net lifted that ring 25 levels and the constant typed was not the tone
+painted; sampling the foot against the bed beside it found the grey in one step. Three rules, each cheap:
+
+- **A per-pixel or soft effect's FIRST render is the solid-colour debug build**: every pixel it would touch at full alpha,
+  counted. A count from the effect's own loop ("on: 30") says the code ran, not that an eye gets anything.
+- **Thresholds on a generated field come from its histogram**, logged in the effect's own header (the net's brightest 1.5
+  percent is a node, its brightest 0.2 percent is white), never a guessed level (185 passed 0.4 percent of the page).
+- **A tone is set by sampling the painted result against its neighbour**, moving the input until the measured difference
+  is the one wanted; anything downstream of the constant (a depth rule, a light pass) makes the constant's value a guess.
+
+And the morning's rule from the same project (a fix that works only by enlarging or recolouring a shape has a constant
+upstream) failed to fire that night on the same constant in a new shape, a column instead of a tombstone. Index such a
+rule by the LEVER ("the slant is the first lever for anything too tall below the water"), not by the shape it last made.
+
+## Field addition (2026-11-03): a cure reroutes the simulation, and three cuts on one probe name the architecture
+
+Sakura Pond, round forty-seven. The snake's 90 degree corner was located to one frame before any cut (the head pivoting in a
+crease while the body lay still) and cured in one build (sweep the laid body with the head, joint 177 to 6 degrees). Then the
+measurement moved out from under the cure: the swept body changed the koi's paths, their touches changed the snake's startles,
+and two seeds that had been clean stood 52 s and 279 s in jams of a probe written that morning. Four cuts on that probe's
+acceptance rule in one evening, each curing one seed and jamming another, before it was parked.
+
+- **A cure that changes an animal's path restarts the measurement.** In a deterministic world the start logs prove the scenery
+  unmoved, so every jam that appears after the fix is LATENT (the new paths found it), not caused; it still gates the ship.
+  Run the whole seed set after each cut and read the new jams as findings, not regressions.
+- **Three cuts on ONE mechanism's acceptance rule is the signal, not the fourth cut.** Each cut was a margin or a tier in one
+  test; the class of the test was wrong (a local room-gain probe cannot name the way out of a closed pocket). Park with the
+  diff, the measure and the named architecture; ship the build that never carried the branch.
+- **Three cures of three different mechanisms is ordinary work**, not the signal: the lizard's afternoon was a bask under a
+  clump's leaves, a dash's first step into water and a jerky pivot, each located in the pixels, cured, measured and kept.

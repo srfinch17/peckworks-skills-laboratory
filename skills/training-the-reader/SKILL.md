@@ -133,3 +133,17 @@ A ten-page HTML teaching site for a codebase ran through this loop: 409 sentence
   no typed totals, no pronouns, a legend derived from the chips, hub chips synced from the pages). Three of the
   orchestrator's own scripted fixes misfired and were caught by gates or renders, never by their own success
   messages.
+
+## Field addition (2026-11-02): the lean form for a one-page dashboard, and a second reader on a cheaper model
+
+A project dashboard (one HTML page, about 100 KB, a flow diagram and ring meters) got the loop without the gate or the
+archive: render with `scripts/render_page.py`, ONE Sonnet read armed with `references/defect-catalog.md` (108K; TEACH
+4, FINISH 6), the fixes made in the page builder, then a Haiku read of the first 180 lines of the new render as a named
+persona (a C#/SQL expert new to ML, 92K; TEACH 5, FINISH 7, every ask "clear"). What the reads found that the author
+and a visual screen could not: a glossary folded at the bottom and stale from a month before (three methods and a test
+set the page no longer had), one identical outcome string printed 37 times, "notes 12" as a link label, "you" meaning
+two different people on one page, glued fragments where `; ` had become `. ` without a capital, and no sentence saying
+what is live for users (nothing was). Two of those became builder rules the same evening (capitalise after the inserted
+full stop, the shared outcome said once in the summary). Rules that held: the word list sits beside the first use, not
+at the bottom; a dashboard says what is NOT in production; the second read goes to the cheaper model and gets a persona
+and a line limit, and its "clear / unclear" per ask is the finish score that matters.

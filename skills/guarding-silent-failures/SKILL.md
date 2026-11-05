@@ -743,3 +743,67 @@ file that a hook parses went cleanly, because the hook was extended to read the 
 count, next id) was compared before and after. Before moving, renaming or splitting anything, find everything that reads
 it; rewire the readers first; move second; compare their output.
 
+## Field case 2026-10-07: a preview that borrowed a sibling's default input, and a check that only covered the real path
+
+A test page's live card drew its QR code from a data block shared with an older page. That block encoded the OLDER
+page's sample link, so the live card showed a smaller, wrong code in a tile sized for the real one. The decoder check
+ran on every real card and passed, because the real renders took the right link; the preview was never decoded and a
+screenshot "looked like a code". The owner's eye caught it.
+
+Two silent-failure shapes in one: a **second arrival path** for an input (a helper with its own default beside the
+explicit value the caller meant), and a **check scoped to the artefact that was already right**. Guards: pass shared
+inputs explicitly and remove the default, or make the default fail loud when a caller has a real value; and when two
+renderers must agree, the check compares them (decode the preview's modules against the real render's), it does not
+only bless one. The follow-on tester that drove the page found a second quiet defect (a command built from a stale
+value), which is the usual pattern: the first found bug marks a seam where more hide.
+
+
+## Field case 2026-10-16: an instrument that ran to completion and measured nothing, and a blink that tuned a knob
+
+Three quiet failures in one screensaver round, all of the same family: the artefact looked produced.
+
+1. **The run completed; the log was empty.** A `sed -i` from Git Bash rewrote a CRLF source file with LF endings.
+   The instrument splice (a Python script that patches a logger into a copy of the source by exact text) carries
+   CRLF in its patterns, so its assertion fired. The PowerShell wrapper piped the script's output through a
+   `Select-String` filter for the lines worth reading, which dropped the traceback. The unpatched copy built, ran
+   its 9000 frames with exit code 0, and left three zero-byte logs. The summary printed "koi frames: 0 (nan%)" and
+   that line was the only tell. Guard: a measurement run asserts on its ARTEFACT (the log has at least N rows, the
+   count is above zero) before anything is printed, and a wrapper never filters a tool's stderr out of view; a zero
+   or a nan where a count belongs is a failed run, never a clean one.
+2. **A fade that stepped on "equal".** `fade += (target - fade >= 0 ? dt : -dt)` at `target == fade == 0` steps up,
+   then back down: a 6% ghost of a hiding mouse drawn every other frame for the whole hide, and a visibility flag
+   that flipped with it (1,391 "visits" in three minutes). The helper that built it then tuned the animal's visit
+   gap against the inflated visibility count, so the parameter was wrong for a reason nobody could see in the code
+   it was set in. Guard: step toward a target by the SIGN of the gap and skip when there is none; derive a
+   visibility from the state, never from the fade; and read a parameter tuned "to meet the measure" as suspect
+   whenever the measure's instrument has not itself been checked.
+3. **A "room" probe that read the air as a body.** A probe 0.03 above a floating turtle, meant to ask "is a fish
+   above me", crossed the surface once the turtle was within 0.03 of it; the room function returns 0 for "above
+   the water" exactly as it does for "inside a fish", so every float stopped four pixels short of the surface,
+   in every run, and the breath ring (its threshold was looser) kept firing. Guard: a function that returns one
+   sentinel for several reasons must not be asked a question that only one of the reasons answers; clamp the
+   probe to the domain, or ask the specific question (the bodies alone).
+
+## Field case 2026-10-26: a soft effect passed by its code, and a dump that was not of its log
+
+Two from one day on an animated pond. (1) A silt puff (a soft alpha disc under a fish, dimmed again by the water's
+murk) was written, built and described as visible. Measured, it lifted a 45 px disc at its logged spot by 0.2 grey
+levels: present in the frame buffer, invisible to anyone. The strip "showed nothing", which was read as "the effect is
+missing" before the number said "the effect is there and too faint". For anything soft (alpha, haze, a glow, a sheen)
+the existence check is a measured lift at the logged spot, with a floor (a grey level) under which it does not count;
+the picture is the second check. (2) The strip itself was a phantom: the frames came from a newer build than the log
+that named the moment, and the two timelines had diverged, so the sheet followed the wrong animal. A seed repeats a
+BUILD, not a scene. Rule: a log and the frames read against it come from one process, written together; a run script
+that can write one writes both. Both faults wore the costume of a creature bug for an hour. [EP-159]
+
+## Field case 2026-10-26 (b): a cap on a growing file is not a guard until something leaves
+
+A project's instructions file, loaded whole into every session, took a dated diary entry per round of work until it was
+184,591 characters, 4.6 times the size at which the tool prints "Large CLAUDE.md will impact performance". The warning went
+to the human's terminal at every session start; the agent that appended to the file never saw it, and every session paid
+about 45,000 tokens before its first word. The fix split the diary out verbatim and added a FAIL to the repo's verify step
+at 38,000. Two rounds later the file was 37,878. A ceiling with a rule that says "distil" is a reminder dressed as a guard
+(see "A stated intention is an artefact that looks like the work"): the guard holds only with a rule for what LEAVES
+(every addition moves an older passage out, kept elsewhere) and a headroom check (within 10 percent of the cap, prune
+before stopping). And a message that only the human can see is a measurement the agent never takes: ask for the exact
+text, then diagnose from it. [EP-161]

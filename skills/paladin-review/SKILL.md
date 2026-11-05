@@ -357,3 +357,26 @@ made a later migration cheap and was never told as one story, and coupling two c
 they travel in one breath instead of surfacing as a pattern. Its numbers HELD this run: both
 quantitative checks (a test-runner count and a git-tracking check) verified correct, consistent with
 the verify-every-alarm rule being about verification, not distrust.
+
+Seventh field win 2026-10-07/08, an author's FIRST push of a library to a company GitHub, two
+runs on Sonnet (91K, 98K). Run one, the night before: no secrets, names or tooling in the tree or
+the commit messages (checked with `git ls-files` and `git log`, not the disk), and four bombs only
+the author's-outcome lens raises: the pre-squash tag one `git push --tags` from publishing old
+history; no licence and no stated owner for artwork compiled into the package; real customer-looking
+data in git, put to the author as HIS call rather than fixed; a `global.json` floor that would fail a
+colleague's first build. Its five under-sells were all real (each cited by file) and all moved onto
+the README's first screen. Run two, on the final tree: it found, independently of the adversarial
+review, the BLOCKER that mattered most to the author's outcome, the never-run CI workflow going red
+on Ubuntu on its first run. Refinements: (1) **for a first push, the first thing colleagues see is
+the Actions tab**: arm the guardian with the workflow and every test it runs, and hunt "what turns
+red on the first run with your name on it"; the remedy that worked was a throwaway branch run first.
+(2) **Put data and licence questions to the author as decisions, not fixes**: both were company
+facts only he could supply ("the artwork is owned by the company"), and he settled them in one line
+each once the ask was one line each.
+
+Eighth run 2026-10-08, an author's first pull request in a second company repo (two files, Sonnet, about 75K). No
+bomb; every check it ran held (staged set, line endings with `--ignore-space-at-eol`, identity, base commit, a
+forbidden attribution trailer the session's own reminder would have added). Its drafted PR description was used
+almost verbatim, after the orchestrator corrected one number in it: it named a test vehicle the author had never
+screenshotted. Third time this lens has stated a checkable fact wrongly (after 2026-08-11's two); its instinct for
+what to check stays right, and its numbers still need a read against the source before the author hears them.

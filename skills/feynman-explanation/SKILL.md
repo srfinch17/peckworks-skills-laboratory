@@ -206,6 +206,18 @@ Keep defining the ones that are not yet on the list.
   it, calibrate to the floor, not to what reads elegantly in a wrap-up. (Field case 2026-07-13:
   a kickoff summary defined broker/publish/retained inline and still drew "chill out... you're
   talking to me like i know all this"; the full from-zero restart landed.)
+- **Teaching a rule at the grain you first met it.** A rule learned from class-level examples gets taught as
+  a class-level rule when the real rule works one level finer. Field case 2026-10-06: "any route attribute on
+  a controller takes every action off the conventional route" was taught as the whole rule; the doc says a
+  template on ONE action takes that action off while its siblings stay, and the reader's own codebase had
+  six such actions, one of which answers at a URL the taught rule predicts wrongly. The cold reader-twin
+  passed it (it read fine); only a reviewer armed with the primary source caught it. Before teaching any
+  "X on a Y makes all Z..." rule, ask: what is the smallest unit the source applies it to? Then find the
+  reader's own counter-example and teach the fine grain through it.
+- **First-person hedges read as guesses.** "From the framework source as I remember it" was flagged by the
+  cold reader as a guess sitting in a trust-sensitive paragraph, which it was. Step 6 (mark the edge) is
+  right; the register is wrong. Put the provenance impersonally in a marked box ("from the framework source,
+  not the docs; not run") and keep the sentence itself plain. Mark once, in the box, not in every sentence.
 
 ## Red Flags
 
