@@ -102,6 +102,8 @@ So the load-bearing value lives in the MEMORY + HOOK re-injection layer, not the
 Invest there. The engine remains worth keeping: it is safe (does not over-fire), it adds
 scope-probing + a shared escalation vocabulary, and it gives the discipline to consult the logbook.
 
+**Data audit 2026-11-05 (178 episodes mined, see the spec's last section):** the logbook half works and has seeded three skills and five guards; the live-protocol half left no trace in 108 sessions, 29 percent of episodes were admitted repeats, and the injected layer had not changed in 36 episodes. Revised: seven observed classes replace the four types (artifact-trust holds 46 percent), every episode carries a `Class` / `Recurs` line, the hook injects the top three recurring classes with repeat counts, nudges when ten episodes land with no change to the standing weights, and names episodes over 150 words. Success measure for the next audit: the repeat share over the newest 30 episodes (18 of 30 at revision).
+
 **Next (optional):** a PreToolUse boundary guard (advisory-inject hard-stop before push/publish/send).
 
 ### `iterative-lesson-refinement`  (status: field-proven engine port, 2026-07-05)

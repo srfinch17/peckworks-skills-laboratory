@@ -15,18 +15,20 @@ when this person's conviction means defer, and when it means they are in sunk-co
 
 Copy the block below to the top of the Episodes list (newest first) and fill it in. Write
 it when a debt *comes due* - that is when the lesson is sharpest and the cost is concrete.
+Keep it to about 150 words; the SessionStart hook names episodes that run over.
 
 ```markdown
 ### EP-NNN - <short title>
 - **Date:** <when it formed / when it came due>
-- **Type:** scope-creep | silent-override | model-of-them drift | phantom-progress
+- **Class:** external-boundary | provenance-drift | commission-misread | shared-state | silent-override | scope-creep | artifact-trust | **Recurs:** EP-aaa, EP-bbb (earlier episodes with the same root; omit if none)
 - **The assumption:** what was quietly believed
 - **The tell:** the early signal that would have caught it at formation
-- **The cost:** what it actually cost (tokens, rework, real-world consequence) + any
-  verbatim reaction
-- **Lesson / durable fix:** ideally mechanical (a guard, a structural rule), not "remember harder"
-- **Trust-weight note:** whose instinct proved right here, for future calibration
+- **The cost:** what it actually cost (tokens, rework, real-world consequence)
+- **Durable fix:** a guard, gate or test where one exists; a reminder only when nothing mechanical does
 ```
+
+The `Class` line must be exactly `- **Class:** <slug>` optionally followed by ` | **Recurs:** EP-...`;
+the hook parses it. Class slugs are defined in the skill's class table.
 
 ## Standing trust weights (updated as episodes accumulate)
 

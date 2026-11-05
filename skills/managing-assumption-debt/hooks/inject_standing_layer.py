@@ -95,6 +95,70 @@ def audit(text: str, extra_ids=()):
     return len(all_ids), (max(all_ids) + 1 if all_ids else 1), warns, undated
 
 
+CLASS_LINE = re.compile(r"^- \*\*Class:\*\*\s*([a-z][a-z-]*)(.*)$", re.M)
+EP_REF = re.compile(r"EP-\d{3}")
+EPISODE_WORD_CAP = int(os.environ.get("ASSUMPTION_DEBT_EPISODE_WORDS", "150"))
+DISTILL_EVERY = int(os.environ.get("ASSUMPTION_DEBT_DISTILL_EVERY", "10"))
+
+
+def episodes(text: str):
+    """(id, block) for every episode in text, newest id first."""
+    heads = list(EP_HEAD.finditer(text))
+    out = []
+    for i, h in enumerate(heads):
+        stop = heads[i + 1].start() if i + 1 < len(heads) else len(text)
+        out.append((int(h.group(1)), text[h.start():stop]))
+    return sorted(out, key=lambda e: -e[0])
+
+
+def class_tally(text: str, window: int = 30):
+    """Per-class {n, recurs, latest} over the newest `window` episodes.
+
+    Reads the `- **Class:** slug | **Recurs:** EP-xxx` line the schema added 2026-11-05.
+    An episode without one counts as "unclassified". A data audit of 178 episodes found
+    29 percent were admitted repeats while the injected layer had absorbed no new weight in
+    36 episodes: the repeat classes were in the log and never in front of a session. This
+    puts them there, counted, every session.
+    """
+    tally = {}
+    for n, block in episodes(text)[:window]:
+        m = CLASS_LINE.search(block)
+        cls = m.group(1) if m else "unclassified"
+        rec = bool(m and EP_REF.search(m.group(2)))
+        t = tally.setdefault(cls, {"n": 0, "recurs": 0, "latest": n})
+        t["n"] += 1
+        t["recurs"] += int(rec)
+        t["latest"] = max(t["latest"], n)
+    return tally
+
+
+def recurrence_summary(text: str, window: int = 30, top: int = 3) -> str:
+    tally = class_tally(text, window)
+    seen = sum(t["n"] for t in tally.values())
+    repeats = sum(t["recurs"] for t in tally.values())
+    ranked = sorted(tally.items(), key=lambda kv: (-kv[1]["n"], -kv[1]["latest"]))[:top]
+    body = "; ".join(f"{c} {t['n']} ({t['recurs']} repeats, latest EP-{t['latest']:03d})" for c, t in ranked)
+    return (f"Recurring debt classes over the last {seen} episodes ({repeats} of {seen} are admitted repeats): "
+            f"{body}. Before acting in one of these classes, open the latest episode named.")
+
+
+def long_episodes(text: str, cap: int = EPISODE_WORD_CAP):
+    """Ids of the newest three episodes that run over the word cap (EP-161's lesson applied to the log itself)."""
+    return [n for n, block in episodes(text)[:3] if len(block.split()) > cap]
+
+
+def distillation_check(state: dict, layer: str, n_eps: int, every: int = DISTILL_EVERY):
+    """Pure: (new_state, due). Due when `every` episodes have landed since the standing layer last changed."""
+    import hashlib
+    digest = hashlib.sha1(layer.encode("utf-8")).hexdigest()
+    state = dict(state)
+    if state.get("layer_hash") != digest:
+        state["layer_hash"] = digest
+        state["episodes_at_change"] = n_eps
+        return state, False
+    return state, (n_eps - state.get("episodes_at_change", n_eps)) >= every
+
+
 def emit(context: str) -> None:
     # Documented SessionStart contract for adding context to the session.
     print(json.dumps({
@@ -125,10 +189,13 @@ def main() -> None:
     stem = os.path.splitext(path)[0]
     archives = sorted(glob.glob(stem + "_archive*.md"))
     extra = []
+    all_text = text
     for a in archives:
         try:
             with open(a, encoding="utf-8") as f:
-                extra += [int(m.group(1)) for m in EP_HEAD.finditer(f.read())]
+                at = f.read()
+            extra += [int(m.group(1)) for m in EP_HEAD.finditer(at)]
+            all_text += "\n" + at
         except OSError:
             pass
     n_eps, next_id, warns, undated = audit(text, extra)
@@ -137,10 +204,28 @@ def main() -> None:
         warns.append("the main logbook is %d lines, over its %d-line cap: move its oldest episodes (verbatim, newest "
                      "first) to the <stem>_archive_<YYYY-MM>.md file for their month" % (n_lines, MAIN_LINE_CAP))
     gap = f" ({undated} early entries carry no date line.)" if undated else ""
+    over = long_episodes(text)
+    if over:
+        warns.append("episode%s %s run%s over the %d-word cap: detail belongs in the project diary the episode "
+                     "points to, not in the log" % ("s" if len(over) > 1 else "",
+                                                     ", ".join(f"EP-{n:03d}" for n in over),
+                                                     "" if len(over) > 1 else "s", EPISODE_WORD_CAP))
+
+    # Reminder cadence + distillation baseline share one small JSON state file.
+    state_path = os.path.join(os.path.dirname(path), ".assumption_debt_reminder_state")
+    state = {}
+    try:
+        with open(state_path) as f:
+            raw = f.read().strip()
+        state = json.loads(raw) if raw.startswith("{") else {"reminded": raw}   # pre-2026-11 file held a bare date
+    except (OSError, ValueError):
+        state = {}
+    state, distill_due = distillation_check(state, m.group(1), n_eps)
 
     parts = [
         "Assumption-debt standing layer (auto-loaded by hook; do not narrate this to the user):",
         m.group(1).strip(),
+        recurrence_summary(all_text),
         f"Full logbook + episodes on demand: {path}"
         + (f" (older episodes: {', '.join(os.path.basename(a) for a in archives)})" if archives else ""),
         f"Logbook: {n_eps} episodes, newest first. A new episode takes id EP-{next_id:03d} and goes "
@@ -154,17 +239,22 @@ def main() -> None:
             "user rather than silently working around it]: " + "; ".join(warns) + "."
         )
 
+    if distill_due:
+        parts.append(
+            f"[DISTILLATION DUE - relay to the user in one line]: {n_eps - state['episodes_at_change']} episodes "
+            "have landed since the standing trust weights last changed. Add or retire ONE weight from the "
+            "recurring classes above; an episode that changes no weight is a diary entry, not calibration."
+        )
+
     # Rate-limited reminder addressed to the human (not every session).
-    state = os.path.join(os.path.dirname(path), ".assumption_debt_reminder_state")
     today = datetime.date.today()
-    due = True
     try:
-        with open(state) as f:
-            due = (today - datetime.date.fromisoformat(f.read().strip())).days >= REMINDER_EVERY_DAYS
-    except (OSError, ValueError):
+        due = (today - datetime.date.fromisoformat(state.get("reminded", ""))).days >= REMINDER_EVERY_DAYS
+    except ValueError:
         due = True
 
     if due:
+        state["reminded"] = today.isoformat()
         parts.append(
             "[REMINDER DUE - relay to the user in one short, friendly line at the top of your "
             f"first reply]: The assumption-debt logbook is active ({n_eps} episodes). It does not "
@@ -172,11 +262,11 @@ def main() -> None:
             "something went sideways and I'll append an episode. Say \"assumption check\" anytime "
             "to consult it."
         )
-        try:
-            with open(state, "w") as f:
-                f.write(today.isoformat())
-        except OSError:
-            pass
+    try:
+        with open(state_path, "w") as f:
+            json.dump(state, f)
+    except OSError:
+        pass
 
     emit("\n\n".join(parts))
 

@@ -21,14 +21,26 @@ and its own form of paralysis). The goal is **triage** plus **a memory that gets
 over time.** Surface the few high-leverage ones early; let the rest ride; and record every
 debt that comes due so the partnership gets wiser.
 
-## The four types (with their tells)
+## The seven classes (with their tells)
 
-| Type | What happens | The tell to watch for |
+These replaced the original four on 2026-11-05, after a data audit of 178 logged episodes found that
+only a third fit the original names and that one class the original list did not have held 46 percent
+of them. Every episode is filed under exactly ONE class, by its root, not its symptom. Where two fit,
+take the earlier one in this table.
+
+| Class | What happens | The tell to watch for |
 |---|---|---|
-| **Scope creep of a rule** | A rule stated broadly gets applied outside its intended scope | Absolute words: *never, always, all, every, no* - stated without an explicit boundary |
-| **Silent preference override** | You quietly do the opposite of a stated preference and justify it to yourself | You catch yourself thinking "best practices / convention" instead of asking |
-| **Drift in your model of them** | You form a wrong belief about what they know, their skill level, or who built what | A fact about the collaborator you *inferred* but they never *stated* |
-| **Phantom progress / state drift** | The two of you silently believe different things are done or working | A long stretch with no reconciliation against reality; "no error" treated as "working" |
+| **external-boundary** | Something is pushed, published, sent, deleted or exposed without the check that line requires | About to cross the line with nobody having asked "is this right, is this safe?" |
+| **provenance-drift** | What the agent built is treated as what the human knows or can defend, or an invented fact about their skills, history or domain is handed to them as real | A fact about the collaborator you *inferred* but they never *stated*; "we built it" read as "they know it" |
+| **commission-misread** | The human's words are read as a pointer into your own model, so the wrong feature, object, scope or deliverable gets built or fixed | A request that survives one round in the same words; a question answered with a build |
+| **shared-state** | An ownership or order assumption about a shared thing: two machines or copies, a default sized for another caller, a file two parties write, a mask built before the thing it must hold | "It's there / it's in sync / that's mine" said without a glance |
+| **silent-override** | You do the opposite of a stated preference, rule or protocol and justify it to yourself | Thinking "best practices / convention" instead of asking; a rule in context not followed |
+| **scope-creep** | A rule stated broadly is applied outside the scope it was written for | Absolute words: *never, always, all, every, no* with no stated boundary; a rule's number carried to a new context |
+| **artifact-trust** | A count, probe, metric, memory note, summary, code read or green result is trusted instead of the ground truth it describes | The feeling of already knowing; "no error" read as "working"; a fix declared on a number that could not see the bug |
+
+**artifact-trust is the dominant class by a wide margin** (82 of 178 at the audit). It is never a knowledge
+gap: the check is always cheap (one grep, one diff, one render, one `git log`) and is skipped because the
+invented version feels like knowing. Open the thing before asserting about it.
 
 The debt is **bidirectional** - the human accumulates false beliefs too. Good surfacing
 makes *them* notice *their own* hidden assumption, not just yours.
@@ -47,23 +59,13 @@ The cheapest moment to catch any assumption is **at formation** - when a rule, p
 or belief first enters the conversation. One clarifying sentence there kills a debt that
 would otherwise cost a fortune.
 
-## The escalation vocabulary (bidirectional - either party may invoke)
+## The escalation vocabulary (unproven; kept to three lines)
 
-The power of these signals comes entirely from **scarcity**. If everything is a fight, the
-word "fight" is worthless. Keep the strong signals rare and they land.
-
-- **Light flag** - one line, keep moving, defer by default.
-  *"Heads up, I'm assuming X here; tell me if not."* For low-stakes things. The default.
-- **"I'm willing to fight about this"** - the scarce token. Means: *this is load-bearing to
-  me; I will actually argue it, try to change your mind, possibly refuse.* Reserved for
-  genuinely load-bearing AND hard-to-reverse calls. Often just naming it ends the
-  disagreement without the argument - that is the cheapest possible debt payment.
-- **Sunk-cost call** - the strongest, rarest. *"I think we're protecting an investment, not
-  making the right call here."* Names the bankruptcy risk out loud. Use when one party is
-  digging in to defend tokens/time already spent rather than the actual best path.
-
-**Default is deference.** When you disagree on something low-stakes, flag it once and defer.
-You are not the owner of the project or the life it touches.
+A light flag is one line that names the assumption and keeps moving. *"I'm willing to fight about
+this"* is the scarce token for a load-bearing, hard-to-reverse call. *"I think we're protecting an
+investment, not making the right call"* names sunk cost out loud. Default is deference. **Audit note
+2026-11-05:** across 108 sessions these phrases were never used outside the skill text itself; the
+section is kept short rather than cut so either party can still invoke it, and it is not load-bearing.
 
 ## When to run the check (trigger moments)
 
@@ -83,11 +85,26 @@ You are not the owner of the project or the life it touches.
 ## The logbook (the self-refining loop)
 
 The richest signal in the whole system is the exact moment a debt comes due. Capture it.
-Each episode records:
+Each episode records, in about 150 words:
 
-> date - type - the assumption - **the tell** (the early signal that would have caught it) -
-> the cost (and the human's verbatim reaction if they gave one) - the lesson / durable fix -
-> trust-weight note (whose instinct proved right, for future calibration)
+> date - **class** (one of the seven) - **recurs** (the earlier episodes of the same root, or none) -
+> the assumption - **the tell** (the early signal that would have caught it) - the cost -
+> the durable fix (a guard, a gate, a test; a reminder only when nothing mechanical exists)
+
+The `Class` and `Recurs` fields are what make the log calibrate instead of merely grow. The
+SessionStart hook counts them over the newest 30 episodes and injects the top three recurring classes,
+each with its repeat count and latest episode id, into every session. **Before acting in one of those
+classes, open the latest episode named.** A data audit on 2026-11-05 found 29 percent of 178 episodes
+were admitted repeats, several within hours of the rule being written, while the injected layer had
+absorbed no new weight in 36 episodes: the repeat classes were in the log and never in front of a
+session. Counting them is the mechanical form of distillation.
+
+**Every ten episodes, one standing weight is added or retired.** The hook tracks episodes since the
+standing layer last changed and nudges when ten have landed. An episode that changes no weight is a diary
+entry, not calibration. The 150-word cap is enforced the same way: the hook names the newest episodes
+over it (env `ASSUMPTION_DEBT_EPISODE_WORDS`). Detail belongs in the project diary the episode points to;
+the audit found episode length had tripled since June and the log was eating its own loop (EP-161's
+lesson, applied to this log).
 
 Over time this becomes a personalized profile of *this* collaborator's recurring blind
 spots - earned the way real familiarity is earned, through a history of surprises, not a
@@ -136,7 +153,8 @@ the agent only scaffolds", a review board of skeptics) rather than trusting reca
 
 - "I'll just use best practices here" (about to silently override a stated preference)
 - "They probably know this" (an inferred belief about competence, never confirmed)
-- "It's basically done / it didn't error, so it's working" (phantom progress)
+- "It's basically done / it didn't error, so it's working" (artifact-trust)
+- "I already know what that file / count / note says" (artifact-trust; open it)
 - "The rule says never, so I'll bail" (applying a rule past its intended scope)
 - "We've spent so much on this already" (sunk cost talking)
 - About to push / send / publish without anyone asking "is this right, is this safe?"

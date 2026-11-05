@@ -181,3 +181,32 @@ SessionStart hook spec:
   ~/.claude/settings.json per machine).
 - **Cost/risk:** ~20 lines/session; acceptable. Keep the standing-weights section tight so the
   per-session injection stays small.
+
+## Data audit and revision (2026-11-05)
+
+A mining pass over the maintainer's private logbook (178 episodes, 2026-06-15 to 2026-11-04, six files)
+asked whether the skill meets its stated goal. Method: titles, Type, Cost and fix lines parsed by script;
+cross-references counted; a month of local session transcripts (108 files) searched for the live vocabulary.
+
+**Findings.** The capture loop is alive (median gap between episode days: one day). Fixes went mechanical:
+1 of 28 July episodes named a guard, test or gate; 33 of 40 in October did. Three lab skills and five
+hooks or guards trace to single episodes. Against the stated goal the picture was worse: catches before cost
+were 25 of 178; 51 episodes (29 percent) said outright they were repeats, several within hours of the rule
+being written; the escalation vocabulary appeared in zero sessions outside the skill text; only 62 episodes
+used one of the four original types; and the lesson promoted to "the dominant failure mode" on 2026-08-22
+lived in a file the hook never injected, while the injected layer had absorbed no new weight in 36 episodes.
+
+**Changes.** (1) Seven observed classes replace the four types; a Sonnet pass classified every episode
+from its title and Type line (artifact-trust 82, silent-override 24, commission-misread 18, shared-state 17,
+provenance-drift 16, external-boundary 11, scope-creep 10) and a script inserted a `Class` / `Recurs` line
+under each Date line with a no-loss assertion. (2) The SessionStart hook counts classes over the newest 30
+episodes and injects the top three with repeat counts and latest ids (`class_tally`, `recurrence_summary`).
+(3) The hook tracks episodes since the standing layer last changed and nudges at ten (`distillation_check`,
+pure, state in the existing reminder file, now JSON). (4) The hook names the newest episodes over a 150-word
+cap. (5) The vocabulary section is cut to three lines and marked unproven. (6) The dominant-class paragraph
+was moved into the injected layer. Tests: `hooks/test_recurrence.py`, written failing first.
+
+**What this does not prove.** The prose changes (the class table, the cap) are the cross-session kind this
+spec's testing section already calls untestable in a single-shot run; the hook changes are covered by
+asserts. The measure of success is the next audit: the repeat share over the newest 30 episodes (18 of 30
+at revision) and the count of standing weights changed per ten episodes (zero over the last 36).
