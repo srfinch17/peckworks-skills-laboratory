@@ -889,3 +889,15 @@ quantity the failing rule reads and whether the author's log carries it. Cost sh
 confirmations (same reviewer resumed), about a day of the author's time, 27 instrumented builds.
 
 **Field case 2026-10-29 (a nemesis on a REVIEW, not on the work).** The owner of a painted screensaver, after six rounds of patches on one complaint, ordered an independent review of the 3D world and "a nemesis of his own" on that review, then the review revised. The reviewer (isolated, with a repo copy, renders and logs) found the structural fault in one pass and prototyped a fix. The nemesis, armed the same way, caught three overreaches the orchestrator would have acted on: the prototype "cut cleanly" only for the body and left fins and eyes floating on the rock (one render showed it); a proposed rebuild step would have brought back a fault the owner had rejected (a deliberately stiff spine, recorded in the rules file); and a scale change quietly undid two of the owner's verdicts (the review misreported the history). Every finding was conceded on evidence and the review was reordered: shape first, the owner's choice as a separate step with side-by-side renders. The shape that worked: give the nemesis the same artifact access as the reviewer (build, render, logs), the owner's verbatim words as the bar, and the rules file as the record of what the owner praised; charter it to attack the PROPOSAL's steps (does each leave the owner something better; what verdict does it reverse; what does the prototype actually show) as hard as the diagnosis. Then send the nemesis file back to the reviewer with "concede or rebut with evidence, per finding" and act only on the revised review.
+
+(7) **Field case 2026-11-05 (an animator reviewer on a farm saver, three confirmation rounds in a morning, 295K, 363K,
+414K).** The same reviewer resumed each time with the author's fixes restated as numbered claims and its own
+numbers asked for; its copy of the repo was a plain folder refreshed by a recursive copy of the source and rebuilt
+from scratch, and the author's own dumps were pinned to a fixed story start so the reviewer's windows matched.
+Round one: nine claims mostly held, fourteen new defects (a blocker: a sprite sheet cut the grazing deer's head off
+along a ruled line). Round two: seven of ten confirmed, two new majors INSIDE the fixes (a pose jump at a seam the
+fix created; hand points beyond the arm's reach). Round three: six of ten confirmed, one new major (turn books that
+read as a squashed card, needing drawn views). Three things held: a confirmation round's first job is the seams the
+fixes made, so charter it to look there; a reviewer's "pro fix" that is a drawing job is reported to the owner with
+its cost rather than attempted in the same pass; and the budget (two rounds here, three spent) ends the loop, with
+the owner deferring further refinements closing it, not a clean report.

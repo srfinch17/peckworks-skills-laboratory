@@ -900,3 +900,28 @@ acceptance rule in one evening, each curing one seed and jamming another, before
   diff, the measure and the named architecture; ship the build that never carried the branch.
 - **Three cures of three different mechanisms is ordinary work**, not the signal: the lizard's afternoon was a bask under a
   clump's leaves, a dash's first step into water and a jerky pivot, each located in the pixels, cured, measured and kept.
+
+## Field addition (2026-11-05): a fix is judged at its seams, a target is checked against its reach, the log is read before the sheet, and a dump's time base is pinned
+
+A Thanksgiving saver, three confirmation rounds with one isolated animator reviewer in a morning. Each round
+confirmed most of the previous fixes and found NEW faults inside them: a turn inserted to kill a mirror flip met the
+mount's mid-air leap pose in one frame (25 px of head); hands moved off the chest to the ground were beyond the two
+arm bones' reach and drew a straight rod; a 0.15 s stand added so tails stayed covered froze a run page with the tail
+outside the cloud. None of the three fixes was wrong on its own page. Four rules, each cheap:
+
+- **A pose change is judged at BOTH its seams.** A new or moved segment is checked against the segment before it and
+  the one after, on a frame-by-frame strip across the join, before the reviewer sees it. The seam is where a fix
+  fails; the page itself was already looked at.
+- **A limb target is checked against the bones' reach before it is drawn.** Two bones of 0.21 reach 0.42; a hand point
+  0.46 from the shoulder is a rod whatever it looks like in the author's head. One subtraction, before the build.
+- **Read the written log before any sheet.** In one session the log alone found: two parade mice hiding below the
+  screen's edge, a flock whose walks never moved (the pace ticked only once already moving), two writers on one log
+  file that killed the saver at start, and the reactions of a whole field to one notice. Each was a number in a
+  text file; each would have taken a sheet, a crop and a guess to see.
+- **A deterministic run is deterministic in frames, not in seconds.** A story that began when a side thread finished
+  painting began at 1.6 to 2.9 s run to run; four windows computed from one log missed in the next. Pin the start to
+  a fixed process time in test mode (4.0 s) so story time is process time less a constant.
+
+And a budget observation: three rounds on one reviewer, each finding faults inside the last round's fixes, is the
+pattern, not a failure; the owner deferring further refinements is what ends it, and the one item left is
+named to the owner as theirs, with its cost.
